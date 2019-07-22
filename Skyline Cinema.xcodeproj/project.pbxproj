@@ -15,6 +15,7 @@
 		AA62AA4C22E02163005300FB /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA62AA4A22E02163005300FB /* DataModel.xcdatamodeld */; };
 		AA6E377F22E1634F0021273D /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6E377D22E1634F0021273D /* CustomCell.swift */; };
 		AA6E378022E1634F0021273D /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6E377E22E1634F0021273D /* CustomCell.xib */; };
+		AA9B639422E55A5B00D0875E /* TableViewItemWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B639322E55A5B00D0875E /* TableViewItemWrapper.swift */; };
 		AAA6DB1C22CC5DCD0033C6CF /* PopcornViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA6DB1B22CC5DCD0033C6CF /* PopcornViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		AA62AA4B22E02163005300FB /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		AA6E377D22E1634F0021273D /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		AA6E377E22E1634F0021273D /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		AA9B639322E55A5B00D0875E /* TableViewItemWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewItemWrapper.swift; sourceTree = "<group>"; };
 		AAA6DB1B22CC5DCD0033C6CF /* PopcornViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				AA62AA4A22E02163005300FB /* DataModel.xcdatamodeld */,
+				AA9B639322E55A5B00D0875E /* TableViewItemWrapper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				AA18119022AE0699000E1024 /* ViewController.swift in Sources */,
 				AA6E377F22E1634F0021273D /* CustomCell.swift in Sources */,
 				AA62AA4C22E02163005300FB /* DataModel.xcdatamodeld in Sources */,
+				AA9B639422E55A5B00D0875E /* TableViewItemWrapper.swift in Sources */,
 				AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

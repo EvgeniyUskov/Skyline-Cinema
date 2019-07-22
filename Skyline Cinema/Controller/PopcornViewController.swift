@@ -27,18 +27,14 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
     //MARK: Fields
     let context = (UIApplication.shared.delegate as! AppDelegate ).persistentContainer.viewContext
     
-    var popcornList = [Item]()
+    var popcornList = [TableViewItemWrapper]()
     var order: Order!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         popcornTableView.delegate = self
         popcornTableView.dataSource = self
-        
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PopcornViewController.tapEdit))
-//        popcornTableView.addGestureRecognizer(tapGesture)
-//        tapGesture.delegate = self
-//
+        popcornTableView.allowsMultipleSelection = true
         popcornTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "CustomCell")
 
         loadData()
@@ -55,9 +51,12 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = popcornTableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
-//        let cell = popcornTableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
-        cell.itemLabel.text = popcornList[indexPath.row].descript
-        cell.itemImageView.image = UIImage(contentsOfFile: "popcorn")
+        
+        let wrappedItem = popcornList[indexPath.row]
+        cell.itemLabel.text = wrappedItem.item.descript
+        cell.itemImageView.image = UIImage(named: "popcorn")
+        cell.accessoryType = wrappedItem.checked == true ? .checkmark :  .none
+
         return cell
     }
     
@@ -67,67 +66,46 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
         popcornTableView.rowHeight = 150//UITableView.automaticDimension
     }
 
+    //UITableViewCell click
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // add item to order
         let selectedItem = popcornList[indexPath.row]
-        order!.items?.adding(selectedItem)
-        // saveData()
+        selectedItem.checked = !selectedItem.checked
+        print(selectedItem)
+        order!.items!.adding(selectedItem.item!)
+        popcornTableView.deselectRow(at: indexPath, animated: true)
+        popcornTableView.reloadData()
+        saveData()
     }
-    // TAP Recognizer
-//    @objc func tapEdit(recognizer: UITapGestureRecognizer)  {
-//        if recognizer.state == UIGestureRecognizer.State.ended {
-//            let tapLocation = recognizer.location(in: popcornTableView)
-//            if let tapIndexPath = popcornTableView.indexPathForRow(at: tapLocation) {
-//                //if let tappedCell = popcornTableView.cellForRow(at: tapIndexPath) as? CustomCell {
-//                    // add an item to order
-////                    order.addItem(itemConstants.getItemById(id: tappedCell.itemId))
-//                //}
-//                let indexPath = popcornTableView.indexPathForSelectedRow
-//            }
-//        }
-//    }
     
     //MARK: Data manipulation methods
     func loadData(with request: NSFetchRequest<Item> = Item.fetchRequest(), predicate: NSPredicate? = nil ) {
+        //ITEMS
         let itemPredicate = NSPredicate(format:  SEARCH_POPCORN_QUERY, TITLE)
         request.predicate = itemPredicate
-        
         do{
-            popcornList = try context.fetch(request)
-            
-            let popcnItem = Item(context: context)
-            popcnItem.title = "big"
-            popcnItem.price = 300.0
-            let popcnItem2 = Item(context: context)
-            popcnItem2.title = "medium"
-            popcnItem2.price = 300.0
-            let popcnItem3 = Item(context: context)
-            popcnItem3.title = "small"
-            popcnItem3.price = 300.0
-            popcornList.append(popcnItem)
-            popcornList.append(popcnItem2)
-            popcornList.append(popcnItem3)
-            
-//            print(popcornList)
-            print(FileManager.default.urls(for: .documentDirectory , in: .userDomainMask ))
+            popcornList = convertItemListToWrappedList(list: try context.fetch(request))
+//            mockItems()
         } catch {
             print("error fetching data from context\(error)")
         }
-
-        let request: NSFetchRequest<Order> = Order.fetchRequest()
-        request.fetchLimit = 1
         
-        let predicate = NSPredicate(format: SEARCH_ORDER_QUERY)
-        request.predicate = predicate
-        
+        //ORDER
+        let orderRequest: NSFetchRequest<Order> = Order.fetchRequest()
+        orderRequest.fetchLimit = 1
+        let orderPredicate = NSPredicate(format: SEARCH_ORDER_QUERY)
+        orderRequest.predicate = orderPredicate
         do {
-            order = try self.context.fetch(request).first
+            order = try self.context.fetch(orderRequest ).first
         } catch {
             print("error fetching data from context\(error)")
         }
         if(order == nil) {
             order = Order(context: context)
+            order.orderNumber = 1
             order.state = INITIALIZED
+            order.licensePlateNumber = "B522YO_154RUS"
+            order.date = Date()
         }
     }
     
@@ -139,5 +117,63 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
 
+    //MARK: Conversion methods
+    func convertItemListToWrappedList(list: [Item]) -> [TableViewItemWrapper]{
+        var wrappedList = [TableViewItemWrapper]()
+        for item in list {
+            let wrapper = TableViewItemWrapper()
+            wrapper.item = item
+            wrappedList.append(wrapper)
+        }
+        return wrappedList
+    }
+    
+    func convertWrappedListToItemList(list: [TableViewItemWrapper]) -> [Item]{
+        var itemList = [Item]()
+        for wrapper in list {
+            itemList.append(wrapper.item)
+        }
+        return itemList
+    }
+    
+    // MARK: Mock items methods
+    func mockItems() {
+        var itemList = [Item]()
+        
+        let popcnItem = Item(context: context)
+        popcnItem.title = "попкорн"
+        popcnItem.descript = "Большой сладкий"
+        popcnItem.price = 300.0
+        let popcnItem2 = Item(context: context)
+        popcnItem2.title = "попкорн"
+        popcnItem2.descript = "Средний сладкий"
+        popcnItem2.price = 300.0
+        let popcnItem3 = Item(context: context)
+        popcnItem3.title = "попкорн"
+        popcnItem3.descript = "Маленький сладкий"
+        popcnItem3.price = 300.0
+        
+        let popcnItem4 = Item(context: context)
+        popcnItem4.title = "попкорн"
+        popcnItem4.descript = "Большой соленый"
+        popcnItem4.price = 300.0
+        let popcnItem5 = Item(context: context)
+        popcnItem5.title = "попкорн"
+        popcnItem5.descript = "Средний соленый"
+        popcnItem5.price = 300.0
+        let popcnItem6 = Item(context: context)
+        popcnItem6.title = "попкорн"
+        popcnItem6.descript = "Маленький соленый"
+        popcnItem6.price = 300.0
+        
+        itemList.append(popcnItem)
+        itemList.append(popcnItem2)
+        itemList.append(popcnItem3)
+        itemList.append(popcnItem4)
+        itemList.append(popcnItem5)
+        itemList.append(popcnItem6)
+        
+        popcornList = convertItemListToWrappedList(list: itemList)
+    }
     
 }
