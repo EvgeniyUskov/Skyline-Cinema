@@ -15,12 +15,15 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var popcornTableView: UITableView!
     //MARK: Constants
     let TITLE = "Попкорн"
+    
     let SEARCH_POPCORN_QUERY = "title CONTAINS[cd] %@"
-    let SEARCH_ORDER_QUERY = "date.@max && state = %@"
+    let SEARCH_ORDER_QUERY = "date == max(date) && state = %@"
+    
     //MARK: Order States
     let INITIALIZED = "INITIALIZED"
     let ORDERED = "ORDERED"
     let OCMPLETED = "COMPLETED"
+    let REFUSED = "REFUSED"
     //MARK: Fields
     let context = (UIApplication.shared.delegate as! AppDelegate ).persistentContainer.viewContext
     
@@ -40,33 +43,35 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         loadData()
         
-        configureTableView()
+        popcornTableView.reloadData()
+        resizeTableViewRows()
+        popcornTableView.separatorStyle = .none
     }
     
     // MARK: - TableView Implementation methods
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return popcornList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = popcornTableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
-//        cell.itemImageView.image =
-        cell.itemLabel.text = popcornList[indexPath.row].description
-//        cell.itemId = popcornList[indexPath.row].id
-        
+//        let cell = popcornTableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
+        cell.itemLabel.text = popcornList[indexPath.row].descript
+        cell.itemImageView.image = UIImage(contentsOfFile: "popcorn")
         return cell
     }
     
     // Resize row
-    func configureTableView () {
-        popcornTableView.estimatedRowHeight = 250
-        popcornTableView.rowHeight = UITableView.automaticDimension
+    func resizeTableViewRows () {
+//        popcornTableView.estimatedRowHeight = 150
+        popcornTableView.rowHeight = 150//UITableView.automaticDimension
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // add item to order
         let selectedItem = popcornList[indexPath.row]
         order!.items?.adding(selectedItem)
+        // saveData()
     }
     // TAP Recognizer
 //    @objc func tapEdit(recognizer: UITapGestureRecognizer)  {
@@ -89,15 +94,34 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         do{
             popcornList = try context.fetch(request)
+            
+            let popcnItem = Item(context: context)
+            popcnItem.title = "big"
+            popcnItem.price = 300.0
+            let popcnItem2 = Item(context: context)
+            popcnItem2.title = "medium"
+            popcnItem2.price = 300.0
+            let popcnItem3 = Item(context: context)
+            popcnItem3.title = "small"
+            popcnItem3.price = 300.0
+            popcornList.append(popcnItem)
+            popcornList.append(popcnItem2)
+            popcornList.append(popcnItem3)
+            
+//            print(popcornList)
+            print(FileManager.default.urls(for: .documentDirectory , in: .userDomainMask ))
         } catch {
             print("error fetching data from context\(error)")
         }
+
+        let request: NSFetchRequest<Order> = Order.fetchRequest()
+        request.fetchLimit = 1
         
-        let orderRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Order")
-        let orderPredicate = NSPredicate(format:  SEARCH_ORDER_QUERY, "INITIALIZED")
-        request.predicate = orderPredicate
-        do{
-            order = try context.fetch(orderRequest)[0] as! Order
+        let predicate = NSPredicate(format: SEARCH_ORDER_QUERY)
+        request.predicate = predicate
+        
+        do {
+            order = try self.context.fetch(request).first
         } catch {
             print("error fetching data from context\(error)")
         }

@@ -13,9 +13,9 @@
 		AA18119522AE069A000E1024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA18119422AE069A000E1024 /* Assets.xcassets */; };
 		AA18119822AE069A000E1024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA18119622AE069A000E1024 /* LaunchScreen.storyboard */; };
 		AA62AA4C22E02163005300FB /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA62AA4A22E02163005300FB /* DataModel.xcdatamodeld */; };
+		AA6E377F22E1634F0021273D /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6E377D22E1634F0021273D /* CustomCell.swift */; };
+		AA6E378022E1634F0021273D /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6E377E22E1634F0021273D /* CustomCell.xib */; };
 		AAA6DB1C22CC5DCD0033C6CF /* PopcornViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA6DB1B22CC5DCD0033C6CF /* PopcornViewController.swift */; };
-		AAA6DB1F22CC60550033C6CF /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA6DB1D22CC60550033C6CF /* CustomCell.swift */; };
-		AAA6DB2022CC60550033C6CF /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA6DB1E22CC60550033C6CF /* CustomCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +27,9 @@
 		AA18119722AE069A000E1024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA18119922AE069A000E1024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA62AA4B22E02163005300FB /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		AA6E377D22E1634F0021273D /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		AA6E377E22E1634F0021273D /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		AAA6DB1B22CC5DCD0033C6CF /* PopcornViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornViewController.swift; sourceTree = "<group>"; };
-		AAA6DB1D22CC60550033C6CF /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		AAA6DB1E22CC60550033C6CF /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +83,9 @@
 			isa = PBXGroup;
 			children = (
 				AA18119622AE069A000E1024 /* LaunchScreen.storyboard */,
+				AA6E377D22E1634F0021273D /* CustomCell.swift */,
+				AA6E377E22E1634F0021273D /* CustomCell.xib */,
 				AA18119122AE0699000E1024 /* Main.storyboard */,
-				AAA6DB1E22CC60550033C6CF /* CustomCell.xib */,
-				AAA6DB1D22CC60550033C6CF /* CustomCell.swift */,
 				AA18119422AE069A000E1024 /* Assets.xcassets */,
 			);
 			path = View;
@@ -160,7 +160,7 @@
 			files = (
 				AA18119822AE069A000E1024 /* LaunchScreen.storyboard in Resources */,
 				AA18119522AE069A000E1024 /* Assets.xcassets in Resources */,
-				AAA6DB2022CC60550033C6CF /* CustomCell.xib in Resources */,
+				AA6E378022E1634F0021273D /* CustomCell.xib in Resources */,
 				AA18119322AE0699000E1024 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,8 +174,8 @@
 			files = (
 				AAA6DB1C22CC5DCD0033C6CF /* PopcornViewController.swift in Sources */,
 				AA18119022AE0699000E1024 /* ViewController.swift in Sources */,
+				AA6E377F22E1634F0021273D /* CustomCell.swift in Sources */,
 				AA62AA4C22E02163005300FB /* DataModel.xcdatamodeld in Sources */,
-				AAA6DB1F22CC60550033C6CF /* CustomCell.swift in Sources */,
 				AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
