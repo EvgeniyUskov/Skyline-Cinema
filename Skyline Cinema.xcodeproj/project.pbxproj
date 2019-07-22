@@ -85,9 +85,8 @@
 		AA62AA4822E02111005300FB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AA9B639522E5727700D0875E /* CustomTableViewCell */,
 				AA18119622AE069A000E1024 /* LaunchScreen.storyboard */,
-				AA6E377D22E1634F0021273D /* CustomCell.swift */,
-				AA6E377E22E1634F0021273D /* CustomCell.xib */,
 				AA18119122AE0699000E1024 /* Main.storyboard */,
 				AA18119422AE069A000E1024 /* Assets.xcassets */,
 			);
@@ -101,6 +100,15 @@
 				AAA6DB1B22CC5DCD0033C6CF /* PopcornViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		AA9B639522E5727700D0875E /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				AA6E377D22E1634F0021273D /* CustomCell.swift */,
+				AA6E377E22E1634F0021273D /* CustomCell.xib */,
+			);
+			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

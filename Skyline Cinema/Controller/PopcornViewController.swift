@@ -11,6 +11,7 @@ import CoreData
 
 class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewDataSource//, UIGestureRecognizerDelegate {
 {
+    @IBOutlet weak var goToOrderButton: UIButton!
     
     @IBOutlet weak var popcornTableView: UITableView!
     //MARK: Constants
@@ -32,6 +33,7 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        goToOrderButton.isHidden = true
         popcornTableView.delegate = self
         popcornTableView.dataSource = self
         popcornTableView.allowsMultipleSelection = true
@@ -73,6 +75,9 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
         selectedItem.checked = !selectedItem.checked
         print(selectedItem)
         order!.items!.adding(selectedItem.item!)
+        if order.items?.count != 0 {
+            goToOrderButton.isHidden = false
+        }
         popcornTableView.deselectRow(at: indexPath, animated: true)
         popcornTableView.reloadData()
         saveData()
@@ -136,6 +141,8 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
         return itemList
     }
     
+    @IBAction func goToOrderButtonTapped(_ sender: UIButton) {
+    }
     // MARK: Mock items methods
     func mockItems() {
         var itemList = [Item]()
