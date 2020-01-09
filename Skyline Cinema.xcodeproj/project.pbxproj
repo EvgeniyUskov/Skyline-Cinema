@@ -3,23 +3,31 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C46D9A8F9C21C9C4C0E2F7C /* Pods_Skyline_Cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2356869ACE33E7BC1D3CE479 /* Pods_Skyline_Cinema.framework */; };
 		AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118D22AE0699000E1024 /* AppDelegate.swift */; };
 		AA18119022AE0699000E1024 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118F22AE0699000E1024 /* ViewController.swift */; };
 		AA18119322AE0699000E1024 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA18119122AE0699000E1024 /* Main.storyboard */; };
 		AA18119522AE069A000E1024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA18119422AE069A000E1024 /* Assets.xcassets */; };
 		AA18119822AE069A000E1024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA18119622AE069A000E1024 /* LaunchScreen.storyboard */; };
-		AA62AA4C22E02163005300FB /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA62AA4A22E02163005300FB /* DataModel.xcdatamodeld */; };
+		AA46AD1B230BB8AD00FCC3C5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46AD1A230BB8AD00FCC3C5 /* Order.swift */; };
+		AA46AD1D230BB8BB00FCC3C5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46AD1C230BB8BA00FCC3C5 /* Item.swift */; };
 		AA6E377F22E1634F0021273D /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6E377D22E1634F0021273D /* CustomCell.swift */; };
 		AA6E378022E1634F0021273D /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6E377E22E1634F0021273D /* CustomCell.xib */; };
-		AA9B639422E55A5B00D0875E /* TableViewItemWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B639322E55A5B00D0875E /* TableViewItemWrapper.swift */; };
+		AA8EAEC823A226CC00F062C6 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EAEC723A226CC00F062C6 /* DateUtils.swift */; };
+		AA8EAECA23A22DD900F062C6 /* CartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EAEC923A22DD900F062C6 /* CartTableViewController.swift */; };
+		AA8EAED323A238DB00F062C6 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EAED123A238DB00F062C6 /* CartTableViewCell.swift */; };
+		AA8EAED423A238DB00F062C6 /* CartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8EAED223A238DB00F062C6 /* CartTableViewCell.xib */; };
 		AAA6DB1C22CC5DCD0033C6CF /* PopcornViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA6DB1B22CC5DCD0033C6CF /* PopcornViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2356869ACE33E7BC1D3CE479 /* Pods_Skyline_Cinema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skyline_Cinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BBA247B920A2E2A26878372 /* Pods-Skyline Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.release.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.release.xcconfig"; sourceTree = "<group>"; };
+		9F71FB9CD3D9E7C840ED5BA9 /* Pods-Skyline Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.debug.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.debug.xcconfig"; sourceTree = "<group>"; };
 		AA18118A22AE0699000E1024 /* Skyline Cinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skyline Cinema.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA18118D22AE0699000E1024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA18118F22AE0699000E1024 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,10 +35,14 @@
 		AA18119422AE069A000E1024 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA18119722AE069A000E1024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA18119922AE069A000E1024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA62AA4B22E02163005300FB /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		AA46AD1A230BB8AD00FCC3C5 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		AA46AD1C230BB8BA00FCC3C5 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		AA6E377D22E1634F0021273D /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		AA6E377E22E1634F0021273D /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
-		AA9B639322E55A5B00D0875E /* TableViewItemWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewItemWrapper.swift; sourceTree = "<group>"; };
+		AA8EAEC723A226CC00F062C6 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		AA8EAEC923A22DD900F062C6 /* CartTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewController.swift; sourceTree = "<group>"; };
+		AA8EAED123A238DB00F062C6 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		AA8EAED223A238DB00F062C6 /* CartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableViewCell.xib; sourceTree = "<group>"; };
 		AAA6DB1B22CC5DCD0033C6CF /* PopcornViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,17 +51,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C46D9A8F9C21C9C4C0E2F7C /* Pods_Skyline_Cinema.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0124A0C2E385BCF55E15DC34 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2356869ACE33E7BC1D3CE479 /* Pods_Skyline_Cinema.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9072AFFEE6AC3EDC19C8EF2B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9F71FB9CD3D9E7C840ED5BA9 /* Pods-Skyline Cinema.debug.xcconfig */,
+				8BBA247B920A2E2A26878372 /* Pods-Skyline Cinema.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AA18118122AE0699000E1024 = {
 			isa = PBXGroup;
 			children = (
 				AA18118C22AE0699000E1024 /* Skyline Cinema */,
 				AA18118B22AE0699000E1024 /* Products */,
+				9072AFFEE6AC3EDC19C8EF2B /* Pods */,
+				0124A0C2E385BCF55E15DC34 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,8 +108,8 @@
 		AA62AA4722E020FE005300FB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AA62AA4A22E02163005300FB /* DataModel.xcdatamodeld */,
-				AA9B639322E55A5B00D0875E /* TableViewItemWrapper.swift */,
+				AA46AD1A230BB8AD00FCC3C5 /* Order.swift */,
+				AA46AD1C230BB8BA00FCC3C5 /* Item.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -86,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				AA9B639522E5727700D0875E /* CustomTableViewCell */,
+				AA8EAED523A239A100F062C6 /* CartTableViewCell */,
 				AA18119622AE069A000E1024 /* LaunchScreen.storyboard */,
 				AA18119122AE0699000E1024 /* Main.storyboard */,
 				AA18119422AE069A000E1024 /* Assets.xcassets */,
@@ -98,8 +131,19 @@
 			children = (
 				AA18118F22AE0699000E1024 /* ViewController.swift */,
 				AAA6DB1B22CC5DCD0033C6CF /* PopcornViewController.swift */,
+				AA8EAEC923A22DD900F062C6 /* CartTableViewController.swift */,
+				AA8EAEC723A226CC00F062C6 /* DateUtils.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		AA8EAED523A239A100F062C6 /* CartTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				AA8EAED123A238DB00F062C6 /* CartTableViewCell.swift */,
+				AA8EAED223A238DB00F062C6 /* CartTableViewCell.xib */,
+			);
+			path = CartTableViewCell;
 			sourceTree = "<group>";
 		};
 		AA9B639522E5727700D0875E /* CustomTableViewCell */ = {
@@ -118,9 +162,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA18119C22AE069A000E1024 /* Build configuration list for PBXNativeTarget "Skyline Cinema" */;
 			buildPhases = (
+				7AFD04219AD2AC70C7364855 /* [CP] Check Pods Manifest.lock */,
 				AA18118622AE0699000E1024 /* Sources */,
 				AA18118722AE0699000E1024 /* Frameworks */,
 				AA18118822AE0699000E1024 /* Resources */,
+				D6D180612F1CD23395BF221F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -169,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA8EAED423A238DB00F062C6 /* CartTableViewCell.xib in Resources */,
 				AA18119822AE069A000E1024 /* LaunchScreen.storyboard in Resources */,
 				AA18119522AE069A000E1024 /* Assets.xcassets in Resources */,
 				AA6E378022E1634F0021273D /* CustomCell.xib in Resources */,
@@ -178,16 +225,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7AFD04219AD2AC70C7364855 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Skyline Cinema-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6D180612F1CD23395BF221F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AA18118622AE0699000E1024 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA46AD1B230BB8AD00FCC3C5 /* Order.swift in Sources */,
+				AA8EAECA23A22DD900F062C6 /* CartTableViewController.swift in Sources */,
 				AAA6DB1C22CC5DCD0033C6CF /* PopcornViewController.swift in Sources */,
+				AA8EAED323A238DB00F062C6 /* CartTableViewCell.swift in Sources */,
 				AA18119022AE0699000E1024 /* ViewController.swift in Sources */,
 				AA6E377F22E1634F0021273D /* CustomCell.swift in Sources */,
-				AA62AA4C22E02163005300FB /* DataModel.xcdatamodeld in Sources */,
-				AA9B639422E55A5B00D0875E /* TableViewItemWrapper.swift in Sources */,
+				AA8EAEC823A226CC00F062C6 /* DateUtils.swift in Sources */,
+				AA46AD1D230BB8BB00FCC3C5 /* Item.swift in Sources */,
 				AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +424,7 @@
 		};
 		AA18119D22AE069A000E1024 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F71FB9CD3D9E7C840ED5BA9 /* Pods-Skyline Cinema.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -350,6 +443,7 @@
 		};
 		AA18119E22AE069A000E1024 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BBA247B920A2E2A26878372 /* Pods-Skyline Cinema.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -388,19 +482,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		AA62AA4A22E02163005300FB /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				AA62AA4B22E02163005300FB /* DataModel.xcdatamodel */,
-			);
-			currentVersion = AA62AA4B22E02163005300FB /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = AA18118222AE0699000E1024 /* Project object */;
 }

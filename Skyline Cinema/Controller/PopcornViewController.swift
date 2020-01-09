@@ -7,38 +7,38 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
-class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewDataSource//, UIGestureRecognizerDelegate {
-{
+class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    private let TITLE = "Меню"
+    
     @IBOutlet weak var goToOrderButton: UIButton!
-    
     @IBOutlet weak var popcornTableView: UITableView!
+    let realm = try! Realm()
+    
+    //MARK: Utils
+    let dateUtils = DateUtils()
     //MARK: Constants
-    let TITLE = "Попкорн"
     
-    let SEARCH_POPCORN_QUERY = "title CONTAINS[cd] %@"
-    let SEARCH_ORDER_QUERY = "date == max(date) && state = %@"
+    private let ORDER_STATUS_INITIALIZED = "INITIALIZED"
+    private let LICENSE_PLATE_NUMBER = "LICENSE_PLATE_NUMBER"
+    private let SEARCH_ORDER_QUERY = "state = %@ and date = %@"
     
-    //MARK: Order States
-    let INITIALIZED = "INITIALIZED"
-    let ORDERED = "ORDERED"
-    let OCMPLETED = "COMPLETED"
-    let REFUSED = "REFUSED"
     //MARK: Fields
-    let context = (UIApplication.shared.delegate as! AppDelegate ).persistentContainer.viewContext
+    private var menuList: [Item] = [Item]()
     
-    var popcornList = [TableViewItemWrapper]()
-    var order: Order!
+    private var order: Order?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         goToOrderButton.isHidden = true
+        
         popcornTableView.delegate = self
         popcornTableView.dataSource = self
         popcornTableView.allowsMultipleSelection = true
         popcornTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "CustomCell")
-
+        
         loadData()
         
         popcornTableView.reloadData()
@@ -46,141 +46,146 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
         popcornTableView.separatorStyle = .none
     }
     
-    // MARK: - TableView Implementation methods
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return popcornList.count
+    
+    //MARK: Data manipulation methods
+    func loadData() {
+        menuList = loadItems()
+    }
+    // TODO: refactor method merge loadItems() with loadData()
+    func loadItems() -> [Item] {
+        return Array(realm.objects(Item.self))
     }
     
+    func saveData() {
+        do{
+            try realm.write {
+                realm.add(order!)
+            }
+        } catch {
+            print("error saving realm order\(error)")
+        }
+    }
+    
+    //    func loadOrCreateOrder() {
+    //        // Get latest order with state "initialized"
+    //        if let latestInitializedOrder = realm.objects(Order.self).filter(SEARCH_ORDER_QUERY, ORDER_STATUS_INITIALIZED, dateUtils.startOfTheDay()).first {
+    //            // if it is, use it
+    //            order = latestInitializedOrder
+    //        } else {
+    //            // if no orders, create new one
+    //            order = Order()
+    //            order!.state = ORDER_STATUS_INITIALIZED
+    //            order!.licensePlateNumber = LICENSE_PLATE_NUMBER
+    //            order!.date = Date()
+    //            // if it's not a first order
+    //            // TODO: check the query
+    //            if let latestOrder = realm.objects(Order.self).sorted(byKeyPath: "date", ascending: true).first {
+    //                order!.number = latestOrder.number + 1
+    //            }
+    //            // if it's a first order
+    //            else {
+    //                order!.number = 1
+    //            }
+    //
+    //        }
+    //    }
+    
+    //    func createItems() -> [Item] {
+    //        var popcnItemArray: [Item] = [Item]()
+    //
+    //        let popcnItem = Item()
+    //            popcnItem.title = "попкорн"
+    //            popcnItem.descript = "Большой сладкий"
+    //            popcnItem.price = 300.0
+    //        let popcnItem2 = Item()
+    //            popcnItem2.title = "попкорн"
+    //            popcnItem2.descript = "Средний сладкий"
+    //            popcnItem2.price = 300.0
+    //        let popcnItem3 = Item()
+    //            popcnItem3.title = "попкорн"
+    //            popcnItem3.descript = "Маленький сладкий"
+    //            popcnItem3.price = 300.0
+    //        let popcnItem4 = Item()
+    //            popcnItem4.title = "попкорн"
+    //            popcnItem4.descript = "Большой соленый"
+    //            popcnItem4.price = 300.0
+    //        let popcnItem5 = Item()
+    //            popcnItem5.title = "попкорн"
+    //            popcnItem5.descript = "Средний соленый"
+    //            popcnItem5.price = 300.0
+    //        let popcnItem6 = Item()
+    //            popcnItem6.title = "попкорн"
+    //            popcnItem6.descript = "Маленький соленый"
+    //            popcnItem6.price = 300.0
+    //
+    //          popcnItemArray.append(popcnItem)
+    //          popcnItemArray.append(popcnItem2)
+    //          popcnItemArray.append(popcnItem3)
+    //          popcnItemArray.append(popcnItem4)
+    //          popcnItemArray.append(popcnItem5)
+    //          popcnItemArray.append(popcnItem6)
+    //        return popcnItemArray
+    //    }
+    
+    
+    // MARK: - TableView Implementation methods
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuList.count
+    }
+    // show data on table row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = popcornTableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
         
-        let wrappedItem = popcornList[indexPath.row]
-        cell.itemLabel.text = wrappedItem.item.descript
+        let item = menuList[indexPath.row]
+        cell.itemLabel.text = item.descript
         cell.itemImageView.image = UIImage(named: "popcorn")
-        cell.accessoryType = wrappedItem.checked == true ? .checkmark :  .none
-
+        cell.accessoryType = item.checked == true ? .checkmark :  .none
         return cell
     }
     
     // Resize row
     func resizeTableViewRows () {
-//        popcornTableView.estimatedRowHeight = 150
+        //        popcornTableView.estimatedRowHeight = 150
         popcornTableView.rowHeight = 150//UITableView.automaticDimension
     }
-
+    
     //UITableViewCell click
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // add item to order
-        let selectedItem = popcornList[indexPath.row]
-        selectedItem.checked = !selectedItem.checked
-        print(selectedItem)
-        order!.items!.adding(selectedItem.item!)
-        if order.items?.count != 0 {
+        let selectedItem = menuList[indexPath.row]
+        try! realm.write {
+            //            selectedItem.checked = !selectedItem.checked
+            selectedItem.checked = true
+            if(selectedItem.checked) { // if checked, then add to order
+                order!.items.append(selectedItem)
+                selectedItem.order = order
+            } else {
+                popcornTableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
+        
+        if order!.items.count != 0 {
             goToOrderButton.isHidden = false
         }
-        popcornTableView.deselectRow(at: indexPath, animated: true)
+        
         popcornTableView.reloadData()
         saveData()
     }
     
-    //MARK: Data manipulation methods
-    func loadData(with request: NSFetchRequest<Item> = Item.fetchRequest(), predicate: NSPredicate? = nil ) {
-        //ITEMS
-        let itemPredicate = NSPredicate(format:  SEARCH_POPCORN_QUERY, TITLE)
-        request.predicate = itemPredicate
-        do{
-            popcornList = convertItemListToWrappedList(list: try context.fetch(request))
-//            mockItems()
-        } catch {
-            print("error fetching data from context\(error)")
+    //passing data between view controlers
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToCart" {
+            //            if let indexPath = popcornTableView.indexPathForSelectedRow {
+            let cartController = segue.destination as! CartTableViewController
+            cartController.order = order
+            //                cartController.delegate = self
+            //            }
         }
-        
-        //ORDER
-        let orderRequest: NSFetchRequest<Order> = Order.fetchRequest()
-        orderRequest.fetchLimit = 1
-        let orderPredicate = NSPredicate(format: SEARCH_ORDER_QUERY)
-        orderRequest.predicate = orderPredicate
-        do {
-            order = try self.context.fetch(orderRequest ).first
-        } catch {
-            print("error fetching data from context\(error)")
-        }
-        if(order == nil) {
-            order = Order(context: context)
-            order.orderNumber = 1
-            order.state = INITIALIZED
-            order.licensePlateNumber = "B522YO_154RUS"
-            order.date = Date()
-        }
-    }
-    
-    func saveData() {
-        do{
-            try context.save()
-        } catch {
-            print("error saving context\(error)")
-        }
-    }
-
-    //MARK: Conversion methods
-    func convertItemListToWrappedList(list: [Item]) -> [TableViewItemWrapper]{
-        var wrappedList = [TableViewItemWrapper]()
-        for item in list {
-            let wrapper = TableViewItemWrapper()
-            wrapper.item = item
-            wrappedList.append(wrapper)
-        }
-        return wrappedList
-    }
-    
-    func convertWrappedListToItemList(list: [TableViewItemWrapper]) -> [Item]{
-        var itemList = [Item]()
-        for wrapper in list {
-            itemList.append(wrapper.item)
-        }
-        return itemList
     }
     
     @IBAction func goToOrderButtonTapped(_ sender: UIButton) {
+        
     }
-    // MARK: Mock items methods
-    func mockItems() {
-        var itemList = [Item]()
-        
-        let popcnItem = Item(context: context)
-        popcnItem.title = "попкорн"
-        popcnItem.descript = "Большой сладкий"
-        popcnItem.price = 300.0
-        let popcnItem2 = Item(context: context)
-        popcnItem2.title = "попкорн"
-        popcnItem2.descript = "Средний сладкий"
-        popcnItem2.price = 300.0
-        let popcnItem3 = Item(context: context)
-        popcnItem3.title = "попкорн"
-        popcnItem3.descript = "Маленький сладкий"
-        popcnItem3.price = 300.0
-        
-        let popcnItem4 = Item(context: context)
-        popcnItem4.title = "попкорн"
-        popcnItem4.descript = "Большой соленый"
-        popcnItem4.price = 300.0
-        let popcnItem5 = Item(context: context)
-        popcnItem5.title = "попкорн"
-        popcnItem5.descript = "Средний соленый"
-        popcnItem5.price = 300.0
-        let popcnItem6 = Item(context: context)
-        popcnItem6.title = "попкорн"
-        popcnItem6.descript = "Маленький соленый"
-        popcnItem6.price = 300.0
-        
-        itemList.append(popcnItem)
-        itemList.append(popcnItem2)
-        itemList.append(popcnItem3)
-        itemList.append(popcnItem4)
-        itemList.append(popcnItem5)
-        itemList.append(popcnItem6)
-        
-        popcornList = convertItemListToWrappedList(list: itemList)
-    }
+    
     
 }

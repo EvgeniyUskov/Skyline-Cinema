@@ -1,19 +1,17 @@
 //
-//  CustomCell.swift
+//  CartTableViewCell.swift
 //  Skyline Cinema
 //
-//  Created by Evgeniy Uskov on 19/07/2019.
+//  Created by Evgeniy Uskov on 12.12.2019.
 //  Copyright © 2019 Evgeniy Uskov. All rights reserved.
 //
 
 import UIKit
 
-class CustomCell: UITableViewCell {
-
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
+class CartTableViewCell: UITableViewCell {
     @IBOutlet weak var itemImageView: UIImageView!
-    @IBOutlet weak var itemLabel: UILabel!
+    
+    @IBOutlet weak var itemCountStepper: UIStepper!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
