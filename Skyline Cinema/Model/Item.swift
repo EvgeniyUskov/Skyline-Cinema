@@ -14,7 +14,4 @@ class Item: Object {
     @objc dynamic var descript: String = ""
     @objc dynamic var price: Double = 0.00
     @objc dynamic var checked: Bool = false
-
-    @objc dynamic var order: Order?
-    
 }

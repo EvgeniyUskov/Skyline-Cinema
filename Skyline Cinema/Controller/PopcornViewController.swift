@@ -50,6 +50,7 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
     //MARK: Data manipulation methods
     func loadData() {
         menuList = loadItems()
+        createOrder()
     }
     // TODO: refactor method merge loadItems() with loadData()
     func loadItems() -> [Item] {
@@ -66,66 +67,13 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    //    func loadOrCreateOrder() {
-    //        // Get latest order with state "initialized"
-    //        if let latestInitializedOrder = realm.objects(Order.self).filter(SEARCH_ORDER_QUERY, ORDER_STATUS_INITIALIZED, dateUtils.startOfTheDay()).first {
-    //            // if it is, use it
-    //            order = latestInitializedOrder
-    //        } else {
-    //            // if no orders, create new one
-    //            order = Order()
-    //            order!.state = ORDER_STATUS_INITIALIZED
-    //            order!.licensePlateNumber = LICENSE_PLATE_NUMBER
-    //            order!.date = Date()
-    //            // if it's not a first order
-    //            // TODO: check the query
-    //            if let latestOrder = realm.objects(Order.self).sorted(byKeyPath: "date", ascending: true).first {
-    //                order!.number = latestOrder.number + 1
-    //            }
-    //            // if it's a first order
-    //            else {
-    //                order!.number = 1
-    //            }
-    //
-    //        }
-    //    }
-    
-    //    func createItems() -> [Item] {
-    //        var popcnItemArray: [Item] = [Item]()
-    //
-    //        let popcnItem = Item()
-    //            popcnItem.title = "попкорн"
-    //            popcnItem.descript = "Большой сладкий"
-    //            popcnItem.price = 300.0
-    //        let popcnItem2 = Item()
-    //            popcnItem2.title = "попкорн"
-    //            popcnItem2.descript = "Средний сладкий"
-    //            popcnItem2.price = 300.0
-    //        let popcnItem3 = Item()
-    //            popcnItem3.title = "попкорн"
-    //            popcnItem3.descript = "Маленький сладкий"
-    //            popcnItem3.price = 300.0
-    //        let popcnItem4 = Item()
-    //            popcnItem4.title = "попкорн"
-    //            popcnItem4.descript = "Большой соленый"
-    //            popcnItem4.price = 300.0
-    //        let popcnItem5 = Item()
-    //            popcnItem5.title = "попкорн"
-    //            popcnItem5.descript = "Средний соленый"
-    //            popcnItem5.price = 300.0
-    //        let popcnItem6 = Item()
-    //            popcnItem6.title = "попкорн"
-    //            popcnItem6.descript = "Маленький соленый"
-    //            popcnItem6.price = 300.0
-    //
-    //          popcnItemArray.append(popcnItem)
-    //          popcnItemArray.append(popcnItem2)
-    //          popcnItemArray.append(popcnItem3)
-    //          popcnItemArray.append(popcnItem4)
-    //          popcnItemArray.append(popcnItem5)
-    //          popcnItemArray.append(popcnItem6)
-    //        return popcnItemArray
-    //    }
+        func createOrder() {
+                order = Order()
+                order!.licensePlateNumber = LICENSE_PLATE_NUMBER
+                order!.date = Date()
+            // TODO: set order number after receiving data
+//                order!.number = latestOrder.number + 1
+        }
     
     
     // MARK: - TableView Implementation methods
@@ -155,10 +103,11 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
         let selectedItem = menuList[indexPath.row]
         try! realm.write {
             //            selectedItem.checked = !selectedItem.checked
-            selectedItem.checked = true
-            if(selectedItem.checked) { // if checked, then add to order
+            
+            if(!selectedItem.checked) { // if not checked, then check and add to order
+                selectedItem.checked = true
                 order!.items.append(selectedItem)
-                selectedItem.order = order
+//                selectedItem.order = order
             } else {
                 popcornTableView.deselectRow(at: indexPath, animated: true)
             }

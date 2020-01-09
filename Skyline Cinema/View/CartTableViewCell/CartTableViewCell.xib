@@ -25,11 +25,22 @@
                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="tIp-xv-lWY">
                         <rect key="frame" x="303" y="84" width="94" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <connections>
+                            <action selector="stepperTapped:" destination="KGk-i7-Jjw" eventType="valueChanged" id="t5U-kR-lSi"/>
+                        </connections>
                     </stepper>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGO-6b-d2p">
+                        <rect key="frame" x="344" y="85" width="11" height="29"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="countLabel" destination="OGO-6b-d2p" id="5Qr-aK-l2H"/>
                 <outlet property="itemCountStepper" destination="tIp-xv-lWY" id="H0O-Ne-78K"/>
                 <outlet property="itemImageView" destination="iuv-F6-N3j" id="dGo-j3-syT"/>
             </connections>

@@ -9,6 +9,8 @@
 import UIKit
 
 class CartTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
     
     @IBOutlet weak var itemCountStepper: UIStepper!
@@ -23,4 +25,7 @@ class CartTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func stepperTapped(_ sender: UIStepper) {
+        countLabel.text = String(itemCountStepper.value)
+    }
 }
