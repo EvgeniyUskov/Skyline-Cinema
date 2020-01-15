@@ -9,8 +9,7 @@
 import UIKit
 import RealmSwift
 
-class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    private let TITLE = "Меню"
+class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var goToOrderButton: UIButton!
     @IBOutlet weak var popcornTableView: UITableView!
@@ -19,11 +18,8 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
     //MARK: Utils
     let dateUtils = DateUtils()
     //MARK: Constants
-    
-    private let ORDER_STATUS_INITIALIZED = "INITIALIZED"
+    private let TITLE = "Меню"
     private let LICENSE_PLATE_NUMBER = "LICENSE_PLATE_NUMBER"
-    private let SEARCH_ORDER_QUERY = "state = %@ and date = %@"
-    
     //MARK: Fields
     private var menuList: [Item] = [Item]()
     
@@ -32,6 +28,9 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        let networkAdapter = NetworkManager()
+        networkAdapter.getItems()
+
         goToOrderButton.isHidden = true
         
         popcornTableView.delegate = self
@@ -44,6 +43,10 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
         popcornTableView.reloadData()
         resizeTableViewRows()
         popcornTableView.separatorStyle = .none
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+
     }
     
     
@@ -85,7 +88,7 @@ class PopcornViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = popcornTableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
         
         let item = menuList[indexPath.row]
-        cell.itemLabel.text = item.descript
+        cell.itemLabel.text = item.title
         cell.itemImageView.image = UIImage(named: "popcorn")
         cell.accessoryType = item.checked == true ? .checkmark :  .none
         return cell
