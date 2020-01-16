@@ -16,9 +16,14 @@ struct Constants {
     public let totalAmount = "Сумма заказа: "
     // MARK: TitmeTableViewController
     // MARK: MovieDetailsViewController
+    public let description = "description"
+    public let imageURL = "imageURL"
     public let kpRate = "kpRate"
     public let imdbRate = "imdbRate"
     public let noRates = " - "
+    // MARK: Kinopoisk parse html
+    public let kinopoiskFilmSynopsys = "film-synopsys\" itemprop=\"description\">"
+    public let kinopoiskFilmPoster = "popupBigImage"
     
     private init() { }
 }

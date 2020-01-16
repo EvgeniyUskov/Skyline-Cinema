@@ -17,7 +17,8 @@ class TimeTableCellViewModel {
     var date: String
     var rateKp: String
     var rateImdb: String
-//    var image: UIImage?
+    var image: UIImage?
+    var imageURL: String?
 
     init (movie: Movie) {
         self.id = movie.id
@@ -38,6 +39,15 @@ class TimeTableCellViewModel {
         }
         if let imdbRate = rates[Constants.shared.imdbRate] {
             self.rateImdb = imdbRate
+        }
+    }
+    
+    func setDetailsFromWiki(details: [String: String]) {
+        if let descript = details[Constants.shared.description] {
+            self.descript = descript
+        }
+        if let imageURL = details[Constants.shared.imageURL] {
+            self.imageURL = imageURL
         }
     }
 }

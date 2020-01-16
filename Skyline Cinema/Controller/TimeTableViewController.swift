@@ -24,8 +24,8 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         timeTableTableView.dataSource = self
         //        timeTableTableView.separatorStyle = .none
         
-        let networkAdapter = NetworkManager()
-        movies = networkAdapter.getMovies()
+        let networkManager = NetworkManager()
+        movies = networkManager.getMovies()
         for movie in movies {
             let movieViewModel = TimeTableCellViewModel(movie: movie)
             movieViewModelList.append(movieViewModel)
@@ -67,7 +67,9 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToMovieDetails" {
+            
             let destinationVC = segue.destination as! MovieDetailsViewController
+            
             if let indexPath = timeTableTableView.indexPathForSelectedRow {
                 destinationVC.movie = movieViewModelList[indexPath.row]
             }

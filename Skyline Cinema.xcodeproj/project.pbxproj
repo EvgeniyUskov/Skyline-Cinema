@@ -28,6 +28,9 @@
 		AA8EAED323A238DB00F062C6 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EAED123A238DB00F062C6 /* CartTableViewCell.swift */; };
 		AA8EAED423A238DB00F062C6 /* CartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8EAED223A238DB00F062C6 /* CartTableViewCell.xib */; };
 		AAA6DB1C22CC5DCD0033C6CF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA6DB1B22CC5DCD0033C6CF /* MenuViewController.swift */; };
+		AAEE08E123D022D900E60DAE /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08E023D022D900E60DAE /* StringUtils.swift */; };
+		AAEE08E323D042E900E60DAE /* KinopoiskHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08E223D042E900E60DAE /* KinopoiskHTMLParser.swift */; };
+		AAEE08E523D04EB300E60DAE /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08E423D04EB300E60DAE /* MembershipViewController.swift */; };
 		AAFF581223CDC4180033B411 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFF581123CDC4180033B411 /* Movie.swift */; };
 		AAFF581423CDC5820033B411 /* TimeTableCellViewModell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFF581323CDC5820033B411 /* TimeTableCellViewModell.swift */; };
 		AAFF581623CDCE180033B411 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFF581523CDCE180033B411 /* NetworkManager.swift */; };
@@ -62,6 +65,9 @@
 		AA8EAED123A238DB00F062C6 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		AA8EAED223A238DB00F062C6 /* CartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableViewCell.xib; sourceTree = "<group>"; };
 		AAA6DB1B22CC5DCD0033C6CF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		AAEE08E023D022D900E60DAE /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		AAEE08E223D042E900E60DAE /* KinopoiskHTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinopoiskHTMLParser.swift; sourceTree = "<group>"; };
+		AAEE08E423D04EB300E60DAE /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
 		AAFF581123CDC4180033B411 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		AAFF581323CDC5820033B411 /* TimeTableCellViewModell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableCellViewModell.swift; sourceTree = "<group>"; };
 		AAFF581523CDCE180033B411 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 				AAFF581523CDCE180033B411 /* NetworkManager.swift */,
 				AAFF581B23CEC5790033B411 /* JSONManager.swift */,
 				AAFF581923CEC5680033B411 /* XMLManager.swift */,
+				AAFF581F23CF5E9F0033B411 /* Utils */,
 				AA62AA4722E020FE005300FB /* Model */,
 				AA3E73B023CC417E0052B85D /* ViewModel */,
 				AA62AA4822E02111005300FB /* View */,
@@ -183,8 +190,7 @@
 				AA8EAEC923A22DD900F062C6 /* CartTableViewController.swift */,
 				AA18118F22AE0699000E1024 /* TimeTableViewController.swift */,
 				AAFF581723CDF6DB0033B411 /* MovieDetailsViewController.swift */,
-				AA8EAEC723A226CC00F062C6 /* DateUtils.swift */,
-				AA7FA84E23C866FE00DB25B7 /* Constants.swift */,
+				AAEE08E423D04EB300E60DAE /* MembershipViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -205,6 +211,17 @@
 				AA6E377E22E1634F0021273D /* CustomCell.xib */,
 			);
 			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		AAFF581F23CF5E9F0033B411 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AA7FA84E23C866FE00DB25B7 /* Constants.swift */,
+				AA8EAEC723A226CC00F062C6 /* DateUtils.swift */,
+				AAEE08E023D022D900E60DAE /* StringUtils.swift */,
+				AAEE08E223D042E900E60DAE /* KinopoiskHTMLParser.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,8 +346,10 @@
 				AA3E73B423CC4B9A0052B85D /* CartCellViewModel.swift in Sources */,
 				AA3E73B623CCB4980052B85D /* Observable.swift in Sources */,
 				AA7FA84D23C8560500DB25B7 /* CellStepperDelegate.swift in Sources */,
+				AAEE08E523D04EB300E60DAE /* MembershipViewController.swift in Sources */,
 				AA46AD1B230BB8AD00FCC3C5 /* Order.swift in Sources */,
 				AA8EAECA23A22DD900F062C6 /* CartTableViewController.swift in Sources */,
+				AAEE08E123D022D900E60DAE /* StringUtils.swift in Sources */,
 				AAA6DB1C22CC5DCD0033C6CF /* MenuViewController.swift in Sources */,
 				AAFF581423CDC5820033B411 /* TimeTableCellViewModell.swift in Sources */,
 				AA8EAED323A238DB00F062C6 /* CartTableViewCell.swift in Sources */,
@@ -339,6 +358,7 @@
 				AAFF581823CDF6DB0033B411 /* MovieDetailsViewController.swift in Sources */,
 				AA8EAEC823A226CC00F062C6 /* DateUtils.swift in Sources */,
 				AAFF581C23CEC5790033B411 /* JSONManager.swift in Sources */,
+				AAEE08E323D042E900E60DAE /* KinopoiskHTMLParser.swift in Sources */,
 				AAFF581A23CEC5680033B411 /* XMLManager.swift in Sources */,
 				AAFF581623CDCE180033B411 /* NetworkManager.swift in Sources */,
 				AA46AD1D230BB8BB00FCC3C5 /* Item.swift in Sources */,

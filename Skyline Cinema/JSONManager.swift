@@ -106,6 +106,20 @@ class JSONManager {
         return moviesFromJSON
     }
     
+    func parseMovieDetailsJSONFromWIki(response: DataResponse<Any>, movie: TimeTableCellViewModel) -> [String: String] {
+        var details = [String: String]()
+        
+        let jsonResponse: JSON = JSON(response.result.value!)
+        print("JSON RESPONSE: \(jsonResponse)")
+        let pageid = jsonResponse["query"]["pageids"][0].stringValue
+        let imageURL = jsonResponse["query"]["pages"][pageid]["thumbnail"]["source"].stringValue
+        let description = jsonResponse["query"]["pages"][pageid]["extract"].stringValue
+        
+        details[Constants.shared.description] = description
+        details[Constants.shared.imageURL] = imageURL
+        return details
+    }
+    
     func mockItemsJSON() -> String {
         return "{\"itemsResponse\":[{\"id\":1,\"title\":\"Попкорн-1\",\"description\":\"попкорн\",\"price\":350},{\"id\":2,\"title\":\"Попкорн-2\",\"description\":\"попкорн\",\"price\":350},{\"id\":3,\"title\":\"Попкорн-3\",\"description\":\"попкорн\",\"price\":350},{\"id\":4,\"title\":\"Попкорн-4\",\"description\":\"попкорн\",\"price\":250},{\"id\":5,\"title\":\"Попкорн-5\",\"description\":\"попкорн\",\"price\":250},{\"id\":6,\"title\":\"Попкорн-6\",\"description\":\"попкорн\",\"price\":150},{\"id\":7,\"title\":\"Попкорн-7\",\"description\":\"попкорн\",\"price\":150},{\"id\":15,\"title\":\"Пепси 0,5\",\"description\":\"Пепси же\",\"price\":100}]}"
     }
