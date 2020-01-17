@@ -11,6 +11,8 @@ import Foundation
 
 struct Constants {
     static let shared = Constants()
+    public let propLicensePlateNumber = "LicensePlateNumber"
+    public let propCity = "City"
     // MARK: MenuViewController
     // MARK: CartViewController
     public let totalAmount = "Сумма заказа: "
@@ -24,6 +26,11 @@ struct Constants {
     // MARK: Kinopoisk parse html
     public let kinopoiskFilmSynopsys = "film-synopsys\" itemprop=\"description\">"
     public let kinopoiskFilmPoster = "popupBigImage"
+    // MARK: MembershipViewController
+    public let qrURL = "link"
+    public let endDate = "endDate"
+    // MARK: Errors
+    public let wrongLicensePlateNumber = "Введите корректный номер автомобиля"
     
     private init() { }
 }

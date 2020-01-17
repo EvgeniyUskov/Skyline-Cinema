@@ -7,24 +7,94 @@
 //
 
 import UIKit
+import Alamofire
 
 class MembershipViewController: UIViewController {
-
+    @IBOutlet weak var qrLabel: UILabel!
+    @IBOutlet weak var memershipEndDateLabel: UILabel!
+    @IBOutlet weak var qrImageView: UIImageView!
+    @IBOutlet weak var membershipActiveTillLabel: UILabel!
+    @IBOutlet weak var noMembershipLabel: UILabel!
+    
+    let networkManager = NetworkManager()
+    let jsonManager = JSONManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        showNoMembership()
+        
+        getQrCodeByLink()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getQrCodeByLink() {
+        let networkActive = false
+        if networkActive {
+            Alamofire.request(networkManager.membershipURL, method: .get).responseJSON { (response) in
+                if response.result.isSuccess {
+                    let membershipDetails: [String: String] = self.jsonManager.parseMembershipURL(response: response)
+                    if let url = membershipDetails[Constants.shared.qrURL],
+                        let endDate = membershipDetails[Constants.shared.endDate] {
+                        let membership = Membership(url: url, date: endDate)
+                        let qrImage = self.generteQrCode(membershipUrl: membership.url)
+                        
+                        DispatchQueue.main.async {
+                            if let qr = qrImage {
+                                self.setUp(membership: membership, qrImage: qr)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else {
+                    let membershipDetails: [String: String] = self.jsonManager.parseMOCKMembershipURL()
+                    if let url = membershipDetails[Constants.shared.qrURL],
+                        let endDate = membershipDetails[Constants.shared.endDate] {
+                        let membership = Membership(url: url, date: endDate)
+                        let qrImage = self.generteQrCode(membershipUrl: membership.url)
+                        
+                        DispatchQueue.main.async {
+                            if let qr = qrImage {
+                                self.setUp(membership: membership, qrImage: qr)
+                            }
+                }
+            }
+        }
     }
-    */
-
+    
+    func generteQrCode(membershipUrl: String) -> UIImage?{
+        let data = membershipUrl.data(using: String.Encoding.ascii)
+        guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return nil}
+        qrFilter.setValue(data, forKey: "inputMessage")
+        guard let qrImage = qrFilter.outputImage else { return nil}
+        return UIImage(ciImage: qrImage)
+    }
+    
+    func getQrCodeByImage() {
+        
+    }
+    
+    func setUp(membership: Membership, qrImage: UIImage){
+        showMembership(membership: membership, qrImage: qrImage)
+    }
+    
+    func showNoMembership() {
+        qrLabel.isHidden = true
+        memershipEndDateLabel.isHidden = true
+        qrImageView.isHidden = true
+        membershipActiveTillLabel.isHidden = true
+        noMembershipLabel.isHidden = false
+    }
+    
+    
+    func showMembership(membership: Membership, qrImage: UIImage) {
+        qrImageView.image = qrImage
+        membershipActiveTillLabel.text = membership.dateString
+        qrLabel.isHidden = false
+        memershipEndDateLabel.isHidden = false
+        qrImageView.isHidden = false
+        membershipActiveTillLabel.isHidden = false
+        noMembershipLabel.isHidden = true
+        
+    }
 }

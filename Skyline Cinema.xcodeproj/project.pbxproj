@@ -31,6 +31,10 @@
 		AAEE08E123D022D900E60DAE /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08E023D022D900E60DAE /* StringUtils.swift */; };
 		AAEE08E323D042E900E60DAE /* KinopoiskHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08E223D042E900E60DAE /* KinopoiskHTMLParser.swift */; };
 		AAEE08E523D04EB300E60DAE /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08E423D04EB300E60DAE /* MembershipViewController.swift */; };
+		AAEE08E723D0514100E60DAE /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08E623D0514100E60DAE /* City.swift */; };
+		AAEE08E923D051BA00E60DAE /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08E823D051BA00E60DAE /* Cities.swift */; };
+		AAEE08EB23D05A0300E60DAE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08EA23D05A0300E60DAE /* RegisterViewController.swift */; };
+		AAEE08ED23D1587C00E60DAE /* Membership.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08EC23D1587C00E60DAE /* Membership.swift */; };
 		AAFF581223CDC4180033B411 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFF581123CDC4180033B411 /* Movie.swift */; };
 		AAFF581423CDC5820033B411 /* TimeTableCellViewModell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFF581323CDC5820033B411 /* TimeTableCellViewModell.swift */; };
 		AAFF581623CDCE180033B411 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFF581523CDCE180033B411 /* NetworkManager.swift */; };
@@ -68,6 +72,10 @@
 		AAEE08E023D022D900E60DAE /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		AAEE08E223D042E900E60DAE /* KinopoiskHTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinopoiskHTMLParser.swift; sourceTree = "<group>"; };
 		AAEE08E423D04EB300E60DAE /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
+		AAEE08E623D0514100E60DAE /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		AAEE08E823D051BA00E60DAE /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
+		AAEE08EA23D05A0300E60DAE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		AAEE08EC23D1587C00E60DAE /* Membership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Membership.swift; sourceTree = "<group>"; };
 		AAFF581123CDC4180033B411 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		AAFF581323CDC5820033B411 /* TimeTableCellViewModell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableCellViewModell.swift; sourceTree = "<group>"; };
 		AAFF581523CDCE180033B411 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -166,6 +174,8 @@
 				AA46AD1A230BB8AD00FCC3C5 /* Order.swift */,
 				AA46AD1C230BB8BA00FCC3C5 /* Item.swift */,
 				AAFF581123CDC4180033B411 /* Movie.swift */,
+				AAEE08E623D0514100E60DAE /* City.swift */,
+				AAEE08EC23D1587C00E60DAE /* Membership.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -186,6 +196,7 @@
 		AA62AA4922E0211A005300FB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AAEE08EA23D05A0300E60DAE /* RegisterViewController.swift */,
 				AAA6DB1B22CC5DCD0033C6CF /* MenuViewController.swift */,
 				AA8EAEC923A22DD900F062C6 /* CartTableViewController.swift */,
 				AA18118F22AE0699000E1024 /* TimeTableViewController.swift */,
@@ -220,6 +231,7 @@
 				AA8EAEC723A226CC00F062C6 /* DateUtils.swift */,
 				AAEE08E023D022D900E60DAE /* StringUtils.swift */,
 				AAEE08E223D042E900E60DAE /* KinopoiskHTMLParser.swift */,
+				AAEE08E823D051BA00E60DAE /* Cities.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -342,11 +354,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAEE08E723D0514100E60DAE /* City.swift in Sources */,
 				AA3E73BA23CDBD220052B85D /* TimeTableViewCell.swift in Sources */,
+				AAEE08ED23D1587C00E60DAE /* Membership.swift in Sources */,
 				AA3E73B423CC4B9A0052B85D /* CartCellViewModel.swift in Sources */,
 				AA3E73B623CCB4980052B85D /* Observable.swift in Sources */,
 				AA7FA84D23C8560500DB25B7 /* CellStepperDelegate.swift in Sources */,
 				AAEE08E523D04EB300E60DAE /* MembershipViewController.swift in Sources */,
+				AAEE08E923D051BA00E60DAE /* Cities.swift in Sources */,
 				AA46AD1B230BB8AD00FCC3C5 /* Order.swift in Sources */,
 				AA8EAECA23A22DD900F062C6 /* CartTableViewController.swift in Sources */,
 				AAEE08E123D022D900E60DAE /* StringUtils.swift in Sources */,
@@ -363,6 +378,7 @@
 				AAFF581623CDCE180033B411 /* NetworkManager.swift in Sources */,
 				AA46AD1D230BB8BB00FCC3C5 /* Item.swift in Sources */,
 				AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */,
+				AAEE08EB23D05A0300E60DAE /* RegisterViewController.swift in Sources */,
 				AA7FA84F23C866FE00DB25B7 /* Constants.swift in Sources */,
 				AAFF581223CDC4180033B411 /* Movie.swift in Sources */,
 			);
