@@ -25,8 +25,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         let networkAdapter = NetworkManager()
         networkAdapter.getItems()
-
-        goToOrderButton.isHidden = true
+        
+        disableButon()
         
         popcornTableView.delegate = self
         popcornTableView.dataSource = self
@@ -37,13 +37,19 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         popcornTableView.reloadData()
         resizeTableViewRows()
-        popcornTableView.separatorStyle = .none
+//        popcornTableView.separatorStyle = .none
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
 
+    func disableButon() {
+        goToOrderButton.isEnabled = false
+        goToOrderButton.backgroundColor = UIColor.flatBlackDark()
+        goToOrderButton.setTitleColor(UIColor.flatGrayDark(), for: .disabled)
     }
     
+    func enableButton(){
+        goToOrderButton.isEnabled = true
+        goToOrderButton.backgroundColor = UIColor.flatWatermelon()
+    }
     
     //MARK: Data manipulation methods
     func loadData() {
@@ -82,6 +88,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let item = menuList[indexPath.row]
         cell.itemLabel.text = item.title
+        cell.priceLabel.text = String("\(item.price) руб")
+        cell.descriptionLabel.text = item.descript
         cell.itemImageView.image = UIImage(named: "popcorn")
         cell.accessoryType = item.checked == true ? .checkmark :  .none
         return cell
@@ -90,7 +98,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     // Resize row
     func resizeTableViewRows () {
         //        popcornTableView.estimatedRowHeight = 150
-        popcornTableView.rowHeight = 150//UITableView.automaticDimension
+        popcornTableView.rowHeight = 280//UITableView.automaticDimension
     }
     
     //UITableViewCell click
@@ -109,7 +117,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         if order!.items.count != 0 {
-            goToOrderButton.isHidden = false
+            enableButton()
+        } else {
+            disableButon()
         }
         
         popcornTableView.reloadData()
