@@ -89,7 +89,7 @@ class MembershipViewController: UIViewController {
     
     func showMembership(membership: Membership, qrImage: UIImage) {
         qrImageView.image = qrImage
-        membershipActiveTillLabel.text = membership.dateString
+        memershipEndDateLabel.text = membership.dateString
         qrLabel.isHidden = false
         memershipEndDateLabel.isHidden = false
         qrImageView.isHidden = false

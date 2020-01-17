@@ -33,6 +33,14 @@ class MovieDetailsViewController: UIViewController {
         getMovieDetailsFromKinopoisk()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToPay" {
+            let buyTicketController = segue.destination as! BuyTicketViewController
+            buyTicketController.titleLabel.text = movie?.title 
+            buyTicketController.dateLabel.text = movie?.date
+        }
+    }
+    
     func getRates(){
         if let movieLocal = self.movie {
             let xmlManager = XMLManager()

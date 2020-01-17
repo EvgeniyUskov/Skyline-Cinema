@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -53,6 +54,11 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCity = cities[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+
+        return NSAttributedString(string: cities[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.flatWhite()])
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {

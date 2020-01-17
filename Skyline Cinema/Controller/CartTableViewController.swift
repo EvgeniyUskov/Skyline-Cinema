@@ -26,7 +26,6 @@ class CartTableViewController: UIViewController, UITableViewDelegate, UITableVie
         cartTableView.dataSource = self
         
         cartTableView.register(UINib(nibName: "CartTableViewCell", bundle: nil), forCellReuseIdentifier: "CartCell")
-        // order set in previous viewController in prepare for segue()
         if let orderLocal = order {
             let itemListLocal = Array(orderLocal.items)
             for item in itemListLocal {
@@ -65,9 +64,6 @@ class CartTableViewController: UIViewController, UITableViewDelegate, UITableVie
     // click on row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // add item to order
-//        let a = 1
-//        let b = 2
-//        let selectedItem = itemViewModelList[indexPath.row]
         try! realm.write {
         }
         

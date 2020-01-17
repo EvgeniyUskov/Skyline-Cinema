@@ -15,11 +15,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var popcornTableView: UITableView!
     let realm = try! Realm()
     
-    //MARK: Utils
-    let dateUtils = DateUtils()
-    //MARK: Constants
-    private let TITLE = "Меню"
-    private let LICENSE_PLATE_NUMBER = "LICENSE_PLATE_NUMBER"
     //MARK: Fields
     private var menuList: [Item] = [Item]()
     
@@ -72,10 +67,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
         func createOrder() {
                 order = Order()
-                order!.licensePlateNumber = LICENSE_PLATE_NUMBER
+            order!.licensePlateNumber = UserDefaults.standard.string(forKey: Constants.shared.propLicensePlateNumber)!
                 order!.date = Date()
-            // TODO: set order number after receiving data
-//                order!.number = latestOrder.number + 1
         }
     
     
@@ -102,17 +95,16 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //UITableViewCell click
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // add item to order
+        // TODO: delete when deselect
         let selectedItem = menuList[indexPath.row]
         try! realm.write {
-            //            selectedItem.checked = !selectedItem.checked
-            
-            if(!selectedItem.checked) { // if not checked, then check and add to order
+            if(!selectedItem.checked) {
                 selectedItem.checked = true
                 order!.items.append(selectedItem)
-//                selectedItem.order = order
             } else {
+                selectedItem.checked = false
                 popcornTableView.deselectRow(at: indexPath, animated: true)
+                removeItemFromOrder(item: selectedItem)
             }
         }
         
@@ -124,14 +116,23 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         saveData()
     }
     
+    func removeItemFromOrder(item: Item) {
+        var index: Int = 0
+        for itemLocal in order!.items {
+            if itemLocal.id == item.id {
+                continue
+            } else {
+                index += 1
+            }
+        }
+        order!.items.remove(at: index)
+    }
+    
     //passing data between view controlers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToCart" {
-            //            if let indexPath = popcornTableView.indexPathForSelectedRow {
             let cartController = segue.destination as! CartTableViewController
             cartController.order = order
-            //                cartController.delegate = self
-            //            }
         }
     }
     
