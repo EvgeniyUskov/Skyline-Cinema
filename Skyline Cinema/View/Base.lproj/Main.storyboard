@@ -40,7 +40,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="rS3-8u-NRR"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Информация" id="EoD-DI-zIk"/>
+                    <tabBarItem key="tabBarItem" title="Информация" image="info.circle.fill" catalog="system" id="EoD-DI-zIk"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Um-YP-B30" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -111,7 +111,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6B7-mF-b3A"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Абонемент" id="gQV-sq-QcH"/>
+                    <tabBarItem key="tabBarItem" title="Абонемент" image="person.fill" catalog="system" id="gQV-sq-QcH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="membershipActiveTillLabel" destination="PHA-m0-SBw" id="ImV-54-VoP"/>
@@ -166,7 +166,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="UIA-Pz-dqo"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Афиша" id="FgH-PL-tqJ"/>
+                    <tabBarItem key="tabBarItem" title="Афиша" image="table" catalog="system" id="FgH-PL-tqJ"/>
                     <connections>
                         <outlet property="timeTableTableView" destination="mD8-te-Jij" id="OBD-6R-Mzp"/>
                     </connections>
@@ -393,6 +393,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.51784205436706543" green="0.58159953355789185" blue="0.58617168664932251" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="CE7-rn-2lz" kind="relationship" relationship="viewControllers" id="pz8-xY-zZY"/>
@@ -465,7 +468,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="amQ-ZD-l7N"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Меню" id="zuB-N6-T7x"/>
+                    <tabBarItem key="tabBarItem" title="Меню" image="book" catalog="system" id="zuB-N6-T7x"/>
                     <navigationItem key="navigationItem" id="x1c-DM-8ln"/>
                     <connections>
                         <outlet property="goToOrderButton" destination="ssg-QN-RjU" id="PfH-Zv-Zfp"/>
@@ -544,5 +547,9 @@
         <image name="SkyCinemaLogo" width="1898" height="733.5"/>
         <image name="arrow.2.circlepath" catalog="system" width="64" height="50"/>
         <image name="background" width="2048" height="2732"/>
+        <image name="book" catalog="system" width="64" height="50"/>
+        <image name="info.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="person.fill" catalog="system" width="64" height="60"/>
+        <image name="table" catalog="system" width="64" height="46"/>
     </resources>
 </document>

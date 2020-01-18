@@ -10,7 +10,6 @@ import UIKit
 
 class TimeTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -25,7 +24,6 @@ class TimeTableViewCell: UITableViewCell {
     func setUp(viewModel: TimeTableCellViewModel) {
         self.titleLabel.text = viewModel.title
         self.dateLabel.text = viewModel.date
-        self.rateLabel.text = viewModel.rateKp
         self.movieImageView.image = UIImage(named: "popcorn")
         self.accessoryType = .detailButton
     }

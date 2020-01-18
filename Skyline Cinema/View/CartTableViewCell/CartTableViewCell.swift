@@ -42,6 +42,7 @@ class CartTableViewCell: UITableViewCell {
         self.itemImageView.image = UIImage(named: "popcorn")
         self.countLabel.text = String(viewModel.count)
         self.titleLabel.text = viewModel.title
+        self.priceLabel.text = String("\(viewModel.priceString) руб")
 //        viewModel.count.valueChanged = { [weak self] (count) in
 //            self?.
 //        }

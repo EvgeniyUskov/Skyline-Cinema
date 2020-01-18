@@ -36,14 +36,14 @@ class CartTableViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cartTableView.reloadData()
         resizeTableViewRows()
-        cartTableView.separatorStyle = .none
+//        cartTableView.separatorStyle = .none
         totalAmount = initTotalAmount()
         totalAmountLabel.text = Constants.shared.totalAmount + String(totalAmount)
     }
     
     // Resize row
     func resizeTableViewRows () {
-        cartTableView.rowHeight = 150
+        cartTableView.rowHeight = 100
     }
     
     
