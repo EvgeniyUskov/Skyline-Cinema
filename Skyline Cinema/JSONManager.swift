@@ -148,6 +148,46 @@ class JSONManager {
         return membershipDetails
     }
     
+    func parseAddressJSON(response: DataResponse<Any>) -> [Address] {
+        var addresses = [Address]()
+        let jsonResponse: JSON = JSON(response.result.value!)
+        print("JSON ADDRESS RESPONSE: \(jsonResponse)")
+        let addressJSON = jsonResponse["addressResponse"]
+        
+        for itemResponse in addressJSON.arrayValue {
+            var address = Address()
+            address.address = itemResponse[Constants.shared.addressAddress].stringValue
+            address.description = itemResponse[Constants.shared.addressDescription ].stringValue
+            addresses.append(address)
+        }
+        
+        return addresses
+    }
+    
+    func parseAddressJSONMock() -> [Address] {
+        var json: JSON?
+        var addresses = [Address]()
+        if let dataFromString = self.mockAddressJSON().data(using: .utf8, allowLossyConversion: false) {
+            do {
+                json = try JSON(data: dataFromString)
+            } catch {
+                print("ERROR Parsing Address JSON: \(error)")
+            }
+        }
+        let jsonResponse: JSON = json!
+        print("JSON RESPONSE: \(jsonResponse)")
+        let addressJSON = jsonResponse["addressResponse"]
+        
+        for itemResponse in addressJSON.arrayValue {
+            var address = Address()
+            address.address = itemResponse[Constants.shared.addressAddress].stringValue
+            address.description = itemResponse[Constants.shared.addressDescription ].stringValue
+            address.phoneNumber = itemResponse[Constants.shared.addressPhoneNumber ].stringValue
+            addresses.append(address)
+        }
+        
+        return addresses
+    }
     
     func mockItemsJSON() -> String {
         return "{\"itemsResponse\":[{\"id\":1,\"title\":\"Попкорн Большой Сладкий\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":350},{\"id\":2,\"title\":\"Попкорн Большой Соленый\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":350},{\"id\":3,\"title\":\"Попкорн Средний Сладкий\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":350},{\"id\":4,\"title\":\"Попкорн Средний Соленый\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":250},{\"id\":5,\"title\":\"Попкорн Маленький Сладкий\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":250},{\"id\":6,\"title\":\"Попкорн Маленький Соленый\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":150},{\"id\":7,\"title\":\"Попкорн-7\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":150},{\"id\":15,\"title\":\"Пепси 0,5\",\"description\":\"Пепси 0 калорий\",\"price\":100}]}"
@@ -159,5 +199,9 @@ class JSONManager {
     
     func mockMembershipJSON() -> String {
         return "{\"membershipResponse\":{\"link\":\"www.skylinecinema.ru/membership/58\",\"endDate\":\"20.12.2030\"}}"
+    }
+    
+    func mockAddressJSON() -> String {
+        return "{\"addressResponse\":[{\"address\":\"Аэропорт 2/2\",\"description\":\"АЭЭЭРОПОООРТ СТОЮ У ТРАПА САМОЛЕЕЕТА. АЭЭЭЭРОПОРТ ПО МНЕ КУЧАЕТ ВЫСОТААА. АЭРОПОРТ ГЛЯДИ МЕНЯ ВСТРЕЧАЕТ КТОО-ТО. НА ТОМ КОНЦЕ ВОЗДУШНОГОООО МООООСТА.\", \"phoneNumber\":\"89991112233\"}, {\"address\":\"Аэропорт Толмачево 1\",\"description\":\"АЭЭЭРОПОООРТ СТОЮ У ТРАПА САМОЛЕЕЕТА. АЭЭЭЭРОПОРТ ПО МНЕ КУЧАЕТ ВЫСОТААА. АЭРОПОРТ ГЛЯДИ МЕНЯ ВСТРЕЧАЕТ КТОО-ТО. НА ТОМ КОНЦЕ ВОЗДУШНОГОООО МООООСТА.\", \"phoneNumber\":\"81112223344\"}]}"
     }
 }

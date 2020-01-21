@@ -15,7 +15,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var popcornTableView: UITableView!
     let realm = try! Realm()
     
-    //MARK: Fields
     private var menuList: [Item] = [Item]()
     
     private var order: Order?
@@ -97,7 +96,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // Resize row
     func resizeTableViewRows () {
-        //        popcornTableView.estimatedRowHeight = 150
         popcornTableView.rowHeight = 280//UITableView.automaticDimension
     }
     

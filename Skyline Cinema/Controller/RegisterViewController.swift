@@ -9,28 +9,33 @@
 import UIKit
 import ChameleonFramework
 
-class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
     
     var defaults = UserDefaults.standard
     var cities : [String] = Cities().names
     var selectedCity: String = ""
+    var nameSet: Bool = false
     var citySet: Bool = false
     var numberSet: Bool = false
     
+    @IBOutlet weak var errorNameLabel: UILabel!
     @IBOutlet weak var errorNumberLabel: UILabel!
     @IBOutlet weak var errorCityLabel: UILabel!
     @IBOutlet weak var cityPicker: UIPickerView!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var licensePlateNumberTextField: UITextField!
     
+    @IBOutlet weak var nameTextField: UITextField!
     override func viewDidLoad() {
         cityPicker.delegate = self
         cityPicker.dataSource = self
+        licensePlateNumberTextField.delegate = self
+        nameTextField.delegate = self
         super.viewDidLoad()
         errorNumberLabel.isHidden = true
         errorCityLabel.isHidden = true
-     
+        errorNameLabel.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,6 +43,11 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
                  isPropSet(key: Constants.shared.propCity){
                 performSegue(withIdentifier: "goToMainScreen", sender: self)
              }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -65,6 +75,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         if validate(){
             defaults.set(licensePlateNumberTextField.text, forKey: Constants.shared.propLicensePlateNumber)
             defaults.set(selectedCity, forKey: Constants.shared.propCity)
+            defaults.set(nameTextField.text, forKey: Constants.shared.propName)
         }
     }
     
@@ -79,6 +90,14 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func validate () -> Bool {
+        if !isPropSet(key: Constants.shared.propName){
+            if nameTextField.text?.count == 0 {
+                nameSet = false
+            }
+            else {
+                nameSet = true
+            }
+        }
         if !isPropSet(key: Constants.shared.propLicensePlateNumber) {
             if licensePlateNumberTextField.text?.count == 0 ||
                 licensePlateNumberTextField.text!.count < 8 ||
@@ -104,6 +123,9 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         }
         if !citySet {
             errorCityLabel.isHidden = false
+        }
+        if !nameSet {
+            errorNameLabel.isHidden = false
         }
         
         if !numberSet || !citySet {

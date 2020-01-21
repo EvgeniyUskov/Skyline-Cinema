@@ -22,17 +22,24 @@
 		AA6E378022E1634F0021273D /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6E377E22E1634F0021273D /* CustomCell.xib */; };
 		AA7FA84D23C8560500DB25B7 /* CellStepperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FA84C23C8560500DB25B7 /* CellStepperDelegate.swift */; };
 		AA7FA84F23C866FE00DB25B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FA84E23C866FE00DB25B7 /* Constants.swift */; };
+		AA8DD46323D4137500F52855 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8DD46223D4137500F52855 /* InfoViewController.swift */; };
+		AA8DD46523D422E900F52855 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8DD46423D422E900F52855 /* Address.swift */; };
 		AA8EAEC823A226CC00F062C6 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EAEC723A226CC00F062C6 /* DateUtils.swift */; };
 		AA8EAECA23A22DD900F062C6 /* CartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EAEC923A22DD900F062C6 /* CartTableViewController.swift */; };
 		AA8EAED323A238DB00F062C6 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EAED123A238DB00F062C6 /* CartTableViewCell.swift */; };
 		AA8EAED423A238DB00F062C6 /* CartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8EAED223A238DB00F062C6 /* CartTableViewCell.xib */; };
 		AA917B5C23D187BE002FC579 /* BuyTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA917B5B23D187BE002FC579 /* BuyTicketViewController.swift */; };
+		AA92D62123D6B31400C65B6F /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA92D61F23D6B31400C65B6F /* fa-brands-400.ttf */; };
 		AAA470F023D1C6ED00173BA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAA470EF23D1C6ED00173BA3 /* Assets.xcassets */; };
+		AAA667F923D557D000A1893E /* OrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA667F823D557D000A1893E /* OrderRequest.swift */; };
+		AAA667FB23D557E000A1893E /* AddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA667FA23D557E000A1893E /* AddressRequest.swift */; };
+		AAA667FD23D5660E00A1893E /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA667FC23D5660E00A1893E /* JSONParameterEncoder.swift */; };
+		AAA667FF23D56B3200A1893E /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA667FE23D56B3200A1893E /* ParameterEncoder.swift */; };
 		AAA6DB1C22CC5DCD0033C6CF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA6DB1B22CC5DCD0033C6CF /* MenuViewController.swift */; };
+		AABAF99423D6BED500CE8371 /* fa-solid-900.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AABAF99323D6BED500CE8371 /* fa-solid-900.ttf */; };
 		AAEE08E123D022D900E60DAE /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08E023D022D900E60DAE /* StringUtils.swift */; };
 		AAEE08E323D042E900E60DAE /* KinopoiskHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08E223D042E900E60DAE /* KinopoiskHTMLParser.swift */; };
 		AAEE08E523D04EB300E60DAE /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08E423D04EB300E60DAE /* MembershipViewController.swift */; };
-		AAEE08E723D0514100E60DAE /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08E623D0514100E60DAE /* City.swift */; };
 		AAEE08E923D051BA00E60DAE /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08E823D051BA00E60DAE /* Cities.swift */; };
 		AAEE08EB23D05A0300E60DAE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08EA23D05A0300E60DAE /* RegisterViewController.swift */; };
 		AAEE08ED23D1587C00E60DAE /* Membership.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE08EC23D1587C00E60DAE /* Membership.swift */; };
@@ -64,17 +71,24 @@
 		AA6E377E22E1634F0021273D /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		AA7FA84C23C8560500DB25B7 /* CellStepperDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellStepperDelegate.swift; sourceTree = "<group>"; };
 		AA7FA84E23C866FE00DB25B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AA8DD46223D4137500F52855 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		AA8DD46423D422E900F52855 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		AA8EAEC723A226CC00F062C6 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		AA8EAEC923A22DD900F062C6 /* CartTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewController.swift; sourceTree = "<group>"; };
 		AA8EAED123A238DB00F062C6 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		AA8EAED223A238DB00F062C6 /* CartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableViewCell.xib; sourceTree = "<group>"; };
 		AA917B5B23D187BE002FC579 /* BuyTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTicketViewController.swift; sourceTree = "<group>"; };
+		AA92D61F23D6B31400C65B6F /* fa-brands-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-brands-400.ttf"; sourceTree = "<group>"; };
 		AAA470EF23D1C6ED00173BA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AAA667F823D557D000A1893E /* OrderRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequest.swift; sourceTree = "<group>"; };
+		AAA667FA23D557E000A1893E /* AddressRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressRequest.swift; sourceTree = "<group>"; };
+		AAA667FC23D5660E00A1893E /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
+		AAA667FE23D56B3200A1893E /* ParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoder.swift; sourceTree = "<group>"; };
 		AAA6DB1B22CC5DCD0033C6CF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		AABAF99323D6BED500CE8371 /* fa-solid-900.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-solid-900.ttf"; sourceTree = "<group>"; };
 		AAEE08E023D022D900E60DAE /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		AAEE08E223D042E900E60DAE /* KinopoiskHTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinopoiskHTMLParser.swift; sourceTree = "<group>"; };
 		AAEE08E423D04EB300E60DAE /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
-		AAEE08E623D0514100E60DAE /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		AAEE08E823D051BA00E60DAE /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		AAEE08EA23D05A0300E60DAE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		AAEE08EC23D1587C00E60DAE /* Membership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Membership.swift; sourceTree = "<group>"; };
@@ -136,11 +150,16 @@
 		AA18118C22AE0699000E1024 /* Skyline Cinema */ = {
 			isa = PBXGroup;
 			children = (
+				AAD2DD0723D5FD7700A27C89 /* Resources */,
 				AA18118D22AE0699000E1024 /* AppDelegate.swift */,
 				AA7FA84C23C8560500DB25B7 /* CellStepperDelegate.swift */,
 				AAFF581523CDCE180033B411 /* NetworkManager.swift */,
 				AAFF581B23CEC5790033B411 /* JSONManager.swift */,
 				AAFF581923CEC5680033B411 /* XMLManager.swift */,
+				AAA667F823D557D000A1893E /* OrderRequest.swift */,
+				AAA667FA23D557E000A1893E /* AddressRequest.swift */,
+				AAA667FE23D56B3200A1893E /* ParameterEncoder.swift */,
+				AAA667FC23D5660E00A1893E /* JSONParameterEncoder.swift */,
 				AAFF581F23CF5E9F0033B411 /* Utils */,
 				AA62AA4722E020FE005300FB /* Model */,
 				AA3E73B023CC417E0052B85D /* ViewModel */,
@@ -176,7 +195,7 @@
 				AA46AD1A230BB8AD00FCC3C5 /* Order.swift */,
 				AA46AD1C230BB8BA00FCC3C5 /* Item.swift */,
 				AAFF581123CDC4180033B411 /* Movie.swift */,
-				AAEE08E623D0514100E60DAE /* City.swift */,
+				AA8DD46423D422E900F52855 /* Address.swift */,
 				AAEE08EC23D1587C00E60DAE /* Membership.swift */,
 			);
 			path = Model;
@@ -205,6 +224,7 @@
 				AAFF581723CDF6DB0033B411 /* MovieDetailsViewController.swift */,
 				AA917B5B23D187BE002FC579 /* BuyTicketViewController.swift */,
 				AAEE08E423D04EB300E60DAE /* MembershipViewController.swift */,
+				AA8DD46223D4137500F52855 /* InfoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -225,6 +245,15 @@
 				AA6E377E22E1634F0021273D /* CustomCell.xib */,
 			);
 			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		AAD2DD0723D5FD7700A27C89 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA92D61F23D6B31400C65B6F /* fa-brands-400.ttf */,
+				AABAF99323D6BED500CE8371 /* fa-solid-900.ttf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		AAFF581F23CF5E9F0033B411 /* Utils */ = {
@@ -267,6 +296,9 @@
 		AA18118222AE0699000E1024 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					"font-awesome",
+				);
 				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Evgeniy Uskov";
@@ -302,7 +334,9 @@
 				AA8EAED423A238DB00F062C6 /* CartTableViewCell.xib in Resources */,
 				AA18119822AE069A000E1024 /* LaunchScreen.storyboard in Resources */,
 				AA6E378022E1634F0021273D /* CustomCell.xib in Resources */,
+				AA92D62123D6B31400C65B6F /* fa-brands-400.ttf in Resources */,
 				AA3E73BB23CDBD220052B85D /* TimeTableViewCell.xib in Resources */,
+				AABAF99423D6BED500CE8371 /* fa-solid-900.ttf in Resources */,
 				AAA470F023D1C6ED00173BA3 /* Assets.xcassets in Resources */,
 				AA18119322AE0699000E1024 /* Main.storyboard in Resources */,
 			);
@@ -357,7 +391,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAEE08E723D0514100E60DAE /* City.swift in Sources */,
 				AA3E73BA23CDBD220052B85D /* TimeTableViewCell.swift in Sources */,
 				AAEE08ED23D1587C00E60DAE /* Membership.swift in Sources */,
 				AA3E73B423CC4B9A0052B85D /* CartCellViewModel.swift in Sources */,
@@ -370,21 +403,27 @@
 				AAEE08E123D022D900E60DAE /* StringUtils.swift in Sources */,
 				AAA6DB1C22CC5DCD0033C6CF /* MenuViewController.swift in Sources */,
 				AAFF581423CDC5820033B411 /* TimeTableCellViewModell.swift in Sources */,
+				AAA667F923D557D000A1893E /* OrderRequest.swift in Sources */,
 				AA8EAED323A238DB00F062C6 /* CartTableViewCell.swift in Sources */,
 				AA18119022AE0699000E1024 /* TimeTableViewController.swift in Sources */,
 				AA6E377F22E1634F0021273D /* CustomCell.swift in Sources */,
 				AAFF581823CDF6DB0033B411 /* MovieDetailsViewController.swift in Sources */,
 				AA8EAEC823A226CC00F062C6 /* DateUtils.swift in Sources */,
 				AAFF581C23CEC5790033B411 /* JSONManager.swift in Sources */,
+				AAA667FF23D56B3200A1893E /* ParameterEncoder.swift in Sources */,
 				AAEE08E323D042E900E60DAE /* KinopoiskHTMLParser.swift in Sources */,
 				AAFF581A23CEC5680033B411 /* XMLManager.swift in Sources */,
 				AAFF581623CDCE180033B411 /* NetworkManager.swift in Sources */,
 				AA46AD1D230BB8BB00FCC3C5 /* Item.swift in Sources */,
 				AA917B5C23D187BE002FC579 /* BuyTicketViewController.swift in Sources */,
+				AA8DD46523D422E900F52855 /* Address.swift in Sources */,
+				AAA667FD23D5660E00A1893E /* JSONParameterEncoder.swift in Sources */,
 				AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */,
 				AAEE08EB23D05A0300E60DAE /* RegisterViewController.swift in Sources */,
 				AA7FA84F23C866FE00DB25B7 /* Constants.swift in Sources */,
 				AAFF581223CDC4180033B411 /* Movie.swift in Sources */,
+				AAA667FB23D557E000A1893E /* AddressRequest.swift in Sources */,
+				AA8DD46323D4137500F52855 /* InfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
