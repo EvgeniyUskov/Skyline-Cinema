@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44C97B2E23EBCA6000E5DFAC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C97B2D23EBCA6000E5DFAC /* NetworkManager.swift */; };
 		6C46D9A8F9C21C9C4C0E2F7C /* Pods_Skyline_Cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2356869ACE33E7BC1D3CE479 /* Pods_Skyline_Cinema.framework */; };
 		AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118D22AE0699000E1024 /* AppDelegate.swift */; };
 		AA18119022AE0699000E1024 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118F22AE0699000E1024 /* TimeTableViewController.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		2356869ACE33E7BC1D3CE479 /* Pods_Skyline_Cinema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skyline_Cinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44C97B2D23EBCA6000E5DFAC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8BBA247B920A2E2A26878372 /* Pods-Skyline Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.release.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.release.xcconfig"; sourceTree = "<group>"; };
 		9F71FB9CD3D9E7C840ED5BA9 /* Pods-Skyline Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.debug.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.debug.xcconfig"; sourceTree = "<group>"; };
 		AA18118A22AE0699000E1024 /* Skyline Cinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skyline Cinema.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,14 +154,15 @@
 			children = (
 				AAD2DD0723D5FD7700A27C89 /* Resources */,
 				AA18118D22AE0699000E1024 /* AppDelegate.swift */,
-				AA7FA84C23C8560500DB25B7 /* CellStepperDelegate.swift */,
 				AAFF581523CDCE180033B411 /* NetworkManager.swift */,
+				AA7FA84C23C8560500DB25B7 /* CellStepperDelegate.swift */,
 				AAFF581B23CEC5790033B411 /* JSONManager.swift */,
 				AAFF581923CEC5680033B411 /* XMLManager.swift */,
 				AAA667F823D557D000A1893E /* OrderRequest.swift */,
 				AAA667FA23D557E000A1893E /* AddressRequest.swift */,
 				AAA667FE23D56B3200A1893E /* ParameterEncoder.swift */,
 				AAA667FC23D5660E00A1893E /* JSONParameterEncoder.swift */,
+				44C97B2D23EBCA6000E5DFAC /* NetworkManager.swift */,
 				AAFF581F23CF5E9F0033B411 /* Utils */,
 				AA62AA4722E020FE005300FB /* Model */,
 				AA3E73B023CC417E0052B85D /* ViewModel */,
@@ -401,6 +404,7 @@
 				AA46AD1B230BB8AD00FCC3C5 /* Order.swift in Sources */,
 				AA8EAECA23A22DD900F062C6 /* CartTableViewController.swift in Sources */,
 				AAEE08E123D022D900E60DAE /* StringUtils.swift in Sources */,
+				44C97B2E23EBCA6000E5DFAC /* NetworkManager.swift in Sources */,
 				AAA6DB1C22CC5DCD0033C6CF /* MenuViewController.swift in Sources */,
 				AAFF581423CDC5820033B411 /* TimeTableCellViewModell.swift in Sources */,
 				AAA667F923D557D000A1893E /* OrderRequest.swift in Sources */,

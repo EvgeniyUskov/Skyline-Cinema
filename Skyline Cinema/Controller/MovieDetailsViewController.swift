@@ -9,7 +9,6 @@
 import UIKit
 import Alamofire
 import SDWebImage
-import ChameleonFramework
 
 class MovieDetailsViewController: UIViewController {
     

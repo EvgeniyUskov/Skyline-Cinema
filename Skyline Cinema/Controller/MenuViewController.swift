@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -41,8 +42,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func disableButon() {
         goToOrderButton.isEnabled = false
-        goToOrderButton.backgroundColor = UIColor.flatBlackDark()
-        goToOrderButton.setTitleColor(UIColor.flatGrayDark(), for: .disabled)
+        goToOrderButton.backgroundColor = UIColor.flatBlackColorDark()
+        goToOrderButton.setTitleColor(UIColor.flatGrayColorDark(), for: .disabled)
     }
     
     func enableButton(){

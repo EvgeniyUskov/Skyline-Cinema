@@ -1,0 +1,46 @@
+PODS:
+  - Alamofire (4.9.1)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - Realm (4.3.1):
+    - Realm/Headers (= 4.3.1)
+  - Realm/Headers (4.3.1)
+  - RealmSwift (4.3.1):
+    - Realm (= 4.3.1)
+  - SDWebImage (5.5.2):
+    - SDWebImage/Core (= 5.5.2)
+  - SDWebImage/Core (5.5.2)
+  - SwiftyJSON (5.0.0)
+  - SwiftyXML (3.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - ChameleonFramework/Swift
+  - RealmSwift
+  - SDWebImage
+  - SwiftyJSON
+  - SwiftyXML
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - ChameleonFramework
+    - Realm
+    - RealmSwift
+    - SDWebImage
+    - SwiftyJSON
+    - SwiftyXML
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Realm: 31dc40934081ef740f60feedc46d88473cbfeb40
+  RealmSwift: b5199e9a41f67b99f51acf6874a6166f5fbe93d1
+  SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  SwiftyXML: 6ccebc5162ff1d524f013cee72a2bd681d79316d
+
+PODFILE CHECKSUM: d43dde736c7521cc37d7483eb233ef8ef18b76ef
+
+COCOAPODS: 1.8.4
