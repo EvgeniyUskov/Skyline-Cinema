@@ -63,8 +63,8 @@ class MovieDetailsViewController: UIViewController {
             Alamofire.request(networkManager.getKinopoiskMovieDetailsURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get).responseString { (response) in
                 if response.result.isSuccess {
                     print("MOVIE DETAILS KINOPISK SUCCESS: \(response)" )
-                    details[Constants.shared.description] = kinopoiskParser.getDescription(response: response)
-                        details[Constants.shared.imageURL] =  kinopoiskParser.getImageURL(response: response)
+                    details[Constants.description] = kinopoiskParser.getDescription(response: response)
+                        details[Constants.imageURL] =  kinopoiskParser.getImageURL(response: response)
                     DispatchQueue.main.async {
                         movieLocal.setDetailsFromWiki(details: details)
                         self.setUpDescriptionAndImageURL(movie: movieLocal)

@@ -15,13 +15,13 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     var defaults = UserDefaults.standard
     var cities : [String] = Cities().names
     var selectedCity: String = ""
+    
     var nameSet: Bool = false
     var citySet: Bool = false
     var numberSet: Bool = false
     
-    @IBOutlet weak var errorNameLabel: UILabel!
-    @IBOutlet weak var errorNumberLabel: UILabel!
-    @IBOutlet weak var errorCityLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
+    
     @IBOutlet weak var cityPicker: UIPickerView!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var licensePlateNumberTextField: UITextField!
@@ -33,16 +33,14 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         licensePlateNumberTextField.delegate = self
         nameTextField.delegate = self
         super.viewDidLoad()
-        errorNumberLabel.isHidden = true
-        errorCityLabel.isHidden = true
-        errorNameLabel.isHidden = true
+        errorLabel.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
-           if isPropSet(key: Constants.shared.propLicensePlateNumber) &&
-                 isPropSet(key: Constants.shared.propCity){
-                performSegue(withIdentifier: "goToMainScreen", sender: self)
-             }
+        if isPropSet(key: Constants.propLicensePlateNumber) &&
+            isPropSet(key: Constants.propCity){
+            performSegue(withIdentifier: "goToMainScreen", sender: self)
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -67,15 +65,15 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-
+        
         return NSAttributedString(string: cities[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.flatWhite()])
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
         if validate(){
-            defaults.set(licensePlateNumberTextField.text, forKey: Constants.shared.propLicensePlateNumber)
-            defaults.set(selectedCity, forKey: Constants.shared.propCity)
-            defaults.set(nameTextField.text, forKey: Constants.shared.propName)
+            defaults.set(licensePlateNumberTextField.text, forKey: Constants.propLicensePlateNumber)
+            defaults.set(selectedCity, forKey: Constants.propCity)
+            defaults.set(nameTextField.text, forKey: Constants.propName)
         }
     }
     
@@ -90,45 +88,36 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func validate () -> Bool {
-        if !isPropSet(key: Constants.shared.propName){
-            if nameTextField.text?.count == 0 {
-                nameSet = false
-            }
-            else {
-                nameSet = true
-            }
+        errorLabel.text = ""
+        
+        if !isPropSet(key: Constants.propName) &&
+            nameTextField.text?.count == 0  {
+            nameSet = false
+            errorLabel.isHidden = false
+            errorLabel.text = errorLabel.text! + Constants.errorName
+        } else {
+            nameSet = true
         }
-        if !isPropSet(key: Constants.shared.propLicensePlateNumber) {
-            if licensePlateNumberTextField.text?.count == 0 ||
-                licensePlateNumberTextField.text!.count < 8 ||
-                licensePlateNumberTextField.text!.count > 9 {
-                numberSet = false
-            }
-            else {
-                numberSet = true
-            }
+        if !isPropSet(key: Constants.propLicensePlateNumber) &&
+            !isNumberCorrect() {
+            numberSet = false
+            errorLabel.isHidden = false
+            errorLabel.text = errorLabel.text! + Constants.errorLicensePlateNumber
+        } else {
+            numberSet = true
         }
         
-        if !isPropSet(key: Constants.shared.propCity) {
-            if selectedCity == "" {
-                citySet = false
-            }
-            else {
-                citySet = true
-            }
+        if !isPropSet(key: Constants.propCity) &&
+            selectedCity == "" {
+            citySet = false
+            errorLabel.isHidden = false
+            errorLabel.text = errorLabel.text! + Constants.errorCity
+        } else {
+            citySet = true
         }
         
-        if !numberSet {
-            errorNumberLabel.isHidden = false
-        }
-        if !citySet {
-            errorCityLabel.isHidden = false
-        }
-        if !nameSet {
-            errorNameLabel.isHidden = false
-        }
         
-        if !numberSet || !citySet {
+        if !numberSet || !citySet || !nameSet {
             return false
         }
         return true
@@ -139,6 +128,12 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
             return true
         }
         return false
+    }
+    
+    func isNumberCorrect() -> Bool {
+        return !(licensePlateNumberTextField.text?.count == 0 ||
+            licensePlateNumberTextField.text!.count < 8 ||
+            licensePlateNumberTextField.text!.count > 9)
     }
     
 }

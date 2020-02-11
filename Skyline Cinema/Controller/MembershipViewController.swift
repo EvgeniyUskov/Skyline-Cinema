@@ -32,8 +32,8 @@ class MembershipViewController: UIViewController {
             Alamofire.request(networkManager.skylineCinemaMembershipURL, method: .get).responseJSON { (response) in
                 if response.result.isSuccess {
                     let membershipDetails: [String: String] = self.jsonManager.parseMembershipURL(response: response)
-                    if let url = membershipDetails[Constants.shared.qrURL],
-                        let endDate = membershipDetails[Constants.shared.endDate] {
+                    if let url = membershipDetails[Constants.qrURL],
+                        let endDate = membershipDetails[Constants.endDate] {
                         let membership = Membership(url: url, date: endDate)
                         let qrImage = self.generteQrCode(membershipUrl: membership.url)
                         
@@ -48,8 +48,8 @@ class MembershipViewController: UIViewController {
         }
         else {
                     let membershipDetails: [String: String] = self.jsonManager.parseMOCKMembershipURL()
-                    if let url = membershipDetails[Constants.shared.qrURL],
-                        let endDate = membershipDetails[Constants.shared.endDate] {
+                    if let url = membershipDetails[Constants.qrURL],
+                        let endDate = membershipDetails[Constants.endDate] {
                         let membership = Membership(url: url, date: endDate)
                         let qrImage = self.generteQrCode(membershipUrl: membership.url)
                         

@@ -38,7 +38,7 @@ class CartTableViewController: UIViewController, UITableViewDelegate, UITableVie
         resizeTableViewRows()
 //        cartTableView.separatorStyle = .none
         totalAmount = initTotalAmount()
-        totalAmountLabel.text = Constants.shared.totalAmount + String(totalAmount)
+        totalAmountLabel.text = Constants.totalAmount + String(totalAmount)
     }
     
     // Resize row
@@ -85,7 +85,7 @@ class CartTableViewController: UIViewController, UITableViewDelegate, UITableVie
     func didChangeValue(stepperValue: Int, indexPath: IndexPath) {
         itemViewModelList[indexPath.row].count = stepperValue
         totalAmount = calculateTotalAmount()
-        totalAmountLabel.text = Constants.shared.totalAmount + String(totalAmount)
+        totalAmountLabel.text = Constants.totalAmount + String(totalAmount)
     }
     
     func calculateTotalAmount() -> Double {

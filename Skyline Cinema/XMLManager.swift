@@ -17,8 +17,8 @@ class XMLManager {
         
         do {
             let xml = try XML(string: response.result.unwrap())
-            rates[Constants.shared.kpRate] = xml.kp_rating.stringValue
-            rates[Constants.shared.imdbRate] = xml.imdb_rating.stringValue
+            rates[Constants.kpRate] = xml.kp_rating.stringValue
+            rates[Constants.imdbRate] = xml.imdb_rating.stringValue
         } catch{
             print("ERROR: CANNOT PARSE RATE XML: \(error)")
         }

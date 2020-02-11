@@ -73,7 +73,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
         func createOrder() {
                 order = Order()
-            order!.licensePlateNumber = UserDefaults.standard.string(forKey: Constants.shared.propLicensePlateNumber)!
+            order!.licensePlateNumber = UserDefaults.standard.string(forKey: Constants.propLicensePlateNumber)!
                 order!.date = Date()
         }
     

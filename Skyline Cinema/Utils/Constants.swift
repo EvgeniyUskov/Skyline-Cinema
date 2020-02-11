@@ -7,64 +7,40 @@
 //
 
 import Foundation
-// TODO: MAKE IT CLEAR
-//enum ViewMetrics {
-//    public let propLicensePlateNumber = "LicensePlateNumber"
-//    public let propCity = "City"
-//    public let propName = "Name"
-//    // MARK: MenuViewController
-//    // MARK: CartViewController
-//    public let totalAmount = "Сумма заказа: "
-//    // MARK: TitmeTableViewController
-//    // MARK: MovieDetailsViewController
-//    public let description = "description"
-//    public let imageURL = "imageURL"
-//    public let kpRate = "kpRate"
-//    public let imdbRate = "imdbRate"
-//    public let noRates = " - "
-//    // MARK: Kinopoisk parse html
-//    public let kinopoiskFilmSynopsys = "film-synopsys\" itemprop=\"description\">"
-//    public let kinopoiskFilmPoster = "popupBigImage"
-//    // MARK: MembershipViewController
-//    public let qrURL = "link"
-//    public let endDate = "endDate"
-//    // MARK: InfoViewController
-//    public let addressAddress = "address"
-//    public let addressDescription = "description"
-//    public let addressPhoneNumber = "phoneNumber"
-//    // MARK: Errors
-//    public let wrongLicensePlateNumber = "Введите корректный номер автомобиля"
-//
-//}
 
-struct Constants {
-    static let shared = Constants()
-    
-    public let propLicensePlateNumber = "LicensePlateNumber"
-    public let propCity = "City"
-    public let propName = "Name"
+enum Constants {
+        
+    public static let propLicensePlateNumber = "LicensePlateNumber"
+    public static let propCity = "City"
+    public static let propName = "Name"
     // MARK: MenuViewController
+
     // MARK: CartViewController
-    public let totalAmount = "Сумма заказа: "
+    public static let totalAmount = "Сумма заказа: "
     // MARK: TitmeTableViewController
+
     // MARK: MovieDetailsViewController
-    public let description = "description"
-    public let imageURL = "imageURL"
-    public let kpRate = "kpRate"
-    public let imdbRate = "imdbRate"
-    public let noRates = " - "
+    public static let description = "description"
+    public static let imageURL = "imageURL"
+    public static let kpRate = "kpRate"
+    public static let imdbRate = "imdbRate"
+    public static let noRates = " - "
+
     // MARK: Kinopoisk parse html
-    public let kinopoiskFilmSynopsys = "film-synopsys\" itemprop=\"description\">"
-    public let kinopoiskFilmPoster = "popupBigImage"
+    public static let kinopoiskFilmSynopsys = "film-synopsys\" itemprop=\"description\">"
+    public static let kinopoiskFilmPoster = "popupBigImage"
+
     // MARK: MembershipViewController
-    public let qrURL = "link"
-    public let endDate = "endDate"
+    public static let qrURL = "link"
+    public static let endDate = "endDate"
+
     // MARK: InfoViewController
-    public let addressAddress = "address"
-    public let addressDescription = "description"
-    public let addressPhoneNumber = "phoneNumber"
+    public static let addressAddress = "address"
+    public static let addressDescription = "description"
+    public static let addressPhoneNumber = "phoneNumber"
     // MARK: Errors
-    public let wrongLicensePlateNumber = "Введите корректный номер автомобиля"
+    public static let errorLicensePlateNumber = "Введите корректный номер автомобиля \n"
+    public static let errorName = "Введите ваше имя корректно \n"
+    public static let errorCity = "Выберите ваш город \n"
     
-    private init() { }
 }

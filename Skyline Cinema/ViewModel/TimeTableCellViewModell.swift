@@ -28,25 +28,25 @@ class TimeTableCellViewModel {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy HH:mm"
         self.date = formatter.string(from: movie.date)
-        self.rateKp = Constants.shared.noRates
-        self.rateImdb = Constants.shared.noRates
+        self.rateKp = Constants.noRates
+        self.rateImdb = Constants.noRates
 //        self.image = movie.image
     }
     
     func setRates(rates: [String: String]) {
-        if let kpRate = rates[Constants.shared.kpRate] {
+        if let kpRate = rates[Constants.kpRate] {
             self.rateKp = kpRate
         }
-        if let imdbRate = rates[Constants.shared.imdbRate] {
+        if let imdbRate = rates[Constants.imdbRate] {
             self.rateImdb = imdbRate
         }
     }
     
     func setDetailsFromWiki(details: [String: String]) {
-        if let descript = details[Constants.shared.description] {
+        if let descript = details[Constants.description] {
             self.descript = descript
         }
-        if let imageURL = details[Constants.shared.imageURL] {
+        if let imageURL = details[Constants.imageURL] {
             self.imageURL = imageURL
         }
     }

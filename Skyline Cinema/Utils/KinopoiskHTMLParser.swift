@@ -12,7 +12,7 @@ import Alamofire
 class KinopoiskHTMLParser {
     func getDescription(response: DataResponse<String>) -> String {
         if let responseString = response.result.value {
-            if let range = responseString.range(of: Constants.shared.kinopoiskFilmSynopsys) {
+            if let range = responseString.range(of: Constants.kinopoiskFilmSynopsys) {
                 let synopsys = String(responseString[range.upperBound ..< responseString.endIndex])
                 return String(synopsys[synopsys.startIndex ..< synopsys.firstIndex(of: "<")!]).replacingOccurrences(of: "&[^;]+;", with: " ", options: String.CompareOptions.regularExpression, range: nil)
             }}
@@ -21,7 +21,7 @@ class KinopoiskHTMLParser {
     
     func getImageURL(response: DataResponse<String>) -> String {
         if let responseString = response.result.value {
-            if let range = responseString.range(of: Constants.shared.kinopoiskFilmPoster) {
+            if let range = responseString.range(of: Constants.kinopoiskFilmPoster) {
                 let posterTrimmed = String(responseString[range.upperBound ..< responseString.endIndex])
                 if let rangeInnerStart = posterTrimmed.range(of: "src=\"") {
                     if let rangeInnerEnd = posterTrimmed.range(of: ".jpg\"") {

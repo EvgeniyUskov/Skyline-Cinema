@@ -115,8 +115,8 @@ class JSONManager {
         let imageURL = jsonResponse["query"]["pages"][pageid]["thumbnail"]["source"].stringValue
         let description = jsonResponse["query"]["pages"][pageid]["extract"].stringValue
         
-        details[Constants.shared.description] = description
-        details[Constants.shared.imageURL] = imageURL
+        details[Constants.description] = description
+        details[Constants.imageURL] = imageURL
         return details
     }
     
@@ -125,8 +125,8 @@ class JSONManager {
         let jsonResponse: JSON = JSON(response.result.value!)
         print("JSON RESPONSE: \(jsonResponse)")
         let membershipResponse = jsonResponse["membership"]
-        membershipDetails[Constants.shared.qrURL] = membershipResponse[Constants.shared.qrURL].stringValue
-        membershipDetails[Constants.shared.endDate] = membershipResponse[Constants.shared.endDate].stringValue
+        membershipDetails[Constants.qrURL] = membershipResponse[Constants.qrURL].stringValue
+        membershipDetails[Constants.endDate] = membershipResponse[Constants.endDate].stringValue
         return membershipDetails
     }
     
@@ -143,8 +143,8 @@ class JSONManager {
         let jsonResponse: JSON = json!
         print("JSON RESPONSE: \(jsonResponse)")
         let membershipResponse = jsonResponse["membershipResponse"]
-        membershipDetails[Constants.shared.qrURL] = membershipResponse[Constants.shared.qrURL].stringValue
-        membershipDetails[Constants.shared.endDate] = membershipResponse[Constants.shared.endDate].stringValue
+        membershipDetails[Constants.qrURL] = membershipResponse[Constants.qrURL].stringValue
+        membershipDetails[Constants.endDate] = membershipResponse[Constants.endDate].stringValue
         return membershipDetails
     }
     
@@ -156,8 +156,8 @@ class JSONManager {
         
         for itemResponse in addressJSON.arrayValue {
             var address = Address()
-            address.address = itemResponse[Constants.shared.addressAddress].stringValue
-            address.description = itemResponse[Constants.shared.addressDescription ].stringValue
+            address.address = itemResponse[Constants.addressAddress].stringValue
+            address.description = itemResponse[Constants.addressDescription ].stringValue
             addresses.append(address)
         }
         
@@ -180,9 +180,9 @@ class JSONManager {
         
         for itemResponse in addressJSON.arrayValue {
             var address = Address()
-            address.address = itemResponse[Constants.shared.addressAddress].stringValue
-            address.description = itemResponse[Constants.shared.addressDescription ].stringValue
-            address.phoneNumber = itemResponse[Constants.shared.addressPhoneNumber ].stringValue
+            address.address = itemResponse[Constants.addressAddress].stringValue
+            address.description = itemResponse[Constants.addressDescription ].stringValue
+            address.phoneNumber = itemResponse[Constants.addressPhoneNumber ].stringValue
             addresses.append(address)
         }
         
