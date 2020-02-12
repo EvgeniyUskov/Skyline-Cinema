@@ -27,6 +27,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var licensePlateNumberTextField: UITextField!
     
     @IBOutlet weak var nameTextField: UITextField!
+    
     override func viewDidLoad() {
         cityPicker.delegate = self
         cityPicker.dataSource = self

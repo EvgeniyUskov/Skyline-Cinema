@@ -37,10 +37,12 @@ struct NetworkManager {
     let networkActive = false
     
     func getItems() {
-        let olderItems = realm.objects(Item.self)
-        realm.delete(olderItems)
+        
         do{
             try realm.write {
+                let olderItems = realm.objects(Item.self)
+                realm.delete(olderItems)
+                
                 var items = [Item]()
                 if networkActive {
                     Alamofire.request(skylineCinemaItemsURL, method: .get).responseJSON {

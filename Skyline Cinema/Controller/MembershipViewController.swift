@@ -67,7 +67,11 @@ class MembershipViewController: UIViewController {
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return nil}
         qrFilter.setValue(data, forKey: "inputMessage")
         guard let qrImage = qrFilter.outputImage else { return nil}
-        return UIImage(ciImage: qrImage)
+        
+        let transform = CGAffineTransform(scaleX: 7, y: 7)
+        let scaledQrImage = qrImage.transformed(by: transform)
+        
+        return UIImage(ciImage: scaledQrImage)
     }
     
     func getQrCodeByImage() {
