@@ -16,7 +16,7 @@ class CartCellViewModel {
     var priceDouble: Double
     var priceString: String {
         get {
-                return String(priceDouble)
+                return String(Int(priceDouble))
         }
     }
     var image: UIImage?

@@ -24,9 +24,11 @@ class CartTableViewCell: UITableViewCell {
         itemCountStepper.maximumValue = 8
         itemCountStepper.stepValue = 1
         itemCountStepper.value = 1
+        itemCountStepper.setDecrementImage(itemCountStepper.decrementImage(for: .normal), for: .normal)
+        itemCountStepper.setIncrementImage(itemCountStepper.incrementImage(for: .normal), for: .normal)
         
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -43,8 +45,5 @@ class CartTableViewCell: UITableViewCell {
         self.countLabel.text = String(viewModel.count)
         self.titleLabel.text = viewModel.title
         self.priceLabel.text = String("\(viewModel.priceString) руб")
-//        viewModel.count.valueChanged = { [weak self] (count) in
-//            self?.
-//        }
     }
 }

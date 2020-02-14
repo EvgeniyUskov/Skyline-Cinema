@@ -12,27 +12,31 @@ import Alamofire
 
 class JSONManager {
     
-    func parseJSONItems(response: DataResponse<Any>) -> [Item]{
-        var itemsFromJSON = [Item]()
+    func parseJSONItems(response: DataResponse<Any>) -> [String: [Item]] {
+        var itemsFromJSON = [String: [Item]]()
         // parse JSON from server
         let jsonResponse: JSON = JSON(response.result.value!)
         print("JSON MENU RESPONSE: \(jsonResponse)")
-        let itemsJSON = jsonResponse["itemsResponse"]
-        
+        let categoriesJSON = jsonResponse["itemsResponse"]
         // parse items from JSON
-        for itemResponse in itemsJSON.arrayValue {
-            let newItem = Item()
-            newItem.title = itemResponse["title"].stringValue
-            newItem.descript = itemResponse["description"].stringValue
-            newItem.price = Double(itemResponse["price"].stringValue) ?? 0
-            itemsFromJSON.append(newItem)
+        for categoryJSON in categoriesJSON.arrayValue {
+            let category = categoryJSON["category"].stringValue
+            var itemList = [Item]()
+            
+            for itemResponse in categoryJSON["items"].arrayValue {
+                let newItem = Item()
+                newItem.title = itemResponse["title"].stringValue
+                newItem.descript = itemResponse["description"].stringValue
+                newItem.price = Double(itemResponse["price"].stringValue) ?? 0
+                itemList.append(newItem)
+            }
+            itemsFromJSON[category] = itemList
         }
-        
         return itemsFromJSON
     }
     
-    func parseMOCKJSONItems() -> [Item]{
-        var itemsFromJSON = [Item]()
+    func parseMOCKJSONItems() -> [String: [Item]] {
+        var itemsFromJSON = [String: [Item]]()
         var json: JSON?
         if let dataFromString = self.mockItemsJSON().data(using: .utf8, allowLossyConversion: false) {
             do {
@@ -43,17 +47,22 @@ class JSONManager {
         }
         let jsonResponse: JSON = json!
         print("JSON MENU RESPONSE: \(jsonResponse)")
-        let itemsJSON = jsonResponse["itemsResponse"]
+        let categoriesJSON = jsonResponse["itemsResponse"]
         
         // parse items from JSON
-        for itemResponse in itemsJSON.arrayValue {
-            let newItem = Item()
-            newItem.title = itemResponse["title"].stringValue
-            newItem.descript = itemResponse["description"].stringValue
-            newItem.price = Double(itemResponse["price"].stringValue) ?? 0
-            itemsFromJSON.append(newItem)
+        for categoryJSON in categoriesJSON.arrayValue {
+            let category = categoryJSON["category"].stringValue
+            var itemList = [Item]()
+            for itemResponse in categoryJSON["items"].arrayValue {
+                let newItem = Item()
+                newItem.category = category
+                newItem.title = itemResponse["title"].stringValue
+                newItem.descript = itemResponse["description"].stringValue
+                newItem.price = Double(itemResponse["price"].stringValue) ?? 0
+                itemList.append(newItem)
+            }
+            itemsFromJSON[category] = itemList
         }
-        
         return itemsFromJSON
     }
     
@@ -190,7 +199,7 @@ class JSONManager {
     }
     
     func mockItemsJSON() -> String {
-        return "{\"itemsResponse\":[{\"id\":1,\"title\":\"Попкорн Большой Сладкий\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":350},{\"id\":2,\"title\":\"Попкорн Большой Соленый\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":350},{\"id\":3,\"title\":\"Попкорн Средний Сладкий\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":350},{\"id\":4,\"title\":\"Попкорн Средний Соленый\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":250},{\"id\":5,\"title\":\"Попкорн Маленький Сладкий\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":250},{\"id\":6,\"title\":\"Попкорн Маленький Соленый\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":150},{\"id\":7,\"title\":\"Попкорн-7\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":150},{\"id\":15,\"title\":\"Пепси 0,5\",\"description\":\"Пепси 0 калорий\",\"price\":100}]}"
+        return "{\"itemsResponse\":[{\"category\":\"Попкорн\",\"items\":[{\"id\":1,\"title\":\"Попкорн Большой Сладкий\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":350},{\"id\":2,\"title\":\"Попкорн Большой Соленый\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":350},{\"id\":3,\"title\":\"Попкорн Средний Сладкий\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":250},{\"id\":4,\"title\":\"Попкорн Средний Соленый\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":250},{\"id\":5,\"title\":\"Попкорн Маленький Сладкий\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":150},{\"id\":6,\"title\":\"Попкорн Маленький Соленый\",\"description\":\"Попкорн с добавлением знаменитого сахарного сиропа с южных склонов Перинейских гор и нотками сыра Камамбер\",\"price\":150}]},{\"category\":\"Напитки\",\"items\":[{\"id\":10,\"title\":\"Кофе Капуччино\",\"description\":\"Черный кофе с взбитой молочной пенкой\",\"price\":100},{\"id\":11,\"title\":\"Кофе Латте черный\",\"description\":\"Черный кофе с добавлением молока\",\"price\":100},{\"id\":12,\"title\":\"Кофе Американо\",\"description\":\"Черный кофе без молока\",\"price\":100},{\"id\":13,\"title\":\"Пепси 0,5л\",\"description\":\"Pepsi\",\"price\":100},{\"id\":14,\"title\":\"Кока-кола 0,5л\",\"description\":\"Coca-Cola\",\"price\":100},{\"id\":15,\"title\":\"Пепси 1л\",\"description\":\"Pepsi\",\"price\":100},{\"id\":16,\"title\":\"Кока-кола 1л\",\"description\":\"Coca-Cola\",\"price\":100},{\"id\":17,\"title\":\"Минеральная вода 0,5л\",\"description\":\"Негазированная питьевая вода\",\"price\":100},{\"id\":18,\"title\":\"Минеральная вода 0,5л\",\"description\":\"Газированная питьевая вода\",\"price\":100}]},{\"category\":\"Шоколад\",\"items\":[{\"id\":20,\"title\":\"Сникерс\",\"description\":\"Оригинальный\",\"price\":100},{\"id\":21,\"title\":\"Твикс\",\"description\":\"Оригинальный\",\"price\":100},{\"id\":22,\"title\":\"Альпер гольд\",\"description\":\"Соленый арахис\",\"price\":100},{\"id\":23,\"title\":\"Милка\",\"description\":\"С фундуком\",\"price\":100}]},{\"category\":\"Чипсы\",\"items\":[{\"id\":30,\"title\":\"Принглз\",\"description\":\"Оригинальные\",\"price\":100},{\"id\":31,\"title\":\"Принглз\",\"description\":\"Сыр\",\"price\":100},{\"id\":32,\"title\":\"Лейс\",\"description\":\"Сметана и чеснок\",\"price\":100},{\"id\":33,\"title\":\"Лейс\",\"description\":\"Краб\",\"price\":100},{\"id\":34,\"title\":\"Лейс\",\"description\":\"Бекон\",\"price\":100},{\"id\":35,\"title\":\"Лейс\",\"description\":\"С солью\",\"price\":100}]},{\"category\":\"Кальяны\",\"items\":[{\"id\":40,\"title\":\"Darkside\",\"description\":\"Легкий\",\"price\":800},{\"id\":41,\"title\":\"Darkside\",\"description\":\"Средний\",\"price\":1000},{\"id\":42,\"title\":\"Darkside\",\"description\":\"Крепкий\",\"price\":1200},{\"id\":43,\"title\":\"Must Have\",\"description\":\"Легкий\",\"price\":1000},{\"id\":44,\"title\":\"Must Have\",\"description\":\"Средний\",\"price\":1300},{\"id\":45,\"title\":\"Must Have\",\"description\":\"Крепкий\",\"price\":1500}]}]}"
     }
     
     func mockMoviesJSON() -> String {

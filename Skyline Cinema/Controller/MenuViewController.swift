@@ -18,39 +18,32 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     let realm = try! Realm()
     
     private var menuList: [Item] = [Item]()
-    
+    private var menuListCategories: [String: [Item]] = [String: [Item]]()
     private var order: Order?
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         SVProgressHUD.show()
-        let networkAdapter = NetworkManager()
-        networkAdapter.getItems()
+        let networkManager = NetworkManager()
+        menuListCategories = networkManager.getItems()
         
-        disableButon()
+        disableGoToOrderButon()
         
         popcornTableView.delegate = self
         popcornTableView.dataSource = self
         popcornTableView.allowsMultipleSelection = true
         popcornTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "CustomCell")
         
+//        self.popcornTableView.backgroundView = UIImageView(image: UIImage(named: "background"));
+        let backView = UIView()
+        backView.backgroundColor = .red
+        popcornTableView.backgroundView = backView
         loadData()
         
         popcornTableView.reloadData()
-        resizeTableViewRows()
-//        popcornTableView.separatorStyle = .none
-    }
-
-    func disableButon() {
-        goToOrderButton.isEnabled = false
-        goToOrderButton.backgroundColor = UIColor.flatBlackColorDark()
-        goToOrderButton.setTitleColor(UIColor.flatGrayColorDark(), for: .disabled)
-    }
-    
-    func enableButton(){
-        goToOrderButton.isEnabled = true
-        goToOrderButton.backgroundColor = UIColor.flatWatermelon()
+        popcornTableView.rowHeight = 280//UITableView.automaticDimension
+        popcornTableView.separatorStyle = .none
     }
     
     //MARK: Data manipulation methods
@@ -73,22 +66,30 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-        func createOrder() {
-                order = Order()
-            order!.licensePlateNumber = UserDefaults.standard.string(forKey: Constants.propLicensePlateNumber)!
-                order!.date = Date()
-        }
+    func createOrder() {
+        order = Order()
+        order!.licensePlateNumber = UserDefaults.standard.string(forKey: Constants.propLicensePlateNumber)!
+        order!.date = Date()
+    }
     
     
     // MARK: - TableView Implementation methods
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return menuListCategories.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuList.count
+        return Array(menuListCategories)[section].value.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return Array(menuListCategories)[section].key
     }
     // show data on table row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = popcornTableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
         
-        let item = menuList[indexPath.row]
+        let item = Array(menuListCategories)[indexPath.section].value[indexPath.row]
         cell.itemLabel.text = item.title
         cell.priceLabel.text = String("\(Int(item.price)) руб")
         cell.descriptionLabel.text = item.descript
@@ -98,15 +99,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    // Resize row
-    func resizeTableViewRows () {
-        popcornTableView.rowHeight = 280//UITableView.automaticDimension
-    }
-    
     //UITableViewCell click
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: delete when deselect
-        let selectedItem = menuList[indexPath.row]
+        let selectedItem = Array(menuListCategories)[indexPath.section].value[indexPath.row]
         try! realm.write {
             if(!selectedItem.checked) {
                 selectedItem.checked = true
@@ -119,9 +115,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         if order!.items.count != 0 {
-            enableButton()
+            enableGoToOrderButon()
         } else {
-            disableButon()
+            disableGoToOrderButon()
         }
         
         popcornTableView.reloadData()
@@ -151,6 +147,16 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func goToOrderButtonTapped(_ sender: UIButton) {
         
     }
+ 
+    func disableGoToOrderButon() {
+        goToOrderButton.isEnabled = false
+        goToOrderButton.backgroundColor = UIColor.flatBlackColorDark()
+        goToOrderButton.setTitleColor(UIColor.flatGrayColorDark(), for: .disabled)
+    }
     
+    func enableGoToOrderButon(){
+        goToOrderButton.isEnabled = true
+        goToOrderButton.backgroundColor = UIColor.flatWatermelon()
+    }
     
 }

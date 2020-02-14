@@ -24,7 +24,10 @@ class CustomCell: UITableViewCell {
     }
     
     func setup() {
-        self.itemImageView.layer.cornerRadius = CGFloat(10.0)
+//        self.itemImageView.layer.cornerRadius = CGFloat(10.0)
+        self.contentView.layer.cornerRadius = CGFloat(10.0)
+        self.backgroundView =  UIImageView(image: UIImage(named: "background"))
+        
     }
     
 }

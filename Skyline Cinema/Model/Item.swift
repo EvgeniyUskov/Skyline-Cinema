@@ -11,6 +11,7 @@ import RealmSwift
 
 class Item: Object {
     @objc dynamic var id: Int = 0
+    @objc dynamic var category: String = ""
     @objc dynamic var title: String = ""
     @objc dynamic var descript: String = ""
     @objc dynamic var price: Double = 0.00

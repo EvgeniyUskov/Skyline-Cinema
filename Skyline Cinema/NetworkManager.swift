@@ -37,25 +37,27 @@ struct NetworkManager {
     
     let networkActive = false
     
-    func getItems() {
-        
+    func getItems() -> [String: [Item]]{
+        var groupsOfItems = [String: [Item]]()
         do{
             try realm.write {
                 let olderItems = realm.objects(Item.self)
                 realm.delete(olderItems)
-                
-                var items = [Item]()
                 if networkActive {
                     Alamofire.request(skylineCinemaItemsURL, method: .get).responseJSON {
                         (response) in
                         if response.result.isSuccess {
-                            items = self.jsonManager.parseJSONItems(response: response)
-                            self.realm.add(items)
+                            groupsOfItems = self.jsonManager.parseJSONItems(response: response)
+                            for (itemCategory, items) in groupsOfItems {
+                                self.realm.add(items)
+                            }
                         }
                     }
                 } else {
-                    items = jsonManager.parseMOCKJSONItems()
-                    realm.add(items)
+                    groupsOfItems = jsonManager.parseMOCKJSONItems()
+                    for (itemCategory, items) in groupsOfItems {
+                        self.realm.add(items)
+                    }
                 }
             }
         }
@@ -63,7 +65,8 @@ struct NetworkManager {
             print("Error getting Items: \(error)")
         }
         
-                SVProgressHUD.dismiss()
+        SVProgressHUD.dismiss()
+        return groupsOfItems
     }
     
     func getMovies() -> [Movie] {
