@@ -32,7 +32,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        cityNameLabel.text = UserDefaults.standard.value(forKey: Constants.propCity) as! String
         callButton.titleLabel?.font = UIFont(name: "Font Awesome 5 Free", size: 30)
         callButton.setTitle("\u{f879}", for: .normal)
         vkButton.titleLabel?.font = UIFont(name: "Font Awesome 5 Brands", size: 30)

@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		443C477223F5025A00A2EFEC /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44C97B2E23EBCA6000E5DFAC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C97B2D23EBCA6000E5DFAC /* NetworkManager.swift */; };
-		6C46D9A8F9C21C9C4C0E2F7C /* Pods_Skyline_Cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2356869ACE33E7BC1D3CE479 /* Pods_Skyline_Cinema.framework */; };
+		7C06074B9BF704B718FC7C3C /* Pods_Skyline_Cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1155998F5442D1B37B3CF3A2 /* Pods_Skyline_Cinema.framework */; };
 		AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118D22AE0699000E1024 /* AppDelegate.swift */; };
 		AA18119022AE0699000E1024 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118F22AE0699000E1024 /* TimeTableViewController.swift */; };
 		AA18119322AE0699000E1024 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA18119122AE0699000E1024 /* Main.storyboard */; };
@@ -52,11 +53,32 @@
 		AAFF581C23CEC5790033B411 /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFF581B23CEC5790033B411 /* JSONManager.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		443C477323F5025B00A2EFEC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				443C477223F5025A00A2EFEC /* BuildFile in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		2356869ACE33E7BC1D3CE479 /* Pods_Skyline_Cinema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skyline_Cinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1155998F5442D1B37B3CF3A2 /* Pods_Skyline_Cinema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skyline_Cinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EB1F7C0B627578AD6B332A1 /* Pods-Skyline Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.release.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.release.xcconfig"; sourceTree = "<group>"; };
+		443C477423F5027200A2EFEC /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		443C477523F5027200A2EFEC /* ChameleonFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ChameleonFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		443C477623F5027200A2EFEC /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		443C477723F5027200A2EFEC /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		443C477823F5027200A2EFEC /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		443C477923F5027200A2EFEC /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		443C477A23F5027200A2EFEC /* SwiftyXML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyXML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44C97B2D23EBCA6000E5DFAC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		8BBA247B920A2E2A26878372 /* Pods-Skyline Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.release.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.release.xcconfig"; sourceTree = "<group>"; };
-		9F71FB9CD3D9E7C840ED5BA9 /* Pods-Skyline Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.debug.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.debug.xcconfig"; sourceTree = "<group>"; };
+		6688CE512E9158CDACDAEACC /* Pods-Skyline Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.debug.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.debug.xcconfig"; sourceTree = "<group>"; };
 		AA18118A22AE0699000E1024 /* Skyline Cinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skyline Cinema.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA18118D22AE0699000E1024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA18118F22AE0699000E1024 /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
@@ -107,17 +129,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C46D9A8F9C21C9C4C0E2F7C /* Pods_Skyline_Cinema.framework in Frameworks */,
+				7C06074B9BF704B718FC7C3C /* Pods_Skyline_Cinema.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0124A0C2E385BCF55E15DC34 /* Frameworks */ = {
+		54F8D7236400070D10C3919B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2356869ACE33E7BC1D3CE479 /* Pods_Skyline_Cinema.framework */,
+				443C477423F5027200A2EFEC /* Alamofire.framework */,
+				443C477523F5027200A2EFEC /* ChameleonFramework.framework */,
+				443C477623F5027200A2EFEC /* Realm.framework */,
+				443C477723F5027200A2EFEC /* RealmSwift.framework */,
+				443C477823F5027200A2EFEC /* SDWebImage.framework */,
+				443C477923F5027200A2EFEC /* SwiftyJSON.framework */,
+				443C477A23F5027200A2EFEC /* SwiftyXML.framework */,
+				1155998F5442D1B37B3CF3A2 /* Pods_Skyline_Cinema.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -125,8 +154,8 @@
 		9072AFFEE6AC3EDC19C8EF2B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9F71FB9CD3D9E7C840ED5BA9 /* Pods-Skyline Cinema.debug.xcconfig */,
-				8BBA247B920A2E2A26878372 /* Pods-Skyline Cinema.release.xcconfig */,
+				6688CE512E9158CDACDAEACC /* Pods-Skyline Cinema.debug.xcconfig */,
+				2EB1F7C0B627578AD6B332A1 /* Pods-Skyline Cinema.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -137,7 +166,7 @@
 				AA18118C22AE0699000E1024 /* Skyline Cinema */,
 				AA18118B22AE0699000E1024 /* Products */,
 				9072AFFEE6AC3EDC19C8EF2B /* Pods */,
-				0124A0C2E385BCF55E15DC34 /* Frameworks */,
+				54F8D7236400070D10C3919B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -278,11 +307,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA18119C22AE069A000E1024 /* Build configuration list for PBXNativeTarget "Skyline Cinema" */;
 			buildPhases = (
-				7AFD04219AD2AC70C7364855 /* [CP] Check Pods Manifest.lock */,
+				E8479C6966E416E2E3BB132C /* [CP] Check Pods Manifest.lock */,
 				AA18118622AE0699000E1024 /* Sources */,
 				AA18118722AE0699000E1024 /* Frameworks */,
 				AA18118822AE0699000E1024 /* Resources */,
-				D6D180612F1CD23395BF221F /* [CP] Embed Pods Frameworks */,
+				443C477323F5025B00A2EFEC /* Embed Frameworks */,
+				C21AE7F1C555BF6FA8E955EF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -348,7 +378,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7AFD04219AD2AC70C7364855 /* [CP] Check Pods Manifest.lock */ = {
+		C21AE7F1C555BF6FA8E955EF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8479C6966E416E2E3BB132C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -368,23 +415,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D6D180612F1CD23395BF221F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -571,7 +601,7 @@
 		};
 		AA18119D22AE069A000E1024 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F71FB9CD3D9E7C840ED5BA9 /* Pods-Skyline Cinema.debug.xcconfig */;
+			baseConfigurationReference = 6688CE512E9158CDACDAEACC /* Pods-Skyline Cinema.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -590,7 +620,7 @@
 		};
 		AA18119E22AE069A000E1024 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BBA247B920A2E2A26878372 /* Pods-Skyline Cinema.release.xcconfig */;
+			baseConfigurationReference = 2EB1F7C0B627578AD6B332A1 /* Pods-Skyline Cinema.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

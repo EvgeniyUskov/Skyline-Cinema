@@ -14,12 +14,17 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func setup() {
+        self.itemImageView.layer.cornerRadius = CGFloat(10.0)
     }
     
 }

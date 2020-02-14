@@ -11,6 +11,7 @@ PODS:
   - SDWebImage (5.5.2):
     - SDWebImage/Core (= 5.5.2)
   - SDWebImage/Core (5.5.2)
+  - SVProgressHUD (2.2.5)
   - SwiftyJSON (5.0.0)
   - SwiftyXML (3.0.1)
 
@@ -19,6 +20,7 @@ DEPENDENCIES:
   - ChameleonFramework/Swift
   - RealmSwift
   - SDWebImage
+  - SVProgressHUD
   - SwiftyJSON
   - SwiftyXML
 
@@ -29,6 +31,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SDWebImage
+    - SVProgressHUD
     - SwiftyJSON
     - SwiftyXML
 
@@ -38,9 +41,10 @@ SPEC CHECKSUMS:
   Realm: 31dc40934081ef740f60feedc46d88473cbfeb40
   RealmSwift: b5199e9a41f67b99f51acf6874a6166f5fbe93d1
   SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwiftyXML: 6ccebc5162ff1d524f013cee72a2bd681d79316d
 
-PODFILE CHECKSUM: d43dde736c7521cc37d7483eb233ef8ef18b76ef
+PODFILE CHECKSUM: 949d9375021b0e79d3a33ae69db69c087126ceeb
 
 COCOAPODS: 1.8.4

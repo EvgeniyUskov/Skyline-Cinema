@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import Alamofire
+import SVProgressHUD
 
 struct NetworkManager {
     
@@ -61,6 +62,8 @@ struct NetworkManager {
         catch {
             print("Error getting Items: \(error)")
         }
+        
+                SVProgressHUD.dismiss()
     }
     
     func getMovies() -> [Movie] {

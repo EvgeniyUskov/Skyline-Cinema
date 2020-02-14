@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SDWebImage
+import SVProgressHUD
 
 class MovieDetailsViewController: UIViewController {
     
@@ -27,10 +28,13 @@ class MovieDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         //        let rates = self.networkManager.getMovieRates(kinopoiskId: movieLocal.kinopoiskId)
         getRates()
         //        getMovieDetailsFromWiki()
         getMovieDetailsFromKinopoisk()
+        
+        SVProgressHUD.dismiss()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

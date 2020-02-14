@@ -4,6 +4,7 @@
 target 'Skyline Cinema' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+  #use_modular_headers!
 
   # Pods for Skyline Cinema
 	pod 'Alamofire'
@@ -12,4 +13,5 @@ target 'Skyline Cinema' do
   pod 'RealmSwift'
   pod 'SDWebImage'
   pod 'ChameleonFramework/Swift'
+  pod 'SVProgressHUD'
 end

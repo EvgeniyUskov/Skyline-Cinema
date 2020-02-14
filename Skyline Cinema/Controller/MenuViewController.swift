@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import ChameleonFramework
+import SVProgressHUD
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -23,6 +24,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        SVProgressHUD.show()
         let networkAdapter = NetworkManager()
         networkAdapter.getItems()
         
@@ -88,10 +90,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let item = menuList[indexPath.row]
         cell.itemLabel.text = item.title
-        cell.priceLabel.text = String("\(item.price) руб")
+        cell.priceLabel.text = String("\(Int(item.price)) руб")
         cell.descriptionLabel.text = item.descript
         cell.itemImageView.image = UIImage(named: "popcorn")
         cell.accessoryType = item.checked == true ? .checkmark :  .none
+        cell.setup()
         return cell
     }
     

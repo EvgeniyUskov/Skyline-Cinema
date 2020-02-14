@@ -9,11 +9,14 @@
 import UIKit
 import RealmSwift
 import SwiftyJSON
+import Alamofire
+import SVProgressHUD
 
 class TimeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var timeTableTableView: UITableView!
     let realm = try! Realm()
+    let networkManager = NetworkManager()
     
     var movieViewModelList = [TimeTableCellViewModel]()
     var movies = [Movie]()
@@ -23,8 +26,8 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         timeTableTableView.delegate = self
         timeTableTableView.dataSource = self
         //        timeTableTableView.separatorStyle = .none
+        SVProgressHUD.show()
         
-        let networkManager = NetworkManager()
         movies = networkManager.getMovies()
         for movie in movies {
             let movieViewModel = TimeTableCellViewModel(movie: movie)
@@ -33,8 +36,8 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         
         timeTableTableView.register(UINib(nibName: "TimeTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
         resizeTableViewRows()
-        
         timeTableTableView.reloadData()
+        SVProgressHUD.dismiss()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +59,7 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // Resize row
     func resizeTableViewRows () {
-        timeTableTableView.rowHeight = 300
+        timeTableTableView.rowHeight = 150
     }
     
     //UITableViewCell click
@@ -75,5 +78,5 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
     }
-    
+
 }

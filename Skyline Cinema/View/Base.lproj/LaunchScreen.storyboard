@@ -30,8 +30,8 @@
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="made by your brother from another mother" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWR-8Y-V5j">
-                                <rect key="frame" x="154" y="796" width="240" height="66"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="made by your brother from another mother" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWR-8Y-V5j">
+                                <rect key="frame" x="87" y="806" width="240" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="Uda-KY-7Eo"/>
                                     <constraint firstAttribute="width" constant="240" id="hfE-jw-EEl"/>
@@ -45,9 +45,9 @@
                         <constraints>
                             <constraint firstItem="Pg9-oz-cAi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="128" id="0MQ-uC-Gvb"/>
                             <constraint firstItem="Pg9-oz-cAi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="76" id="1rQ-l6-KPV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AWR-8Y-V5j" secondAttribute="trailing" constant="20" id="6a3-iI-520"/>
-                            <constraint firstItem="AWR-8Y-V5j" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ZxG-Dj-GmX"/>
+                            <constraint firstItem="AWR-8Y-V5j" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UfY-rQ-xAW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pg9-oz-cAi" secondAttribute="trailing" constant="76" id="h6a-1u-Pv2"/>
+                            <constraint firstItem="AWR-8Y-V5j" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="10" id="plL-Ep-Wpf"/>
                             <constraint firstItem="x2x-nL-EI0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="tPD-FY-Tcs"/>
                             <constraint firstItem="x2x-nL-EI0" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="zYW-n5-Xi6"/>
                         </constraints>
