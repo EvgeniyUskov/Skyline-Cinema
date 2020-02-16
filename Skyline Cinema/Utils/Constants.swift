@@ -10,6 +10,13 @@ import Foundation
 
 enum Constants {
         
+    public static let menuMap: [String: Int] = [
+        "Попкорн": 1,
+        "Напитки": 2,
+        "Чипсы": 3,
+        "Шоколад": 4,
+        "Кальяны": 5
+    ]
     public static let propLicensePlateNumber = "LicensePlateNumber"
     public static let propCity = "City"
     public static let propName = "Name"
@@ -43,4 +50,6 @@ enum Constants {
     public static let errorName = "Введите ваше имя корректно \n"
     public static let errorCity = "Выберите ваш город \n"
     
+    public static let personalDataWarning = "Администрация Автокинотеатра гарантирует полную конфиденциальность персональных данных пользователей, обрабатываемых при предоставлении услуги покупки билета, заказа еды и напитков за исключением случаев, прямо предусмотренных действующим законодательством РФ."
+
 }

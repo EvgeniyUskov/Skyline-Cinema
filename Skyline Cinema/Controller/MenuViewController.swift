@@ -18,32 +18,31 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     let realm = try! Realm()
     
     private var menuList: [Item] = [Item]()
-    private var menuListCategories: [String: [Item]] = [String: [Item]]()
+    private var menuListCategories: [Category] = [Category]()
     private var order: Order?
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         SVProgressHUD.show()
         let networkManager = NetworkManager()
         menuListCategories = networkManager.getItems()
-        
+        sortCategories()
         disableGoToOrderButon()
+        setUpTableView()
+        createOrder()
+    }
+    
+    func setUpTableView() {
+        popcornTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "CustomCell")
+        self.popcornTableView.backgroundView = UIImageView(image: UIImage(named: "background"));
         
         popcornTableView.delegate = self
         popcornTableView.dataSource = self
         popcornTableView.allowsMultipleSelection = true
-        popcornTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "CustomCell")
-        
-//        self.popcornTableView.backgroundView = UIImageView(image: UIImage(named: "background"));
-        let backView = UIView()
-        backView.backgroundColor = .red
-        popcornTableView.backgroundView = backView
-        loadData()
-        
         popcornTableView.reloadData()
-        popcornTableView.rowHeight = 280//UITableView.automaticDimension
+        popcornTableView.rowHeight = 280
         popcornTableView.separatorStyle = .none
+        
     }
     
     //MARK: Data manipulation methods
@@ -51,6 +50,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         menuList = loadItems()
         createOrder()
     }
+    
     // TODO: refactor method merge loadItems() with loadData()
     func loadItems() -> [Item] {
         return Array(realm.objects(Item.self))
@@ -79,17 +79,37 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Array(menuListCategories)[section].value.count
+        return menuListCategories[section].items.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Array(menuListCategories)[section].key
+        return menuListCategories[section].name
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let groupLabel = UILabel()
+        if section == 0 {
+            groupLabel.frame = CGRect(x: 10, y: 15, width: 200, height: 20)
+        }
+        else {
+            groupLabel.frame = CGRect(x: 10, y: 0, width: 200, height: 20)
+        }
+        groupLabel.font = UIFont.systemFont(ofSize: 22)
+        groupLabel.textColor = FlatWhite()
+        groupLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+        
+        let headerView = UIView()
+        headerView.layer.cornerRadius = CGFloat(10.0)
+        headerView.addSubview(groupLabel)
+        
+        return headerView
+    }
+    
     // show data on table row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = popcornTableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
         
-        let item = Array(menuListCategories)[indexPath.section].value[indexPath.row]
+        let item = menuListCategories[indexPath.section].items[indexPath.row]
         cell.itemLabel.text = item.title
         cell.priceLabel.text = String("\(Int(item.price)) руб")
         cell.descriptionLabel.text = item.descript
@@ -102,7 +122,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     //UITableViewCell click
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: delete when deselect
-        let selectedItem = Array(menuListCategories)[indexPath.section].value[indexPath.row]
+        let selectedItem = menuListCategories[indexPath.section].items[indexPath.row]
         try! realm.write {
             if(!selectedItem.checked) {
                 selectedItem.checked = true
@@ -147,7 +167,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func goToOrderButtonTapped(_ sender: UIButton) {
         
     }
- 
+    
     func disableGoToOrderButon() {
         goToOrderButton.isEnabled = false
         goToOrderButton.backgroundColor = UIColor.flatBlackColorDark()
@@ -159,4 +179,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         goToOrderButton.backgroundColor = UIColor.flatWatermelon()
     }
     
+    func sortCategories() {
+        menuListCategories = menuListCategories.sorted(by: { (category1, category2) -> Bool in
+            return Constants.menuMap[category1.name]! < Constants.menuMap[category2.name]!
+        })
+    }
 }

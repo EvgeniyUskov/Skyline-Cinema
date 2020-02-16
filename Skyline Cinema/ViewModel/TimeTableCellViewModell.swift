@@ -15,6 +15,7 @@ class TimeTableCellViewModel {
     var title: String
     var descript: String
     var date: String
+    var time: String
     var rateKp: String
     var rateImdb: String
     var image: UIImage?
@@ -25,9 +26,12 @@ class TimeTableCellViewModel {
         self.kinopoiskId = movie.kinopoiskId
         self.title = movie.title
         self.descript = movie.descript
-        let formatter = DateFormatter()
+        var formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy HH:mm"
         self.date = formatter.string(from: movie.date)
+        formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        self.time = formatter.string(from: movie.date)
         self.rateKp = Constants.noRates
         self.rateImdb = Constants.noRates
 //        self.image = movie.image

@@ -44,6 +44,13 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         }
     }
     
+    @IBAction func infoButtonTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "", message: Constants.personalDataWarning, preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Продолжить", style: .default, handler: nil))
+
+        self.present(alert, animated: true)
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SVProgressHUD
 
 class MembershipViewController: UIViewController {
     @IBOutlet weak var qrLabel: UILabel!
@@ -21,9 +22,11 @@ class MembershipViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         showNoMembership()
         
         getQrCodeByLink()
+        SVProgressHUD.dismiss()
     }
     
     func getQrCodeByLink() {
@@ -35,11 +38,13 @@ class MembershipViewController: UIViewController {
                     if let url = membershipDetails[Constants.qrURL],
                         let endDate = membershipDetails[Constants.endDate] {
                         let membership = Membership(url: url, date: endDate)
-                        let qrImage = self.generteQrCode(membershipUrl: membership.url)
+                        let qrImage = self.generateQrCode(membershipUrl: membership.url)
                         
                         DispatchQueue.main.async {
                             if let qr = qrImage {
-                                self.setUp(membership: membership, qrImage: qr)
+                                self.showMembership(membership: membership, qrImage: qr)
+                            } else {
+                                self.showNoMembership()
                             }
                         }
                     }
@@ -51,18 +56,27 @@ class MembershipViewController: UIViewController {
                     if let url = membershipDetails[Constants.qrURL],
                         let endDate = membershipDetails[Constants.endDate] {
                         let membership = Membership(url: url, date: endDate)
-                        let qrImage = self.generteQrCode(membershipUrl: membership.url)
+                        let qrImage = self.generateQrCode(membershipUrl: membership.url)
                         
                         DispatchQueue.main.async {
                             if let qr = qrImage {
-                                self.setUp(membership: membership, qrImage: qr)
+                                self.showMembership(membership: membership, qrImage: qr)
+                            } else {
+                                self.showNoMembership()
                             }
                 }
             }
         }
     }
     
-    func generteQrCode(membershipUrl: String) -> UIImage?{
+    @IBAction func refreshButtonTapped(_ sender: Any) {
+        SVProgressHUD.show()
+        showNoMembership()
+        getQrCodeByLink()
+        SVProgressHUD.dismiss()
+    }
+    
+    func generateQrCode(membershipUrl: String) -> UIImage?{
         let data = membershipUrl.data(using: String.Encoding.ascii)
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return nil}
         qrFilter.setValue(data, forKey: "inputMessage")
@@ -74,14 +88,6 @@ class MembershipViewController: UIViewController {
         return UIImage(ciImage: scaledQrImage)
     }
     
-    func getQrCodeByImage() {
-        
-    }
-    
-    func setUp(membership: Membership, qrImage: UIImage){
-        showMembership(membership: membership, qrImage: qrImage)
-    }
-    
     func showNoMembership() {
         qrLabel.isHidden = true
         memershipEndDateLabel.isHidden = true
@@ -89,7 +95,6 @@ class MembershipViewController: UIViewController {
         membershipActiveTillLabel.isHidden = true
         noMembershipLabel.isHidden = false
     }
-    
     
     func showMembership(membership: Membership, qrImage: UIImage) {
         qrImageView.image = qrImage

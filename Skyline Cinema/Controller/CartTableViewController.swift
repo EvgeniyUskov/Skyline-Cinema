@@ -43,7 +43,7 @@ class CartTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // Resize row
     func resizeTableViewRows () {
-        cartTableView.rowHeight = 100
+        cartTableView.rowHeight = 250
     }
     
     

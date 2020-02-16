@@ -12,31 +12,33 @@ import Alamofire
 
 class JSONManager {
     
-    func parseJSONItems(response: DataResponse<Any>) -> [String: [Item]] {
-        var itemsFromJSON = [String: [Item]]()
+    func parseJSONItems(response: DataResponse<Any>) -> [Category] {
+        var itemsFromJSON = [Category]()
         // parse JSON from server
         let jsonResponse: JSON = JSON(response.result.value!)
         print("JSON MENU RESPONSE: \(jsonResponse)")
         let categoriesJSON = jsonResponse["itemsResponse"]
         // parse items from JSON
         for categoryJSON in categoriesJSON.arrayValue {
-            let category = categoryJSON["category"].stringValue
+            let categoryName = categoryJSON["category"].stringValue
             var itemList = [Item]()
             
             for itemResponse in categoryJSON["items"].arrayValue {
                 let newItem = Item()
+                newItem.category = categoryName
                 newItem.title = itemResponse["title"].stringValue
                 newItem.descript = itemResponse["description"].stringValue
                 newItem.price = Double(itemResponse["price"].stringValue) ?? 0
                 itemList.append(newItem)
             }
-            itemsFromJSON[category] = itemList
+            let category = Category(name: categoryName, items: itemList)
+            itemsFromJSON.append(category)
         }
         return itemsFromJSON
     }
     
-    func parseMOCKJSONItems() -> [String: [Item]] {
-        var itemsFromJSON = [String: [Item]]()
+    func parseMOCKJSONItems() -> [Category] {
+        var itemsFromJSON = [Category]()
         var json: JSON?
         if let dataFromString = self.mockItemsJSON().data(using: .utf8, allowLossyConversion: false) {
             do {
@@ -51,41 +53,49 @@ class JSONManager {
         
         // parse items from JSON
         for categoryJSON in categoriesJSON.arrayValue {
-            let category = categoryJSON["category"].stringValue
+            let categoryName = categoryJSON["category"].stringValue
             var itemList = [Item]()
             for itemResponse in categoryJSON["items"].arrayValue {
                 let newItem = Item()
-                newItem.category = category
+                newItem.category = categoryName
                 newItem.title = itemResponse["title"].stringValue
                 newItem.descript = itemResponse["description"].stringValue
                 newItem.price = Double(itemResponse["price"].stringValue) ?? 0
                 itemList.append(newItem)
             }
-            itemsFromJSON[category] = itemList
+            let category = Category(name: categoryName, items: itemList)
+            itemsFromJSON.append(category)
         }
         return itemsFromJSON
     }
     
-    func parseJSONMovies(response: DataResponse<Any>) -> [Movie] {
+    func parseJSONMovies(response: DataResponse<Any>) -> [MovieDay] {
         // parse JSON from server
-        var moviesFromJSON = [Movie]()
+        var moviesFromJSON = [MovieDay]()
         let jsonResponse: JSON = JSON(response.result.value!)
         print("JSON MOVIES RESPONSE: \(jsonResponse)")
-        let moviesJSON = jsonResponse["moviesResponse"]
+        let movieDaysJSON = jsonResponse["moviesResponse"]
         
         // parse items from JSON
-        for movie in moviesJSON.arrayValue {
-            let newMovie = Movie()
-            newMovie.title = movie["title"].stringValue
-            newMovie.descript = movie["description"].stringValue
-            newMovie.rate = Double(movie["rate"].stringValue) ?? 0
-            moviesFromJSON.append(newMovie)
+        for movieDayJSON in movieDaysJSON["days"].arrayValue {
+            let date = movieDayJSON["date"].stringValue
+            var movieList = [Movie]()
+            for movie in movieDayJSON["movies"].arrayValue {
+
+                let newMovie = Movie()
+                newMovie.title = movie["title"].stringValue
+                newMovie.descript = movie["description"].stringValue
+                newMovie.rate = Double(movie["rate"].stringValue) ?? 0
+                movieList.append(newMovie)
+            }
+            let movieDay = MovieDay(date: date, movies: movieList)
+            moviesFromJSON.append(movieDay)
         }
         return moviesFromJSON
     }
     
-    func parseJSONMOCKMovies() -> [Movie] {
-        var moviesFromJSON = [Movie]()
+    func parseJSONMOCKMovies() -> [MovieDay] {
+        var moviesFromJSON = [MovieDay]()
         var json: JSON?
         if let dataFromString = self.mockMoviesJSON().data(using: .utf8, allowLossyConversion: false) {
             do {
@@ -96,22 +106,29 @@ class JSONManager {
         }
         let jsonResponse: JSON = json!
         print("JSON MOVIES RESPONSE: \(jsonResponse)")
-        let moviesJSON = jsonResponse["moviesResponse"]
+        let movieDaysJSON = jsonResponse["moviesResponse"]
         
-        for movie in moviesJSON.arrayValue {
-            let newMovie = Movie()
-            newMovie.title = movie["title"].stringValue
-            newMovie.descript = movie["description"].stringValue
-            newMovie.rate = Double(movie["rate"].stringValue) ?? 0
-            newMovie.id = movie["id"].intValue
-            newMovie.kinopoiskId = movie["kinopoiskId"].stringValue
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "ru_RU_POSIX")
-            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
-            let date = dateFormatter.date(from: movie["date"].stringValue)!
-            newMovie.date = date
-            moviesFromJSON.append(newMovie)
+        for movieDayJSON in movieDaysJSON["days"].arrayValue {
+            let date = movieDayJSON["date"].stringValue
+            var movieList = [Movie]()
+            for movie in movieDayJSON["movies"].arrayValue {
+                let newMovie = Movie()
+                newMovie.title = movie["title"].stringValue
+                newMovie.descript = movie["description"].stringValue
+                newMovie.rate = Double(movie["rate"].stringValue) ?? 0
+                newMovie.id = movie["id"].intValue
+                newMovie.kinopoiskId = movie["kinopoiskId"].stringValue
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: "ru_RU_POSIX")
+                dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+                let date = dateFormatter.date(from: movie["date"].stringValue)!
+                newMovie.date = date
+                movieList.append(newMovie)
+            }
+            let movieDay = MovieDay(date: date, movies: movieList)
+            moviesFromJSON.append(movieDay)
         }
+
         return moviesFromJSON
     }
     
@@ -203,7 +220,7 @@ class JSONManager {
     }
     
     func mockMoviesJSON() -> String {
-        return "{\"moviesResponse\":[{\"kinopoiskId\":\"263531\",\"title\":\"Топ Ган\",\"date\":\"21.12.2019 20:30\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"387556\",\"title\":\"Хатико - самый верный друг\",\"date\":\"21.12.2019 22:00\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"7108\",\"title\":\"Кто подставил Кролика Роджера\",\"date\":\"22.12.2019 20:30\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"4807\",\"title\":\"Не грози южному централу, попивая сок у себя в квартале\",\"date\":\"22.12.2019 22:00\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"1111004\",\"title\":\"Хищные птицы\",\"date\":\"23.12.2019 20:30\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"263531\",\"title\":\"Кто подставил Кролика Роджера\",\"date\":\"23.12.2019 22:00\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"263531\",\"title\":\"Мстители\",\"date\":\"24.12.2019 20:30\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"263531\",\"title\":\"Кто подставил Кролика Роджера\",\"date\":\"24.12.2019 22:30\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"263531\",\"title\":\"Кто подставил Кролика Роджера\",\"date\":\"25.12.2019 20:30\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"263531\",\"title\":\"Кто подставил Кролика Роджера\",\"date\":\"25.12.2019 22:30\",\"address\":\"Аэропорт 2/2\"}]}"
+        return "{\"moviesResponse\":{\"days\":[{\"date\":\"21.12.2019\",\"movies\":[{\"kinopoiskId\":\"7360\",\"title\":\"Топ Ган\",\"date\":\"21.12.2019 20:30\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"387556\",\"title\":\"Хатико - самый верный друг\",\"date\":\"21.12.2019 22:00\",\"address\":\"Аэропорт 2/2\"}]},{\"date\":\"22.12.2019\",\"movies\":[{\"kinopoiskId\":\"7108\",\"title\":\"Кто подставил Кролика Роджера\",\"date\":\"22.12.2019 20:30\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"4807\",\"title\":\"Не грози южному централу, попивая сок у себя в квартале\",\"date\":\"22.12.2019 22:00\",\"address\":\"Аэропорт 2/2\"}]},{\"date\":\"23.12.2019\",\"movies\":[{\"kinopoiskId\":\"1111004\",\"title\":\"Хищные птицы\",\"date\":\"23.12.2019 20:30\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"263531\",\"title\":\"Кто подставил Кролика Роджера\",\"date\":\"23.12.2019 22:00\",\"address\":\"Аэропорт 2/2\"}]},{\"date\":\"24.12.2019\",\"movies\":[{\"kinopoiskId\":\"7360\",\"title\":\"Топ Ган\",\"date\":\"24.12.2019 20:30\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"387556\",\"title\":\"Хатико - самый верный друг\",\"date\":\"24.12.2019 22:00\",\"address\":\"Аэропорт 2/2\"}]},{\"date\":\"25.12.2019\",\"movies\":[{\"kinopoiskId\":\"7108\",\"title\":\"Кто подставил Кролика Роджера\",\"date\":\"25.12.2019 20:30\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"4807\",\"title\":\"Не грози южному централу, попивая сок у себя в квартале\",\"date\":\"25.12.2019 22:00\",\"address\":\"Аэропорт 2/2\"}]},{\"date\":\"26.12.2019\",\"movies\":[{\"kinopoiskId\":\"1111004\",\"title\":\"Хищные птицы\",\"date\":\"26.12.2019 20:30\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"263531\",\"title\":\"Кто подставил Кролика Роджера\",\"date\":\"26.12.2019 22:00\",\"address\":\"Аэропорт 2/2\"}]},{\"date\":\"27.12.2019\",\"movies\":[{\"kinopoiskId\":\"1111004\",\"title\":\"Хищные птицы\",\"date\":\"27.12.2019 20:30\",\"address\":\"Аэропорт 2/2\"},{\"kinopoiskId\":\"263531\",\"title\":\"Кто подставил Кролика Роджера\",\"date\":\"27.12.2019 22:00\",\"address\":\"Аэропорт 2/2\"}]}]}}"
     }
     
     func mockMembershipJSON() -> String {

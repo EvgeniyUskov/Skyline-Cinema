@@ -8,6 +8,7 @@
 
 import Foundation
 import WebKit
+import SVProgressHUD
 
 class BuyTicketViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     
@@ -27,12 +28,13 @@ class BuyTicketViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        SVProgressHUD.show()
         let myURL = URL(string: networkManager.buyTicketURL)!
         let myRequest = URLRequest(url: myURL)
         webView.load(myRequest)
         webView.allowsBackForwardNavigationGestures = true
         print(webView.url!)
+        SVProgressHUD.dismiss()
     }
     
 }

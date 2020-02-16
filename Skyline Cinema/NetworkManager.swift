@@ -37,8 +37,8 @@ struct NetworkManager {
     
     let networkActive = false
     
-    func getItems() -> [String: [Item]]{
-        var groupsOfItems = [String: [Item]]()
+    func getItems() -> [Category]{
+        var groupsOfItems = [Category]()
         do{
             try realm.write {
                 let olderItems = realm.objects(Item.self)
@@ -48,15 +48,15 @@ struct NetworkManager {
                         (response) in
                         if response.result.isSuccess {
                             groupsOfItems = self.jsonManager.parseJSONItems(response: response)
-                            for (itemCategory, items) in groupsOfItems {
-                                self.realm.add(items)
+                            for category in groupsOfItems {
+                                self.realm.add(category.items)
                             }
                         }
                     }
                 } else {
                     groupsOfItems = jsonManager.parseMOCKJSONItems()
-                    for (itemCategory, items) in groupsOfItems {
-                        self.realm.add(items)
+                    for category in groupsOfItems {
+                        self.realm.add(category.items)
                     }
                 }
             }
@@ -69,8 +69,8 @@ struct NetworkManager {
         return groupsOfItems
     }
     
-    func getMovies() -> [Movie] {
-        var movies = [Movie]()
+    func getMovies() -> [MovieDay] {
+        var movies = [MovieDay]()
         if networkActive {
             Alamofire.request(skylineCinemaMoviesURL, method: .get).responseJSON {
                 (response) in

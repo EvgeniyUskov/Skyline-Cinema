@@ -29,12 +29,9 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
-        //        let rates = self.networkManager.getMovieRates(kinopoiskId: movieLocal.kinopoiskId)
         getRates()
         //        getMovieDetailsFromWiki()
         getMovieDetailsFromKinopoisk()
-        
-        SVProgressHUD.dismiss()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -72,10 +69,12 @@ class MovieDetailsViewController: UIViewController {
                     DispatchQueue.main.async {
                         movieLocal.setDetailsFromWiki(details: details)
                         self.setUpDescriptionAndImageURL(movie: movieLocal)
+                        SVProgressHUD.dismiss()
                     }
                 }
             }
         }
+        
     }
     
     
@@ -101,6 +100,7 @@ class MovieDetailsViewController: UIViewController {
                     DispatchQueue.main.async {
                         movieLocal.setDetailsFromWiki(details: details)
                         self.setUpDescriptionAndImageURL(movie: movieLocal)
+                        SVProgressHUD.dismiss()
                     }
                 }
             }

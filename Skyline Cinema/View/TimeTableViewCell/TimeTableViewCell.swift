@@ -25,9 +25,8 @@ class TimeTableViewCell: UITableViewCell {
     }
         
     func setUp(viewModel: TimeTableCellViewModel) {
-//        contentView.frame = frame.inset(by: UIEdgeInsets(top: 3, left: 0, bottom: 2, right: 0))
         self.titleLabel.text = viewModel.title
-        self.dateLabel.text = viewModel.date
+        self.dateLabel.text = viewModel.time
         self.movieImageView.image = UIImage(named: "movieBackground")
         self.movieImageView.layer.cornerRadius = CGFloat(10.0)
 //        getMoviePosterURL(kinopoiskId: viewModel.kinopoiskId)
