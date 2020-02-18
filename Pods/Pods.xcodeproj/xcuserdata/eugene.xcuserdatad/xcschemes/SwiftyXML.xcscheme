@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F304D1F524D1E7A76ED53A880EA94A26"
-               BuildableName = "SwiftyXML.framework"
+               BuildableName = "libSwiftyXML.a"
                BlueprintName = "SwiftyXML"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

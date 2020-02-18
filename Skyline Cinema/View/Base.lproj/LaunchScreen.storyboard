@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="launchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="KzY-e5-PCc">
@@ -21,35 +21,37 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SkyCinemaLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Pg9-oz-cAi">
-                                <rect key="frame" x="76" y="172" width="262" height="163"/>
+                                <rect key="frame" x="76" y="128" width="223" height="163"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="163" id="pZR-0j-RYk"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="x2x-nL-EI0">
-                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
-                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="made by your brother from another mother" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWR-8Y-V5j">
-                                <rect key="frame" x="87" y="806" width="240" height="66"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="made by your brother from another mother" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWR-8Y-V5j">
+                                <rect key="frame" x="53.5" y="611" width="268.5" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="Uda-KY-7Eo"/>
-                                    <constraint firstAttribute="width" constant="240" id="hfE-jw-EEl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                 <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="preloader" translatesAutoresizingMaskIntoConstraints="NO" id="hLW-r7-QgG">
+                                <rect key="frame" x="152.5" y="298.5" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="G0w-hW-8ig"/>
+                                    <constraint firstAttribute="height" constant="70" id="ggR-lj-NqZ"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Pg9-oz-cAi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="128" id="0MQ-uC-Gvb"/>
+                            <constraint firstItem="hLW-r7-QgG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0UW-gl-nY2"/>
                             <constraint firstItem="Pg9-oz-cAi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="76" id="1rQ-l6-KPV"/>
                             <constraint firstItem="AWR-8Y-V5j" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UfY-rQ-xAW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pg9-oz-cAi" secondAttribute="trailing" constant="76" id="h6a-1u-Pv2"/>
                             <constraint firstItem="AWR-8Y-V5j" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="10" id="plL-Ep-Wpf"/>
-                            <constraint firstItem="x2x-nL-EI0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="tPD-FY-Tcs"/>
-                            <constraint firstItem="x2x-nL-EI0" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="zYW-n5-Xi6"/>
+                            <constraint firstItem="hLW-r7-QgG" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="sXb-8Z-ndg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -62,5 +64,6 @@
     <resources>
         <image name="SkyCinemaLogo" width="1898" height="733.5"/>
         <image name="launchScreen" width="2048" height="2732"/>
+        <image name="preloader" width="200" height="200"/>
     </resources>
 </document>

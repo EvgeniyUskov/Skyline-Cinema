@@ -7,17 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		442CB07323FBA02D00B90800 /* BuyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442CB07223FBA02D00B90800 /* BuyOrderViewController.swift */; };
 		443C477223F5025A00A2EFEC /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		443C478B23F6DA4D00A2EFEC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C478A23F6DA4D00A2EFEC /* Category.swift */; };
 		443C478D23F833A100A2EFEC /* MovieDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C478C23F833A100A2EFEC /* MovieDay.swift */; };
-		44C97B2E23EBCA6000E5DFAC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C97B2D23EBCA6000E5DFAC /* NetworkManager.swift */; };
-		7C06074B9BF704B718FC7C3C /* Pods_Skyline_Cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1155998F5442D1B37B3CF3A2 /* Pods_Skyline_Cinema.framework */; };
+		443C478F23F90B9A00A2EFEC /* BuyTicketCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C478E23F90B9A00A2EFEC /* BuyTicketCompleteViewController.swift */; };
+		443C479123F90F9500A2EFEC /* EventsCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C479023F90F9400A2EFEC /* EventsCalendarManager.swift */; };
+		443C479523F91F7600A2EFEC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C479423F91F7600A2EFEC /* Event.swift */; };
+		44BA6E3523FA4E8200416183 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA6E3423FA4E8200416183 /* CustomError.swift */; };
+		44BA6E3723FA4E9900416183 /* ResultCustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA6E3623FA4E9900416183 /* ResultCustomError.swift */; };
+		44BA6E3923FA6B9800416183 /* CalendarEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */; };
+		7CBC8889F97DD9BB9777D340 /* libPods-Skyline Cinema.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2424720D266FBBFCAF385611 /* libPods-Skyline Cinema.a */; };
 		AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118D22AE0699000E1024 /* AppDelegate.swift */; };
 		AA18119022AE0699000E1024 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118F22AE0699000E1024 /* TimeTableViewController.swift */; };
 		AA18119322AE0699000E1024 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA18119122AE0699000E1024 /* Main.storyboard */; };
 		AA18119822AE069A000E1024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA18119622AE069A000E1024 /* LaunchScreen.storyboard */; };
 		AA3E73B423CC4B9A0052B85D /* CartCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E73B323CC4B9A0052B85D /* CartCellViewModel.swift */; };
-		AA3E73B623CCB4980052B85D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E73B523CCB4980052B85D /* Observable.swift */; };
 		AA3E73BA23CDBD220052B85D /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E73B823CDBD220052B85D /* TimeTableViewCell.swift */; };
 		AA3E73BB23CDBD220052B85D /* TimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3E73B923CDBD220052B85D /* TimeTableViewCell.xib */; };
 		AA46AD1B230BB8AD00FCC3C5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46AD1A230BB8AD00FCC3C5 /* Order.swift */; };
@@ -70,8 +75,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1155998F5442D1B37B3CF3A2 /* Pods_Skyline_Cinema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skyline_Cinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2EB1F7C0B627578AD6B332A1 /* Pods-Skyline Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.release.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.release.xcconfig"; sourceTree = "<group>"; };
+		00EC5B74D66B587542F0691D /* Pods-Skyline Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.release.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.release.xcconfig"; sourceTree = "<group>"; };
+		2424720D266FBBFCAF385611 /* libPods-Skyline Cinema.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Skyline Cinema.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		442CB07223FBA02D00B90800 /* BuyOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyOrderViewController.swift; sourceTree = "<group>"; };
 		443C477423F5027200A2EFEC /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		443C477523F5027200A2EFEC /* ChameleonFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ChameleonFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		443C477623F5027200A2EFEC /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,8 +87,12 @@
 		443C477A23F5027200A2EFEC /* SwiftyXML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyXML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		443C478A23F6DA4D00A2EFEC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		443C478C23F833A100A2EFEC /* MovieDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDay.swift; sourceTree = "<group>"; };
-		44C97B2D23EBCA6000E5DFAC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		6688CE512E9158CDACDAEACC /* Pods-Skyline Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.debug.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.debug.xcconfig"; sourceTree = "<group>"; };
+		443C478E23F90B9A00A2EFEC /* BuyTicketCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTicketCompleteViewController.swift; sourceTree = "<group>"; };
+		443C479023F90F9400A2EFEC /* EventsCalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCalendarManager.swift; sourceTree = "<group>"; };
+		443C479423F91F7600A2EFEC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		44BA6E3423FA4E8200416183 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		44BA6E3623FA4E9900416183 /* ResultCustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCustomError.swift; sourceTree = "<group>"; };
+		44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventManager.swift; sourceTree = "<group>"; };
 		AA18118A22AE0699000E1024 /* Skyline Cinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skyline Cinema.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA18118D22AE0699000E1024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA18118F22AE0699000E1024 /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
@@ -90,7 +100,6 @@
 		AA18119722AE069A000E1024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA18119922AE069A000E1024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA3E73B323CC4B9A0052B85D /* CartCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCellViewModel.swift; sourceTree = "<group>"; };
-		AA3E73B523CCB4980052B85D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		AA3E73B823CDBD220052B85D /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
 		AA3E73B923CDBD220052B85D /* TimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeTableViewCell.xib; sourceTree = "<group>"; };
 		AA46AD1A230BB8AD00FCC3C5 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -126,6 +135,7 @@
 		AAFF581723CDF6DB0033B411 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		AAFF581923CEC5680033B411 /* XMLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLManager.swift; sourceTree = "<group>"; };
 		AAFF581B23CEC5790033B411 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
+		EC63E2528334106FAAAFAA3E /* Pods-Skyline Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.debug.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C06074B9BF704B718FC7C3C /* Pods_Skyline_Cinema.framework in Frameworks */,
+				7CBC8889F97DD9BB9777D340 /* libPods-Skyline Cinema.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +160,7 @@
 				443C477823F5027200A2EFEC /* SDWebImage.framework */,
 				443C477923F5027200A2EFEC /* SwiftyJSON.framework */,
 				443C477A23F5027200A2EFEC /* SwiftyXML.framework */,
-				1155998F5442D1B37B3CF3A2 /* Pods_Skyline_Cinema.framework */,
+				2424720D266FBBFCAF385611 /* libPods-Skyline Cinema.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -158,8 +168,8 @@
 		9072AFFEE6AC3EDC19C8EF2B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6688CE512E9158CDACDAEACC /* Pods-Skyline Cinema.debug.xcconfig */,
-				2EB1F7C0B627578AD6B332A1 /* Pods-Skyline Cinema.release.xcconfig */,
+				EC63E2528334106FAAAFAA3E /* Pods-Skyline Cinema.debug.xcconfig */,
+				00EC5B74D66B587542F0691D /* Pods-Skyline Cinema.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -195,7 +205,10 @@
 				AAA667FA23D557E000A1893E /* AddressRequest.swift */,
 				AAA667FE23D56B3200A1893E /* ParameterEncoder.swift */,
 				AAA667FC23D5660E00A1893E /* JSONParameterEncoder.swift */,
-				44C97B2D23EBCA6000E5DFAC /* NetworkManager.swift */,
+				443C479023F90F9400A2EFEC /* EventsCalendarManager.swift */,
+				44BA6E3423FA4E8200416183 /* CustomError.swift */,
+				44BA6E3623FA4E9900416183 /* ResultCustomError.swift */,
+				44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */,
 				AAFF581F23CF5E9F0033B411 /* Utils */,
 				AA62AA4722E020FE005300FB /* Model */,
 				AA3E73B023CC417E0052B85D /* ViewModel */,
@@ -211,7 +224,6 @@
 			children = (
 				AA3E73B323CC4B9A0052B85D /* CartCellViewModel.swift */,
 				AAFF581323CDC5820033B411 /* TimeTableCellViewModell.swift */,
-				AA3E73B523CCB4980052B85D /* Observable.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -235,6 +247,7 @@
 				AAFF581123CDC4180033B411 /* Movie.swift */,
 				AA8DD46423D422E900F52855 /* Address.swift */,
 				AAEE08EC23D1587C00E60DAE /* Membership.swift */,
+				443C479423F91F7600A2EFEC /* Event.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -258,9 +271,11 @@
 				AAEE08EA23D05A0300E60DAE /* RegisterViewController.swift */,
 				AAA6DB1B22CC5DCD0033C6CF /* MenuViewController.swift */,
 				AA8EAEC923A22DD900F062C6 /* CartTableViewController.swift */,
+				442CB07223FBA02D00B90800 /* BuyOrderViewController.swift */,
 				AA18118F22AE0699000E1024 /* TimeTableViewController.swift */,
 				AAFF581723CDF6DB0033B411 /* MovieDetailsViewController.swift */,
 				AA917B5B23D187BE002FC579 /* BuyTicketViewController.swift */,
+				443C478E23F90B9A00A2EFEC /* BuyTicketCompleteViewController.swift */,
 				AAEE08E423D04EB300E60DAE /* MembershipViewController.swift */,
 				AA8DD46223D4137500F52855 /* InfoViewController.swift */,
 			);
@@ -313,12 +328,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA18119C22AE069A000E1024 /* Build configuration list for PBXNativeTarget "Skyline Cinema" */;
 			buildPhases = (
-				E8479C6966E416E2E3BB132C /* [CP] Check Pods Manifest.lock */,
+				2F46641ED207A0BC7D40F39B /* [CP] Check Pods Manifest.lock */,
 				AA18118622AE0699000E1024 /* Sources */,
 				AA18118722AE0699000E1024 /* Frameworks */,
 				AA18118822AE0699000E1024 /* Resources */,
 				443C477323F5025B00A2EFEC /* Embed Frameworks */,
-				C21AE7F1C555BF6FA8E955EF /* [CP] Embed Pods Frameworks */,
+				785FF1EAE76B1D0AD133F425 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -384,24 +399,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C21AE7F1C555BF6FA8E955EF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E8479C6966E416E2E3BB132C /* [CP] Check Pods Manifest.lock */ = {
+		2F46641ED207A0BC7D40F39B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -423,6 +421,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		785FF1EAE76B1D0AD133F425 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -430,18 +445,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				443C478F23F90B9A00A2EFEC /* BuyTicketCompleteViewController.swift in Sources */,
 				AA3E73BA23CDBD220052B85D /* TimeTableViewCell.swift in Sources */,
+				44BA6E3523FA4E8200416183 /* CustomError.swift in Sources */,
 				AAEE08ED23D1587C00E60DAE /* Membership.swift in Sources */,
 				AA3E73B423CC4B9A0052B85D /* CartCellViewModel.swift in Sources */,
-				AA3E73B623CCB4980052B85D /* Observable.swift in Sources */,
 				AA7FA84D23C8560500DB25B7 /* CellStepperDelegate.swift in Sources */,
+				443C479523F91F7600A2EFEC /* Event.swift in Sources */,
 				AAEE08E523D04EB300E60DAE /* MembershipViewController.swift in Sources */,
 				443C478B23F6DA4D00A2EFEC /* Category.swift in Sources */,
 				AAEE08E923D051BA00E60DAE /* Cities.swift in Sources */,
 				AA46AD1B230BB8AD00FCC3C5 /* Order.swift in Sources */,
 				AA8EAECA23A22DD900F062C6 /* CartTableViewController.swift in Sources */,
+				443C479123F90F9500A2EFEC /* EventsCalendarManager.swift in Sources */,
 				AAEE08E123D022D900E60DAE /* StringUtils.swift in Sources */,
-				44C97B2E23EBCA6000E5DFAC /* NetworkManager.swift in Sources */,
 				AAA6DB1C22CC5DCD0033C6CF /* MenuViewController.swift in Sources */,
 				AAFF581423CDC5820033B411 /* TimeTableCellViewModell.swift in Sources */,
 				AAA667F923D557D000A1893E /* OrderRequest.swift in Sources */,
@@ -461,10 +478,13 @@
 				AAA667FD23D5660E00A1893E /* JSONParameterEncoder.swift in Sources */,
 				AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */,
 				AAEE08EB23D05A0300E60DAE /* RegisterViewController.swift in Sources */,
+				442CB07323FBA02D00B90800 /* BuyOrderViewController.swift in Sources */,
 				AA7FA84F23C866FE00DB25B7 /* Constants.swift in Sources */,
 				AAFF581223CDC4180033B411 /* Movie.swift in Sources */,
 				AAA667FB23D557E000A1893E /* AddressRequest.swift in Sources */,
+				44BA6E3923FA6B9800416183 /* CalendarEventManager.swift in Sources */,
 				AA8DD46323D4137500F52855 /* InfoViewController.swift in Sources */,
+				44BA6E3723FA4E9900416183 /* ResultCustomError.swift in Sources */,
 				443C478D23F833A100A2EFEC /* MovieDay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,7 +629,7 @@
 		};
 		AA18119D22AE069A000E1024 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6688CE512E9158CDACDAEACC /* Pods-Skyline Cinema.debug.xcconfig */;
+			baseConfigurationReference = EC63E2528334106FAAAFAA3E /* Pods-Skyline Cinema.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -628,7 +648,7 @@
 		};
 		AA18119E22AE069A000E1024 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2EB1F7C0B627578AD6B332A1 /* Pods-Skyline Cinema.release.xcconfig */;
+			baseConfigurationReference = 00EC5B74D66B587542F0691D /* Pods-Skyline Cinema.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

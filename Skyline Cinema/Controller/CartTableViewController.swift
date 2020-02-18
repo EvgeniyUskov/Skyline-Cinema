@@ -33,10 +33,11 @@ class CartTableViewController: UIViewController, UITableViewDelegate, UITableVie
                 itemViewModelList.append(cartItem)
             }
         }
+        cartTableView.backgroundView = UIImageView(image: UIImage(named: "background"));
         
         cartTableView.reloadData()
         resizeTableViewRows()
-//        cartTableView.separatorStyle = .none
+        cartTableView.separatorStyle = .none
         totalAmount = initTotalAmount()
         totalAmountLabel.text = Constants.totalAmount + String(totalAmount)
     }

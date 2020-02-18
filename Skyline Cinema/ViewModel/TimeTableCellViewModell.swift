@@ -46,7 +46,7 @@ class TimeTableCellViewModel {
         }
     }
     
-    func setDetailsFromWiki(details: [String: String]) {
+    func setDetails(details: [String: String]) {
         if let descript = details[Constants.description] {
             self.descript = descript
         }

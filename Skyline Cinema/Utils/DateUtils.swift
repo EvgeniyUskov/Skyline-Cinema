@@ -61,6 +61,18 @@ class DateUtils {
         return dateFormatter.string(from: date)
     }
     
+    static func dateTimeToLiteralString (date: Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateFormat = "dd MMM yyyy HH:mm"
+
+        return dateFormatter.string(from: date)
+    }
+    
+    static func stringDateTimeToLiteralString (dateString: String) -> String{
+        return dateTimeToLiteralString(date: stringToDateTime(dateString: dateString))
+    }
+    
     static func timeString (date: Date) -> String{
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU")

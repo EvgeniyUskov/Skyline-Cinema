@@ -26,7 +26,6 @@ class MembershipViewController: UIViewController {
         showNoMembership()
         
         getQrCodeByLink()
-        SVProgressHUD.dismiss()
     }
     
     func getQrCodeByLink() {
@@ -67,6 +66,7 @@ class MembershipViewController: UIViewController {
                 }
             }
         }
+        SVProgressHUD.dismiss()
     }
     
     @IBAction func refreshButtonTapped(_ sender: Any) {

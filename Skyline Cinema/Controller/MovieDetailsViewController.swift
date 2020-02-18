@@ -30,15 +30,14 @@ class MovieDetailsViewController: UIViewController {
         super.viewDidLoad()
         SVProgressHUD.show()
         getRates()
-        //        getMovieDetailsFromWiki()
-        getMovieDetailsFromKinopoisk()
+        getMovieDetailsFromWiki()
+//        getMovieDetailsFromKinopoisk()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToPay" {
+        if segue.identifier == "goToTicketPurchase" {
             let buyTicketController = segue.destination as! BuyTicketViewController
-            buyTicketController.titleLabel.text = movie?.title 
-            buyTicketController.dateLabel.text = movie?.date
+            buyTicketController.movie = movie
         }
     }
     
@@ -61,18 +60,21 @@ class MovieDetailsViewController: UIViewController {
         if let movieLocal = self.movie {
             let kinopoiskParser = KinopoiskHTMLParser()
             var details = [String: String]()
-            Alamofire.request(networkManager.getKinopoiskMovieDetailsURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get).responseString { (response) in
+            let headers: HTTPHeaders = [
+                "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36"
+            ]
+            Alamofire.request(networkManager.getKinopoiskMovieDetailsURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get, headers: headers).responseString { (response) in
                 if response.result.isSuccess {
-                    print("MOVIE DETAILS KINOPISK SUCCESS: \(response)" )
-                    details[Constants.description] = kinopoiskParser.getDescription(response: response)
-                        details[Constants.imageURL] =  kinopoiskParser.getImageURL(response: response)
-                    DispatchQueue.main.async {
-                        movieLocal.setDetailsFromWiki(details: details)
-                        self.setUpDescriptionAndImageURL(movie: movieLocal)
-                        SVProgressHUD.dismiss()
+                        print("MOVIE DETAILS KINOPOISK SUCCESS: \(response)" )
+                        details[Constants.description] = kinopoiskParser.getDescription(response: response)
+                            details[Constants.imageURL] =  kinopoiskParser.getImageURL(response: response)
+                        DispatchQueue.main.async {
+                            movieLocal.setDetails(details: details)
+                            self.setUpDescriptionAndImageURL(movie: movieLocal)
+                        }
                     }
                 }
-            }
+             SVProgressHUD.dismiss()
         }
         
     }
@@ -98,12 +100,12 @@ class MovieDetailsViewController: UIViewController {
                     print("MOVIE DETAILS SUCCESS: \(response)" )
                     details = jsonManager.parseMovieDetailsJSONFromWIki(response: response, movie: movieLocal)
                     DispatchQueue.main.async {
-                        movieLocal.setDetailsFromWiki(details: details)
+                        movieLocal.setDetails(details: details)
                         self.setUpDescriptionAndImageURL(movie: movieLocal)
-                        SVProgressHUD.dismiss()
                     }
                 }
             }
+            SVProgressHUD.dismiss()
         }
     }
     

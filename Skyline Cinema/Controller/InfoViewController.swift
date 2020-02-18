@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SVProgressHUD
 
 class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -32,6 +33,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         cityNameLabel.text = UserDefaults.standard.value(forKey: Constants.propCity) as! String
         callButton.titleLabel?.font = UIFont(name: "Font Awesome 5 Free", size: 30)
         callButton.setTitle("\u{f879}", for: .normal)

@@ -33,20 +33,20 @@ class TimeTableViewCell: UITableViewCell {
 //        self.accessoryType = .detailButton
     }
     
-    func getMoviePosterURL(kinopoiskId: String) {
-        let kinopoiskParser = KinopoiskHTMLParser()
-        var imageURL = ""
-        Alamofire.request(networkManager.getKinopoiskMovieDetailsURL(kinopoiskMovieId: kinopoiskId), method: .get).responseString { (response) in
-            if response.result.isSuccess {
-                print("MOVIE DETAILS KINOPISK SUCCESS: \(response)" )
-                imageURL = kinopoiskParser.getImageURL(response: response)
-            }
-            
-            DispatchQueue.main.async { [weak self] in
-                self?.movieImageView.sd_setImage(with: URL(string: imageURL ), completed: nil)
-            }
-        }
-    }
+//    func getMoviePosterURL(kinopoiskId: String) {
+//        let kinopoiskParser = KinopoiskHTMLParser()
+//        var imageURL = ""
+//        Alamofire.request(networkManager.getKinopoiskMovieDetailsURL(kinopoiskMovieId: kinopoiskId), method: .get).responseString { (response) in
+//            if response.result.isSuccess {
+//                print("MOVIE DETAILS KINOPISK SUCCESS: \(response)" )
+//                imageURL = kinopoiskParser.getImageURL(response: response)
+//            }
+//
+//            DispatchQueue.main.async { [weak self] in
+//                self?.movieImageView.sd_setImage(with: URL(string: imageURL ), completed: nil)
+//            }
+//        }
+//    }
     
     
 }

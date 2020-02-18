@@ -31,7 +31,6 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     func setupTableView() {
         timeTableTableView.delegate = self
         timeTableTableView.dataSource = self
-        //        timeTableTableView.separatorStyle = .none
         timeTableTableView.register(UINib(nibName: "TimeTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
         timeTableTableView.rowHeight = 150
         timeTableTableView.reloadData()

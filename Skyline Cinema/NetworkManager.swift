@@ -28,7 +28,7 @@ struct NetworkManager {
     let kinopoiskRatesURLXMLExtension = ".xml"
     let kinopoiskMovieDetailsURL = "https://www.kinopoisk.ru/film/"
     
-    let wikiURL = "https://ru.wikipedia.org/wiki/"
+    let wikiURL = "https://ru.wikipedia.org/w/api.php"
     
     let buyTicketURL = "https://money.yandex.ru/new/transfer/a2w"
     
@@ -81,6 +81,7 @@ struct NetworkManager {
         } else {
             movies = self.jsonManager.parseJSONMOCKMovies()
         }
+        SVProgressHUD.dismiss()
         return movies
     }
     
@@ -96,6 +97,7 @@ struct NetworkManager {
         } else {
             addresses = self.jsonManager.parseAddressJSONMock()
         }
+        SVProgressHUD.dismiss()
         return addresses
     }
     

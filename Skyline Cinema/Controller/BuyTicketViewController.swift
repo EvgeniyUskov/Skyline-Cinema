@@ -15,8 +15,8 @@ class BuyTicketViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     //    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    var movieTitle: String?
-    var movieDate: String?
+    var movie: TimeTableCellViewModel?
+    
     var webView = WKWebView()
     
     let networkManager = NetworkManager()
@@ -31,10 +31,26 @@ class BuyTicketViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         SVProgressHUD.show()
         let myURL = URL(string: networkManager.buyTicketURL)!
         let myRequest = URLRequest(url: myURL)
-        webView.load(myRequest)
+        // TODO: UNCOMMENT this
+//        webView.load(myRequest)
         webView.allowsBackForwardNavigationGestures = true
-        print(webView.url!)
+//        print(webView.url!)
         SVProgressHUD.dismiss()
+    }
+    // TODO: delete this method
+    override func viewDidAppear(_ animated: Bool) {
+        performSegueToCompletedPurchase()
+    }
+    
+    func performSegueToCompletedPurchase() {
+        performSegue(withIdentifier: "purchaseCompleted", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "purchaseCompleted" {
+            let buyTicketCompleteViewController = segue.destination as! BuyTicketCompleteViewController
+            buyTicketCompleteViewController.movie = movie
+        }
     }
     
 }

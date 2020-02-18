@@ -51,6 +51,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
         self.present(alert, animated: true)
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
