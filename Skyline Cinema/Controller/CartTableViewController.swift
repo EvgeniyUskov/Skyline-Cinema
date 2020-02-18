@@ -106,4 +106,11 @@ class CartTableViewController: UIViewController, UITableViewDelegate, UITableVie
         return total
 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToPayment" {
+            let buyOrderViewController = segue.destination as! BuyOrderViewController
+            buyOrderViewController.order = order
+        }
+    }
 }

@@ -12,11 +12,15 @@ import Alamofire
 import SVProgressHUD
 
 struct NetworkManager {
+    var defaults = UserDefaults.standard
     
     let skylineCinemaItemsURL = "https://skylinecinema.ru/menu"
     let skylineCinemaMoviesURL = "https://skylinecinema.ru/movies"
     let skylineCinemaMembershipURL = "https://skylinecinema.ru/membership"
-    let skylineCinemaAddressURL = "https://skylinecinema.ru/addresses"
+    let skylineCinemaAddressRequestURL = "https://skylinecinema.ru/addresses"
+    
+    let skylineCinemaOrderRequestURL = "https://skylinecinema.ru/order"
+    let skylineCinemaTicketRequestURL = "https://skylinecinema.ru/ticket"
     
     let vkURL = "https://vk.com/skyline.cinema"
     let igURL = "https://www.instagram.com/skyline.cinema/"
@@ -35,15 +39,13 @@ struct NetworkManager {
     let realm = try! Realm()
     let jsonManager = JSONManager()
     
-    let networkActive = false
-    
     func getItems() -> [Category]{
         var groupsOfItems = [Category]()
         do{
             try realm.write {
                 let olderItems = realm.objects(Item.self)
                 realm.delete(olderItems)
-                if networkActive {
+                if Constants.networkActive {
                     Alamofire.request(skylineCinemaItemsURL, method: .get).responseJSON {
                         (response) in
                         if response.result.isSuccess {
@@ -71,7 +73,7 @@ struct NetworkManager {
     
     func getMovies() -> [MovieDay] {
         var movies = [MovieDay]()
-        if networkActive {
+        if Constants.networkActive {
             Alamofire.request(skylineCinemaMoviesURL, method: .get).responseJSON {
                 (response) in
                 if response.result.isSuccess {
@@ -87,15 +89,21 @@ struct NetworkManager {
     
     func getAddresses() -> [Address] {
         var addresses = [Address]()
-        if networkActive {
-            Alamofire.request(skylineCinemaAddressURL, method: .get).responseJSON {
-                (response) in
-                if response.result.isSuccess {
-                    addresses = self.jsonManager.parseAddressJSON(response: response)
+        if let city = defaults.string(forKey: Constants.propCity) {
+            let parameters = ["city": city]
+            if Constants.networkActive {
+                Alamofire.request(skylineCinemaAddressRequestURL,
+                                  method: .post,
+                    parameters: parameters,
+                    encoding: JSONEncoding.default).responseJSON { response in
+                        debugPrint(response)
+                        if response.result.isSuccess {
+                            addresses = self.jsonManager.parseAddressJSON(response: response)
+                        }
                 }
+            } else {
+                addresses = self.jsonManager.parseAddressJSONMock()
             }
-        } else {
-            addresses = self.jsonManager.parseAddressJSONMock()
         }
         SVProgressHUD.dismiss()
         return addresses

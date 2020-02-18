@@ -12,10 +12,11 @@
 		443C478B23F6DA4D00A2EFEC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C478A23F6DA4D00A2EFEC /* Category.swift */; };
 		443C478D23F833A100A2EFEC /* MovieDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C478C23F833A100A2EFEC /* MovieDay.swift */; };
 		443C478F23F90B9A00A2EFEC /* BuyTicketCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C478E23F90B9A00A2EFEC /* BuyTicketCompleteViewController.swift */; };
-		443C479123F90F9500A2EFEC /* EventsCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C479023F90F9400A2EFEC /* EventsCalendarManager.swift */; };
 		443C479523F91F7600A2EFEC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C479423F91F7600A2EFEC /* Event.swift */; };
-		44BA6E3523FA4E8200416183 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA6E3423FA4E8200416183 /* CustomError.swift */; };
-		44BA6E3723FA4E9900416183 /* ResultCustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA6E3623FA4E9900416183 /* ResultCustomError.swift */; };
+		44447CAE23FBD672001897AD /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44447CAD23FBD672001897AD /* Mock.swift */; };
+		44447CB023FBD76C001897AD /* OrderCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44447CAF23FBD76C001897AD /* OrderCompleteViewController.swift */; };
+		44447CB423FBE64C001897AD /* OrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44447CB323FBE64C001897AD /* OrderRequest.swift */; };
+		44447CB623FC167F001897AD /* TicketRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44447CB523FC167F001897AD /* TicketRequest.swift */; };
 		44BA6E3923FA6B9800416183 /* CalendarEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */; };
 		7CBC8889F97DD9BB9777D340 /* libPods-Skyline Cinema.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2424720D266FBBFCAF385611 /* libPods-Skyline Cinema.a */; };
 		AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118D22AE0699000E1024 /* AppDelegate.swift */; };
@@ -40,7 +41,6 @@
 		AA917B5C23D187BE002FC579 /* BuyTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA917B5B23D187BE002FC579 /* BuyTicketViewController.swift */; };
 		AA92D62123D6B31400C65B6F /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA92D61F23D6B31400C65B6F /* fa-brands-400.ttf */; };
 		AAA470F023D1C6ED00173BA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAA470EF23D1C6ED00173BA3 /* Assets.xcassets */; };
-		AAA667F923D557D000A1893E /* OrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA667F823D557D000A1893E /* OrderRequest.swift */; };
 		AAA667FB23D557E000A1893E /* AddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA667FA23D557E000A1893E /* AddressRequest.swift */; };
 		AAA667FD23D5660E00A1893E /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA667FC23D5660E00A1893E /* JSONParameterEncoder.swift */; };
 		AAA667FF23D56B3200A1893E /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA667FE23D56B3200A1893E /* ParameterEncoder.swift */; };
@@ -88,10 +88,11 @@
 		443C478A23F6DA4D00A2EFEC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		443C478C23F833A100A2EFEC /* MovieDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDay.swift; sourceTree = "<group>"; };
 		443C478E23F90B9A00A2EFEC /* BuyTicketCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTicketCompleteViewController.swift; sourceTree = "<group>"; };
-		443C479023F90F9400A2EFEC /* EventsCalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCalendarManager.swift; sourceTree = "<group>"; };
 		443C479423F91F7600A2EFEC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		44BA6E3423FA4E8200416183 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
-		44BA6E3623FA4E9900416183 /* ResultCustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCustomError.swift; sourceTree = "<group>"; };
+		44447CAD23FBD672001897AD /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
+		44447CAF23FBD76C001897AD /* OrderCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCompleteViewController.swift; sourceTree = "<group>"; };
+		44447CB323FBE64C001897AD /* OrderRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequest.swift; sourceTree = "<group>"; };
+		44447CB523FC167F001897AD /* TicketRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRequest.swift; sourceTree = "<group>"; };
 		44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventManager.swift; sourceTree = "<group>"; };
 		AA18118A22AE0699000E1024 /* Skyline Cinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skyline Cinema.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA18118D22AE0699000E1024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,7 +118,6 @@
 		AA917B5B23D187BE002FC579 /* BuyTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTicketViewController.swift; sourceTree = "<group>"; };
 		AA92D61F23D6B31400C65B6F /* fa-brands-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-brands-400.ttf"; sourceTree = "<group>"; };
 		AAA470EF23D1C6ED00173BA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AAA667F823D557D000A1893E /* OrderRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequest.swift; sourceTree = "<group>"; };
 		AAA667FA23D557E000A1893E /* AddressRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressRequest.swift; sourceTree = "<group>"; };
 		AAA667FC23D5660E00A1893E /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		AAA667FE23D56B3200A1893E /* ParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoder.swift; sourceTree = "<group>"; };
@@ -201,14 +201,13 @@
 				AA7FA84C23C8560500DB25B7 /* CellStepperDelegate.swift */,
 				AAFF581B23CEC5790033B411 /* JSONManager.swift */,
 				AAFF581923CEC5680033B411 /* XMLManager.swift */,
-				AAA667F823D557D000A1893E /* OrderRequest.swift */,
 				AAA667FA23D557E000A1893E /* AddressRequest.swift */,
+				44447CB323FBE64C001897AD /* OrderRequest.swift */,
+				44447CB523FC167F001897AD /* TicketRequest.swift */,
 				AAA667FE23D56B3200A1893E /* ParameterEncoder.swift */,
 				AAA667FC23D5660E00A1893E /* JSONParameterEncoder.swift */,
-				443C479023F90F9400A2EFEC /* EventsCalendarManager.swift */,
-				44BA6E3423FA4E8200416183 /* CustomError.swift */,
-				44BA6E3623FA4E9900416183 /* ResultCustomError.swift */,
 				44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */,
+				44447CAD23FBD672001897AD /* Mock.swift */,
 				AAFF581F23CF5E9F0033B411 /* Utils */,
 				AA62AA4722E020FE005300FB /* Model */,
 				AA3E73B023CC417E0052B85D /* ViewModel */,
@@ -272,6 +271,7 @@
 				AAA6DB1B22CC5DCD0033C6CF /* MenuViewController.swift */,
 				AA8EAEC923A22DD900F062C6 /* CartTableViewController.swift */,
 				442CB07223FBA02D00B90800 /* BuyOrderViewController.swift */,
+				44447CAF23FBD76C001897AD /* OrderCompleteViewController.swift */,
 				AA18118F22AE0699000E1024 /* TimeTableViewController.swift */,
 				AAFF581723CDF6DB0033B411 /* MovieDetailsViewController.swift */,
 				AA917B5B23D187BE002FC579 /* BuyTicketViewController.swift */,
@@ -447,21 +447,21 @@
 			files = (
 				443C478F23F90B9A00A2EFEC /* BuyTicketCompleteViewController.swift in Sources */,
 				AA3E73BA23CDBD220052B85D /* TimeTableViewCell.swift in Sources */,
-				44BA6E3523FA4E8200416183 /* CustomError.swift in Sources */,
+				44447CB423FBE64C001897AD /* OrderRequest.swift in Sources */,
 				AAEE08ED23D1587C00E60DAE /* Membership.swift in Sources */,
 				AA3E73B423CC4B9A0052B85D /* CartCellViewModel.swift in Sources */,
 				AA7FA84D23C8560500DB25B7 /* CellStepperDelegate.swift in Sources */,
 				443C479523F91F7600A2EFEC /* Event.swift in Sources */,
 				AAEE08E523D04EB300E60DAE /* MembershipViewController.swift in Sources */,
+				44447CB623FC167F001897AD /* TicketRequest.swift in Sources */,
 				443C478B23F6DA4D00A2EFEC /* Category.swift in Sources */,
 				AAEE08E923D051BA00E60DAE /* Cities.swift in Sources */,
 				AA46AD1B230BB8AD00FCC3C5 /* Order.swift in Sources */,
 				AA8EAECA23A22DD900F062C6 /* CartTableViewController.swift in Sources */,
-				443C479123F90F9500A2EFEC /* EventsCalendarManager.swift in Sources */,
+				44447CAE23FBD672001897AD /* Mock.swift in Sources */,
 				AAEE08E123D022D900E60DAE /* StringUtils.swift in Sources */,
 				AAA6DB1C22CC5DCD0033C6CF /* MenuViewController.swift in Sources */,
 				AAFF581423CDC5820033B411 /* TimeTableCellViewModell.swift in Sources */,
-				AAA667F923D557D000A1893E /* OrderRequest.swift in Sources */,
 				AA8EAED323A238DB00F062C6 /* CartTableViewCell.swift in Sources */,
 				AA18119022AE0699000E1024 /* TimeTableViewController.swift in Sources */,
 				AA6E377F22E1634F0021273D /* CustomCell.swift in Sources */,
@@ -476,6 +476,7 @@
 				AA917B5C23D187BE002FC579 /* BuyTicketViewController.swift in Sources */,
 				AA8DD46523D422E900F52855 /* Address.swift in Sources */,
 				AAA667FD23D5660E00A1893E /* JSONParameterEncoder.swift in Sources */,
+				44447CB023FBD76C001897AD /* OrderCompleteViewController.swift in Sources */,
 				AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */,
 				AAEE08EB23D05A0300E60DAE /* RegisterViewController.swift in Sources */,
 				442CB07323FBA02D00B90800 /* BuyOrderViewController.swift in Sources */,
@@ -484,7 +485,6 @@
 				AAA667FB23D557E000A1893E /* AddressRequest.swift in Sources */,
 				44BA6E3923FA6B9800416183 /* CalendarEventManager.swift in Sources */,
 				AA8DD46323D4137500F52855 /* InfoViewController.swift in Sources */,
-				44BA6E3723FA4E9900416183 /* ResultCustomError.swift in Sources */,
 				443C478D23F833A100A2EFEC /* MovieDay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

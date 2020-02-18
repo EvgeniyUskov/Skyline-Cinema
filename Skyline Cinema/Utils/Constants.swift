@@ -9,7 +9,8 @@
 import Foundation
 
 enum Constants {
-        
+    public static let networkActive: Bool = false
+    
     public static let menuMap: [String: Int] = [
         "Попкорн": 1,
         "Напитки": 2,
@@ -24,6 +25,15 @@ enum Constants {
 
     // MARK: CartViewController
     public static let totalAmount = "Сумма заказа: "
+    // MARK: OrderCompleteViewController
+    public static let orderRequest = "orderRequest"
+    public static let licensePlateNumber = "licensePlateNumber"
+    public static let city = "city"
+    public static let date = "date"
+    public static let itemIds = "itemIds"
+    public static let bonApetit = "Приятного аппетита!"
+    public static let bonApetitError = "Уупс, что-то пошлон не так."
+    
     // MARK: TitmeTableViewController
 
     // MARK: MovieDetailsViewController
@@ -36,7 +46,14 @@ enum Constants {
     // MARK: Kinopoisk parse html
     public static let kinopoiskFilmSynopsys = "film-synopsys\" itemprop=\"description\">"
     public static let kinopoiskFilmPoster = "popupBigImage"
-
+    
+    // MARK: BuyTicketCompleteViewController
+    public static let kinopoiskId = "kinopoiskId"
+    
+    // MARK:
+    public static let ticketToCar = "Билет преобратается на автомобиль. Количество человек в машине не ограничено."
+    public static let ticketToCarError = "Уупс, что-то пошлон не так."
+    
     // MARK: MembershipViewController
     public static let qrURL = "link"
     public static let endDate = "endDate"

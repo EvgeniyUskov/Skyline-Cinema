@@ -40,6 +40,8 @@ class CartTableViewCell: UITableViewCell {
     
     func setUp (viewModel: CartCellViewModel, indexPath: IndexPath) {
         // TODO: Image loading
+        self.backgroundView =  UIImageView(image: UIImage(named: "background"))
+        self.contentView.layer.cornerRadius = CGFloat(10.0)
         self.indexPath = indexPath
         self.itemImageView.image = UIImage(named: "popcorn")
         self.countLabel.text = String(viewModel.count)

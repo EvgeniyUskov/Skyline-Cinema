@@ -34,13 +34,6 @@ class CalendarEventManager: NSObject {
                 DispatchQueue.main.async {
                     self.presentEventCalendarDetailModal(event: event)
                 }
-                //                do {
-                //                    try self.eventStore.save(event, span: .thisEvent)
-                //                } catch let e as NSError {
-                //                    completion?(false, e)
-                //                    return
-                //                }
-                
                 completion?(true, nil)
             } else {
                 completion?(false, error as NSError?)

@@ -650,7 +650,6 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="goBackButtonTapped:" destination="KOB-ed-qfO" eventType="touchUpInside" id="knZ-mf-hUg"/>
                                                     <segue destination="4bI-Pa-tWL" kind="show" id="ZCz-CF-L7D"/>
                                                 </connections>
                                             </button>
@@ -677,9 +676,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="jOd-Ip-aKA"/>
                     <connections>
+                        <outlet property="addEventToCalendarButton" destination="Lqe-Vh-AFw" id="JQU-sg-qDj"/>
                         <outlet property="dateLabel" destination="cvG-OV-nOt" id="qUo-ei-hfT"/>
                         <outlet property="movieImageView" destination="TDe-1o-41S" id="Y5D-hO-hGG"/>
                         <outlet property="movieNameLabel" destination="ck9-5z-642" id="h7N-S5-Tox"/>
+                        <outlet property="purchaseSuccessfullLabel" destination="DKe-pS-XnE" id="qcE-tT-HeI"/>
+                        <outlet property="ticketToCarLabel" destination="XXN-SX-ErZ" id="CgG-W8-6hs"/>
+                        <outlet property="ticketsLabel" destination="WVW-jW-vLC" id="Dad-mM-jVv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vLF-Tp-U99" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1079,10 +1082,10 @@
             </objects>
             <point key="canvasLocation" x="841" y="94"/>
         </scene>
-        <!--View Controller-->
+        <!--Order Complete View Controller-->
         <scene sceneID="Czi-5L-zwl">
             <objects>
-                <viewController id="nRQ-LR-WuY" sceneMemberID="viewController">
+                <viewController id="nRQ-LR-WuY" customClass="OrderCompleteViewController" customModule="Skyline_Cinema" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="21y-78-Bxj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1130,7 +1133,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="4bI-Pa-tWL" kind="show" id="P4S-sx-bQz"/>
+                                                    <segue destination="4bI-Pa-tWL" kind="show" identifier="goBackFromOrder" id="P4S-sx-bQz"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1161,6 +1164,11 @@
                         <viewLayoutGuide key="safeArea" id="S70-Sy-ew6"/>
                     </view>
                     <navigationItem key="navigationItem" id="1GC-wR-9cW"/>
+                    <connections>
+                        <outlet property="bonApetitLabel" destination="0q9-BD-Fir" id="9Sj-75-X8D"/>
+                        <outlet property="headerLabel" destination="ljy-De-Mkp" id="4ay-gd-mXT"/>
+                        <outlet property="orderIsPreparingLabel" destination="0q9-BD-Fir" id="YdR-LT-vmp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fd3-xz-hpo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,26 +11,70 @@ import EventKit
 import EventKitUI
 import WebKit
 import SVProgressHUD
+import Alamofire
 
 class BuyTicketCompleteViewController: UIViewController {
     
-    let eventsCalendarManager = EventsCalendarManager()
+    let networkManager = NetworkManager()
     let calendarEventManager = CalendarEventManager()
     var movie: TimeTableCellViewModel?
     
+    @IBOutlet weak var purchaseSuccessfullLabel: UILabel!
+    @IBOutlet weak var ticketsLabel: UILabel!
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var movieImageView: UIImageView!
+    @IBOutlet weak var ticketToCarLabel: UILabel!
+
+    @IBOutlet weak var addEventToCalendarButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
+        resetUI()
+        
         if let movieLocal = movie {
+            let ticketRequest = TicketRequest(movie: movieLocal)
+            let parameters = ticketRequest.transformToParameters()
+            if Constants.networkActive {
+                Alamofire.request(networkManager.skylineCinemaTicketRequestURL,
+                                  method: .post,
+                    parameters: parameters,
+                    encoding: JSONEncoding.default).responseJSON { response in
+                        debugPrint(response)
+                        if !response.result.isSuccess {
+                            self.setUIToErrorMode()
+                        }
+                }
+            }
             movieImageView.sd_setImage(with: URL(string: movieLocal.imageURL ?? ""), completed: nil)
             movieNameLabel.text = movieLocal.title
             dateLabel.text = DateUtils.stringDateTimeToLiteralString(dateString: movieLocal.date)
         }
         SVProgressHUD.dismiss()
+    }
+    
+    func resetUI() {
+        purchaseSuccessfullLabel.isHidden = false
+        ticketsLabel.isHidden = false
+        movieNameLabel.isHidden = false
+        dateLabel.isHidden = false
+        movieImageView.isHidden = false
+        ticketToCarLabel.isHidden = false
+        ticketToCarLabel.text = Constants.ticketToCar
+        addEventToCalendarButton.isHidden = false
+    }
+
+    func setUIToErrorMode() {
+        purchaseSuccessfullLabel.isHidden = true
+        ticketsLabel.isHidden = true
+        movieNameLabel.isHidden = true
+        dateLabel.isHidden = true
+        movieImageView.isHidden = true
+        ticketToCarLabel.isHidden = false
+        ticketToCarLabel.text = Constants.ticketToCarError
+
+        addEventToCalendarButton.isHidden = true
     }
     
     @IBAction func AddToCalendarButtonTapped(_ sender: Any) {
@@ -50,4 +94,5 @@ class BuyTicketCompleteViewController: UIViewController {
         return nil
     }
 
+    
 }

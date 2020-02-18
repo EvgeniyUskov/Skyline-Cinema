@@ -16,7 +16,7 @@ class BuyOrderViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         //    @IBOutlet weak var webView: WKWebView!
         @IBOutlet weak var titleLabel: UILabel!
         @IBOutlet weak var dateLabel: UILabel!
-        var movie: TimeTableCellViewModel?
+        var order: Order?
         
         var webView = WKWebView()
         
@@ -45,6 +45,13 @@ class BuyOrderViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         
         func performSegueToCompletedPurchase() {
             performSegue(withIdentifier: "orderCompleted", sender: self)
+        
         }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "orderCompleted" {
+            let orderCompleteViewController = segue.destination as! OrderCompleteViewController
+                orderCompleteViewController.order = order
+        }
+    }
         
     }

@@ -29,8 +29,7 @@ class MembershipViewController: UIViewController {
     }
     
     func getQrCodeByLink() {
-        let networkActive = false
-        if networkActive {
+        if Constants.networkActive {
             Alamofire.request(networkManager.skylineCinemaMembershipURL, method: .get).responseJSON { (response) in
                 if response.result.isSuccess {
                     let membershipDetails: [String: String] = self.jsonManager.parseMembershipURL(response: response)
