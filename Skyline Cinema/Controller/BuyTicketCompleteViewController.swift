@@ -36,7 +36,7 @@ class BuyTicketCompleteViewController: UIViewController {
         if let movieLocal = movie {
             let ticketRequest = TicketRequest(movie: movieLocal)
             let parameters = ticketRequest.transformToParameters()
-            if Constants.networkActive {
+            if Constants.isNetworkActive {
                 Alamofire.request(networkManager.skylineCinemaTicketRequestURL,
                                   method: .post,
                     parameters: parameters,

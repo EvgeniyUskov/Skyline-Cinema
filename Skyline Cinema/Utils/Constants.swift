@@ -9,7 +9,9 @@
 import Foundation
 
 enum Constants {
-    public static let networkActive: Bool = false
+    public static let shopId = "53097"
+    
+    public static let isNetworkActive: Bool = false
     
     public static let menuMap: [String: Int] = [
         "Попкорн": 1,

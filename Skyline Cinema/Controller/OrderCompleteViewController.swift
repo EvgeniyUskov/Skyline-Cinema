@@ -37,7 +37,7 @@ class OrderCompleteViewController: UIViewController {
         if let orderLocal = order {
             let orderRequest = OrderRequest(order: orderLocal)
             let parameters = orderRequest.transformToParameters()
-            if Constants.networkActive {
+            if Constants.isNetworkActive {
                 Alamofire.request(networkManager.skylineCinemaOrderRequestURL,
                                   method: .post,
                     parameters: parameters,

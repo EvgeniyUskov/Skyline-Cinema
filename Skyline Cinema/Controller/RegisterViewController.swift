@@ -16,9 +16,9 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     var cities : [String] = Cities().names
     var selectedCity: String = ""
     
-    var nameSet: Bool = false
-    var citySet: Bool = false
-    var numberSet: Bool = false
+    var isNameSet: Bool = false
+    var isCitySet: Bool = false
+    var isNumberSet: Bool = false
     
     @IBOutlet weak var errorLabel: UILabel!
     
@@ -101,32 +101,32 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         if !isPropSet(key: Constants.propName) &&
             nameTextField.text?.count == 0  {
-            nameSet = false
+            isNameSet = false
             errorLabel.isHidden = false
             errorLabel.text = errorLabel.text! + Constants.errorName
         } else {
-            nameSet = true
+            isNameSet = true
         }
         if !isPropSet(key: Constants.propLicensePlateNumber) &&
             !isNumberCorrect() {
-            numberSet = false
+            isNumberSet = false
             errorLabel.isHidden = false
             errorLabel.text = errorLabel.text! + Constants.errorLicensePlateNumber
         } else {
-            numberSet = true
+            isNumberSet = true
         }
         
         if !isPropSet(key: Constants.propCity) &&
             selectedCity == "" {
-            citySet = false
+            isCitySet = false
             errorLabel.isHidden = false
             errorLabel.text = errorLabel.text! + Constants.errorCity
         } else {
-            citySet = true
+            isCitySet = true
         }
         
         
-        if !numberSet || !citySet || !nameSet {
+        if !isNumberSet || !isCitySet || !isNameSet {
             return false
         }
         return true

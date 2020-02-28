@@ -45,7 +45,7 @@ struct NetworkManager {
             try realm.write {
                 let olderItems = realm.objects(Item.self)
                 realm.delete(olderItems)
-                if Constants.networkActive {
+                if Constants.isNetworkActive {
                     Alamofire.request(skylineCinemaItemsURL, method: .get).responseJSON {
                         (response) in
                         if response.result.isSuccess {
@@ -73,7 +73,7 @@ struct NetworkManager {
     
     func getMovies() -> [MovieDay] {
         var movies = [MovieDay]()
-        if Constants.networkActive {
+        if Constants.isNetworkActive {
             Alamofire.request(skylineCinemaMoviesURL, method: .get).responseJSON {
                 (response) in
                 if response.result.isSuccess {
@@ -91,7 +91,7 @@ struct NetworkManager {
         var addresses = [Address]()
         if let city = defaults.string(forKey: Constants.propCity) {
             let parameters = ["city": city]
-            if Constants.networkActive {
+            if Constants.isNetworkActive {
                 Alamofire.request(skylineCinemaAddressRequestURL,
                                   method: .post,
                     parameters: parameters,
