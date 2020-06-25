@@ -1,0 +1,6 @@
+framework module YandexCheckoutShowcaseApi {
+  umbrella header "YandexCheckoutShowcaseApi-umbrella.h"
+
+  export *
+  module * { export * }
+}

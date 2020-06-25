@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import SVProgressHUD
 
-class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class InfoViewController: UIViewController {
     
     @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var safButton: UIButton!
@@ -35,17 +35,17 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         SVProgressHUD.show()
         cityNameLabel.text = UserDefaults.standard.value(forKey: Constants.propCity) as! String
-        callButton.titleLabel?.font = UIFont(name: "Font Awesome 5 Free", size: 30)
+        callButton.titleLabel?.font = getFreeFont()
         callButton.setTitle("\u{f879}", for: .normal)
-        vkButton.titleLabel?.font = UIFont(name: "Font Awesome 5 Brands", size: 30)
+        vkButton.titleLabel?.font = getBrandsFont()
         vkButton.setTitle("\u{f189}", for: .normal)
-        igButton.titleLabel?.font = UIFont(name: "Font Awesome 5 Brands", size: 30)
+        igButton.titleLabel?.font = getBrandsFont()
         igButton.setTitle("\u{f16d}", for: .normal)
-        fbButton.titleLabel?.font = UIFont(name: "Font Awesome 5 Brands", size: 30)
+        fbButton.titleLabel?.font = getBrandsFont()
         fbButton.setTitle("\u{f39e}", for: .normal)
-        tlgButton.titleLabel?.font = UIFont(name: "Font Awesome 5 Brands", size: 30)
+        tlgButton.titleLabel?.font = getBrandsFont()
         tlgButton.setTitle("\u{f3fe}", for: .normal)
-        safButton.titleLabel?.font = UIFont(name: "Font Awesome 5 Brands", size: 30)
+        safButton.titleLabel?.font = getBrandsFont()
         safButton.setTitle("\u{f267}", for: .normal)
         
         addressTableView.dataSource = self
@@ -58,22 +58,12 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         addressTableView.allowsMultipleSelection = false
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return addressList.count
+    func getFreeFont() -> UIFont {
+        return UIFont(name: "Font Awesome 5 Free", size: 30)!
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedAddress = addressList[indexPath.row]
-        
-        if let address = selectedAddress {
-            callButton.setTitle("\u{f879} \(address.phoneNumber)", for: .normal)
-            
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell", for: indexPath)
-        return cellSetUp(cell: cell, indexPath: indexPath)
+    func getBrandsFont() -> UIFont {
+        return UIFont(name: "Font Awesome 5 Brands", size: 30)!
     }
     
     func cellSetUp(cell: UITableViewCell, indexPath: IndexPath) -> UITableViewCell {
@@ -102,6 +92,27 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     @IBAction func safButtonTapped(_ sender: Any) {
         UIApplication.shared.openURL(NSURL(string: networkManager.safariURL) as! URL)
+    }
+    
+}
+
+extension InfoViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return addressList.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedAddress = addressList[indexPath.row]
+        
+        if let address = selectedAddress {
+            callButton.setTitle("\u{f879} \(address.phoneNumber)", for: .normal)
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell", for: indexPath)
+        return cellSetUp(cell: cell, indexPath: indexPath)
     }
     
 }

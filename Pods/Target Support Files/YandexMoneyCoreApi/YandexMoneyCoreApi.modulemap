@@ -1,0 +1,6 @@
+framework module YandexMoneyCoreApi {
+  umbrella header "YandexMoneyCoreApi-umbrella.h"
+
+  export *
+  module * { export * }
+}

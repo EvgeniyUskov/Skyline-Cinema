@@ -16,11 +16,11 @@ class CartCellViewModel {
     var priceDouble: Double
     var priceString: String {
         get {
-                return String(Int(priceDouble))
+            return String(Int(priceDouble))
         }
     }
     var image: UIImage?
-
+    
     var count: Int
     
     init (item: Item) {
@@ -29,6 +29,6 @@ class CartCellViewModel {
         self.descript = item.descript
         self.priceDouble = item.price
         self.count = 1
-//        self.image = item.image
+        //        self.image = item.image
     }
 }

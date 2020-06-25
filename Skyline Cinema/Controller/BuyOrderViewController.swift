@@ -10,43 +10,41 @@
 import Foundation
 import WebKit
 import SVProgressHUD
+import YandexCheckoutPayments
+import YandexCheckoutPaymentsApi
 
 class BuyOrderViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         
-        //    @IBOutlet weak var webView: WKWebView!
         @IBOutlet weak var titleLabel: UILabel!
         @IBOutlet weak var dateLabel: UILabel!
-        var order: Order?
         
-        var webView = WKWebView()
+        var order: Order?
+        var totalAmount: Double?
         
         let networkManager = NetworkManager()
         
-        override func loadView() {
-            webView.navigationDelegate = self
-            view = webView
-        }
-        
         override func viewDidLoad() {
             super.viewDidLoad()
-            SVProgressHUD.show()
-            let myURL = URL(string: networkManager.buyTicketURL)!
-            let myRequest = URLRequest(url: myURL)
-            // TODO: UNCOMMENT this
-    //        webView.load(myRequest)
-            webView.allowsBackForwardNavigationGestures = true
-    //        print(webView.url!)
+//            SVProgressHUD.show()
+//            let defaults = UserDefaults.standard
+//            
+//            let apiKey = defaults.string(forKey: Constants.propYandexApiKey)
+//            let shopId = Constants.shopId
+//            let amount = Amount(value: totalAmount, currency: .rub)
+//
+//            let inputData = TokenizationModuleInputData(
+//                clientApplicationKey: apiKey,
+//                shopName: Constants.shopName ,
+//                purchaseDescription: "\(defaults.string(forKey: Constants.propName)) Номер: \(order.licensePlateNumber): Заказ еды",
+//                amount: amount)
+            
             SVProgressHUD.dismiss()
-        }
-        // TODO: delete this method
-        override func viewDidAppear(_ animated: Bool) {
-            performSegueToCompletedPurchase()
         }
         
         func performSegueToCompletedPurchase() {
             performSegue(withIdentifier: "orderCompleted", sender: self)
-        
         }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "orderCompleted" {
             let orderCompleteViewController = segue.destination as! OrderCompleteViewController

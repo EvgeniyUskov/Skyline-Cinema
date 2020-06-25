@@ -1019,6 +1019,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="paymentButtonTapped:" destination="2wH-fg-Y8F" eventType="touchUpInside" id="HQX-bV-WUh"/>
                                             <segue destination="4zB-Y1-Xup" kind="show" identifier="goToPayment" id="abm-BE-XEN"/>
                                         </connections>
                                     </button>

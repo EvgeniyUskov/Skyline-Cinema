@@ -10,6 +10,9 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
+import YandexCheckoutPayments
+import YandexCheckoutPaymentsApi
+
 class JSONManager {
     
     let mock = Mock()
@@ -208,13 +211,53 @@ class JSONManager {
         for itemResponse in addressJSON.arrayValue {
             var address = Address()
             address.address = itemResponse[Constants.addressAddress].stringValue
-            address.description = itemResponse[Constants.addressDescription ].stringValue
-            address.phoneNumber = itemResponse[Constants.addressPhoneNumber ].stringValue
+            address.description = itemResponse[Constants.addressDescription].stringValue
+            address.phoneNumber = itemResponse[Constants.addressPhoneNumber].stringValue
             addresses.append(address)
         }
         
         return addresses
     }
     
+    func parsePaymentJSON(response: DataResponse<Any>) -> Payment {
+        let jsonResponse: JSON = JSON(response.result.value!)
+        debugPrint("JSON Payment RESPONSE: \(jsonResponse)")
+        let id = jsonResponse["id"].stringValue
+        let status = jsonResponse["status"].stringValue
+        let paid = jsonResponse["paid"].boolValue
+        let amount = Amount(value: Decimal(jsonResponse["amount"]["value"].doubleValue), currency: .rub)
+//        jsonResponse["amount"]["currency"])
+//        let confirmation = Confirmation(type: jsonResponse["confirmation"]["type"], confirmationUrl: jsonResponse["confirmation"]["confirmation_url"])
+        let createdAt = DateUtils.stringToDate(dateString: jsonResponse["created_at"].stringValue)
+        let description = jsonResponse["description"].stringValue
+        
+        let payment = Payment(id: id, status: status, paid: paid, amount: amount, createdAt: createdAt, description: description)
+        
+        return payment
+    }
     
+            // PAYMENT
+    //        {
+    //          "id": "23d93cac-000f-5000-8000-126628f15141",
+    //          "status": "pending",
+    //          "paid": false,
+    //          "amount": {
+    //            "value": "2.00",
+    //            "currency": "RUB"
+    //          },
+    //          "confirmation": {
+    //            "type": "redirect",
+    //            "confirmation_url": "<Ссылка для прохождения 3-D Secure>"
+    //          },
+    //          "created_at": "2019-01-22T14:30:45.129Z",
+    //          "description": "Заказ №72",
+    //          "metadata": {},
+    //          "recipient": {
+    //            "account_id": "100001",
+    //            "gateway_id": "1000001"
+    //          },
+    //          "refundable": false,
+    //          "test": false
+    //        }
+
 }

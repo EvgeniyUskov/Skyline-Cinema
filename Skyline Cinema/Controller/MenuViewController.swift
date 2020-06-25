@@ -11,7 +11,7 @@ import RealmSwift
 import ChameleonFramework
 import SVProgressHUD
 
-class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MenuViewController: UIViewController {
     
     @IBOutlet weak var goToOrderButton: UIButton!
     @IBOutlet weak var popcornTableView: UITableView!
@@ -45,15 +45,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    //MARK: Data manipulation methods
+    //MARK: -Data manipulation methods
     func loadData() {
-        menuList = loadItems()
+        menuList = Array(realm.objects(Item.self))
         createOrder()
-    }
-    
-    // TODO: refactor method merge loadItems() with loadData()
-    func loadItems() -> [Item] {
-        return Array(realm.objects(Item.self))
     }
     
     func saveData() {
@@ -72,8 +67,50 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         order!.date = Date()
     }
     
+    func removeItemFromOrder(item: Item) {
+        var index: Int = 0
+        for itemLocal in order!.items {
+            if itemLocal.id == item.id {
+                continue
+            } else {
+                index += 1
+            }
+        }
+        order!.items.remove(at: index)
+    }
     
-    // MARK: - TableView Implementation methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToCart" {
+            let cartController = segue.destination as! CartTableViewController
+            cartController.order = order
+        }
+    }
+    
+    @IBAction func goToOrderButtonTapped(_ sender: UIButton) {
+        
+    }
+    
+    func disableGoToOrderButon() {
+        goToOrderButton.isEnabled = false
+        goToOrderButton.backgroundColor = UIColor.flatBlackColorDark()
+        goToOrderButton.setTitleColor(UIColor.flatGrayColorDark(), for: .disabled)
+    }
+    
+    func enableGoToOrderButon(){
+        goToOrderButton.isEnabled = true
+        goToOrderButton.backgroundColor = UIColor.flatWatermelon()
+    }
+    
+    func sortCategories() {
+        menuListCategories = menuListCategories.sorted(by: { (category1, category2) -> Bool in
+            return Constants.menuMap[category1.name]! < Constants.menuMap[category2.name]!
+        })
+    }
+}
+
+// MARK: - TableView Implementation methods
+extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return menuListCategories.count
     }
@@ -142,46 +179,5 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         popcornTableView.reloadData()
         saveData()
-    }
-    
-    func removeItemFromOrder(item: Item) {
-        var index: Int = 0
-        for itemLocal in order!.items {
-            if itemLocal.id == item.id {
-                continue
-            } else {
-                index += 1
-            }
-        }
-        order!.items.remove(at: index)
-    }
-    
-    //passing data between view controlers
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToCart" {
-            let cartController = segue.destination as! CartTableViewController
-            cartController.order = order
-        }
-    }
-    
-    @IBAction func goToOrderButtonTapped(_ sender: UIButton) {
-        
-    }
-    
-    func disableGoToOrderButon() {
-        goToOrderButton.isEnabled = false
-        goToOrderButton.backgroundColor = UIColor.flatBlackColorDark()
-        goToOrderButton.setTitleColor(UIColor.flatGrayColorDark(), for: .disabled)
-    }
-    
-    func enableGoToOrderButon(){
-        goToOrderButton.isEnabled = true
-        goToOrderButton.backgroundColor = UIColor.flatWatermelon()
-    }
-    
-    func sortCategories() {
-        menuListCategories = menuListCategories.sorted(by: { (category1, category2) -> Bool in
-            return Constants.menuMap[category1.name]! < Constants.menuMap[category2.name]!
-        })
     }
 }

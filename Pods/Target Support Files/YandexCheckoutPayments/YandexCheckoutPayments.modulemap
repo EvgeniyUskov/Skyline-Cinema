@@ -1,0 +1,6 @@
+framework module YandexCheckoutPayments {
+  umbrella header "YandexCheckoutPayments-umbrella.h"
+
+  export *
+  module * { export * }
+}

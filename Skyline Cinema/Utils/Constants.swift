@@ -9,7 +9,15 @@
 import Foundation
 
 enum Constants {
-    public static let shopId = "53097"
+    // TODO: change addresses
+//    public static let shopId = "53097" // боевой shopId
+    public static let shopId = "676332" // тестовый shopId
+//    public static let shopName = "Skyline Cinema" // боевой shopName
+    public static let shopName = "test_(53097) ИП Афонасов Никита Алексеевич" // тестовый shopName
+    
+    public static let mobileSDKApiKey = "" // Ключ мобильного SDK iOS
+    
+    public static let propYandexApiKey = "Yandex.kassa API key"
     
     public static let isNetworkActive: Bool = false
     

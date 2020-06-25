@@ -1,0 +1,28 @@
+import YandexCheckoutWalletApi
+
+enum AuthorizationProcessingAssembly {
+    static func makeService(isLoggingEnabled: Bool,
+                            testModeSettings: TestModeSettings?) -> AuthorizationProcessing {
+        let yandexLoginService = YandexLoginProcessingAssembly.makeService()
+        let yamoneyLoginService = YamoneyLoginAssembly
+            .makeYamoneyLoginService(isLoggingEnabled: isLoggingEnabled,
+                                     testModeSettings: testModeSettings)
+        let deviceInfoService = DeviceInfoProviderAssembly.makeDeviceInfoProvider()
+        let settingsStorage = KeyValueStoringAssembly.makeSettingsStorage()
+
+        let tokenStorage: KeyValueStoring
+        switch testModeSettings {
+        case .some(let testModeSettings):
+            tokenStorage = KeyValueStoringAssembly.makeMockKeychainStorage(testModeSettings: testModeSettings)
+        case .none:
+            tokenStorage = KeyValueStoringAssembly.makeKeychainStorage()
+        }
+
+        let authorizationMediator = AuthorizationMediator(tokenStorage: tokenStorage,
+                                                          yandexLoginService: yandexLoginService,
+                                                          yamoneyLoginService: yamoneyLoginService,
+                                                          deviceInfoService: deviceInfoService,
+                                                          settingsStorage: settingsStorage)
+        return authorizationMediator
+    }
+}

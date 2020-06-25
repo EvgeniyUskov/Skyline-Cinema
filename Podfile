@@ -3,8 +3,8 @@
 
 target 'Skyline Cinema' do
   # Comment the next line if you don't want to use dynamic frameworks
-  # use_frameworks!
-  use_modular_headers!
+   use_frameworks!
+  # use_modular_headers!
 
   # Pods for Skyline Cinema
 	pod 'Alamofire'
@@ -14,4 +14,9 @@ target 'Skyline Cinema' do
   pod 'SDWebImage'
   pod 'ChameleonFramework/Swift'
   pod 'SVProgressHUD'
+  
+  pod 'YandexCheckoutPayments',
+  :git => 'https://github.com/yandex-money/yandex-checkout-payments-swift.git',
+  :tag => '3.5.0'
+  
 end

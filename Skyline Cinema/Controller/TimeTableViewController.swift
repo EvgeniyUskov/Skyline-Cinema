@@ -13,7 +13,7 @@ import Alamofire
 import SVProgressHUD
 import ChameleonFramework
 
-class TimeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TimeTableViewController: UIViewController {
     
     @IBOutlet weak var timeTableTableView: UITableView!
     let realm = try! Realm()
@@ -36,52 +36,6 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         timeTableTableView.reloadData()
     }
     
-    // MARK: - TableView Implementation methods
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return daysWithMovies.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return daysWithMovies[section].movies.count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return daysWithMovies[section].dateString
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let groupLabel = UILabel()
-        if section == 0 {
-            groupLabel.frame = CGRect(x: 10, y: 15, width: 200, height: 20)
-        }
-        else {
-            groupLabel.frame = CGRect(x: 10, y: 0, width: 200, height: 20)
-        }
-        groupLabel.font = UIFont.systemFont(ofSize: 22)
-        groupLabel.textColor = FlatWhite()
-        groupLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
-        
-        let headerView = UIView()
-        headerView.layer.cornerRadius = CGFloat(10.0)
-        headerView.addSubview(groupLabel)
-        
-        return headerView
-    }
-    
-    // show data on table row
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = timeTableTableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! TimeTableViewCell
-        let movie = daysWithMovies[indexPath.section].movies[indexPath.row]
-        
-        cell.setUp(viewModel: movie)
-        return cell
-    }
-    
-    //UITableViewCell click
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToMovieDetails", sender: self)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToMovieDetails" {
             
@@ -93,4 +47,53 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
 
+}
+
+extension TimeTableViewController: UITableViewDelegate, UITableViewDataSource {
+    // MARK: - TableView Implementation methods
+      func numberOfSections(in tableView: UITableView) -> Int {
+          return daysWithMovies.count
+      }
+      
+      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+          return daysWithMovies[section].movies.count
+      }
+      
+      func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+          return daysWithMovies[section].dateString
+      }
+      
+      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+          let groupLabel = UILabel()
+          if section == 0 {
+              groupLabel.frame = CGRect(x: 10, y: 15, width: 200, height: 20)
+          }
+          else {
+              groupLabel.frame = CGRect(x: 10, y: 0, width: 200, height: 20)
+          }
+          groupLabel.font = UIFont.systemFont(ofSize: 22)
+          groupLabel.textColor = FlatWhite()
+          groupLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+          
+          let headerView = UIView()
+          headerView.layer.cornerRadius = CGFloat(10.0)
+          headerView.addSubview(groupLabel)
+          
+          return headerView
+      }
+      
+      // show data on table row
+      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          let cell = timeTableTableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! TimeTableViewCell
+          let movie = daysWithMovies[indexPath.section].movies[indexPath.row]
+          
+          cell.setUp(viewModel: movie)
+          return cell
+      }
+      
+      //UITableViewCell click
+      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+          performSegue(withIdentifier: "goToMovieDetails", sender: self)
+      }
+    
 }

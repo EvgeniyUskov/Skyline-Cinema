@@ -235,7 +235,7 @@ public func FlatWhite() -> UIColor {
 }
 
 public func FlatYellow() -> UIColor {
-	return UIColor.flatYellow()
+	return UIColor.flatYellow() 
 }
 
 // MARK: - Chameleon - Dark Shades Shorthand
