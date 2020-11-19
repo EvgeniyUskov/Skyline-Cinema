@@ -109,15 +109,7 @@ github "chenyunguiMilook/SwiftyXML" ~> 3.0.0
 #### Swift Package Manager
 You can use [The Swift Package Manager](https://swift.org/package-manager) to install `SwiftyXML` by adding the proper description to your `Package.swift` file:
 ```swift
-import PackageDescription
-
-let package = Package(
-    name: "PROJECT_NAME",
-    targets: [],
-    dependencies: [
-        .Package(url: "https://github.com/chenyunguiMilook/SwiftyXML.git", majorVersion: 3, minor: 0)
-    ]
-)
+.package(url: "https://github.com/chenyunguiMilook/SwiftyXML.git", from: "3.0.2")
 ```
 
 ## Usage
@@ -180,17 +172,21 @@ if let c: Color = xml.product.catalog_item.size.color_swatch.enum() {
 
 ```swift
 let store = XML(name: "store")
-store.addAttribute(name: "description", value: "Ball Store")
+    .addAttribute(name: "description", value: "Ball Store")
+    .addChildren([
+        // attributes can be added in the initializer
+        XML(name: "product", attributes: [
+            "name": "football",
+            "weight": 0.453
+        ])
+    ])
 
-let product1 = XML(name: "product")
-product1.addAttribute(name: "name", value: "football")
-product1.addAttribute(name: "weight", value: 0.453)
-
+// attributes can be added to an existing object
 let product2 = XML(name: "product")
 product2.addAttribute(name: "name", value: "basketball")
 product2.addAttribute(name: "weight", value: 0.654)
 
-store.addChild(product1)
+// children can be added to an existing object
 store.addChild(product2)
 
 print(store.toXMLString())

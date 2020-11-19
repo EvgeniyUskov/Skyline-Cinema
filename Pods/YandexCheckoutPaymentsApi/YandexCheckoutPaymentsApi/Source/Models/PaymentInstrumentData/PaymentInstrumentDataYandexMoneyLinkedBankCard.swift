@@ -47,17 +47,19 @@ public class PaymentInstrumentDataYandexMoneyLinkedBankCard: PaymentMethodData {
     ///   - cardId: ID card.
     ///   - csc: The CVC2 or CVV2 code, 3 or 4 characters, is printed on the back of the card.
     ///   - walletAuthorization: Yandex Money authorization header.
+    ///   - paymentMethodType: Type of the source of funds for the payment.
     ///
     /// - Returns: Instance of `PaymentInstrumentDataYandexMoneyLinkedBankCard`.
     public init(instrumentType: YandexMoneyInstrumentType,
                 cardId: String,
                 csc: String,
-                walletAuthorization: String) {
+                walletAuthorization: String,
+                paymentMethodType: PaymentMethodType) {
         self.instrumentType = instrumentType
         self.cardId = cardId
         self.csc = csc
         self.walletAuthorization = walletAuthorization
-        super.init(paymentMethodType: .yandexMoney)
+        super.init(paymentMethodType: paymentMethodType)
     }
 
     /// Creates custom headers.
@@ -83,8 +85,9 @@ public class PaymentInstrumentDataYandexMoneyLinkedBankCard: PaymentMethodData {
         let paymentMethodType = try container.decode(PaymentMethodType.self, forKey: .paymentMethodType)
         let instrumentType = try container.decode(YandexMoneyInstrumentType.self, forKey: .instrumentType)
 
-        guard case .yandexMoney = paymentMethodType,
-              case .linkedBankCard = instrumentType else {
+        guard paymentMethodType == .yandexMoney
+                || paymentMethodType == .yooMoney,
+              instrumentType == .linkedBankCard else {
             throw DecodingError.incorrectType
         }
 
@@ -94,7 +97,8 @@ public class PaymentInstrumentDataYandexMoneyLinkedBankCard: PaymentMethodData {
         self.init(instrumentType: instrumentType,
                   cardId: cardId,
                   csc: csc,
-                  walletAuthorization: "")
+                  walletAuthorization: "",
+                  paymentMethodType: paymentMethodType)
     }
 
     // MARK: - Encodable

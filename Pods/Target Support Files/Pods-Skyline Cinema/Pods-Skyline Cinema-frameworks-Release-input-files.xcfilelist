@@ -11,9 +11,8 @@ ${BUILT_PRODUCTS_DIR}/SwiftyXML/SwiftyXML.framework
 ${BUILT_PRODUCTS_DIR}/When/When.framework
 ${BUILT_PRODUCTS_DIR}/YandexCheckoutPayments/YandexCheckoutPayments.framework
 ${BUILT_PRODUCTS_DIR}/YandexCheckoutPaymentsApi/YandexCheckoutPaymentsApi.framework
-${BUILT_PRODUCTS_DIR}/YandexCheckoutShowcaseApi/YandexCheckoutShowcaseApi.framework
 ${BUILT_PRODUCTS_DIR}/YandexCheckoutWalletApi/YandexCheckoutWalletApi.framework
-${BUILT_PRODUCTS_DIR}/YandexLoginSDK/YandexLoginSDK.framework
 ${PODS_ROOT}/YandexMobileMetrica/dynamic/YandexMobileMetrica.framework
 ${PODS_ROOT}/YandexMobileMetrica/dynamic/YandexMobileMetricaCrashes.framework
 ${BUILT_PRODUCTS_DIR}/YandexMoneyCoreApi/YandexMoneyCoreApi.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/MoneyAuth/MoneyAuth.framework/MoneyAuth

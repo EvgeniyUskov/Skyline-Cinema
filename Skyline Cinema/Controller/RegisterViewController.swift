@@ -29,11 +29,12 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var nameTextField: UITextField!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         cityPicker.delegate = self
         cityPicker.dataSource = self
         licensePlateNumberTextField.delegate = self
         nameTextField.delegate = self
-        super.viewDidLoad()
+        
         errorLabel.isHidden = true
     }
     

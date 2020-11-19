@@ -40,4 +40,7 @@ public enum PaymentMethodType: String, Codable {
     case sberbank
     /// ApplePay.
     case applePay = "apple_pay"
+
+    /// Yoo money
+    case yooMoney = "yoo_money"
 }

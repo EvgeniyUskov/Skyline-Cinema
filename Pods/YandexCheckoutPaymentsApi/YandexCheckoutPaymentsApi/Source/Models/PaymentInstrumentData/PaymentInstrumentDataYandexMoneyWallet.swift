@@ -40,13 +40,15 @@ public class PaymentInstrumentDataYandexMoneyWallet: PaymentMethodData {
     /// - Parameters:
     ///   - instrumentType: The type of the source of funds for payments from the Yandex.Money.
     ///   - walletAuthorization: Yandex Money authorization header.
+    ///   - paymentMethodType: Type of the source of funds for the payment.
     ///
     /// - Returns: Instance of `PaymentInstrumentDataYandexMoneyWallet`.
     public init(instrumentType: YandexMoneyInstrumentType,
-                walletAuthorization: String) {
+                walletAuthorization: String,
+                paymentMethodType: PaymentMethodType) {
         self.instrumentType = instrumentType
         self.walletAuthorization = walletAuthorization
-        super.init(paymentMethodType: .yandexMoney)
+        super.init(paymentMethodType: paymentMethodType)
     }
 
     /// Creates custom headers.
@@ -73,12 +75,17 @@ public class PaymentInstrumentDataYandexMoneyWallet: PaymentMethodData {
         let paymentMethodType = try container.decode(PaymentMethodType.self, forKey: .paymentMethodType)
         let instrumentType = try container.decode(YandexMoneyInstrumentType.self, forKey: .instrumentType)
 
-        guard case .yandexMoney = paymentMethodType,
-              case .wallet = instrumentType else {
+        guard paymentMethodType == .yandexMoney
+                || paymentMethodType == .yooMoney,
+              instrumentType == .wallet else {
             throw DecodingError.incorrectType
         }
 
-        self.init(instrumentType: instrumentType, walletAuthorization: "")
+        self.init(
+            instrumentType: instrumentType,
+            walletAuthorization: "",
+            paymentMethodType: paymentMethodType
+        )
     }
 
     /// Encodes this value into the given encoder.

@@ -31,7 +31,7 @@ public struct MonetaryAmount: Decodable, Encodable {
     public let value: Decimal
 
     /// ISO-4217 3-alpha character code of payment currency.
-    public let currency: CurrencyCode
+    public let currency: String
 
     /// Creates instance of `MonetaryAmount`
     ///
@@ -40,7 +40,7 @@ public struct MonetaryAmount: Decodable, Encodable {
     ///   - currency
     ///
     /// - Returns: Instance of `MonetaryAmount`
-    public init(value: Decimal, currency: CurrencyCode) {
+    public init(value: Decimal, currency: String) {
         self.value = value
         self.currency = currency
     }
@@ -58,7 +58,7 @@ public struct MonetaryAmount: Decodable, Encodable {
         guard let value = Decimal(string: try container.decode(String.self, forKey: .value)) else {
             throw DecodingError.decimalConvent
         }
-        let currency = try container.decode(CurrencyCode.self, forKey: .currency)
+        let currency = try container.decode(String.self, forKey: .currency)
 
         self.init(value: value, currency: currency)
     }

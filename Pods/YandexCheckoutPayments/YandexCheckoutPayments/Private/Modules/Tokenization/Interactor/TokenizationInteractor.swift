@@ -36,9 +36,17 @@ final class TokenizationInteractor {
 
 extension TokenizationInteractor: TokenizationInteractorInput {
 
-    func tokenize(_ data: TokenizeData, paymentOption: PaymentOption) {
-
-        let tmxSessionId = ThreatMetrixService.profileApp()
+    func tokenize(
+        _ data: TokenizeData,
+        paymentOption: PaymentOption,
+        tmxSessionId: String?
+    ) {
+        let promiseTmxSessionId: Promise<String>
+        if let tmxSessionId = tmxSessionId {
+            promiseTmxSessionId = Promise { return tmxSessionId }
+        } else {
+            promiseTmxSessionId = ThreatMetrixService.profileApp()
+        }
 
         let makeToken: (MonetaryAmount?) -> (String) -> Promise<Tokens>
 
@@ -50,23 +58,23 @@ extension TokenizationInteractor: TokenizationInteractorInput {
 
         case let .wallet(confirmation, savePaymentMethod):
 
-            guard let yamoneyToken = authorizationService.getYamoneyToken() else {
+            guard let yamoneyToken = authorizationService.getWalletToken() else {
                 assertionFailure("You must be authorized in yamoney")
                 return
             }
 
             makeToken = curry(paymentService.tokenizeWallet)(clientApplicationKey)(
-                yamoneyToken)(confirmation)(savePaymentMethod)
+                yamoneyToken)(confirmation)(savePaymentMethod)(paymentOption.paymentMethodType)
 
         case let .linkedBankCard(id, csc, confirmation, savePaymentMethod):
 
-            guard let yamoneyToken = authorizationService.getYamoneyToken() else {
+            guard let yamoneyToken = authorizationService.getWalletToken() else {
                 assertionFailure("You must be authorized in yamoney")
                 return
             }
 
             makeToken = curry(paymentService.tokenizeLinkedBankCard)(clientApplicationKey)(
-                yamoneyToken)(id)(csc)(confirmation)(savePaymentMethod)
+                yamoneyToken)(id)(csc)(confirmation)(savePaymentMethod)(paymentOption.paymentMethodType)
 
         case let .applePay(paymentData, savePaymentMethod):
             makeToken = curry(paymentService.tokenizeApplePay)(clientApplicationKey)(
@@ -78,7 +86,7 @@ extension TokenizationInteractor: TokenizationInteractorInput {
         }
 
         let monetaryAmount = paymentOption.charge
-        let tokens = makeToken(monetaryAmount) -<< tmxSessionId
+        let tokens = makeToken(monetaryAmount) -<< promiseTmxSessionId
         let tokensWithError = tokens.recover(on: .global(), mapError)
 
         guard let output = output else { return }
@@ -86,25 +94,29 @@ extension TokenizationInteractor: TokenizationInteractorInput {
         tokensWithError.fail(output.failTokenizeData)
     }
 
-    func isAuthorizedInYandex() -> Bool {
-        return authorizationService.getYandexToken() != nil
+    func getWalletDisplayName() -> String? {
+        return authorizationService.getWalletDisplayName()
     }
 
-    func getYandexDisplayName() -> String? {
-        return authorizationService.getYandexDisplayName()
-    }
-
-    func loginInYandexMoney(reusableToken: Bool, paymentOption: PaymentOption) {
+    func loginInYandexMoney(
+        reusableToken: Bool,
+        paymentOption: PaymentOption,
+        tmxSessionId: String?
+    ) {
         let walletMonetaryAmount = MonetaryAmountFactory.makeWalletMonetaryAmount(paymentOption.charge)
 
-        let response = authorizationService.loginInYamoney(merchantClientAuthorization: clientApplicationKey,
-                                                           amount: walletMonetaryAmount,
-                                                           reusableToken: reusableToken)
+        let response = authorizationService.loginInYamoney(
+            merchantClientAuthorization: clientApplicationKey,
+            amount: walletMonetaryAmount,
+            reusableToken: reusableToken,
+            tmxSessionId: tmxSessionId
+        )
+        let responseWithError = response.recover(on: .global(), mapError)
 
         guard let output = output else { return }
 
-        response.done(output.didLoginInYandexMoney)
-            .fail(output.failLoginInYandexMoney)
+        responseWithError.done(output.didLoginInYandexMoney)
+        responseWithError.fail(output.failLoginInYandexMoney)
     }
 
     func resendSmsCode(authContextId: String, authType: AuthType) {
@@ -125,10 +137,12 @@ extension TokenizationInteractor: TokenizationInteractorInput {
                                                             answer: answer,
                                                             processId: processId)
 
+        let responseWithError = response.recover(on: .global(), mapError)
+
         guard let output = output else { return }
 
-        response.done(output.didLoginInYandexMoney)
-            .fail(output.failLoginInYandexMoney)
+        responseWithError.done(output.didLoginInYandexMoney)
+        responseWithError.fail(output.failLoginInYandexMoney)
     }
 
     func logout() {
@@ -157,6 +171,8 @@ extension TokenizationInteractor: TokenizationInteractorInput {
 private func mapError<T>(_ error: Error) throws -> Promise<T> {
     switch error {
     case ThreatMetrixService.ProfileError.connectionFail:
+        throw PaymentProcessingError.internetConnection
+    case let error as NSError where error.domain == NSURLErrorDomain:
         throw PaymentProcessingError.internetConnection
     default:
         throw error

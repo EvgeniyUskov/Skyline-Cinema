@@ -14,6 +14,7 @@ class Order: Object {
     @objc dynamic var date: Date = Date()
     @objc dynamic var number: Int = 0
     @objc dynamic var licensePlateNumber: String = ""
+    
     let items = List<Item>()
     
 }

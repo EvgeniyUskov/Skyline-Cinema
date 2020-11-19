@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 import ChameleonFramework
 import SVProgressHUD
 
@@ -15,7 +15,7 @@ class MenuViewController: UIViewController {
     
     @IBOutlet weak var goToOrderButton: UIButton!
     @IBOutlet weak var popcornTableView: UITableView!
-    let realm = try! Realm()
+//    let realm = try! Realm()
     
     private var menuList: [Item] = [Item]()
     private var menuListCategories: [Category] = [Category]()
@@ -46,20 +46,20 @@ class MenuViewController: UIViewController {
     }
     
     //MARK: -Data manipulation methods
-    func loadData() {
-        menuList = Array(realm.objects(Item.self))
-        createOrder()
-    }
-    
-    func saveData() {
-        do{
-            try realm.write {
-                realm.add(order!)
-            }
-        } catch {
-            print("error saving realm order\(error)")
-        }
-    }
+//    func loadData() {
+//        menuList = Array(realm.objects(Item.self))
+//        createOrder()
+//    }
+//
+//    func saveData() {
+//        do{
+//            try realm.write {
+//                realm.add(order!)
+//            }
+//        } catch {
+//            print("error saving realm order\(error)")
+//        }
+//    }
     
     func createOrder() {
         order = Order()

@@ -10,9 +10,8 @@ ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXML.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/When.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YandexCheckoutPayments.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YandexCheckoutPaymentsApi.framework
-${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YandexCheckoutShowcaseApi.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YandexCheckoutWalletApi.framework
-${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YandexLoginSDK.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YandexMobileMetrica.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YandexMobileMetricaCrashes.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YandexMoneyCoreApi.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MoneyAuth.framework

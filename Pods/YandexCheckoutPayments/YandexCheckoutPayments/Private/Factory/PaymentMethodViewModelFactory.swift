@@ -38,7 +38,7 @@ enum PaymentMethodViewModelFactory {
                                                    yandexDisplayName: String?) -> PaymentMethodViewModel {
         return PaymentMethod(name: yandexDisplayName ?? paymentOption.accountId,
                              image: PaymentMethodResources.Image.yandexWallet,
-                             balance: paymentOption.balance)
+                             balance: MonetaryAmountFactory.makeAmount(paymentOption.balance))
     }
 
     // MARK: - Making ViewModel from PaymentInstrumentYandexMoneyLinkedBankCard
@@ -94,7 +94,8 @@ enum PaymentMethodViewModelFactory {
         switch paymentMethodType {
         case .bankCard:
             name = §PaymentMethodResources.Localized.bankCard
-        case .yandexMoney:
+        case .yandexMoney,
+             .yooMoney:
             name = §PaymentMethodResources.Localized.wallet
         case .applePay:
             name = §PaymentMethodResources.Localized.applePay
@@ -112,7 +113,8 @@ enum PaymentMethodViewModelFactory {
         switch paymentMethodType {
         case .bankCard:
             image = PaymentMethodResources.Image.unknown
-        case .yandexMoney:
+        case .yandexMoney,
+             .yooMoney:
             image = PaymentMethodResources.Image.yandexWallet
         case .applePay:
             image = PaymentMethodResources.Image.applePay

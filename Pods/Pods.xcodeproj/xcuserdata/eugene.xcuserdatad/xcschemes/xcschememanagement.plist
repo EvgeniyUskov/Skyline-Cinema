@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MoneyAuth.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Skyline Cinema.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -69,17 +74,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>YandexCheckoutShowcaseApi.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>YandexCheckoutWalletApi.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>YandexLoginSDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

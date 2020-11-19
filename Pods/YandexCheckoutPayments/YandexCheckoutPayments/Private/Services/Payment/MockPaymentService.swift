@@ -8,23 +8,25 @@ final class MockPaymentService: PaymentProcessing {
 
     private let paymentMethodHandler: PaymentMethodHandler
     private let testModeSettings: TestModeSettings
-    private let authorizationMediator: AuthorizationProcessing
+    private let keyValueStoring: KeyValueStoring
 
     // MARK: - Creating object
 
-    init(paymentMethodHandler: PaymentMethodHandler,
-         testModeSettings: TestModeSettings,
-         authorizationMediator: AuthorizationProcessing) {
+    init(
+        paymentMethodHandler: PaymentMethodHandler,
+        testModeSettings: TestModeSettings,
+        keyValueStoring: KeyValueStoring
+    ) {
         self.paymentMethodHandler = paymentMethodHandler
         self.testModeSettings = testModeSettings
-        self.authorizationMediator = authorizationMediator
+        self.keyValueStoring = keyValueStoring
     }
 
     // MARK: - PaymentProcessing
 
     func fetchPaymentOptions(
         clientApplicationKey: String,
-        passportToken: String?,
+        authorizationToken: String?,
         gatewayId: String?,
         amount: String?,
         currency: String?,
@@ -32,7 +34,9 @@ final class MockPaymentService: PaymentProcessing {
     ) -> Promise<[PaymentOption]> {
         let timeout = makeTimeoutPromise()
 
-        let authorized = authorizationMediator.getYandexToken() != nil
+        let authorized = keyValueStoring.getString(
+            for: KeyValueStoringKeys.moneyCenterAuthToken
+        ) != nil
         let response = makePaymentOptions(testModeSettings,
                                           handler: paymentMethodHandler,
                                           authorized: authorized)
@@ -65,8 +69,7 @@ final class MockPaymentService: PaymentProcessing {
 
         let errorHandler: (
             YandexCheckoutPaymentsApi.PaymentMethod
-            ) throws -> YandexCheckoutPaymentsApi.PaymentMethod = {
-            _ in
+            ) throws -> YandexCheckoutPaymentsApi.PaymentMethod = { _ in
             throw error
         }
 
@@ -104,9 +107,10 @@ final class MockPaymentService: PaymentProcessing {
 
     func tokenizeWallet(
         clientApplicationKey: String,
-        yamoneyToken: String,
+        walletAuthorization: String,
         confirmation: Confirmation,
         savePaymentMethod: Bool,
+        paymentMethodType: PaymentMethodType,
         amount: MonetaryAmount?,
         tmxSessionId: String
     ) -> Promise<Tokens> {
@@ -115,11 +119,12 @@ final class MockPaymentService: PaymentProcessing {
 
     func tokenizeLinkedBankCard(
         clientApplicationKey: String,
-        yamoneyToken: String,
+        walletAuthorization: String,
         cardId: String,
         csc: String,
         confirmation: Confirmation,
         savePaymentMethod: Bool,
+        paymentMethodType: PaymentMethodType,
         amount: MonetaryAmount?,
         tmxSessionId: String
     ) -> Promise<Tokens> {
@@ -202,16 +207,18 @@ private let mockTokens = Tokens(paymentToken: "mock_token")
 
 private func makePaymentOptions(
     _ settings: TestModeSettings,
-    handler: PaymentMethodHandler, authorized: Bool
+    handler: PaymentMethodHandler,
+    authorized: Bool
 ) -> [PaymentOption] {
 
-    let service = Service(charge: MonetaryAmount(value: 3.14, currency: .rub))
+    let service = Service(charge: MonetaryAmount(value: 3.14, currency: settings.charge.currency.rawValue))
     let fee = Fee(service: service, counterparty: nil)
 
     let charge = makeCharge(charge: settings.charge, fee: fee)
 
-    let linkedCards = authorized ?
-        Array(repeating: makeLinkedCard(charge, fee: fee), count: settings.cardsCount) : []
+    let linkedCards = authorized
+        ? makeLinkedCards(count: settings.cardsCount, charge: charge, fee: fee)
+        : []
 
     let paymentOptions = makeDefaultPaymentOptions(
         charge,
@@ -231,8 +238,16 @@ private func makeCharge(
     return Amount(value: charge.value + service.charge.value, currency: charge.currency)
 }
 
+private func makeLinkedCards(
+    count: Int,
+    charge: Amount,
+    fee: Fee?
+) -> [PaymentInstrumentYandexMoneyLinkedBankCard] {
+    return (0..<count).map { _ in makeLinkedCard(charge: charge, fee: fee) }
+}
+
 private func makeLinkedCard(
-    _ charge: Amount, fee: Fee?
+    charge: Amount, fee: Fee?
 ) -> PaymentInstrumentYandexMoneyLinkedBankCard {
     return PaymentInstrumentYandexMoneyLinkedBankCard(
         paymentMethodType: .yandexMoney,
@@ -240,13 +255,19 @@ private func makeLinkedCard(
         charge: MonetaryAmountFactory.makePaymentsMonetaryAmount(charge),
         instrumentType: .linkedBankCard,
         cardId: "123456789",
-        cardName: "Привязанная карта",
-        cardMask: "518901******0446",
+        cardName: nil,
+        cardMask: makeRandomCardMask(),
         cardType: .masterCard,
         identificationRequirement: .simplified,
         fee: fee,
         savePaymentMethod: .allowed
     )
+}
+
+private func makeRandomCardMask() -> String {
+    let firstPart = Int.random(in: 100000..<1000000)
+    let secondPart = Int.random(in: 1000..<10000)
+    return "\(firstPart)******\(secondPart)"
 }
 
 private func makeDefaultPaymentOptions(
@@ -264,7 +285,7 @@ private func makeDefaultPaymentOptions(
                 charge: charge,
                 instrumentType: .wallet,
                 accountId: "2736482364872",
-                balance: MonetaryAmount(value: 40_000, currency: .rub),
+                balance: MonetaryAmount(value: 40_000, currency: charge.currency),
                 identificationRequirement: .simplified,
                 fee: fee,
                 savePaymentMethod: .allowed

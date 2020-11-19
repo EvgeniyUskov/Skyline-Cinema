@@ -8,6 +8,34 @@
 
 import Foundation
 
+enum Routes {
+    
+    static let skylineCinemaItemsURL = "https://skylinecinema.ru/menu"
+    static let skylineCinemaMoviesURL = "https://skylinecinema.ru/movies"
+    static let skylineCinemaMembershipURL = "https://skylinecinema.ru/membership"
+    static let skylineCinemaAddressRequestURL = "https://skylinecinema.ru/addresses"
+    
+    static let skylineCinemaOrderRequestURL = "https://skylinecinema.ru/order"
+    static let skylineCinemaTicketRequestURL = "https://skylinecinema.ru/ticket"
+    static let skyLineCinemaSuccessPaymentURL = "https://skylinecinema.ru/success"
+    
+    static let vkURL = "https://vk.com/skyline.cinema"
+    static let igURL = "https://www.instagram.com/skyline.cinema/"
+    static let fbURL = "https://www.facebook.com/Автокинотеатр-SkylineCinema-1708504372569940"
+    static let tlgURL = "https://t.me/skylinecinema_bot"
+    static let safariURL = "http://skylinecinema.ru"
+    
+    static let kinopoiskRatesURL = "https://rating.kinopoisk.ru/"
+    static let kinopoiskRatesURLXMLExtension = ".xml"
+    static let kinopoiskMovieDetailsURL = "https://www.kinopoisk.ru/film/"
+    
+    static let wikiURL = "https://ru.wikipedia.org/w/api.php"
+    
+    static let buyTicketURL = "https://money.yandex.ru/new/transfer/a2w"
+    
+    static let yandexPaymentURL = "https://payment.yandex.net/api/v3/payments"
+}
+
 enum Constants {
     // TODO: change addresses
 //    public static let shopId = "53097" // боевой shopId
@@ -28,6 +56,7 @@ enum Constants {
         "Шоколад": 4,
         "Кальяны": 5
     ]
+    
     public static let propLicensePlateNumber = "LicensePlateNumber"
     public static let propCity = "City"
     public static let propName = "Name"

@@ -53,7 +53,7 @@ public struct Counterparty: Codable {
         guard let value = Decimal(string: try container.decode(String.self, forKey: .value)) else {
             throw DecodingError.decimalConvent
         }
-        let currency = try container.decode(CurrencyCode.self, forKey: .currency)
+        let currency = try container.decode(String.self, forKey: .currency)
         let charge = MonetaryAmount(value: value, currency: currency)
         self.init(charge: charge)
     }
