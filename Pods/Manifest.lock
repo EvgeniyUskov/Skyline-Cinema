@@ -1,47 +1,45 @@
 PODS:
-  - Alamofire (4.9.1)
+  - Alamofire (5.4.0)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - FunctionalSwift (1.1.2)
-  - Realm (4.3.1):
-    - Realm/Headers (= 4.3.1)
-  - Realm/Headers (4.3.1)
-  - RealmSwift (4.3.1):
-    - Realm (= 4.3.1)
-  - SDWebImage (5.5.2):
-    - SDWebImage/Core (= 5.5.2)
-  - SDWebImage/Core (5.5.2)
+  - MoneyAuth (1.0.1):
+    - FunctionalSwift
+    - YandexMoneyCoreApi
+  - Realm (10.1.4):
+    - Realm/Headers (= 10.1.4)
+  - Realm/Headers (10.1.4)
+  - RealmSwift (10.1.4):
+    - Realm (= 10.1.4)
+  - SDWebImage (5.9.5):
+    - SDWebImage/Core (= 5.9.5)
+  - SDWebImage/Core (5.9.5)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (5.0.0)
-  - SwiftyXML (3.0.1)
+  - SwiftyXML (3.1.0)
   - When (4.0.0)
-  - YandexCheckoutPayments (3.5.0):
+  - YandexCheckoutPayments (4.0.0):
     - FunctionalSwift (~> 1.1.0)
+    - MoneyAuth (~> 1.0.1)
     - When (~> 4.0.0)
-    - YandexCheckoutPaymentsApi (~> 1.8.0)
-    - YandexCheckoutShowcaseApi (~> 1.2.0)
-    - YandexCheckoutWalletApi (~> 1.2.0)
-    - YandexLoginSDK (~> 2.0.0)
+    - YandexCheckoutPaymentsApi (~> 2.1.0)
+    - YandexCheckoutWalletApi (~> 2.1.0)
     - YandexMobileMetrica/Dynamic (~> 3.7.0)
-    - YandexMoneyCoreApi (~> 1.7.0)
-  - YandexCheckoutPaymentsApi (1.8.0):
+    - YandexMoneyCoreApi (~> 1.8.0)
+  - YandexCheckoutPaymentsApi (2.1.0):
     - FunctionalSwift (~> 1.1.0)
-    - YandexMoneyCoreApi (~> 1.7.0)
-  - YandexCheckoutShowcaseApi (1.2.0):
+    - YandexMoneyCoreApi (~> 1.8.0)
+  - YandexCheckoutWalletApi (2.1.0):
     - FunctionalSwift (~> 1.1.0)
-    - YandexMoneyCoreApi (~> 1.7.0)
-  - YandexCheckoutWalletApi (1.2.0):
-    - FunctionalSwift (~> 1.1.0)
-    - YandexMoneyCoreApi (~> 1.7.0)
-  - YandexLoginSDK (2.0.2)
+    - YandexMoneyCoreApi (~> 1.8.0)
   - YandexMobileMetrica/Dynamic (3.7.1):
     - YandexMobileMetrica/Dynamic/Core (= 3.7.1)
     - YandexMobileMetrica/Dynamic/Crashes (= 3.7.1)
   - YandexMobileMetrica/Dynamic/Core (3.7.1)
   - YandexMobileMetrica/Dynamic/Crashes (3.7.1):
     - YandexMobileMetrica/Dynamic/Core
-  - YandexMoneyCoreApi (1.7.0):
+  - YandexMoneyCoreApi (1.8.1):
     - FunctionalSwift (~> 1.1.0)
 
 DEPENDENCIES:
@@ -52,10 +50,10 @@ DEPENDENCIES:
   - SVProgressHUD
   - SwiftyJSON
   - SwiftyXML
-  - YandexCheckoutPayments (from `https://github.com/yandex-money/yandex-checkout-payments-swift.git`, tag `3.5.0`)
+  - YandexCheckoutPayments (from `https://github.com/yandex-money/yandex-checkout-payments-swift.git`, tag `4.0.0`)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - ChameleonFramework
     - FunctionalSwift
@@ -67,41 +65,40 @@ SPEC REPOS:
     - SwiftyXML
     - When
     - YandexCheckoutPaymentsApi
-    - YandexCheckoutShowcaseApi
     - YandexCheckoutWalletApi
-    - YandexLoginSDK
     - YandexMobileMetrica
     - YandexMoneyCoreApi
+  https://github.com/yandex-money-tech/cocoa-pod-specs.git:
+    - MoneyAuth
 
 EXTERNAL SOURCES:
   YandexCheckoutPayments:
     :git: https://github.com/yandex-money/yandex-checkout-payments-swift.git
-    :tag: 3.5.0
+    :tag: 4.0.0
 
 CHECKOUT OPTIONS:
   YandexCheckoutPayments:
     :git: https://github.com/yandex-money/yandex-checkout-payments-swift.git
-    :tag: 3.5.0
+    :tag: 4.0.0
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   FunctionalSwift: 8ac888d5c2f2c0ce6bf7d48daea1408a8bfdd864
-  Realm: 31dc40934081ef740f60feedc46d88473cbfeb40
-  RealmSwift: b5199e9a41f67b99f51acf6874a6166f5fbe93d1
-  SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
+  MoneyAuth: ff2228b40f2f8b52c7c906aa8ebe98384de13db9
+  Realm: 80f4fb2971ccb9adc27a47d0955ae8e533a7030b
+  RealmSwift: 0e566ca714edb377bba8ea0811eafcea0b93734e
+  SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
-  SwiftyXML: 6ccebc5162ff1d524f013cee72a2bd681d79316d
+  SwiftyXML: 1ea095c1416039db95cb050f0a34559b061ede93
   When: 4ffc88d535a094ad4bd5eaf2fd187de747e716d1
-  YandexCheckoutPayments: fe888ebd8523848ca83fc51dca10d399e0c163f1
-  YandexCheckoutPaymentsApi: fbe102bbfbab08a83da1a428a37f3d4b4bc1c28e
-  YandexCheckoutShowcaseApi: 44382163176b3a53692fa1c3b85c0c8d0a82b7e6
-  YandexCheckoutWalletApi: 5d2774cd1216ee0ce47d6412184008b37caeaeac
-  YandexLoginSDK: cd407482207b4b7da75c5f7d7fd2fdd6a604c325
+  YandexCheckoutPayments: 9ec2fe366fddfcec7fca9b7a1c2d073211fdf713
+  YandexCheckoutPaymentsApi: 9d0706c55c5f4695040b916826de47ab7dd5ff1f
+  YandexCheckoutWalletApi: 82f24c35ce02a8fed5fda58490c422022d453591
   YandexMobileMetrica: 95e93ee5af38520c9e470533dc8df6cf72fa171d
-  YandexMoneyCoreApi: 3d9364913ee91bf3f453d75c9d10fef3ccc9dc4f
+  YandexMoneyCoreApi: e7c095c06867a8b532e3f60ce6cd43cd8c16f67d
 
-PODFILE CHECKSUM: 9494a93fa48f0891508829bea9166aebf848fe95
+PODFILE CHECKSUM: a278afb9ec1a58c9cee32f780dbe59afa1628cf1
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0
