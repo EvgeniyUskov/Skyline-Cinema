@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class RealmOrderStorage: OrderLocalStorage {
+class RealmOrderStorage: OrderLocalStorageProtocol {
     
     let realm = try! Realm()
     

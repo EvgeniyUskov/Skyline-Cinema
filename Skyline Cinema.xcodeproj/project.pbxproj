@@ -26,7 +26,7 @@
 		449D969E24911B2600864E7E /* fa-solid-900.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AABAF99323D6BED500CE8371 /* fa-solid-900.ttf */; };
 		44BA6E3923FA6B9800416183 /* CalendarEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */; };
 		44EAC5F225655C2600F1B51A /* RealmStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EAC5F125655C2600F1B51A /* RealmStorage.swift */; };
-		44EAC5F625655C5C00F1B51A /* OrderLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EAC5F525655C5C00F1B51A /* OrderLocalStorage.swift */; };
+		44EAC5F625655C5C00F1B51A /* OrderLocalStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EAC5F525655C5C00F1B51A /* OrderLocalStorageProtocol.swift */; };
 		719601129B161C1346161987 /* Pods_Skyline_Cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F271EA4CA76AA3EFC4AD0AA5 /* Pods_Skyline_Cinema.framework */; };
 		AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118D22AE0699000E1024 /* AppDelegate.swift */; };
 		AA18119022AE0699000E1024 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118F22AE0699000E1024 /* TimeTableViewController.swift */; };
@@ -108,7 +108,7 @@
 		44447CB523FC167F001897AD /* TicketRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRequest.swift; sourceTree = "<group>"; };
 		44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventManager.swift; sourceTree = "<group>"; };
 		44EAC5F125655C2600F1B51A /* RealmStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorage.swift; sourceTree = "<group>"; };
-		44EAC5F525655C5C00F1B51A /* OrderLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderLocalStorage.swift; sourceTree = "<group>"; };
+		44EAC5F525655C5C00F1B51A /* OrderLocalStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderLocalStorageProtocol.swift; sourceTree = "<group>"; };
 		8469BA71E967E2E69CD133CA /* Pods-Skyline Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.debug.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.debug.xcconfig"; sourceTree = "<group>"; };
 		A37F0B7F9302AA552FE82B21 /* Pods-Skyline Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.release.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.release.xcconfig"; sourceTree = "<group>"; };
 		AA18118A22AE0699000E1024 /* Skyline Cinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skyline Cinema.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,7 +185,7 @@
 				AAFF581923CEC5680033B411 /* XMLManager.swift */,
 				44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */,
 				44EAC5F125655C2600F1B51A /* RealmStorage.swift */,
-				44EAC5F525655C5C00F1B51A /* OrderLocalStorage.swift */,
+				44EAC5F525655C5C00F1B51A /* OrderLocalStorageProtocol.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -547,7 +547,7 @@
 				AA917B5C23D187BE002FC579 /* BuyTicketViewController.swift in Sources */,
 				AA8DD46523D422E900F52855 /* Address.swift in Sources */,
 				AAA667FD23D5660E00A1893E /* JSONParameterEncoder.swift in Sources */,
-				44EAC5F625655C5C00F1B51A /* OrderLocalStorage.swift in Sources */,
+				44EAC5F625655C5C00F1B51A /* OrderLocalStorageProtocol.swift in Sources */,
 				44447CB023FBD76C001897AD /* OrderCompleteViewController.swift in Sources */,
 				AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */,
 				AAEE08EB23D05A0300E60DAE /* RegisterViewController.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol OrderLocalStorage {
+protocol OrderLocalStorageProtocol {
     func saveData()
     func loadData()
 }
