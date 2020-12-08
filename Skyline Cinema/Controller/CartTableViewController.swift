@@ -9,8 +9,8 @@
 import UIKit
 import RealmSwift
 import SVProgressHUD
-import YandexCheckoutPayments
-import YandexCheckoutPaymentsApi
+import YooKassaPayments
+import YooKassaPaymentsApi
 
 class CartTableViewController: UIViewController {
     

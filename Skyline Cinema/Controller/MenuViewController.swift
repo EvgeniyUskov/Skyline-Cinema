@@ -7,14 +7,12 @@
 //
 
 import UIKit
-//import RealmSwift
 import SVProgressHUD
 
 class MenuViewController: UIViewController {
     
     @IBOutlet weak var goToOrderButton: UIButton!
     @IBOutlet weak var popcornTableView: UITableView!
-//    let realm = try! Realm()
     
     private var menuList: [Item] = [Item]()
     private var menuListCategories: [Category] = [Category]()

@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import YandexCheckoutPayments
-import YandexCheckoutPaymentsApi
+import YooKassaPayments
+import YooKassaPaymentsApi
 
 class Payment {
     var id: String

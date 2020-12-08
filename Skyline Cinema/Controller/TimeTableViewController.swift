@@ -11,7 +11,6 @@ import RealmSwift
 import SwiftyJSON
 import Alamofire
 import SVProgressHUD
-import ChameleonFramework
 
 class TimeTableViewController: UIViewController {
     

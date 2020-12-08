@@ -10,8 +10,8 @@
 import Foundation
 import WebKit
 import SVProgressHUD
-import YandexCheckoutPayments
-import YandexCheckoutPaymentsApi
+import YooKassaPayments
+import YooKassaPaymentsApi
 
 class BuyOrderViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         
