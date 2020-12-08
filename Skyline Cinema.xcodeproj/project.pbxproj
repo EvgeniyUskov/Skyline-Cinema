@@ -27,6 +27,7 @@
 		44BA6E3923FA6B9800416183 /* CalendarEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */; };
 		44EAC5F225655C2600F1B51A /* RealmStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EAC5F125655C2600F1B51A /* RealmStorage.swift */; };
 		44EAC5F625655C5C00F1B51A /* OrderLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EAC5F525655C5C00F1B51A /* OrderLocalStorage.swift */; };
+		719601129B161C1346161987 /* Pods_Skyline_Cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F271EA4CA76AA3EFC4AD0AA5 /* Pods_Skyline_Cinema.framework */; };
 		AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118D22AE0699000E1024 /* AppDelegate.swift */; };
 		AA18119022AE0699000E1024 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118F22AE0699000E1024 /* TimeTableViewController.swift */; };
 		AA18119322AE0699000E1024 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA18119122AE0699000E1024 /* Main.storyboard */; };
@@ -64,7 +65,6 @@
 		AAFF581823CDF6DB0033B411 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFF581723CDF6DB0033B411 /* MovieDetailsViewController.swift */; };
 		AAFF581A23CEC5680033B411 /* XMLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFF581923CEC5680033B411 /* XMLManager.swift */; };
 		AAFF581C23CEC5790033B411 /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFF581B23CEC5790033B411 /* JSONManager.swift */; };
-		D41C3EFDEB0F241FCB89BB27 /* Pods_Skyline_Cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B57F2441AEE4219599C1BA /* Pods_Skyline_Cinema.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -84,7 +84,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		12F36DF0B98AB5C36C8C99DF /* Pods-Skyline Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.debug.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.debug.xcconfig"; sourceTree = "<group>"; };
 		44185F502491D75A0010F62F /* Frameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Frameworks; sourceTree = "<group>"; };
 		44185F512491D76B0010F62F /* TMXProfiling-Bitcode-6.0-91.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "TMXProfiling-Bitcode-6.0-91.dmg"; path = "Frameworks/TMXProfiling-Bitcode-6.0-91.dmg"; sourceTree = "<group>"; };
 		44185F522491D76B0010F62F /* TMXProfilingConnections-Bitcode-6.0-91.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "TMXProfilingConnections-Bitcode-6.0-91.dmg"; path = "Frameworks/TMXProfilingConnections-Bitcode-6.0-91.dmg"; sourceTree = "<group>"; };
@@ -110,7 +109,8 @@
 		44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventManager.swift; sourceTree = "<group>"; };
 		44EAC5F125655C2600F1B51A /* RealmStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorage.swift; sourceTree = "<group>"; };
 		44EAC5F525655C5C00F1B51A /* OrderLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderLocalStorage.swift; sourceTree = "<group>"; };
-		74B57F2441AEE4219599C1BA /* Pods_Skyline_Cinema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skyline_Cinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8469BA71E967E2E69CD133CA /* Pods-Skyline Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.debug.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.debug.xcconfig"; sourceTree = "<group>"; };
+		A37F0B7F9302AA552FE82B21 /* Pods-Skyline Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.release.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.release.xcconfig"; sourceTree = "<group>"; };
 		AA18118A22AE0699000E1024 /* Skyline Cinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skyline Cinema.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA18118D22AE0699000E1024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA18118F22AE0699000E1024 /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		AAFF581723CDF6DB0033B411 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		AAFF581923CEC5680033B411 /* XMLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLManager.swift; sourceTree = "<group>"; };
 		AAFF581B23CEC5790033B411 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
-		D83F075B84DA164AEB2FB973 /* Pods-Skyline Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.release.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.release.xcconfig"; sourceTree = "<group>"; };
+		F271EA4CA76AA3EFC4AD0AA5 /* Pods_Skyline_Cinema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skyline_Cinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,13 +162,21 @@
 			files = (
 				44185F572491D7CE0010F62F /* TMXProfilingConnections.framework in Frameworks */,
 				44185F552491D7CE0010F62F /* TMXProfiling.framework in Frameworks */,
-				D41C3EFDEB0F241FCB89BB27 /* Pods_Skyline_Cinema.framework in Frameworks */,
+				719601129B161C1346161987 /* Pods_Skyline_Cinema.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44AFA38C257F80D000C394FF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AA18118D22AE0699000E1024 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		44B8962225652F3500FC8BE4 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,7 +217,7 @@
 				443C477823F5027200A2EFEC /* SDWebImage.framework */,
 				443C477923F5027200A2EFEC /* SwiftyJSON.framework */,
 				443C477A23F5027200A2EFEC /* SwiftyXML.framework */,
-				74B57F2441AEE4219599C1BA /* Pods_Skyline_Cinema.framework */,
+				F271EA4CA76AA3EFC4AD0AA5 /* Pods_Skyline_Cinema.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -217,8 +225,8 @@
 		9072AFFEE6AC3EDC19C8EF2B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				12F36DF0B98AB5C36C8C99DF /* Pods-Skyline Cinema.debug.xcconfig */,
-				D83F075B84DA164AEB2FB973 /* Pods-Skyline Cinema.release.xcconfig */,
+				8469BA71E967E2E69CD133CA /* Pods-Skyline Cinema.debug.xcconfig */,
+				A37F0B7F9302AA552FE82B21 /* Pods-Skyline Cinema.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -245,7 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				AAD2DD0723D5FD7700A27C89 /* Resources */,
-				AA18118D22AE0699000E1024 /* AppDelegate.swift */,
+				44AFA38C257F80D000C394FF /* App */,
 				44B8962225652F3500FC8BE4 /* Managers */,
 				44447CAD23FBD672001897AD /* Mock.swift */,
 				AAFF581F23CF5E9F0033B411 /* Utils */,
@@ -371,13 +379,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA18119C22AE069A000E1024 /* Build configuration list for PBXNativeTarget "Skyline Cinema" */;
 			buildPhases = (
-				E7C558C06BE27AB7FE02B52F /* [CP] Check Pods Manifest.lock */,
+				7BC3A239DEE0E9EA47668913 /* [CP] Check Pods Manifest.lock */,
 				AA18118622AE0699000E1024 /* Sources */,
 				AA18118722AE0699000E1024 /* Frameworks */,
 				AA18118822AE0699000E1024 /* Resources */,
 				443C477323F5025B00A2EFEC /* Embed Frameworks */,
 				44185F592491D7EF0010F62F /* ShellScript */,
-				C62298F58D540520EF3F9E77 /* [CP] Embed Pods Frameworks */,
+				3DB8BC581FC7204C8EF69E4F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -443,6 +451,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3DB8BC581FC7204C8EF69E4F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		44185F592491D7EF0010F62F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -460,24 +485,7 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\n\n#  Created by Samin Pour on 18/6/18.\n#  Copyright © 2018 ThreatMetrix. All rights reserved.\n#\n# ThreatMetrix iOS SDK contains multiple architectures, armv7, armv7s, arm64, x86_64. The arm\n# architectures are for devices, x86_64 is for simulators. When preparing application for publishing\n# Xcode removes simulator architectures from your application, but due to a bug / design flaw it\n# doesn't strip these slices from dynamic frameworks.\n#\n# If these architectures are not removed Apple will reject the binary.\n# http://www.openradar.me/radar?id=6409498411401216#ag9zfm9wZW5yYWRhci1ocmRyFAsSB0NvbW1lbnQYgICAuO-k9QgM\n# Possible error  messages in Xcode are\n# 1. “iTunes Store Operation Failed: Unsupported Architectures. The executable YourApp contains unsupported architectures '[(x86_64, i386)]'”\n# 2. “LC_ENCRYPTION_INFO”\n# 3. “Invalid Segment Alignment”\n# 4. “The binary is invalid.”\n# Removing simulator slices will resolve these issues.\n#\n# This script automatically strips unused architectures from ThreatMetrix framework, to use it please\n# add a new \"Run Script Phase\" to the build phase and add the content of this file there.\n#\n# IMPORTANT NOTE: Please make sure to add this script after \"Embed Frameworks\" / \"Copy File(s)\"  phase\n\n\nAPP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\nfind \"$APP_PATH\" -name 'TMX*.framework' -type d | while read -r FRAMEWORK; do\n    FRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\n    FRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\n\n    EXTRACTED_ARCHS=()\n\n    for ARCH in $ARCHS; do\n        lipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\n        EXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\n    done\n\n    lipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\n    rm \"${EXTRACTED_ARCHS[@]}\"\n\n    rm \"$FRAMEWORK_EXECUTABLE_PATH\"\n    mv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone\n";
 		};
-		C62298F58D540520EF3F9E77 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E7C558C06BE27AB7FE02B52F /* [CP] Check Pods Manifest.lock */ = {
+		7BC3A239DEE0E9EA47668913 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -695,7 +703,7 @@
 		};
 		AA18119D22AE069A000E1024 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12F36DF0B98AB5C36C8C99DF /* Pods-Skyline Cinema.debug.xcconfig */;
+			baseConfigurationReference = 8469BA71E967E2E69CD133CA /* Pods-Skyline Cinema.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -718,7 +726,7 @@
 		};
 		AA18119E22AE069A000E1024 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D83F075B84DA164AEB2FB973 /* Pods-Skyline Cinema.release.xcconfig */;
+			baseConfigurationReference = A37F0B7F9302AA552FE82B21 /* Pods-Skyline Cinema.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

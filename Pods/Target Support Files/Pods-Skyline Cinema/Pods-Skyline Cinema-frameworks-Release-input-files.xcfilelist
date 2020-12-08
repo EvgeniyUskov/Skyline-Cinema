@@ -8,10 +8,10 @@ ${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyXML/SwiftyXML.framework
 ${BUILT_PRODUCTS_DIR}/When/When.framework
-${BUILT_PRODUCTS_DIR}/YandexCheckoutPayments/YandexCheckoutPayments.framework
-${BUILT_PRODUCTS_DIR}/YandexCheckoutPaymentsApi/YandexCheckoutPaymentsApi.framework
-${BUILT_PRODUCTS_DIR}/YandexCheckoutWalletApi/YandexCheckoutWalletApi.framework
 ${PODS_ROOT}/YandexMobileMetrica/dynamic/YandexMobileMetrica.framework
 ${PODS_ROOT}/YandexMobileMetrica/dynamic/YandexMobileMetricaCrashes.framework
-${BUILT_PRODUCTS_DIR}/YandexMoneyCoreApi/YandexMoneyCoreApi.framework
+${BUILT_PRODUCTS_DIR}/YooKassaPayments/YooKassaPayments.framework
+${BUILT_PRODUCTS_DIR}/YooKassaPaymentsApi/YooKassaPaymentsApi.framework
+${BUILT_PRODUCTS_DIR}/YooKassaWalletApi/YooKassaWalletApi.framework
+${BUILT_PRODUCTS_DIR}/YooMoneyCoreApi/YooMoneyCoreApi.framework
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/MoneyAuth/MoneyAuth.framework/MoneyAuth
