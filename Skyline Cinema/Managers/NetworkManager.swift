@@ -15,6 +15,12 @@ import YandexCheckoutPaymentsApi
 
 
 struct NetworkManager {
+    static var shared : NetworkManager {
+            return NetworkManager()
+    }
+    
+    private init () {}
+    
     var defaults = UserDefaults.standard
     
     let realm = try! Realm()

@@ -13,11 +13,6 @@ import SVProgressHUD
 
 class MovieDetailsViewController: UIViewController {
     
-    let networkManager = NetworkManager()
-    
-    
-    
-    
     var movie : TimeTableCellViewModel?
     
     @IBOutlet weak var rateKpLabel: UILabel!
@@ -45,7 +40,7 @@ class MovieDetailsViewController: UIViewController {
         if let movieLocal = self.movie {
             let xmlManager = XMLManager()
             var rates = [String: String]()
-            Alamofire.request(networkManager.getKinopoiskRatesURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get).responseString { (response) in
+            Alamofire.request(Routes.getKinopoiskRatesURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get).responseString { (response) in
                 print("RATES SUCCESS: \(response)")
                 rates = xmlManager.parseRatesXML(response: response)
                 DispatchQueue.main.async {
@@ -63,7 +58,7 @@ class MovieDetailsViewController: UIViewController {
             let headers: HTTPHeaders = [
                 "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36"
             ]
-            Alamofire.request(networkManager.getKinopoiskMovieDetailsURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get, headers: headers).responseString { (response) in
+            Alamofire.request(Routes.getKinopoiskMovieDetailsURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get, headers: headers).responseString { (response) in
                 if response.result.isSuccess {
                         print("MOVIE DETAILS KINOPOISK SUCCESS: \(response)" )
                         details[Constants.description] = kinopoiskParser.getDescription(response: response)
@@ -95,7 +90,7 @@ class MovieDetailsViewController: UIViewController {
                 "pithumbsize" : "500",
             ]
             var details = [String: String]()
-            Alamofire.request(networkManager.wikiURL, method: .get, parameters: parameters).responseJSON { (response) in
+            Alamofire.request(Routes.wikiURL, method: .get, parameters: parameters).responseJSON { (response) in
                 if response.result.isSuccess {
                     print("MOVIE DETAILS SUCCESS: \(response)" )
                     details = jsonManager.parseMovieDetailsJSONFromWIki(response: response, movie: movieLocal)

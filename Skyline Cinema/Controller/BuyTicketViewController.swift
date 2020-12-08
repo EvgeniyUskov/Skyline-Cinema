@@ -19,8 +19,6 @@ class BuyTicketViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     
     var webView = WKWebView()
     
-    let networkManager = NetworkManager()
-    
     override func loadView() {
         webView.navigationDelegate = self
         view = webView
@@ -29,7 +27,7 @@ class BuyTicketViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
-        let myURL = URL(string: networkManager.buyTicketURL)!
+        let myURL = URL(string: Routes.buyTicketURL)!
         let myRequest = URLRequest(url: myURL)
         // TODO: UNCOMMENT this
 //        webView.load(myRequest)

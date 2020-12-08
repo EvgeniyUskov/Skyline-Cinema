@@ -8,7 +8,6 @@
 
 import UIKit
 //import RealmSwift
-import ChameleonFramework
 import SVProgressHUD
 
 class MenuViewController: UIViewController {
@@ -24,8 +23,7 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
-        let networkManager = NetworkManager()
-        menuListCategories = networkManager.getItems()
+        menuListCategories = NetworkManager.shared.getItems()
         sortCategories()
         disableGoToOrderButon()
         setUpTableView()

@@ -21,8 +21,6 @@ class BuyOrderViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         var order: Order?
         var totalAmount: Double?
         
-        let networkManager = NetworkManager()
-        
         override func viewDidLoad() {
             super.viewDidLoad()
 //            SVProgressHUD.show()

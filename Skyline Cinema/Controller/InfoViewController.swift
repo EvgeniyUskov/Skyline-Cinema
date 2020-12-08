@@ -26,8 +26,6 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var addressTableView: UITableView!
     
     
-    let networkManager = NetworkManager()
-    let jsonManager = JSONManager()
     var addressList = [Address]()
     var selectedAddress: Address?
     
@@ -52,7 +50,7 @@ class InfoViewController: UIViewController {
         addressTableView.delegate = self
         //        phoneLabel.isHidden = true
         //        phoneCaptionLabel.isHidden = true
-        addressList = networkManager.getAddresses()
+        addressList = NetworkManager.shared.getAddresses()
         addressTableView.separatorStyle = .none
         addressTableView.reloadData()
         addressTableView.allowsMultipleSelection = false
@@ -79,19 +77,19 @@ class InfoViewController: UIViewController {
         }
     }
     @IBAction func vkButtonTapped(_ sender: Any) {
-        UIApplication.shared.openURL(NSURL(string: networkManager.vkURL) as! URL)
+        UIApplication.shared.openURL(NSURL(string: Routes.vkURL) as! URL)
     }
     @IBAction func igButtonTapped(_ sender: Any) {
-        UIApplication.shared.openURL(NSURL(string: networkManager.igURL) as! URL)
+        UIApplication.shared.openURL(NSURL(string: Routes.igURL) as! URL)
     }
     @IBAction func fbButtonTapped(_ sender: Any) {
-        UIApplication.shared.openURL(NSURL(string: networkManager.fbURL) as! URL)
+        UIApplication.shared.openURL(NSURL(string: Routes.fbURL) as! URL)
     }
     @IBAction func tlgButtonTapped(_ sender: Any) {
-        UIApplication.shared.openURL(NSURL(string: networkManager.tlgURL) as! URL)
+        UIApplication.shared.openURL(NSURL(string: Routes.KtlgURL) as! URL)
     }
     @IBAction func safButtonTapped(_ sender: Any) {
-        UIApplication.shared.openURL(NSURL(string: networkManager.safariURL) as! URL)
+        UIApplication.shared.openURL(NSURL(string: Routes.safariURL) as! URL)
     }
     
 }

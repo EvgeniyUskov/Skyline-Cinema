@@ -17,8 +17,6 @@ class CartTableViewController: UIViewController {
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var totalAmountLabel: UILabel!
     
-    let networkManager = NetworkManager()
-    
     private let realm = try! Realm()
     private var itemViewModelList = [CartCellViewModel]()
     var order: Order?
@@ -75,7 +73,7 @@ class CartTableViewController: UIViewController {
     }
     
     func createPayment (paymentToken: Tokens, amount: Amount, description: String) {
-        networkManager.createPayment(paymentToken: paymentToken,
+        NetworkManager.shared.createPayment(paymentToken: paymentToken,
                                      amount: amount,
                                      description: description,
                                      completion: {

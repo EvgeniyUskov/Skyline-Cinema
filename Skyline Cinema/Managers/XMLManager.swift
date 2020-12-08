@@ -12,7 +12,7 @@ import SwiftyXML
 
 class XMLManager {
     
-    func parseRatesXML(response: DataResponse<String>) -> [String: String]{
+    static func parseRatesXML(response: DataResponse<String>) -> [String: String]{
         var rates = [String: String]()
         
         do {

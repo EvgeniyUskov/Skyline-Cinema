@@ -17,7 +17,6 @@ class OrderCompleteViewController: UIViewController {
     @IBOutlet weak var bonApetitLabel: UILabel!
     
     var order: Order?
-    let networkManager = NetworkManager()
     
     func resetUI() {
         self.headerLabel.isHidden = false
@@ -38,7 +37,7 @@ class OrderCompleteViewController: UIViewController {
             let orderRequest = OrderRequest(order: orderLocal)
             let parameters = orderRequest.transformToParameters()
             if Constants.isNetworkActive {
-                Alamofire.request(networkManager.skylineCinemaOrderRequestURL,
+                Alamofire.request(Routes.skylineCinemaOrderRequestURL,
                                   method: .post,
                     parameters: parameters,
                     encoding: JSONEncoding.default).responseJSON { response in

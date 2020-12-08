@@ -17,14 +17,13 @@ class TimeTableViewController: UIViewController {
     
     @IBOutlet weak var timeTableTableView: UITableView!
     let realm = try! Realm()
-    let networkManager = NetworkManager()
     
     var daysWithMovies = [MovieDay]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
-        daysWithMovies = networkManager.getMovies()
+        daysWithMovies = NetworkManager.shared.getMovies()
         setupTableView()
     }
     

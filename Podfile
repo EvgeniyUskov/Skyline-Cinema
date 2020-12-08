@@ -1,7 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/yandex-money-tech/cocoa-pod-specs.git'
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.0'
+# platform :ios, '10.0'
 
 target 'Skyline Cinema' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -14,7 +14,6 @@ target 'Skyline Cinema' do
   pod 'SwiftyXML'
   pod 'RealmSwift'
   pod 'SDWebImage'
-  pod 'ChameleonFramework/Swift'
   pod 'SVProgressHUD'
   
   pod 'YandexCheckoutPayments',

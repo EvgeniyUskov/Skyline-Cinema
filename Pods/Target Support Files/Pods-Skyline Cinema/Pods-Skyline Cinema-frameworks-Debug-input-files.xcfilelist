@@ -1,6 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
-${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework
 ${BUILT_PRODUCTS_DIR}/FunctionalSwift/FunctionalSwift.framework
 ${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
 ${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework

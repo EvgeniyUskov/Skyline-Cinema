@@ -14,6 +14,11 @@ import YandexCheckoutPayments
 import YandexCheckoutPaymentsApi
 
 class JSONManager {
+    static var shared : JSONManager {
+        return JSONManager()
+    }
+    
+    private init() {}
     
     let mock = Mock()
     
@@ -85,7 +90,7 @@ class JSONManager {
             let date = movieDayJSON["date"].stringValue
             var movieList = [Movie]()
             for movie in movieDayJSON["movies"].arrayValue {
-
+                
                 let newMovie = Movie()
                 newMovie.title = movie["title"].stringValue
                 newMovie.descript = movie["description"].stringValue
@@ -132,7 +137,7 @@ class JSONManager {
             let movieDay = MovieDay(date: date, movies: movieList)
             moviesFromJSON.append(movieDay)
         }
-
+        
         return moviesFromJSON
     }
     
@@ -226,8 +231,8 @@ class JSONManager {
         let status = jsonResponse["status"].stringValue
         let paid = jsonResponse["paid"].boolValue
         let amount = Amount(value: Decimal(jsonResponse["amount"]["value"].doubleValue), currency: .rub)
-//        jsonResponse["amount"]["currency"])
-//        let confirmation = Confirmation(type: jsonResponse["confirmation"]["type"], confirmationUrl: jsonResponse["confirmation"]["confirmation_url"])
+        //        jsonResponse["amount"]["currency"])
+        //        let confirmation = Confirmation(type: jsonResponse["confirmation"]["type"], confirmationUrl: jsonResponse["confirmation"]["confirmation_url"])
         let createdAt = DateUtils.stringToDate(dateString: jsonResponse["created_at"].stringValue)
         let description = jsonResponse["description"].stringValue
         
@@ -236,7 +241,7 @@ class JSONManager {
         return payment
     }
     
-            // PAYMENT
+    // PAYMENT
     //        {
     //          "id": "23d93cac-000f-5000-8000-126628f15141",
     //          "status": "pending",
@@ -259,5 +264,5 @@ class JSONManager {
     //          "refundable": false,
     //          "test": false
     //        }
-
+    
 }

@@ -14,7 +14,6 @@ class TimeTableViewCell: UITableViewCell {
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    let networkManager = NetworkManager()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,7 +35,7 @@ class TimeTableViewCell: UITableViewCell {
 //    func getMoviePosterURL(kinopoiskId: String) {
 //        let kinopoiskParser = KinopoiskHTMLParser()
 //        var imageURL = ""
-//        Alamofire.request(networkManager.getKinopoiskMovieDetailsURL(kinopoiskMovieId: kinopoiskId), method: .get).responseString { (response) in
+//        Alamofire.request(NetworkManager.shared.getKinopoiskMovieDetailsURL(kinopoiskMovieId: kinopoiskId), method: .get).responseString { (response) in
 //            if response.result.isSuccess {
 //                print("MOVIE DETAILS KINOPISK SUCCESS: \(response)" )
 //                imageURL = kinopoiskParser.getImageURL(response: response)

@@ -15,7 +15,6 @@ import Alamofire
 
 class BuyTicketCompleteViewController: UIViewController {
     
-    let networkManager = NetworkManager()
     let calendarEventManager = CalendarEventManager()
     var movie: TimeTableCellViewModel?
     
@@ -37,7 +36,7 @@ class BuyTicketCompleteViewController: UIViewController {
             let ticketRequest = TicketRequest(movie: movieLocal)
             let parameters = ticketRequest.transformToParameters()
             if Constants.isNetworkActive {
-                Alamofire.request(networkManager.skylineCinemaTicketRequestURL,
+                Alamofire.request(Routes.skylineCinemaTicketRequestURL,
                                   method: .post,
                     parameters: parameters,
                     encoding: JSONEncoding.default).responseJSON { response in
