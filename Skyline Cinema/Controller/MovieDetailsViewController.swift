@@ -40,7 +40,7 @@ class MovieDetailsViewController: UIViewController {
         if let movieLocal = self.movie {
             let xmlManager = XMLManager()
             var rates = [String: String]()
-            Alamofire.request(Routes.getKinopoiskRatesURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get).responseString { (response) in
+            Alamofire.request(NetworkManager.shared.getKinopoiskRatesURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get).responseString { (response) in
                 print("RATES SUCCESS: \(response)")
                 rates = xmlManager.parseRatesXML(response: response)
                 DispatchQueue.main.async {
@@ -58,7 +58,7 @@ class MovieDetailsViewController: UIViewController {
             let headers: HTTPHeaders = [
                 "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36"
             ]
-            Alamofire.request(Routes.getKinopoiskMovieDetailsURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get, headers: headers).responseString { (response) in
+            Alamofire.request(NetworkManager.shared.getKinopoiskMovieDetailsURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get, headers: headers).responseString { (response) in
                 if response.result.isSuccess {
                         print("MOVIE DETAILS KINOPOISK SUCCESS: \(response)" )
                         details[Constants.description] = kinopoiskParser.getDescription(response: response)
@@ -77,7 +77,6 @@ class MovieDetailsViewController: UIViewController {
     
     func getMovieDetailsFromWiki() {
         if let movieLocal = self.movie {
-            let jsonManager = JSONManager()
             let parameters : [String:String] = [
                 "format" : "json",
                 "action" : "query",
@@ -93,7 +92,7 @@ class MovieDetailsViewController: UIViewController {
             Alamofire.request(Routes.wikiURL, method: .get, parameters: parameters).responseJSON { (response) in
                 if response.result.isSuccess {
                     print("MOVIE DETAILS SUCCESS: \(response)" )
-                    details = jsonManager.parseMovieDetailsJSONFromWIki(response: response, movie: movieLocal)
+                    details = JSONManager.shared.parseMovieDetailsJSONFromWIki(response: response, movie: movieLocal)
                     DispatchQueue.main.async {
                         movieLocal.setDetails(details: details)
                         self.setUpDescriptionAndImageURL(movie: movieLocal)

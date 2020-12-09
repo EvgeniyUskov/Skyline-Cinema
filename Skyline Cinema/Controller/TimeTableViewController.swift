@@ -70,7 +70,7 @@ extension TimeTableViewController: UITableViewDelegate, UITableViewDataSource {
               groupLabel.frame = CGRect(x: 10, y: 0, width: 200, height: 20)
           }
           groupLabel.font = UIFont.systemFont(ofSize: 22)
-          groupLabel.textColor = FlatWhite()
+        groupLabel.textColor = UIColor.white
           groupLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
           
           let headerView = UIView()

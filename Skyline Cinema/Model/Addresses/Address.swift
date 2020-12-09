@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Address {
+struct Address: Decodable {
     var address: String = ""
     var description: String = ""
     var phoneNumber: String = ""

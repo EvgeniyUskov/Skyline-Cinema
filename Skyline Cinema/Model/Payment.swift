@@ -7,14 +7,14 @@
 //
 
 import Foundation
-import YooKassaPayments
-import YooKassaPaymentsApi
+//import YooKassaPayments
+//import YooKassaPaymentsApi
 
 class Payment {
     var id: String
     var status: String
     var paid: Bool
-    var amount: Amount
+//    var amount: Amount
     var createdAt: Date
     var description: String
 //    var type: String
@@ -22,7 +22,7 @@ class Payment {
     init(id: String,
          status: String,
          paid: Bool,
-         amount: Amount,
+//         amount: Amount,
          createdAt: Date,
          description: String//,
 //         type: String) {
@@ -30,7 +30,7 @@ class Payment {
         self.id = id
         self.status = status
         self.paid = paid
-        self.amount = amount
+//        self.amount = amount
         self.createdAt = createdAt
         self.description = description
 //        self.type = type

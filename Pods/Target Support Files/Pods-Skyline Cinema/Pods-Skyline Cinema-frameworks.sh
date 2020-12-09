@@ -176,39 +176,21 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/FunctionalSwift/FunctionalSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Realm/Realm.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyXML/SwiftyXML.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/When/When.framework"
-  install_framework "${PODS_ROOT}/YandexMobileMetrica/dynamic/YandexMobileMetrica.framework"
-  install_framework "${PODS_ROOT}/YandexMobileMetrica/dynamic/YandexMobileMetricaCrashes.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/YooKassaPayments/YooKassaPayments.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/YooKassaPaymentsApi/YooKassaPaymentsApi.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/YooKassaWalletApi/YooKassaWalletApi.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/YooMoneyCoreApi/YooMoneyCoreApi.framework"
-  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/MoneyAuth/MoneyAuth.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/FunctionalSwift/FunctionalSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Realm/Realm.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyXML/SwiftyXML.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/When/When.framework"
-  install_framework "${PODS_ROOT}/YandexMobileMetrica/dynamic/YandexMobileMetrica.framework"
-  install_framework "${PODS_ROOT}/YandexMobileMetrica/dynamic/YandexMobileMetricaCrashes.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/YooKassaPayments/YooKassaPayments.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/YooKassaPaymentsApi/YooKassaPaymentsApi.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/YooKassaWalletApi/YooKassaWalletApi.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/YooMoneyCoreApi/YooMoneyCoreApi.framework"
-  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/MoneyAuth/MoneyAuth.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

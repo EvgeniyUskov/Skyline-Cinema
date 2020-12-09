@@ -22,11 +22,13 @@
 		44447CB023FBD76C001897AD /* OrderCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44447CAF23FBD76C001897AD /* OrderCompleteViewController.swift */; };
 		44447CB423FBE64C001897AD /* OrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44447CB323FBE64C001897AD /* OrderRequest.swift */; };
 		44447CB623FC167F001897AD /* TicketRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44447CB523FC167F001897AD /* TicketRequest.swift */; };
+		4477F90E2580B7D000910CDE /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4477F90D2580B7D000910CDE /* City.swift */; };
+		4477F9192580BD1E00910CDE /* QRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4477F9182580BD1E00910CDE /* QRManager.swift */; };
 		449D969D24911B2600864E7E /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA92D61F23D6B31400C65B6F /* fa-brands-400.ttf */; };
 		449D969E24911B2600864E7E /* fa-solid-900.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AABAF99323D6BED500CE8371 /* fa-solid-900.ttf */; };
+		44A2A901258090B800B5BEE4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2A900258090B800B5BEE4 /* Menu.swift */; };
+		44A2A9032580AEA900B5BEE4 /* MovieTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2A9022580AEA900B5BEE4 /* MovieTimeTable.swift */; };
 		44BA6E3923FA6B9800416183 /* CalendarEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */; };
-		44EAC5F225655C2600F1B51A /* RealmStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EAC5F125655C2600F1B51A /* RealmStorage.swift */; };
-		44EAC5F625655C5C00F1B51A /* OrderLocalStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EAC5F525655C5C00F1B51A /* OrderLocalStorageProtocol.swift */; };
 		719601129B161C1346161987 /* Pods_Skyline_Cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F271EA4CA76AA3EFC4AD0AA5 /* Pods_Skyline_Cinema.framework */; };
 		AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118D22AE0699000E1024 /* AppDelegate.swift */; };
 		AA18119022AE0699000E1024 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118F22AE0699000E1024 /* TimeTableViewController.swift */; };
@@ -106,9 +108,11 @@
 		44447CAF23FBD76C001897AD /* OrderCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCompleteViewController.swift; sourceTree = "<group>"; };
 		44447CB323FBE64C001897AD /* OrderRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequest.swift; sourceTree = "<group>"; };
 		44447CB523FC167F001897AD /* TicketRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRequest.swift; sourceTree = "<group>"; };
+		4477F90D2580B7D000910CDE /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		4477F9182580BD1E00910CDE /* QRManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRManager.swift; sourceTree = "<group>"; };
+		44A2A900258090B800B5BEE4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		44A2A9022580AEA900B5BEE4 /* MovieTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTimeTable.swift; sourceTree = "<group>"; };
 		44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventManager.swift; sourceTree = "<group>"; };
-		44EAC5F125655C2600F1B51A /* RealmStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorage.swift; sourceTree = "<group>"; };
-		44EAC5F525655C5C00F1B51A /* OrderLocalStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderLocalStorageProtocol.swift; sourceTree = "<group>"; };
 		8469BA71E967E2E69CD133CA /* Pods-Skyline Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.debug.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.debug.xcconfig"; sourceTree = "<group>"; };
 		A37F0B7F9302AA552FE82B21 /* Pods-Skyline Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.release.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.release.xcconfig"; sourceTree = "<group>"; };
 		AA18118A22AE0699000E1024 /* Skyline Cinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skyline Cinema.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +173,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4477F90F2580B80B00910CDE /* Addresses */ = {
+			isa = PBXGroup;
+			children = (
+				AA8DD46423D422E900F52855 /* Address.swift */,
+				4477F90D2580B7D000910CDE /* City.swift */,
+			);
+			path = Addresses;
+			sourceTree = "<group>";
+		};
+		44A2A9042580AF9D00B5BEE4 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				AA46AD1A230BB8AD00FCC3C5 /* Order.swift */,
+				AA46AD1C230BB8BA00FCC3C5 /* Item.swift */,
+				443C478A23F6DA4D00A2EFEC /* Category.swift */,
+				44A2A900258090B800B5BEE4 /* Menu.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		44A2A9052580AFAA00B5BEE4 /* TimeTable */ = {
+			isa = PBXGroup;
+			children = (
+				443C478C23F833A100A2EFEC /* MovieDay.swift */,
+				AAFF581123CDC4180033B411 /* Movie.swift */,
+				44A2A9022580AEA900B5BEE4 /* MovieTimeTable.swift */,
+			);
+			path = TimeTable;
+			sourceTree = "<group>";
+		};
 		44AFA38C257F80D000C394FF /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,8 +218,7 @@
 				AAFF581B23CEC5790033B411 /* JSONManager.swift */,
 				AAFF581923CEC5680033B411 /* XMLManager.swift */,
 				44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */,
-				44EAC5F125655C2600F1B51A /* RealmStorage.swift */,
-				44EAC5F525655C5C00F1B51A /* OrderLocalStorageProtocol.swift */,
+				4477F9182580BD1E00910CDE /* QRManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -288,12 +321,9 @@
 			isa = PBXGroup;
 			children = (
 				44B8962325652F5200FC8BE4 /* Networking Model */,
-				AA46AD1A230BB8AD00FCC3C5 /* Order.swift */,
-				AA46AD1C230BB8BA00FCC3C5 /* Item.swift */,
-				443C478A23F6DA4D00A2EFEC /* Category.swift */,
-				443C478C23F833A100A2EFEC /* MovieDay.swift */,
-				AAFF581123CDC4180033B411 /* Movie.swift */,
-				AA8DD46423D422E900F52855 /* Address.swift */,
+				44A2A9042580AF9D00B5BEE4 /* Menu */,
+				44A2A9052580AFAA00B5BEE4 /* TimeTable */,
+				4477F90F2580B80B00910CDE /* Addresses */,
 				AAEE08EC23D1587C00E60DAE /* Membership.swift */,
 				443C479423F91F7600A2EFEC /* Event.swift */,
 				44185F5A2491FBCD0010F62F /* Payment.swift */,
@@ -525,12 +555,13 @@
 				44447CB623FC167F001897AD /* TicketRequest.swift in Sources */,
 				443C478B23F6DA4D00A2EFEC /* Category.swift in Sources */,
 				AAEE08E923D051BA00E60DAE /* Cities.swift in Sources */,
+				4477F90E2580B7D000910CDE /* City.swift in Sources */,
 				AA46AD1B230BB8AD00FCC3C5 /* Order.swift in Sources */,
+				44A2A901258090B800B5BEE4 /* Menu.swift in Sources */,
 				AA8EAECA23A22DD900F062C6 /* CartTableViewController.swift in Sources */,
 				44447CAE23FBD672001897AD /* Mock.swift in Sources */,
 				AAEE08E123D022D900E60DAE /* StringUtils.swift in Sources */,
 				AAA6DB1C22CC5DCD0033C6CF /* MenuViewController.swift in Sources */,
-				44EAC5F225655C2600F1B51A /* RealmStorage.swift in Sources */,
 				44185F5B2491FBCD0010F62F /* Payment.swift in Sources */,
 				AAFF581423CDC5820033B411 /* TimeTableCellViewModell.swift in Sources */,
 				AA8EAED323A238DB00F062C6 /* CartTableViewCell.swift in Sources */,
@@ -539,6 +570,7 @@
 				AAFF581823CDF6DB0033B411 /* MovieDetailsViewController.swift in Sources */,
 				AA8EAEC823A226CC00F062C6 /* DateUtils.swift in Sources */,
 				AAFF581C23CEC5790033B411 /* JSONManager.swift in Sources */,
+				4477F9192580BD1E00910CDE /* QRManager.swift in Sources */,
 				AAA667FF23D56B3200A1893E /* ParameterEncoder.swift in Sources */,
 				AAEE08E323D042E900E60DAE /* KinopoiskHTMLParser.swift in Sources */,
 				AAFF581A23CEC5680033B411 /* XMLManager.swift in Sources */,
@@ -547,8 +579,8 @@
 				AA917B5C23D187BE002FC579 /* BuyTicketViewController.swift in Sources */,
 				AA8DD46523D422E900F52855 /* Address.swift in Sources */,
 				AAA667FD23D5660E00A1893E /* JSONParameterEncoder.swift in Sources */,
-				44EAC5F625655C5C00F1B51A /* OrderLocalStorageProtocol.swift in Sources */,
 				44447CB023FBD76C001897AD /* OrderCompleteViewController.swift in Sources */,
+				44A2A9032580AEA900B5BEE4 /* MovieTimeTable.swift in Sources */,
 				AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */,
 				AAEE08EB23D05A0300E60DAE /* RegisterViewController.swift in Sources */,
 				442CB07323FBA02D00B90800 /* BuyOrderViewController.swift in Sources */,

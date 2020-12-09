@@ -10,9 +10,6 @@ import Foundation
 import RealmSwift
 import Alamofire
 import SVProgressHUD
-import YandexCheckoutPayments
-import YandexCheckoutPaymentsApi
-
 
 struct NetworkManager {
     static var shared : NetworkManager {
@@ -23,83 +20,157 @@ struct NetworkManager {
     
     var defaults = UserDefaults.standard
     
-    let realm = try! Realm()
-    let jsonManager = JSONManager()
-    
-    func getItems() -> [Category]{
-        var groupsOfItems = [Category]()
-        do{
-            try realm.write {
-                let olderItems = realm.objects(Item.self)
-                realm.delete(olderItems)
+    func getItems(completion: @escaping ([Category]) -> ()) {
+        var categories = [Category]()
                 if Constants.isNetworkActive {
-                    Alamofire.request(Routes.skylineCinemaItemsURL, method: .get).responseJSON {
-                        (response) in
-                        if response.result.isSuccess {
-                            groupsOfItems = self.jsonManager.parseJSONItems(response: response)
-                            for category in groupsOfItems {
-                                self.realm.add(category.items)
+                    if let url = URL(string: Routes.skylineCinemaItemsURL) {
+                        let session = URLSession(configuration: .default)
+                        let task = session.dataTask(with: url) {
+                            (data, response, error) in
+                            if let error = error {
+                                print(error)
+                                return
+                            }
+                            if let safeData = data {
+                                categories = JSONManager.shared.parseJSONItems(data: safeData)
+                                completion(categories)
                             }
                         }
+                        task.resume()
                     }
                 } else {
-                    groupsOfItems = jsonManager.parseMOCKJSONItems()
-                    for category in groupsOfItems {
-                        self.realm.add(category.items)
-                    }
+                    categories = JSONManager.shared.parseMOCKJSONItems()
+                    completion(categories)
                 }
-            }
-        }
-        catch {
-            print("Error getting Items: \(error)")
-        }
-        
-        SVProgressHUD.dismiss()
-        return groupsOfItems
     }
     
     func getMovies() -> [MovieDay] {
         var movies = [MovieDay]()
         if Constants.isNetworkActive {
-            Alamofire.request(Routes.skylineCinemaMoviesURL, method: .get).responseJSON {
-                (response) in
-                if response.result.isSuccess {
-                    movies = self.jsonManager.parseJSONMovies(response: response)
+            if let url = URL(string: Routes.skylineCinemaMoviesURL) {
+                let session = URLSession(configuration: .default)
+                let task = session.dataTask(with: url) {
+                    (data, response, error) in
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    if let safeData = data {
+                        movies = JSONManager.shared.parseJSONMovies(data: safeData)
+                    }
                 }
+                task.resume()
             }
         } else {
-            movies = self.jsonManager.parseJSONMOCKMovies()
+            movies = JSONManager.shared.parseJSONMOCKMovies()
         }
+        
         SVProgressHUD.dismiss()
         return movies
     }
     
-    func getAddresses() -> [Address] {
+    func getAddresses() -> [Address]? {
         var addresses = [Address]()
         if let city = defaults.string(forKey: Constants.propCity) {
             let parameters = ["city": city]
+            
             if Constants.isNetworkActive {
-                Alamofire.request(Routes.skylineCinemaAddressRequestURL,
-                                  method: .post,
-                    parameters: parameters,
-                    encoding: JSONEncoding.default).responseJSON { response in
-                        debugPrint(response)
-                        if response.result.isSuccess {
-                            addresses = self.jsonManager.parseAddressJSON(response: response)
+                if let url = URL(string: Routes.skylineCinemaAddressURL) {
+                    var request = URLRequest(url: url)
+                    request.httpMethod = "POST"
+                    guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return nil}
+                    request.httpBody = httpBody
+                    
+                    let session = URLSession(configuration: .default)
+                    let task = session.dataTask(with: url) {
+                        (data, response, error) in
+                        if let error = error {
+                            print(error)
+                            return
                         }
+                        if let safeData = data {
+                            addresses = JSONManager.shared.parseAddressJSON(data: safeData)
+                        }
+                    }
+                    task.resume()
                 }
             } else {
-                addresses = self.jsonManager.parseAddressJSONMock()
+                addresses = JSONManager.shared.parseAddressJSONMock()
             }
         }
         SVProgressHUD.dismiss()
         return addresses
     }
     
+    func getMembership(licensePlateNumber: String) -> Membership? {
+        if Constants.isNetworkActive {
+            if let url = URL(string: Routes.skylineCinemaMembershipURL) {
+                
+                let parameters = ["licensePlateNumber": licensePlateNumber]
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return nil}
+                request.httpBody = httpBody
+                
+                let session = URLSession(configuration: .default)
+                let task = session.dataTask(with: url) {
+                    (data, response, error) in
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    if let safeData = data {
+                        let membership = JSONManager.shared.parseAddressJSON(data: safeData)
+                    }
+                }
+                task.resume()
+            }
+            
+            AF.request(Routes.skylineCinemaMembershipURL, method: .get).responseJSON { (response) in
+                switch response.result {
+                        case .success:
+                            let membershipDetails: [String: String] = JSONManager.shared.parseMembershipURL(response: response)
+                            if let url = membershipDetails[Constants.qrURL],
+                                let endDate = membershipDetails[Constants.endDate] {
+                                let membership = Membership(url: url, date: endDate)
+                                let qrImage = self.generateQrCode(membershipUrl: membership.url)
+                                
+                                DispatchQueue.main.async {
+                                    if let qr = qrImage {
+                                        self.showMembership(membership: membership, qrImage: qr)
+                                    } else {
+                                        self.showNoMembership()
+                                    }
+                                }
+                            }
+                        case let .failure(error):
+                            print(error)
+                }
+            }
+        }
+        else {
+            let membershipDetails: [String: String] = JSONManager.shared.parseMOCKMembershipURL()
+                    if let url = membershipDetails[Constants.qrURL],
+                        let endDate = membershipDetails[Constants.endDate] {
+                        let membership = Membership(url: url, date: endDate)
+                        let qrImage = self.generateQrCode(membershipUrl: membership.url)
+                        
+                        DispatchQueue.main.async {
+                            if let qr = qrImage {
+                                self.showMembership(membership: membership, qrImage: qr)
+                            } else {
+                                self.showNoMembership()
+                            }
+                }
+            }
+        }
+        SVProgressHUD.dismiss()
+    }
+
     func getKinopoiskRatesURL (kinopoiskMovieId: String) -> String {
         return Routes.kinopoiskRatesURL +
             kinopoiskMovieId +
-        kinopoiskRatesURLXMLExtension
+            Constants.kinopoiskRatesURLXMLExtension
     }
     
     func getKinopoiskMovieDetailsURL(kinopoiskMovieId: String) -> String {
@@ -107,46 +178,46 @@ struct NetworkManager {
         kinopoiskMovieId
     }
     
-    func createPayment(paymentToken: Tokens, amount: Amount, description: String, completion: @escaping (Payment) -> Void) {
-        let idempotenceKey = UUID()
-        
-        let headers : [String: Any] = [
-            "Idempotence-Key" : idempotenceKey
-        ]
-        
-        struct PaymentMethodData : Encodable {
-            var type: String
-        }
-        let paymentMethodData = PaymentMethodData(type: "bank_card")
-        
-        struct Confirmation : Encodable {
-            var type: String
-            var enforce: Bool
-            var returnUrl: String
-        }
-        let confirmation = Confirmation(type: "redirect",
-                                        enforce: false,
-                                        returnUrl: self.skyLineCinemaSuccessPaymentURL)
-        
-        let params : [String: Any] = [
-            "payment_token": paymentToken,
-            "amount": amount,
-            "payment_method_data": paymentMethodData,
-            "confirmation": confirmation,
-            "capture": true,
-            "description": description
-        ]
-        let cred = URLCredential(user: Constants.shopId , password: Constants.mobileSDKApiKey, persistence: .forSession)
-        Alamofire.request(yandexPaymentURL, method: .post, parameters: params, headers: headers as! HTTPHeaders)
-            .authenticate(usingCredential: cred)
-            .responseJSON {
-            (response) in
-            
-            let payment = self.jsonManager.parsePaymentJSON(response: response)
-            completion(payment)
-            
-        }
-        
+//    func createPayment(paymentToken: Tokens, amount: Amount, description: String, completion: @escaping (Payment) -> Void) {
+//        let idempotenceKey = UUID()
+//
+//        let headers : [String: Any] = [
+//            "Idempotence-Key" : idempotenceKey
+//        ]
+//
+//        struct PaymentMethodData : Encodable {
+//            var type: String
+//        }
+//        let paymentMethodData = PaymentMethodData(type: "bank_card")
+//
+//        struct Confirmation : Encodable {
+//            var type: String
+//            var enforce: Bool
+//            var returnUrl: String
+//        }
+//        let confirmation = Confirmation(type: "redirect",
+//                                        enforce: false,
+//                                        returnUrl: Routes.skyLineCinemaSuccessPaymentURL)
+//
+//        let params : [String: Any] = [
+//            "payment_token": paymentToken,
+//            "amount": amount,
+//            "payment_method_data": paymentMethodData,
+//            "confirmation": confirmation,
+//            "capture": true,
+//            "description": description
+//        ]
+//        let cred = URLCredential(user: Constants.shopId , password: Constants.mobileSDKApiKey, persistence: .forSession)
+//        Alamofire.request(Routes.yandexPaymentURL, method: .post, parameters: params, headers: headers as! HTTPHeaders)
+//            .authenticate(usingCredential: cred)
+//            .responseJSON {
+//            (response) in
+//
+//            let payment = self.JSONManager.shared.parsePaymentJSON(response: response)
+//            completion(payment)
+//
+//        }
+//
                 // REQUEST
 //        curl https://payment.yandex.net/api/v3/payments \
 //        -X POST \
@@ -167,8 +238,6 @@ struct NetworkManager {
 //              "capture": false,
 //              "description": "Заказ №72"
 //            }
-
-
-    }
+//    }
     
 }

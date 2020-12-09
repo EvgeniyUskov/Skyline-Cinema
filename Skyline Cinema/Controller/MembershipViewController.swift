@@ -17,41 +17,51 @@ class MembershipViewController: UIViewController {
     @IBOutlet weak var membershipActiveTillLabel: UILabel!
     @IBOutlet weak var noMembershipLabel: UILabel!
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
         showNoMembership()
-        
-        getQrCodeByLink()
+        if let plateNumber = defaults.string(forKey: Constants.propLicensePlateNumber) {
+            if let membership = NetworkManager.shared.getMembershipLink(licensePlateNumber: plateNumber) {
+                
+                QRManager.shared.generateQrCode(membershipUrl: url.absoluteString)
+            }
+        }
     }
     
+    //TODO: move to NetworkManager
     func getQrCodeByLink() {
         if Constants.isNetworkActive {
-            Alamofire.request(Routes.skylineCinemaMembershipURL, method: .get).responseJSON { (response) in
-                if response.result.isSuccess {
-                    let membershipDetails: [String: String] = self.JSONManager.parseMembershipURL(response: response)
-                    if let url = membershipDetails[Constants.qrURL],
-                        let endDate = membershipDetails[Constants.endDate] {
-                        let membership = Membership(url: url, date: endDate)
-                        let qrImage = self.generateQrCode(membershipUrl: membership.url)
-                        
-                        DispatchQueue.main.async {
-                            if let qr = qrImage {
-                                self.showMembership(membership: membership, qrImage: qr)
-                            } else {
-                                self.showNoMembership()
+            AF.request(Routes.skylineCinemaMembershipURL, method: .get).responseJSON { (response) in
+                switch response.result {
+                        case .success:
+                            let membershipDetails: [String: String] = JSONManager.shared.parseMembershipURL(response: response)
+                            if let url = membershipDetails[Constants.qrURL],
+                                let endDate = membershipDetails[Constants.endDate] {
+                                let membership = Membership(url: url, date: endDate)
+                                let qrImage = QRManager.shared.generateQrCode(membershipUrl: membership.url)
+                                
+                                DispatchQueue.main.async {
+                                    if let qr = qrImage {
+                                        self.showMembership(membership: membership, qrImage: qr)
+                                    } else {
+                                        self.showNoMembership()
+                                    }
+                                }
                             }
-                        }
-                    }
+                        case let .failure(error):
+                            print(error)
                 }
             }
         }
         else {
-                    let membershipDetails: [String: String] = self.JSONManager.parseMOCKMembershipURL()
+            let membershipDetails: [String: String] = JSONManager.shared.parseMOCKMembershipURL()
                     if let url = membershipDetails[Constants.qrURL],
                         let endDate = membershipDetails[Constants.endDate] {
                         let membership = Membership(url: url, date: endDate)
-                        let qrImage = self.generateQrCode(membershipUrl: membership.url)
+                        let qrImage = QRManager.shared.generateQrCode(membershipUrl: membership.url)
                         
                         DispatchQueue.main.async {
                             if let qr = qrImage {
@@ -72,17 +82,7 @@ class MembershipViewController: UIViewController {
         SVProgressHUD.dismiss()
     }
     
-    func generateQrCode(membershipUrl: String) -> UIImage?{
-        let data = membershipUrl.data(using: String.Encoding.ascii)
-        guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return nil}
-        qrFilter.setValue(data, forKey: "inputMessage")
-        guard let qrImage = qrFilter.outputImage else { return nil}
-        
-        let transform = CGAffineTransform(scaleX: 7, y: 7)
-        let scaledQrImage = qrImage.transformed(by: transform)
-        
-        return UIImage(ciImage: scaledQrImage)
-    }
+   
     
     func showNoMembership() {
         qrLabel.isHidden = true

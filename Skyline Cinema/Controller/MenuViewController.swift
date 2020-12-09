@@ -14,14 +14,19 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var goToOrderButton: UIButton!
     @IBOutlet weak var popcornTableView: UITableView!
     
-    private var menuList: [Item] = [Item]()
+//    private var menuList: [Item] = [Item]()
     private var menuListCategories: [Category] = [Category]()
     private var order: Order?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
-        menuListCategories = NetworkManager.shared.getItems()
+        NetworkManager.shared.getItems(completion: {
+            [unowned self]
+            categories in
+            self.menuListCategories = categories
+            SVProgressHUD.dismiss()
+        })
         sortCategories()
         disableGoToOrderButon()
         setUpTableView()
@@ -88,13 +93,13 @@ class MenuViewController: UIViewController {
     
     func disableGoToOrderButon() {
         goToOrderButton.isEnabled = false
-        goToOrderButton.backgroundColor = UIColor.flatBlackColorDark()
-        goToOrderButton.setTitleColor(UIColor.flatGrayColorDark(), for: .disabled)
+        goToOrderButton.backgroundColor = UIColor.black
+        goToOrderButton.setTitleColor(UIColor.gray, for: .disabled)
     }
     
     func enableGoToOrderButon(){
         goToOrderButton.isEnabled = true
-        goToOrderButton.backgroundColor = UIColor.flatWatermelon()
+        goToOrderButton.backgroundColor = UIColor.systemPink
     }
     
     func sortCategories() {
@@ -128,7 +133,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             groupLabel.frame = CGRect(x: 10, y: 0, width: 200, height: 20)
         }
         groupLabel.font = UIFont.systemFont(ofSize: 22)
-        groupLabel.textColor = FlatWhite()
+        groupLabel.textColor = UIColor.white
         groupLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
         
         let headerView = UIView()
@@ -156,7 +161,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: delete when deselect
         let selectedItem = menuListCategories[indexPath.section].items[indexPath.row]
-        try! realm.write {
             if(!selectedItem.checked) {
                 selectedItem.checked = true
                 order!.items.append(selectedItem)
@@ -165,7 +169,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
                 popcornTableView.deselectRow(at: indexPath, animated: true)
                 removeItemFromOrder(item: selectedItem)
             }
-        }
         
         if order!.items.count != 0 {
             enableGoToOrderButon()
@@ -174,6 +177,5 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         popcornTableView.reloadData()
-        saveData()
     }
 }

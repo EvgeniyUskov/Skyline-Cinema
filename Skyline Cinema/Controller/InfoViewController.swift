@@ -86,7 +86,7 @@ class InfoViewController: UIViewController {
         UIApplication.shared.openURL(NSURL(string: Routes.fbURL) as! URL)
     }
     @IBAction func tlgButtonTapped(_ sender: Any) {
-        UIApplication.shared.openURL(NSURL(string: Routes.KtlgURL) as! URL)
+        UIApplication.shared.openURL(NSURL(string: Routes.tlgURL) as! URL)
     }
     @IBAction func safButtonTapped(_ sender: Any) {
         UIApplication.shared.openURL(NSURL(string: Routes.safariURL) as! URL)

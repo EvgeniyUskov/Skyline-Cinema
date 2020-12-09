@@ -36,14 +36,17 @@ class BuyTicketCompleteViewController: UIViewController {
             let ticketRequest = TicketRequest(movie: movieLocal)
             let parameters = ticketRequest.transformToParameters()
             if Constants.isNetworkActive {
-                Alamofire.request(Routes.skylineCinemaTicketRequestURL,
+                AF.request(Routes.skylineCinemaTicketRequestURL,
                                   method: .post,
                     parameters: parameters,
                     encoding: JSONEncoding.default).responseJSON { response in
-                        debugPrint(response)
-                        if !response.result.isSuccess {
-                            self.setUIToErrorMode()
-                        }
+                        switch response.result {
+                                case .success:
+                                    debugPrint(response)
+                                case let .failure(error):
+                                    print(error)
+                                    self.setUIToErrorMode()
+                                }
                 }
             }
             movieImageView.sd_setImage(with: URL(string: movieLocal.imageURL ?? ""), completed: nil)

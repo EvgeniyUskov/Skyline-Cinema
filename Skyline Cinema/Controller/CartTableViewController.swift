@@ -9,8 +9,8 @@
 import UIKit
 import RealmSwift
 import SVProgressHUD
-import YooKassaPayments
-import YooKassaPaymentsApi
+//import YooKassaPayments
+//import YooKassaPaymentsApi
 
 class CartTableViewController: UIViewController {
     
@@ -53,36 +53,36 @@ class CartTableViewController: UIViewController {
         let apiKey = Constants.mobileSDKApiKey
 //        let shopId = Constants.shopId
         
-        let amount = Amount(value: Decimal(totalAmount), currency: .rub)
+//        let amount = Amount(value: Decimal(totalAmount), currency: .rub)
         if let order = order {
 //            var orderItems: String
 //            for item in order.items{
 //                orderItems += item.title + ", "
 //            }
-            let tokenizationModuleInputData = TokenizationModuleInputData(
-                clientApplicationKey: apiKey,
-                shopName: Constants.shopName ,
-                purchaseDescription: "Номер Авто: \(order.licensePlateNumber): Заказ еды.", // \(orderItems)
-                amount: amount, savePaymentMethod: .on)
+//            let tokenizationModuleInputData = TokenizationModuleInputData(
+//                clientApplicationKey: apiKey,
+//                shopName: Constants.shopName ,
+//                purchaseDescription: "Номер Авто: \(order.licensePlateNumber): Заказ еды.", // \(orderItems)
+//                amount: amount, savePaymentMethod: .on)
+//
+//            let inputData: TokenizationFlow = .tokenization(tokenizationModuleInputData)
             
-            let inputData: TokenizationFlow = .tokenization(tokenizationModuleInputData)
-            
-            let viewController = TokenizationAssembly.makeModule(inputData: inputData, moduleOutput: self)
-            present(viewController, animated: true, completion: nil)
+//            let viewController = TokenizationAssembly.makeModule(inputData: inputData, moduleOutput: self)
+//            present(viewController, animated: true, completion: nil)
         }
     }
     
-    func createPayment (paymentToken: Tokens, amount: Amount, description: String) {
-        NetworkManager.shared.createPayment(paymentToken: paymentToken,
-                                     amount: amount,
-                                     description: description,
-                                     completion: {
-            [weak self] payment in
-                self?.payment = payment
-                DispatchQueue.main.async {
-//                    self?.computerTableView.reloadData()
-            }})
-    }
+//    func createPayment (paymentToken: Tokens, amount: Amount, description: String) {
+//        NetworkManager.shared.createPayment(paymentToken: paymentToken,
+//                                     amount: amount,
+//                                     description: description,
+//                                     completion: {
+//            [weak self] payment in
+//                self?.payment = payment
+//                DispatchQueue.main.async {
+////                    self?.computerTableView.reloadData()
+//            }})
+//    }
     
     func saveData() {
         do{
@@ -157,7 +157,7 @@ extension CartTableViewController: CellStepperDelegate {
     }
 }
 // MARK: - TokenizationModuleOutput
-extension CartTableViewController: TokenizationModuleOutput {
+/*extension CartTableViewController: TokenizationModuleOutput {
       func tokenizationModule(_ module: TokenizationModuleInput,
                               didTokenize token: Tokens,
                               paymentMethodType: PaymentMethodType) {
@@ -192,5 +192,5 @@ extension CartTableViewController: TokenizationModuleOutput {
             self.dismiss(animated: true)
         }
     }
-}
+}*/
 

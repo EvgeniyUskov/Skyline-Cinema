@@ -13,7 +13,7 @@ enum Routes {
     static let skylineCinemaItemsURL = "https://skylinecinema.ru/menu"
     static let skylineCinemaMoviesURL = "https://skylinecinema.ru/movies"
     static let skylineCinemaMembershipURL = "https://skylinecinema.ru/membership"
-    static let skylineCinemaAddressRequestURL = "https://skylinecinema.ru/addresses"
+    static let skylineCinemaAddressURL = "https://skylinecinema.ru/addresses"
     
     static let skylineCinemaOrderRequestURL = "https://skylinecinema.ru/order"
     static let skylineCinemaTicketRequestURL = "https://skylinecinema.ru/ticket"
@@ -26,7 +26,7 @@ enum Routes {
     static let safariURL = "http://skylinecinema.ru"
     
     static let kinopoiskRatesURL = "https://rating.kinopoisk.ru/"
-    static let kinopoiskRatesURLXMLExtension = ".xml"
+    
     static let kinopoiskMovieDetailsURL = "https://www.kinopoisk.ru/film/"
     
     static let wikiURL = "https://ru.wikipedia.org/w/api.php"
@@ -37,6 +37,8 @@ enum Routes {
 }
 
 enum Constants {
+    
+    static let kinopoiskRatesURLXMLExtension = ".xml"
     // TODO: change addresses
 //    public static let shopId = "53097" // боевой shopId
     public static let shopId = "676332" // тестовый shopId

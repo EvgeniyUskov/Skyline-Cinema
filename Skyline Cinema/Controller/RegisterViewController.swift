@@ -146,6 +146,6 @@ extension RegisterViewController {
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
-        return NSAttributedString(string: cities[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.flatWhite()])
+        return NSAttributedString(string: cities[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
 }
