@@ -24,65 +24,31 @@ class MembershipViewController: UIViewController {
         SVProgressHUD.show()
         showNoMembership()
         if let plateNumber = defaults.string(forKey: Constants.propLicensePlateNumber) {
-            if let membership = NetworkManager.shared.getMembershipLink(licensePlateNumber: plateNumber) {
-                
-                QRManager.shared.generateQrCode(membershipUrl: url.absoluteString)
-            }
+            getQRCode(licencePlateNumber: plateNumber)
         }
-    }
-    
-    //TODO: move to NetworkManager
-    func getQrCodeByLink() {
-        if Constants.isNetworkActive {
-            AF.request(Routes.skylineCinemaMembershipURL, method: .get).responseJSON { (response) in
-                switch response.result {
-                        case .success:
-                            let membershipDetails: [String: String] = JSONManager.shared.parseMembershipURL(response: response)
-                            if let url = membershipDetails[Constants.qrURL],
-                                let endDate = membershipDetails[Constants.endDate] {
-                                let membership = Membership(url: url, date: endDate)
-                                let qrImage = QRManager.shared.generateQrCode(membershipUrl: membership.url)
-                                
-                                DispatchQueue.main.async {
-                                    if let qr = qrImage {
-                                        self.showMembership(membership: membership, qrImage: qr)
-                                    } else {
-                                        self.showNoMembership()
-                                    }
-                                }
-                            }
-                        case let .failure(error):
-                            print(error)
-                }
-            }
-        }
-        else {
-            let membershipDetails: [String: String] = JSONManager.shared.parseMOCKMembershipURL()
-                    if let url = membershipDetails[Constants.qrURL],
-                        let endDate = membershipDetails[Constants.endDate] {
-                        let membership = Membership(url: url, date: endDate)
-                        let qrImage = QRManager.shared.generateQrCode(membershipUrl: membership.url)
-                        
-                        DispatchQueue.main.async {
-                            if let qr = qrImage {
-                                self.showMembership(membership: membership, qrImage: qr)
-                            } else {
-                                self.showNoMembership()
-                            }
-                }
-            }
-        }
-        SVProgressHUD.dismiss()
     }
     
     @IBAction func refreshButtonTapped(_ sender: Any) {
         SVProgressHUD.show()
         showNoMembership()
-        getQrCodeByLink()
+        if let plateNumber = defaults.string(forKey: Constants.propLicensePlateNumber) {
+            getQRCode(licencePlateNumber: plateNumber)
+        }
         SVProgressHUD.dismiss()
     }
     
-   
+    func getQRCode(licencePlateNumber: String) {
+        NetworkManager.shared.getMembership(licensePlateNumber: licencePlateNumber,
+                                            completion: { (membership) in
+                                                let qrImage = QRManager.shared.generateQrCode(membershipUrl: membership.url)
+                                                if let qr = qrImage {
+                                                    self.showMembership(membership: membership, qrImage: qr)
+                                                } else {
+                                                    self.showNoMembership()
+                                                }
+                                                SVProgressHUD.dismiss()
+                                            })
+    }
     
     func showNoMembership() {
         qrLabel.isHidden = true

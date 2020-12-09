@@ -46,8 +46,6 @@ class JSONManager {
         }
     }
     
-    
-    
     func parseMovieDetailsJSONFromWIki(response: DataResponse<Any>, movie: TimeTableCellViewModel) -> [String: String] {
         var details = [String: String]()
         
@@ -62,14 +60,13 @@ class JSONManager {
         return details
     }
     
-    func parseMembershipURL(response: DataResponse<Any>) -> [String: String] {
-        var membershipDetails = [String: String]()
-        let jsonResponse: JSON = JSON(response.result.value!)
-        debugPrint("JSON RESPONSE: \(jsonResponse)")
-        let membershipResponse = jsonResponse["membership"]
-        membershipDetails[Constants.qrURL] = membershipResponse[Constants.qrURL].stringValue
-        membershipDetails[Constants.endDate] = membershipResponse[Constants.endDate].stringValue
-        return membershipDetails
+    func parseMembershipJSON(data: Data) -> Membership {
+        do{
+            let decodedData = try JSONDecoder().decode(Membership.self, from: data)
+            return decodedData
+        } catch {
+            print(error)
+        }
     }
     
     func parseAddressJSON(response: DataResponse<Any>) -> [Address] {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Membership {
+struct Membership: Decodable {
     var url: String
     var date: Date
     var dateString: String{
