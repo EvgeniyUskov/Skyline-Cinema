@@ -26,7 +26,7 @@ class MovieDetailsViewController: UIViewController {
         SVProgressHUD.show()
         getRates()
         getMovieDetailsFromWiki()
-//        getMovieDetailsFromKinopoisk()
+        //        getMovieDetailsFromKinopoisk()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -38,16 +38,13 @@ class MovieDetailsViewController: UIViewController {
     
     func getRates(){
         if let movieLocal = self.movie {
-            let xmlManager = XMLManager()
             var rates = [String: String]()
-            Alamofire.request(NetworkManager.shared.getKinopoiskRatesURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get).responseString { (response) in
-                print("RATES SUCCESS: \(response)")
-                rates = xmlManager.parseRatesXML(response: response)
-                DispatchQueue.main.async {
-                    movieLocal.setRates(rates: rates)
-                    self.setUpRates(movie: movieLocal)
-                }
-            }
+            NetworkManager.shared.getRates(movie: movie, completion: {
+                                            [unowned self]
+                                            rates in
+                movieLocal.setRates(rates: rates)
+                self.setUpRates(movie: movieLocal)
+            })
         }
     }
     
@@ -60,16 +57,16 @@ class MovieDetailsViewController: UIViewController {
             ]
             Alamofire.request(NetworkManager.shared.getKinopoiskMovieDetailsURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get, headers: headers).responseString { (response) in
                 if response.result.isSuccess {
-                        print("MOVIE DETAILS KINOPOISK SUCCESS: \(response)" )
-                        details[Constants.description] = kinopoiskParser.getDescription(response: response)
-                            details[Constants.imageURL] =  kinopoiskParser.getImageURL(response: response)
-                        DispatchQueue.main.async {
-                            movieLocal.setDetails(details: details)
-                            self.setUpDescriptionAndImageURL(movie: movieLocal)
-                        }
+                    print("MOVIE DETAILS KINOPOISK SUCCESS: \(response)" )
+                    details[Constants.description] = kinopoiskParser.getDescription(response: response)
+                    details[Constants.imageURL] =  kinopoiskParser.getImageURL(response: response)
+                    DispatchQueue.main.async {
+                        movieLocal.setDetails(details: details)
+                        self.setUpDescriptionAndImageURL(movie: movieLocal)
                     }
                 }
-             SVProgressHUD.dismiss()
+            }
+            SVProgressHUD.dismiss()
         }
         
     }

@@ -1177,8 +1177,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AUc-B8-nzl"/>
-        <segue reference="ZCz-CF-L7D"/>
+        <segue reference="P4S-sx-bQz"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.2.circlepath" catalog="system" width="128" height="101"/>

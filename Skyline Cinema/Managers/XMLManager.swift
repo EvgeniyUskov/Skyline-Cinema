@@ -11,8 +11,13 @@ import Alamofire
 import SwiftyXML
 
 class XMLManager {
+    static var shared : XMLManager {
+        return XMLManager()
+    }
     
-    static func parseRatesXML(response: DataResponse<String>) -> [String: String]{
+    private init() {}
+    
+    func parseRatesXML(data: Data) -> [String: String]{
         var rates = [String: String]()
         
         do {

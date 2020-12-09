@@ -34,6 +34,17 @@ enum Routes {
     static let buyTicketURL = "https://money.yandex.ru/new/transfer/a2w"
     
     static let yandexPaymentURL = "https://payment.yandex.net/api/v3/payments"
+    
+    public static func getKinopoiskRatesURL (kinopoiskMovieId: String) -> String {
+        return Routes.kinopoiskRatesURL +
+            kinopoiskMovieId +
+            Constants.kinopoiskRatesURLXMLExtension
+    }
+    
+    public static func getKinopoiskMovieDetailsURL(kinopoiskMovieId: String) -> String {
+        return Routes.kinopoiskMovieDetailsURL +
+            kinopoiskMovieId
+    }
 }
 
 enum Constants {
@@ -73,7 +84,7 @@ enum Constants {
     public static let date = "date"
     public static let itemIds = "itemIds"
     public static let bonApetit = "Приятного аппетита!"
-    public static let bonApetitError = "Уупс, что-то пошлон не так."
+    public static let bonApetitError = "Уупс, что-то пошло не так. Попробуйте еще раз!"
     
     // MARK: TitmeTableViewController
 
@@ -111,5 +122,9 @@ enum Constants {
     public static let personalDataWarning = "Администрация Автокинотеатра гарантирует полную конфиденциальность персональных данных пользователей, обрабатываемых при предоставлении услуги покупки билета, заказа еды и напитков за исключением случаев, прямо предусмотренных действующим законодательством РФ."
 
     public static let EventSuccessfullyAddedToСalendarWarning = "Событие о киносеансе добавлено в ваш календарь."
-
+    
+    public static func getOrderProcessedText(number: Int) -> String {
+        return "Ваш заказ #\(number) уже готовится!"
+    }
+    
 }

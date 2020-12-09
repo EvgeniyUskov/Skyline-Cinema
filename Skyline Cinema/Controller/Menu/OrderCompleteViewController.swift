@@ -18,34 +18,40 @@ class OrderCompleteViewController: UIViewController {
     
     var order: Order?
     
-    func resetUI() {
+    func setUIToOrderCompleted(response: OrderResponse) {
         self.headerLabel.isHidden = false
         self.orderIsPreparingLabel.isHidden = false
+        self.bonApetitLabel.isHidden = false
+        self.headerLabel.text = Constants.getOrderProcessedText(number: response.number)
         self.bonApetitLabel.text = Constants.bonApetit
     }
     
     func setUIToErrorMode() {
         self.headerLabel.isHidden = true
         self.orderIsPreparingLabel.isHidden = true
+        self.bonApetitLabel.isHidden = false
         self.bonApetitLabel.text = Constants.bonApetitError
+    }
+    func hideUI() {
+        self.headerLabel.isHidden = true
+        self.orderIsPreparingLabel.isHidden = true
+        self.bonApetitLabel.isHidden = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        resetUI()
+        hideUI()
         if let orderLocal = order {
-            let orderRequest = OrderRequest(order: orderLocal)
-            let parameters = orderRequest.transformToParameters()
             if Constants.isNetworkActive {
-                Alamofire.request(Routes.skylineCinemaOrderRequestURL,
-                                  method: .post,
-                    parameters: parameters,
-                    encoding: JSONEncoding.default).responseJSON { response in
-                        debugPrint(response)
-                        if !response.result.isSuccess {
-                            self.setUIToErrorMode()
-                        }
-                }
+                NetworkManager.shared.applyPayment(order: orderLocal, completion: {
+                    [unowned self]
+                    orderResponse in
+                    if let response = orderResponse {
+                        self.setUIToOrderCompleted(response: response)
+                    } else {
+                        setUIToErrorMode()
+                    }
+                })
             }
         }
     }

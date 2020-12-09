@@ -20,7 +20,7 @@ struct NetworkManager {
     private var defaults = UserDefaults.standard
     
     func getItems(completion: @escaping ([Category]) -> ()) {
-        var categories = [Category]()
+        //TODO: delete if else
         if Constants.isNetworkActive {
             if let url = URL(string: Routes.skylineCinemaItemsURL) {
                 let session = URLSession(configuration: .default)
@@ -31,20 +31,22 @@ struct NetworkManager {
                         return
                     }
                     if let safeData = data {
-                        categories = JSONManager.shared.parseJSONItems(data: safeData)
-                        completion(categories)
+                        if let categoriesFromJSON = JSONManager.shared.parseJSONItems(data: safeData) {
+                            completion(categoriesFromJSON)
+                        }
                     }
                 }
                 task.resume()
             }
         } else {
+            var categories = [Category]()
             categories = JSONManager.shared.parseMOCKJSONItems()
             completion(categories)
         }
     }
     
     func getMovies(completion: @escaping ([MovieDay]) -> ()) {
-        var movies = [MovieDay]()
+        //TODO: delete if else
         if Constants.isNetworkActive {
             if let url = URL(string: Routes.skylineCinemaMoviesURL) {
                 let session = URLSession(configuration: .default)
@@ -55,23 +57,59 @@ struct NetworkManager {
                         return
                     }
                     if let safeData = data {
-                        movies = JSONManager.shared.parseJSONMovies(data: safeData)
-                        completion(movies)
+                        if let movies = JSONManager.shared.parseJSONMovies(data: safeData) {
+                            completion(movies)
+                        }
                     }
                 }
                 task.resume()
             }
         } else {
+            var movies = [MovieDay]()
             movies = JSONManager.shared.parseJSONMOCKMovies()
             completion(movies)
         }
     }
     
+    func getRates(movie: Movie, completion: @escaping (Rates) -> ()) {
+        if Constants.isNetworkActive {
+            if let url = URL(string: Routes.getKinopoiskRatesURL(kinopoiskMovieId: movie.kinopoiskId)) {
+                let session = URLSession(configuration: .default)
+                let task = session.dataTask(with: url) {
+                    (data, response, error) in
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    if let safeData = data {
+                        if let rates = XMLManager.shared.parseRatesXML(data: safeData){
+                            completion(rates)
+                            
+                            DispatchQueue.main.async {
+                                movieLocal.setRates(rates: rates)
+                                self.setUpRates(movie: movieLocal)
+                            }
+                        }
+                    }
+                }
+                task.resume()
+            }
+        } else {
+            
+        Alamofire.request(Routes.getKinopoiskRatesURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get).responseString { (response) in
+            print("RATES SUCCESS: \(response)")
+            rates = xmlManager.parseRatesXML(response: response)
+            DispatchQueue.main.async {
+                movieLocal.setRates(rates: rates)
+                self.setUpRates(movie: movieLocal)
+            }
+        }
+    }
+    
     func getAddresses(completion: @escaping ([Address]) -> ()) {
-        var addresses = [Address]()
         if let city = defaults.string(forKey: Constants.propCity) {
             let parameters = ["city": city]
-            
+            //TODO: delete if else
             if Constants.isNetworkActive {
                 if let url = URL(string: Routes.skylineCinemaAddressURL) {
                     var request = URLRequest(url: url)
@@ -88,13 +126,15 @@ struct NetworkManager {
                             return
                         }
                         if let safeData = data {
-                            addresses = JSONManager.shared.parseAddressJSON(data: safeData)
-                            completion(addresses)
+                            if let addresses = JSONManager.shared.parseAddressJSON(data: safeData) {
+                                completion(addresses)
+                            }
                         }
                     }
                     task.resume()
                 }
             } else {
+                var addresses = [Address]()
                 addresses = JSONManager.shared.parseAddressJSONMock()
                 completion(addresses)
             }
@@ -102,6 +142,7 @@ struct NetworkManager {
     }
     
     func getMembership(licensePlateNumber: String, completion: @escaping (Membership) -> ()) {
+        //TODO: delete if else
         if Constants.isNetworkActive {
             if let url = URL(string: Routes.skylineCinemaMembershipURL) {
                 
@@ -120,8 +161,9 @@ struct NetworkManager {
                         return
                     }
                     if let safeData = data {
-                        let membership = JSONManager.shared.parseMembershipJSON(data: safeData)
-                        completion(membership)
+                        if let membership = JSONManager.shared.parseMembershipJSON(data: safeData) {
+                            completion(membership)
+                        }
                     }
                 }
                 task.resume()
@@ -139,15 +181,33 @@ struct NetworkManager {
         
     }
     
-    func getKinopoiskRatesURL (kinopoiskMovieId: String) -> String {
-        return Routes.kinopoiskRatesURL +
-            kinopoiskMovieId +
-            Constants.kinopoiskRatesURLXMLExtension
-    }
-    
-    func getKinopoiskMovieDetailsURL(kinopoiskMovieId: String) -> String {
-        return Routes.kinopoiskMovieDetailsURL +
-            kinopoiskMovieId
+    func applyPayment(order: Order, completion: @escaping (OrderResponse?) -> ()) {
+        
+        if let url = URL(string: Routes.skylineCinemaItemsURL) {
+            let orderRequest = OrderRequest(order: order)
+            let parameters = orderRequest.transformToParameters()
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
+            request.httpBody = httpBody
+            
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: request) {
+                (data, response, error) in
+                if let error = error {
+                    print(error)
+                    return
+                }
+                if let safeData = data {
+                    if let orderCompletedResponse = JSONManager.shared.parseJSONOrderResponse(data: safeData) {
+                        completion(orderCompletedResponse)
+                    } else {
+                        completion(nil) }
+                }
+            }
+            task.resume()
+        }
     }
     
     //    func createPayment(paymentToken: Tokens, amount: Amount, description: String, completion: @escaping (Payment) -> Void) {

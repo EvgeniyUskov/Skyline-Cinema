@@ -13,6 +13,9 @@
 		44185F582491D7CE0010F62F /* TMXProfilingConnections.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44185F542491D7CD0010F62F /* TMXProfilingConnections.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44185F5B2491FBCD0010F62F /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44185F5A2491FBCD0010F62F /* Payment.swift */; };
 		442CB07323FBA02D00B90800 /* BuyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442CB07223FBA02D00B90800 /* BuyOrderViewController.swift */; };
+		443C22842580D09000ABEC8C /* OrderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C22832580D09000ABEC8C /* OrderResponse.swift */; };
+		443C22862580D1EB00ABEC8C /* TicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C22852580D1EB00ABEC8C /* TicketResponse.swift */; };
+		443C228A2580D8E800ABEC8C /* Rates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C22892580D8E800ABEC8C /* Rates.swift */; };
 		443C477223F5025A00A2EFEC /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		443C478B23F6DA4D00A2EFEC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C478A23F6DA4D00A2EFEC /* Category.swift */; };
 		443C478D23F833A100A2EFEC /* MovieDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C478C23F833A100A2EFEC /* MovieDay.swift */; };
@@ -93,6 +96,9 @@
 		44185F542491D7CD0010F62F /* TMXProfilingConnections.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TMXProfilingConnections.framework; path = Frameworks/TMXProfilingConnections.framework; sourceTree = "<group>"; };
 		44185F5A2491FBCD0010F62F /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		442CB07223FBA02D00B90800 /* BuyOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyOrderViewController.swift; sourceTree = "<group>"; };
+		443C22832580D09000ABEC8C /* OrderResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResponse.swift; sourceTree = "<group>"; };
+		443C22852580D1EB00ABEC8C /* TicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketResponse.swift; sourceTree = "<group>"; };
+		443C22892580D8E800ABEC8C /* Rates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rates.swift; sourceTree = "<group>"; };
 		443C477423F5027200A2EFEC /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		443C477523F5027200A2EFEC /* ChameleonFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ChameleonFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		443C477623F5027200A2EFEC /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +179,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		443C22872580D6BD00ABEC8C /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				AAA6DB1B22CC5DCD0033C6CF /* MenuViewController.swift */,
+				AA8EAEC923A22DD900F062C6 /* CartTableViewController.swift */,
+				442CB07223FBA02D00B90800 /* BuyOrderViewController.swift */,
+				44447CAF23FBD76C001897AD /* OrderCompleteViewController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		443C22882580D6CB00ABEC8C /* TimeTable */ = {
+			isa = PBXGroup;
+			children = (
+				AA18118F22AE0699000E1024 /* TimeTableViewController.swift */,
+				AAFF581723CDF6DB0033B411 /* MovieDetailsViewController.swift */,
+				AA917B5B23D187BE002FC579 /* BuyTicketViewController.swift */,
+				443C478E23F90B9A00A2EFEC /* BuyTicketCompleteViewController.swift */,
+			);
+			path = TimeTable;
+			sourceTree = "<group>";
+		};
 		4477F90F2580B80B00910CDE /* Addresses */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +226,7 @@
 			children = (
 				443C478C23F833A100A2EFEC /* MovieDay.swift */,
 				AAFF581123CDC4180033B411 /* Movie.swift */,
+				443C22892580D8E800ABEC8C /* Rates.swift */,
 				44A2A9022580AEA900B5BEE4 /* MovieTimeTable.swift */,
 			);
 			path = TimeTable;
@@ -228,7 +257,9 @@
 			children = (
 				AAA667FA23D557E000A1893E /* AddressRequest.swift */,
 				44447CB323FBE64C001897AD /* OrderRequest.swift */,
+				443C22832580D09000ABEC8C /* OrderResponse.swift */,
 				44447CB523FC167F001897AD /* TicketRequest.swift */,
+				443C22852580D1EB00ABEC8C /* TicketResponse.swift */,
 				AAA667FE23D56B3200A1893E /* ParameterEncoder.swift */,
 				AAA667FC23D5660E00A1893E /* JSONParameterEncoder.swift */,
 			);
@@ -349,14 +380,8 @@
 			isa = PBXGroup;
 			children = (
 				AAEE08EA23D05A0300E60DAE /* RegisterViewController.swift */,
-				AAA6DB1B22CC5DCD0033C6CF /* MenuViewController.swift */,
-				AA8EAEC923A22DD900F062C6 /* CartTableViewController.swift */,
-				442CB07223FBA02D00B90800 /* BuyOrderViewController.swift */,
-				44447CAF23FBD76C001897AD /* OrderCompleteViewController.swift */,
-				AA18118F22AE0699000E1024 /* TimeTableViewController.swift */,
-				AAFF581723CDF6DB0033B411 /* MovieDetailsViewController.swift */,
-				AA917B5B23D187BE002FC579 /* BuyTicketViewController.swift */,
-				443C478E23F90B9A00A2EFEC /* BuyTicketCompleteViewController.swift */,
+				443C22872580D6BD00ABEC8C /* Menu */,
+				443C22882580D6CB00ABEC8C /* TimeTable */,
 				AAEE08E423D04EB300E60DAE /* MembershipViewController.swift */,
 				AA8DD46223D4137500F52855 /* InfoViewController.swift */,
 			);
@@ -546,6 +571,7 @@
 			files = (
 				443C478F23F90B9A00A2EFEC /* BuyTicketCompleteViewController.swift in Sources */,
 				AA3E73BA23CDBD220052B85D /* TimeTableViewCell.swift in Sources */,
+				443C22862580D1EB00ABEC8C /* TicketResponse.swift in Sources */,
 				44447CB423FBE64C001897AD /* OrderRequest.swift in Sources */,
 				AAEE08ED23D1587C00E60DAE /* Membership.swift in Sources */,
 				AA3E73B423CC4B9A0052B85D /* CartCellViewModel.swift in Sources */,
@@ -573,6 +599,7 @@
 				4477F9192580BD1E00910CDE /* QRManager.swift in Sources */,
 				AAA667FF23D56B3200A1893E /* ParameterEncoder.swift in Sources */,
 				AAEE08E323D042E900E60DAE /* KinopoiskHTMLParser.swift in Sources */,
+				443C22842580D09000ABEC8C /* OrderResponse.swift in Sources */,
 				AAFF581A23CEC5680033B411 /* XMLManager.swift in Sources */,
 				AAFF581623CDCE180033B411 /* NetworkManager.swift in Sources */,
 				AA46AD1D230BB8BB00FCC3C5 /* Item.swift in Sources */,
@@ -581,6 +608,7 @@
 				AAA667FD23D5660E00A1893E /* JSONParameterEncoder.swift in Sources */,
 				44447CB023FBD76C001897AD /* OrderCompleteViewController.swift in Sources */,
 				44A2A9032580AEA900B5BEE4 /* MovieTimeTable.swift in Sources */,
+				443C228A2580D8E800ABEC8C /* Rates.swift in Sources */,
 				AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */,
 				AAEE08EB23D05A0300E60DAE /* RegisterViewController.swift in Sources */,
 				442CB07323FBA02D00B90800 /* BuyOrderViewController.swift in Sources */,

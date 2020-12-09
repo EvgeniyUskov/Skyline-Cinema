@@ -19,89 +19,90 @@ class JSONManager {
     
     let mock = Mock()
     
-    func parseJSONItems(data: Data) -> [Category] {
+    func parseJSONItems(data: Data) -> [Category]? {
         do{
             let decodedData = try JSONDecoder().decode(Menu.self, from: data)
             return decodedData.categories
         } catch {
             print(error)
+            return nil
         }
     }
    
-    func parseJSONMovies(data: Data) -> [MovieDay] {
+    func parseJSONMovies(data: Data) -> [MovieDay]? {
         do{
             let decodedData = try JSONDecoder().decode(MovieTimeTable.self, from: data)
             return decodedData.movieDays
         } catch {
             print(error)
+            return nil
         }
     }
     
-    func parseAddressJSON(data: Data) -> [Address] {
-        do{
-            let decodedData = try JSONDecoder().decode(City.self, from: data)
-            return decodedData.addresses
-        } catch {
-            print(error)
-        }
-    }
-    
-    func parseMovieDetailsJSONFromWIki(response: DataResponse<Any>, movie: TimeTableCellViewModel) -> [String: String] {
-        var details = [String: String]()
-        
-        let jsonResponse: JSON = JSON(response.result.value!)
-        debugPrint("JSON RESPONSE: \(jsonResponse)")
-        let pageid = jsonResponse["query"]["pageids"][0].stringValue
-        let imageURL = jsonResponse["query"]["pages"][pageid]["thumbnail"]["source"].stringValue
-        let description = jsonResponse["query"]["pages"][pageid]["extract"].stringValue
-        
-        details[Constants.description] = description
-        details[Constants.imageURL] = imageURL
-        return details
-    }
-    
-    func parseMembershipJSON(data: Data) -> Membership {
+    func parseMembershipJSON(data: Data) -> Membership? {
         do{
             let decodedData = try JSONDecoder().decode(Membership.self, from: data)
             return decodedData
         } catch {
             print(error)
+            return nil
         }
     }
     
-    func parseAddressJSON(response: DataResponse<Any>) -> [Address] {
-        var addresses = [Address]()
-        let jsonResponse: JSON = JSON(response.result.value!)
-        debugPrint("JSON ADDRESS RESPONSE: \(jsonResponse)")
-        let addressJSON = jsonResponse["addressResponse"]
-        
-        for itemResponse in addressJSON.arrayValue {
-            var address = Address()
-            address.address = itemResponse[Constants.addressAddress].stringValue
-            address.description = itemResponse[Constants.addressDescription ].stringValue
-            addresses.append(address)
+    func parseAddressJSON(data: Data) -> [Address]? {
+        do{
+            let decodedData = try JSONDecoder().decode(City.self, from: data)
+            return decodedData.addresses
+        } catch {
+            print(error)
+            return nil
         }
-        
-        return addresses
     }
     
-    func parsePaymentJSON(response: DataResponse<Any>) -> Payment {
-        let jsonResponse: JSON = JSON(response.result.value!)
-        debugPrint("JSON Payment RESPONSE: \(jsonResponse)")
-        let id = jsonResponse["id"].stringValue
-        let status = jsonResponse["status"].stringValue
-        let paid = jsonResponse["paid"].boolValue
+    func parseJSONOrderResponse(data: Data) -> OrderResponse? {
+        do{
+            let decodedData = try JSONDecoder().decode(OrderResponse.self, from: data)
+            return decodedData
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+    
+    //TODO: delete this if not needed
+//    func parseMovieDetailsJSONFromWIki(response: DataResponse<Any>, movie: TimeTableCellViewModel) -> [String: String] {
+//        var details = [String: String]()
+//
+//        let jsonResponse: JSON = JSON(response.result.value!)
+//        debugPrint("JSON RESPONSE: \(jsonResponse)")
+//        let pageid = jsonResponse["query"]["pageids"][0].stringValue
+//        let imageURL = jsonResponse["query"]["pages"][pageid]["thumbnail"]["source"].stringValue
+//        let description = jsonResponse["query"]["pages"][pageid]["extract"].stringValue
+//
+//        details[Constants.description] = description
+//        details[Constants.imageURL] = imageURL
+//        return details
+//    }
+    
+   
+    
+//    func parsePaymentJSON(response: DataResponse<Any>) -> Payment {
+//        let jsonResponse: JSON = JSON(response.result.value!)
+//        debugPrint("JSON Payment RESPONSE: \(jsonResponse)")
+//        let id = jsonResponse["id"].stringValue
+//        let status = jsonResponse["status"].stringValue
+//        let paid = jsonResponse["paid"].boolValue
         //let amount = Amount(value: Decimal(jsonResponse["amount"]["value"].doubleValue), currency: .rub)
         
         //        jsonResponse["amount"]["currency"])
         //        let confirmation = Confirmation(type: jsonResponse["confirmation"]["type"], confirmationUrl: jsonResponse["confirmation"]["confirmation_url"])
-        let createdAt = DateUtils.stringToDate(dateString: jsonResponse["created_at"].stringValue)
-        let description = jsonResponse["description"].stringValue
+//        let createdAt = DateUtils.stringToDate(dateString: jsonResponse["created_at"].stringValue)
+//        let description = jsonResponse["description"].stringValue
         
 //        let payment = Payment(id: id, status: status, paid: paid, amount: amount, createdAt: createdAt, description: description)
         
-        return payment
-    }
+//        return payment
+//    }
     
     // PAYMENT
     //        {
@@ -181,7 +182,7 @@ extension JSONManager {
             let date = movieDayJSON["date"].stringValue
             var movieList = [Movie]()
             for movie in movieDayJSON["movies"].arrayValue {
-                let newMovie = Movie()
+                var newMovie = Movie()
                 newMovie.title = movie["title"].stringValue
                 newMovie.descript = movie["description"].stringValue
                 newMovie.rate = Double(movie["rate"].stringValue) ?? 0
@@ -194,7 +195,7 @@ extension JSONManager {
                 newMovie.date = date
                 movieList.append(newMovie)
             }
-            let movieDay = MovieDay(date: date, movies: movieList)
+            let movieDay = MovieDay(movies: movieList, dateString: date)
             moviesFromJSON.append(movieDay)
         }
         
