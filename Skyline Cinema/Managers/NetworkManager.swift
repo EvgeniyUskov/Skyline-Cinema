@@ -44,7 +44,7 @@ struct NetworkManager {
                 }
     }
     
-    func getMovies() -> [MovieDay] {
+    func getMovies(completion: @escaping ([MovieDay]) -> ()) {
         var movies = [MovieDay]()
         if Constants.isNetworkActive {
             if let url = URL(string: Routes.skylineCinemaMoviesURL) {
@@ -57,19 +57,18 @@ struct NetworkManager {
                     }
                     if let safeData = data {
                         movies = JSONManager.shared.parseJSONMovies(data: safeData)
+                        completion(movies)
                     }
                 }
                 task.resume()
             }
         } else {
             movies = JSONManager.shared.parseJSONMOCKMovies()
+            completion(movies)
         }
-        
-        SVProgressHUD.dismiss()
-        return movies
     }
     
-    func getAddresses() -> [Address]? {
+    func getAddresses(completion: @escaping ([Address]) -> ()) {
         var addresses = [Address]()
         if let city = defaults.string(forKey: Constants.propCity) {
             let parameters = ["city": city]
@@ -78,11 +77,12 @@ struct NetworkManager {
                 if let url = URL(string: Routes.skylineCinemaAddressURL) {
                     var request = URLRequest(url: url)
                     request.httpMethod = "POST"
-                    guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return nil}
+                    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                    guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return}
                     request.httpBody = httpBody
                     
                     let session = URLSession(configuration: .default)
-                    let task = session.dataTask(with: url) {
+                    let task = session.dataTask(with: request) {
                         (data, response, error) in
                         if let error = error {
                             print(error)
@@ -90,16 +90,17 @@ struct NetworkManager {
                         }
                         if let safeData = data {
                             addresses = JSONManager.shared.parseAddressJSON(data: safeData)
+                            completion(addresses)
                         }
                     }
                     task.resume()
                 }
             } else {
                 addresses = JSONManager.shared.parseAddressJSONMock()
+                completion(addresses)
             }
         }
         SVProgressHUD.dismiss()
-        return addresses
     }
     
     func getMembership(licensePlateNumber: String) -> Membership? {
@@ -109,11 +110,12 @@ struct NetworkManager {
                 let parameters = ["licensePlateNumber": licensePlateNumber]
                 var request = URLRequest(url: url)
                 request.httpMethod = "POST"
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return nil}
                 request.httpBody = httpBody
                 
                 let session = URLSession(configuration: .default)
-                let task = session.dataTask(with: url) {
+                let task = session.dataTask(with: request) {
                     (data, response, error) in
                     if let error = error {
                         print(error)

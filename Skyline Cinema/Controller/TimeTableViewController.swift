@@ -22,7 +22,12 @@ class TimeTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
-        daysWithMovies = NetworkManager.shared.getMovies()
+        NetworkManager.shared.getMovies(completion: {
+            [unowned self]
+            movieDays in
+            self.daysWithMovies = movieDays
+                SVProgressHUD.dismiss()
+        })
         setupTableView()
     }
     
