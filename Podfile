@@ -17,8 +17,8 @@ target 'Skyline Cinema' do
   pod 'SDWebImage'
   pod 'SVProgressHUD'
   
-  #pod 'YooKassaPayments',
-   #  :git => 'https://github.com/yoomoney/yookassa-payments-swift.git',
-   #  :tag => '5.0.0'
+  pod 'YooKassaPayments',
+     :git => 'https://github.com/yoomoney/yookassa-payments-swift.git',
+     :tag => '5.0.0'
   
 end

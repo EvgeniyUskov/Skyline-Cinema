@@ -14,8 +14,8 @@ protocol MovieViewModelProtocol {
     var kinopoiskId: String {get}
     var title: String {get}
     var description: String {get set}
-    var kpRate: String? {get set}
-    var imdbRate: String? {get set}
+    var kpRate: String {get set}
+    var imdbRate: String {get set}
     var date: String {get}
     var time: String {get}
     
@@ -46,8 +46,8 @@ class MovieViewModel: MovieViewModelProtocol {
             movie.descript = newValue
         }
     }
-    var kpRate: String?
-    var imdbRate: String?
+    var kpRate: String
+    var imdbRate: String
     //TODO: check for valid in UI
     var date: String {
         return DateUtils.dateForMovieViewModelFormattedString(date: movie.date)
@@ -63,10 +63,14 @@ class MovieViewModel: MovieViewModelProtocol {
     init(movie: Movie){
         self.movie = movie
         self.checked = false
+        self.imdbRate = "Нет оценок"
+        self.kpRate = "Нет оценок"
     }
     
     func setRates(rates: Rates) {
-        self.kpRate = String(describing: rates.kpRate)
+        guard let kpRate = rates.kpRate else {return}
+        guard let doubleRate = Double(kpRate) else {return}
+        self.kpRate = String.rateFormat(doubleRate)
         self.imdbRate = String(describing: rates.imdbRate)
     }
 }

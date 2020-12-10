@@ -24,12 +24,15 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
-        getRates()
+        
         if var movieLocal = self.movie {
+            getRates(movie: movieLocal)
             NetworkManager.shared.getMovieDetailsFromWiki(movie: movieLocal, completion: {
+                [unowned self]
                 details in
                 movieLocal.description = details.description
                 movieLocal.imageURL = details.imageUrl
+                self.setUpDescriptionAndImageURL(movie: movieLocal)
                 SVProgressHUD.dismiss()
             })
         }
@@ -43,15 +46,13 @@ class MovieDetailsViewController: UIViewController {
         }
     }
     
-    func getRates(){
-        if let movieLocal = self.movie {
-            NetworkManager.shared.getRates(movie: movieLocal, completion: {
+    func getRates(movie: MovieViewModelProtocol){
+            NetworkManager.shared.getRates(movie: movie, completion: {
                                             [unowned self]
                                             rates in
-                movieLocal.setRates(rates: rates)
-                self.setUpRates(movie: movieLocal)
+                movie.setRates(rates: rates)
+                self.setUpRates(movie: movie)
             })
-        }
     }
     
 //    func getMovieDetailsFromKinopoisk() {
@@ -61,22 +62,22 @@ class MovieDetailsViewController: UIViewController {
 //        }
 //    }
     
-    
-    
-    
     func setUpRates(movie: MovieViewModelProtocol) {
-        DispatchQueue.main.async { [weak self] in
-            self?.rateKpLabel.text = movie.kpRate
-            self?.titleLabel.text = movie.title
-            self?.timeLabel.text = movie.date
+        DispatchQueue.main.async {
+            [unowned self] in
+            self.rateKpLabel.text = movie.kpRate
+            self.titleLabel.text = movie.title
+            self.timeLabel.text = movie.date
         }
     }
     
     
     func setUpDescriptionAndImageURL(movie: MovieViewModelProtocol) {
-        DispatchQueue.main.async { [weak self] in
-            self?.descriptionText.text = movie.description
-            self?.movieImageView.sd_setImage(with: URL(string: movie.imageURL ?? ""), completed: nil)
+        DispatchQueue.main.async {
+            [unowned self] in
+            self.descriptionText.text = movie.description
+            self.descriptionText.isHidden = false
+            self.movieImageView.sd_setImage(with: URL(string: movie.imageURL ?? ""), completed: nil)
         }
     }
     

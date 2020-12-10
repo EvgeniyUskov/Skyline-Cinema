@@ -146,12 +146,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let viewModel = viewModel else {return UITableViewCell()}
         let item = viewModel.categoriesViewModel[indexPath.section].items[indexPath.row]
-        cell.itemLabel.text = item.title
-        cell.priceLabel.text = String("\(Int(item.price)) руб")
-        cell.descriptionLabel.text = item.descript
-        cell.itemImageView.image = UIImage(named: "popcorn")
-        cell.accessoryType = item.checked == true ? .checkmark :  .none
-        cell.setup()
+        cell.setup(item: item)
         return cell
     }
     

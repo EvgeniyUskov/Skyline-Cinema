@@ -84,15 +84,14 @@ struct NetworkManager {
             "pithumbsize" : "500",
         ]
         
-        if let url = URL(string: Routes.wikiURL) {
+        if var url = URL(string: Routes.wikiURL) {
+            url = url.appending(parameters)
             var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return}
             request.httpBody = httpBody
             
             let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: request) {
+            let task = session.dataTask(with: url) {
                 (data, response, error) in
                 if let error = error {
                     print(error)

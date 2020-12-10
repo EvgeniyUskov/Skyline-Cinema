@@ -58,6 +58,8 @@ class InfoViewController: UIViewController {
         addressTableView.separatorStyle = .none
         addressTableView.reloadData()
         addressTableView.allowsMultipleSelection = false
+        
+        SVProgressHUD.dismiss()
     }
     
     func getFreeFont() -> UIFont {

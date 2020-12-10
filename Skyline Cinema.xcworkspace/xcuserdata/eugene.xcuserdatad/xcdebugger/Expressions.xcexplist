@@ -3,10 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "BuyTicketCompleteViewController.viewDidLoad():BuyTicketCompleteViewController.swift">
+         contextName = "BuyTicketCompleteViewController.createEvent():BuyTicketCompleteViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "dateLabel.text">
+               value = "startDate">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -21,6 +21,87 @@
             </PersistentString>
             <PersistentString
                value = "nameTextField.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NetworkManager.getMovieDetailsFromWiki(movie:completion:):NetworkManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Routes.wikiURL">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BuyTicketCompleteViewController.addEventToCalendar(event:):BuyTicketCompleteViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static String.priceFormat(_:):StringUtils.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "String(format: &quot;%.2f&quot;, double)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CustomCell.setup(item:):CustomCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "String(&quot;\(item.price) &#x440;&#x443;&#x431;&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RegisterViewController.validate():RegisterViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "!isNumberCorrect()">
+            </PersistentString>
+            <PersistentString
+               value = "!isPropSet(key: Constants.propLicensePlateNumber)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MenuViewController.numberOfSections(in:):MenuViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "menuListCategories.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static String.priceFormatCeil(_:):StringUtils.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "String(format: &quot;%.2f&quot;, double)">
+            </PersistentString>
+            <PersistentString
+               value = "ceil(double)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static DateUtils.stringToDateTime(dateString:):DateUtils.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dateFormatter.date(from: dateString)!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "JSONManager.parseMOCKJSONItems():JSONManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dataFromString">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BuyTicketCompleteViewController.viewDidLoad():BuyTicketCompleteViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dateLabel.text">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -44,50 +125,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "JSONManager.parseMOCKJSONItems():JSONManager.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "dataFromString">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "RegisterViewController.validate():RegisterViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "!isPropSet(key: Constants.propLicensePlateNumber)">
-            </PersistentString>
-            <PersistentString
-               value = "!isNumberCorrect()">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MenuViewController.numberOfSections(in:):MenuViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "menuListCategories.count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "BuyTicketCompleteViewController.addEventToCalendar(event:):BuyTicketCompleteViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "static DateUtils.stringToDateTime(dateString:):DateUtils.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "dateFormatter.date(from: dateString)!">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "BuyTicketCompleteViewController.createEvent():BuyTicketCompleteViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "startDate">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "closure #1 in MovieDetailsViewController.viewDidLoad():MovieDetailsViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

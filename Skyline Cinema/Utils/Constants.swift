@@ -28,7 +28,7 @@ enum Routes {
     static let kinopoiskRatesURL = "https://rating.kinopoisk.ru/"
     
     static let kinopoiskMovieDetailsURL = "https://www.kinopoisk.ru/film/"
-    
+
     static let wikiURL = "https://ru.wikipedia.org/w/api.php"
     
     static let buyTicketURL = "https://money.yandex.ru/new/transfer/a2w"

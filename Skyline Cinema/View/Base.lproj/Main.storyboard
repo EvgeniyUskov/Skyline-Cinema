@@ -386,7 +386,7 @@
                             <constraint firstItem="Y0y-UG-j2S" firstAttribute="top" secondItem="Kc2-9C-pah" secondAttribute="top" id="aXb-1F-aMQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Афиша" image="table" catalog="system" selectedImage="tablecells.fill" id="FgH-PL-tqJ"/>
+                    <tabBarItem key="tabBarItem" title="Афиша" image="tablecells" catalog="system" selectedImage="tablecells.fill" id="FgH-PL-tqJ"/>
                     <navigationItem key="navigationItem" id="aCP-9a-s8A"/>
                     <connections>
                         <outlet property="timeTableTableView" destination="mD8-te-Jij" id="OBD-6R-Mzp"/>
@@ -411,7 +411,7 @@
                                 <rect key="frame" x="20" y="104" width="374" height="722"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="FcU-oJ-rrQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="191.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="92.333333333333329"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="0og-bZ-1tf">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="21.666666666666668"/>
@@ -431,13 +431,13 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Голубь сидел на ветке, размышляя о смысле бытия" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJ2-fs-oli">
-                                                <rect key="frame" x="0.0" y="24.666666666666657" width="374" height="142"/>
+                                                <rect key="frame" x="0.0" y="24.666666666666657" width="374" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                 <color key="textColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Q6o-Pm-V88">
-                                                <rect key="frame" x="0.0" y="169.66666666666669" width="374" height="21.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="70.666666666666657" width="374" height="21.666666666666671"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг Кинопоиск: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNw-4Q-Saz">
                                                         <rect key="frame" x="0.0" y="0.0" width="335.33333333333331" height="21.666666666666668"/>
@@ -455,24 +455,24 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7xe-u6-KKM">
-                                        <rect key="frame" x="0.0" y="201.33333333333331" width="374" height="520.66666666666674"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7xe-u6-KKM">
+                                        <rect key="frame" x="0.0" y="102.33333333333331" width="374" height="619.66666666666674"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="35O-Y6-QuD">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="255.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="310"/>
                                             </imageView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dWS-QC-zgy">
-                                                <rect key="frame" x="0.0" y="265.33333333333331" width="374" height="255.33333333333331"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dWS-QC-zgy">
+                                                <rect key="frame" x="0.0" y="320" width="374" height="299.66666666666674"/>
                                                 <subviews>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" text="Нет данных о фильме" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="faa-tU-SFU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="201.33333333333334"/>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" editable="NO" text="Нет данных о фильме" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="faa-tU-SFU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="245.66666666666666"/>
                                                         <color key="backgroundColor" red="0.27447596190000001" green="0.27452921870000002" blue="0.27447256450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="textColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnm-bP-AYB">
-                                                        <rect key="frame" x="0.0" y="211.33333333333337" width="374" height="44"/>
+                                                        <rect key="frame" x="0.0" y="255.66666666666663" width="374" height="44"/>
                                                         <color key="backgroundColor" red="0.8912609816" green="0.35455638169999998" blue="0.39968371390000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="750" constant="44" id="N5O-06-Vec"/>
@@ -488,6 +488,9 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="35O-Y6-QuD" firstAttribute="height" secondItem="7xe-u6-KKM" secondAttribute="height" multiplier="0.5" id="i6f-nS-KRA"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -701,10 +704,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="802"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="mh3-Bx-nWX">
-                                        <rect key="frame" x="47" y="0.0" width="320" height="207"/>
+                                        <rect key="frame" x="47" y="0.0" width="320" height="206.66666666666666"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="registerScreenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="X1n-lL-2hU">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="207"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="206.66666666666666"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -716,13 +719,13 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XX0-R5-SFl">
-                                        <rect key="frame" x="47" y="226" width="320" height="576"/>
+                                        <rect key="frame" x="47" y="225.66666666666669" width="320" height="576.33333333333326"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pN7-HT-RYn" userLabel="EnterDataStack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="498.66666666666669"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="499"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bNU-gE-aBr" userLabel="InputStack View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="245.33333333333334"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="245.66666666666666"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yGh-NF-JHF" userLabel="NameStackView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="118.66666666666667"/>
@@ -733,7 +736,7 @@
                                                                             <view contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="z9B-wL-qDp">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="54.333333333333336" height="55.333333333333336"/>
                                                                             </view>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите ваше имя" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNS-op-2zN">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите ваше имя" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNS-op-2zN">
                                                                                 <rect key="frame" x="61.333333333333329" y="0.0" width="146.66666666666669" height="55.333333333333336"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -771,16 +774,16 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qfl-fU-50v" userLabel="NumberStack View">
-                                                                <rect key="frame" x="0.0" y="126.66666666666669" width="320" height="118.66666666666669"/>
+                                                                <rect key="frame" x="0.0" y="126.66666666666663" width="320" height="119"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите номер вашего автомобиля" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1KR-RQ-g9i">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="55.333333333333336"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="55.666666666666664"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите номер авто" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TTJ-Jw-5uy">
-                                                                        <rect key="frame" x="0.0" y="63.333333333333314" width="320" height="55.333333333333343"/>
+                                                                        <rect key="frame" x="0.0" y="63.666666666666686" width="320" height="55.333333333333343"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="textColor" red="0.11181893199682236" green="0.1118365004658699" blue="0.1118125319480896" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
@@ -791,7 +794,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9cp-c3-a7E" userLabel="CityStack View">
-                                                        <rect key="frame" x="0.0" y="253.33333333333337" width="320" height="245.33333333333337"/>
+                                                        <rect key="frame" x="0.0" y="253.66666666666669" width="320" height="245.33333333333331"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите ваш город" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gef-3u-pTq">
                                                                 <rect key="frame" x="76.666666666666671" y="0.0" width="166.66666666666663" height="20.333333333333332"/>
@@ -806,8 +809,8 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="errorLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTp-gc-9Kc">
-                                                <rect key="frame" x="0.0" y="506.66666666666663" width="320" height="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="errorLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTp-gc-9Kc">
+                                                <rect key="frame" x="0.0" y="507" width="320" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="320" id="oMY-sR-pbY"/>
                                                 </constraints>
@@ -816,7 +819,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6g-vB-6VD">
-                                                <rect key="frame" x="0.0" y="531.66666666666663" width="320" height="44.333333333333371"/>
+                                                <rect key="frame" x="0.0" y="532" width="320" height="44.333333333333371"/>
                                                 <color key="backgroundColor" red="0.89126098155975342" green="0.3545563817024231" blue="0.39968371391296387" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44.329999999999998" id="JiL-Kd-npw"/>
@@ -1186,7 +1189,7 @@
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="registerScreenLogo" width="500" height="193"/>
-        <image name="table" catalog="system" width="128" height="93"/>
+        <image name="tablecells" catalog="system" width="128" height="93"/>
         <image name="tablecells.fill" catalog="system" width="128" height="93"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

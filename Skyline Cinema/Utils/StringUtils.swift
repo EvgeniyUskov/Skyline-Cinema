@@ -41,14 +41,10 @@ import Foundation
 
 extension String {
     static func priceFormat(_ double: Double) -> String {
-        return String(format: "%.2f", double)
+        return String(format: "%.0f", double)
     }
 
-    static func priceFormatCeil(_ double: Double) -> String {
-        return String(format: "%.2f", ceil(double*100)/100)
-    }
-    
-    static func rateFormatCeil(_ double: Double) -> String {
-        return String(format: "%.1f", ceil(double*100)/100)
+    static func rateFormat(_ double: Double) -> String {
+        return String(format: "%.1f", double)
     }
 }

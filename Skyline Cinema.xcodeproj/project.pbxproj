@@ -39,6 +39,7 @@
 		44A2A901258090B800B5BEE4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2A900258090B800B5BEE4 /* Menu.swift */; };
 		44A2A9032580AEA900B5BEE4 /* MovieTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2A9022580AEA900B5BEE4 /* MovieTimeTable.swift */; };
 		44BA6E3923FA6B9800416183 /* CalendarEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */; };
+		44BE9A232581E4870054A535 /* URL + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BE9A222581E4870054A535 /* URL + Extension.swift */; };
 		719601129B161C1346161987 /* Pods_Skyline_Cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F271EA4CA76AA3EFC4AD0AA5 /* Pods_Skyline_Cinema.framework */; };
 		AA18118E22AE0699000E1024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118D22AE0699000E1024 /* AppDelegate.swift */; };
 		AA18119022AE0699000E1024 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18118F22AE0699000E1024 /* TimeTableViewController.swift */; };
@@ -133,6 +134,7 @@
 		44A2A900258090B800B5BEE4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		44A2A9022580AEA900B5BEE4 /* MovieTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTimeTable.swift; sourceTree = "<group>"; };
 		44BA6E3823FA6B9800416183 /* CalendarEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventManager.swift; sourceTree = "<group>"; };
+		44BE9A222581E4870054A535 /* URL + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL + Extension.swift"; sourceTree = "<group>"; };
 		8469BA71E967E2E69CD133CA /* Pods-Skyline Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.debug.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.debug.xcconfig"; sourceTree = "<group>"; };
 		A37F0B7F9302AA552FE82B21 /* Pods-Skyline Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyline Cinema.release.xcconfig"; path = "Target Support Files/Pods-Skyline Cinema/Pods-Skyline Cinema.release.xcconfig"; sourceTree = "<group>"; };
 		AA18118A22AE0699000E1024 /* Skyline Cinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skyline Cinema.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -460,6 +462,7 @@
 				AAEE08E023D022D900E60DAE /* StringUtils.swift */,
 				AAEE08E223D042E900E60DAE /* KinopoiskHTMLParser.swift */,
 				AAEE08E823D051BA00E60DAE /* Cities.swift */,
+				44BE9A222581E4870054A535 /* URL + Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				443C22952581293400ABEC8C /* TimeTableViewModel.swift in Sources */,
 				443C479523F91F7600A2EFEC /* Event.swift in Sources */,
 				AAEE08E523D04EB300E60DAE /* MembershipViewController.swift in Sources */,
+				44BE9A232581E4870054A535 /* URL + Extension.swift in Sources */,
 				44447CB623FC167F001897AD /* TicketRequest.swift in Sources */,
 				443C478B23F6DA4D00A2EFEC /* Category.swift in Sources */,
 				AAEE08E923D051BA00E60DAE /* Cities.swift in Sources */,

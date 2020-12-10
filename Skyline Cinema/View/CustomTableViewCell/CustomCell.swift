@@ -23,9 +23,15 @@ class CustomCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setup() {
+    func setup(item: ItemViewModelProtocol) {
         self.contentView.layer.cornerRadius = CGFloat(10.0)
         self.backgroundView =  UIImageView(image: UIImage(named: "background"))
+        
+        itemLabel.text = item.title
+        priceLabel.text = String("\(item.price) руб")
+        descriptionLabel.text = item.descript
+        itemImageView.image = UIImage(named: "popcorn")
+        accessoryType = item.checked == true ? .checkmark :  .none
         
     }
     

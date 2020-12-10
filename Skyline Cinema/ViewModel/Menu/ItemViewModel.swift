@@ -36,7 +36,7 @@ class ItemViewModel: ItemViewModelProtocol {
         return item.descript
     }
     var price: String {
-        return String.priceFormatCeil(item.price)
+        return String.priceFormat(item.price)
     }
     var checked: Bool
     
