@@ -15,6 +15,6 @@ struct Order {
     var number: Int = 0
     var licensePlateNumber: String = ""
     
-    let items = [Item]()
+    var items = [Item]()
     
 }

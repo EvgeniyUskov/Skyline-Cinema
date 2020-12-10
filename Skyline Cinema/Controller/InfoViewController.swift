@@ -32,7 +32,7 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
-        cityNameLabel.text = UserDefaults.standard.value(forKey: Constants.propCity) as! String
+        cityNameLabel.text = UserDefaults.standard.value(forKey: Constants.propCity) as? String
         callButton.titleLabel?.font = getFreeFont()
         callButton.setTitle("\u{f879}", for: .normal)
         vkButton.titleLabel?.font = getBrandsFont()
@@ -50,7 +50,11 @@ class InfoViewController: UIViewController {
         addressTableView.delegate = self
         //        phoneLabel.isHidden = true
         //        phoneCaptionLabel.isHidden = true
-        addressList = NetworkManager.shared.getAddresses()
+        NetworkManager.shared.getAddresses(completion: {
+            [unowned self]
+            addresses in
+            addressList = addresses
+        })
         addressTableView.separatorStyle = .none
         addressTableView.reloadData()
         addressTableView.allowsMultipleSelection = false
@@ -72,24 +76,34 @@ class InfoViewController: UIViewController {
     }
     
     @IBAction func callButtonTapped(_ sender: Any) {
-        if let address = selectedAddress {
-            UIApplication.shared.openURL(NSURL(string: "tel://\(address.phoneNumber)") as! URL)
+        if let address = selectedAddress, let url = URL(string: "tel://\(address.phoneNumber)") {
+            UIApplication.shared.open(url)
         }
     }
     @IBAction func vkButtonTapped(_ sender: Any) {
-        UIApplication.shared.openURL(NSURL(string: Routes.vkURL) as! URL)
+        if let url = URL(string: Routes.vkURL) {
+            UIApplication.shared.open(url)
+        }
     }
     @IBAction func igButtonTapped(_ sender: Any) {
-        UIApplication.shared.openURL(NSURL(string: Routes.igURL) as! URL)
+        if let url = URL(string: Routes.igURL) {
+            UIApplication.shared.open(url)
+        }
     }
     @IBAction func fbButtonTapped(_ sender: Any) {
-        UIApplication.shared.openURL(NSURL(string: Routes.fbURL) as! URL)
+        if let url = URL(string: Routes.fbURL) {
+            UIApplication.shared.open(url)
+        }
     }
     @IBAction func tlgButtonTapped(_ sender: Any) {
-        UIApplication.shared.openURL(NSURL(string: Routes.tlgURL) as! URL)
+        if let url = URL(string: Routes.tlgURL){
+            UIApplication.shared.open(url)
+        }
     }
     @IBAction func safButtonTapped(_ sender: Any) {
-        UIApplication.shared.openURL(NSURL(string: Routes.safariURL) as! URL)
+        if let url = URL(string: Routes.safariURL) {
+            UIApplication.shared.open(url)
+        }
     }
     
 }

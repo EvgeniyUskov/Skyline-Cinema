@@ -1,6 +1,0 @@
-framework module Pods_Skyline_Cinema {
-  umbrella header "Pods-Skyline Cinema-umbrella.h"
-
-  export *
-  module * { export * }
-}

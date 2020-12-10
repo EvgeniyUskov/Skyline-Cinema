@@ -13,7 +13,7 @@ struct TicketRequest: Encodable {
     let date: String
     let movieKinopoiskId: String
     
-    init (movie: TimeTableCellViewModel) {
+    init (movie: MovieViewModelProtocol) {
         let defaults = UserDefaults.standard
         self.licensePlateNumber = defaults.string(forKey: Constants.propLicensePlateNumber)!
         self.date = movie.date

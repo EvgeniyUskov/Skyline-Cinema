@@ -242,7 +242,7 @@
                                                 <rect key="frame" x="350.66666666666669" y="0.0" width="23.333333333333314" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="tintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" image="arrow.2.circlepath" catalog="system">
+                                                <state key="normal" image="arrow.triangle.2.circlepath" catalog="system">
                                                     <color key="titleColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -386,7 +386,7 @@
                             <constraint firstItem="Y0y-UG-j2S" firstAttribute="top" secondItem="Kc2-9C-pah" secondAttribute="top" id="aXb-1F-aMQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Афиша" image="table" catalog="system" selectedImage="table.fill" id="FgH-PL-tqJ"/>
+                    <tabBarItem key="tabBarItem" title="Афиша" image="table" catalog="system" selectedImage="tablecells.fill" id="FgH-PL-tqJ"/>
                     <navigationItem key="navigationItem" id="aCP-9a-s8A"/>
                     <connections>
                         <outlet property="timeTableTableView" destination="mD8-te-Jij" id="OBD-6R-Mzp"/>
@@ -467,14 +467,11 @@
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" text="Нет данных о фильме" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="faa-tU-SFU">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="201.33333333333334"/>
                                                         <color key="backgroundColor" red="0.27447596190000001" green="0.27452921870000002" blue="0.27447256450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="201.33333333333337" id="R4v-sX-zH3"/>
-                                                        </constraints>
                                                         <color key="textColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnm-bP-AYB">
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnm-bP-AYB">
                                                         <rect key="frame" x="0.0" y="211.33333333333337" width="374" height="44"/>
                                                         <color key="backgroundColor" red="0.8912609816" green="0.35455638169999998" blue="0.39968371390000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -1177,10 +1174,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="P4S-sx-bQz"/>
+        <segue reference="dRG-ix-9kx"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="arrow.2.circlepath" catalog="system" width="128" height="101"/>
+        <image name="arrow.triangle.2.circlepath" catalog="system" width="128" height="101"/>
         <image name="background" width="2048" height="2732"/>
         <image name="book" catalog="system" width="128" height="102"/>
         <image name="book.fill" catalog="system" width="128" height="102"/>
@@ -1190,7 +1187,7 @@
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="registerScreenLogo" width="500" height="193"/>
         <image name="table" catalog="system" width="128" height="93"/>
-        <image name="table.fill" catalog="system" width="128" height="93"/>
+        <image name="tablecells.fill" catalog="system" width="128" height="93"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

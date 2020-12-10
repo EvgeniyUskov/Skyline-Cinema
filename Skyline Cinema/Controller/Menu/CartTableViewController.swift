@@ -50,11 +50,11 @@ class CartTableViewController: UIViewController {
         SVProgressHUD.show()
         // TODO: delete this
 //        let apiKey = defaults.string(forKey: Constants.propYandexApiKey)!
-        let apiKey = Constants.mobileSDKApiKey
+//        let apiKey = Constants.mobileSDKApiKey
 //        let shopId = Constants.shopId
         
 //        let amount = Amount(value: Decimal(totalAmount), currency: .rub)
-        if let order = order {
+//        if let order = order {
 //            var orderItems: String
 //            for item in order.items{
 //                orderItems += item.title + ", "
@@ -69,7 +69,7 @@ class CartTableViewController: UIViewController {
             
 //            let viewController = TokenizationAssembly.makeModule(inputData: inputData, moduleOutput: self)
 //            present(viewController, animated: true, completion: nil)
-        }
+//        }
     }
     
 //    func createPayment (paymentToken: Tokens, amount: Amount, description: String) {
@@ -83,16 +83,6 @@ class CartTableViewController: UIViewController {
 ////                    self?.computerTableView.reloadData()
 //            }})
 //    }
-    
-    func saveData() {
-        do{
-            try realm.write {
-                realm.add(order!)
-            }
-        } catch {
-            print("error saving realm order\(error)")
-        }
-    }
     
     func calculateTotalAmount() -> Double {
         var total: Double = 0
@@ -143,7 +133,6 @@ extension CartTableViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cartTableView.reloadData()
-        saveData()
     }
 }
 

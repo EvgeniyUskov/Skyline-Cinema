@@ -71,7 +71,70 @@ struct NetworkManager {
         }
     }
     
-    func getRates(movie: Movie, completion: @escaping (Rates) -> ()) {
+    func getMovieDetailsFromWiki(movie: MovieViewModelProtocol, completion: @escaping (MovieDetails) -> ()) {
+        let parameters : [String:String] = [
+            "format" : "json",
+            "action" : "query",
+            "prop" : "extracts|pageimages",
+            "exintro" : "",
+            "explaintext" : "",
+            "titles" : movie.title,
+            "indexpageids" : "",
+            "redirects" : "1",
+            "pithumbsize" : "500",
+        ]
+        
+        if let url = URL(string: Routes.wikiURL) {
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return}
+            request.httpBody = httpBody
+            
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: request) {
+                (data, response, error) in
+                if let error = error {
+                    print(error)
+                    return
+                }
+                if let safeData = data {
+                    if let details = JSONManager.shared.parseMovieDetailsJSONFromWIki(data: safeData, movie: movie) {
+                        completion(details)
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    //    func getMovieDetailsFromKinopoisk(movie: TimeTableCellViewModel, completion: @escaping (MovieDetails) -> ()) {
+    //        let kinopoiskParser = KinopoiskHTMLParser()
+    //        var details = [String: String]()
+    //        let headers: HTTPHeaders = [
+    //            "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36"
+    //        ]
+    //        AF.request(Routes.getKinopoiskMovieDetailsURL(kinopoiskMovieId: movie.kinopoiskId), method: .get, headers: headers).responseString { (response) in
+    //            switch response.result {
+    //            case .success:
+    //                    print("MOVIE DETAILS KINOPOISK SUCCESS: \(response)" )
+    //                    details[Constants.description] = kinopoiskParser.getDescription(response: response)
+    //                    details[Constants.imageURL] =  kinopoiskParser.getImageURL(response: response)
+    //
+    //                    completion(details)
+    //                    DispatchQueue.main.async {
+    //                        movie.setDetails(details: details)
+    //                        self.setUpDescriptionAndImageURL(movie: movie)
+    //                    }
+    //
+    //            case let .failure(error):
+    //                print(error)
+    //            }
+    //        }
+    //    }
+    
+    func getRates(movie: MovieViewModelProtocol, completion: @escaping (Rates) -> ()) {
+        //TODO: Delete this if else
         if Constants.isNetworkActive {
             if let url = URL(string: Routes.getKinopoiskRatesURL(kinopoiskMovieId: movie.kinopoiskId)) {
                 let session = URLSession(configuration: .default)
@@ -84,26 +147,30 @@ struct NetworkManager {
                     if let safeData = data {
                         if let rates = XMLManager.shared.parseRatesXML(data: safeData){
                             completion(rates)
-                            
-                            DispatchQueue.main.async {
-                                movieLocal.setRates(rates: rates)
-                                self.setUpRates(movie: movieLocal)
-                            }
                         }
                     }
                 }
                 task.resume()
             }
         } else {
-            
-        Alamofire.request(Routes.getKinopoiskRatesURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get).responseString { (response) in
-            print("RATES SUCCESS: \(response)")
-            rates = xmlManager.parseRatesXML(response: response)
-            DispatchQueue.main.async {
-                movieLocal.setRates(rates: rates)
-                self.setUpRates(movie: movieLocal)
+            if let url = URL(string: Routes.getKinopoiskRatesURL(kinopoiskMovieId: "2318")) {
+                let session = URLSession(configuration: .default)
+                let task = session.dataTask(with: url) {
+                    (data, response, error) in
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    if let safeData = data {
+                        if let rates = XMLManager.shared.parseRatesXML(data: safeData){
+                            completion(rates)
+                        }
+                    }
+                }
+                task.resume()
             }
         }
+        
     }
     
     func getAddresses(completion: @escaping ([Address]) -> ()) {

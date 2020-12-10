@@ -9,6 +9,6 @@
 import Foundation
 
 struct Rates : Decodable{
-    var kpRate: Double?
-    var imdbRate: Double?
+    var kpRate: String?
+    var imdbRate: String?
 }

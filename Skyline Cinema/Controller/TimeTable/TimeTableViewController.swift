@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import SwiftyJSON
 import Alamofire
 import SVProgressHUD
@@ -15,9 +14,8 @@ import SVProgressHUD
 class TimeTableViewController: UIViewController {
     
     @IBOutlet weak var timeTableTableView: UITableView!
-    let realm = try! Realm()
     
-    var daysWithMovies = [MovieDay]()
+    var viewModel: TimeTableViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +23,7 @@ class TimeTableViewController: UIViewController {
         NetworkManager.shared.getMovies(completion: {
             [unowned self]
             movieDays in
-            self.daysWithMovies = movieDays
+            self.viewModel = TimeTableViewModel(movieDays: movieDays)
                 SVProgressHUD.dismiss()
         })
         setupTableView()
@@ -45,7 +43,7 @@ class TimeTableViewController: UIViewController {
             let destinationVC = segue.destination as! MovieDetailsViewController
             
             if let indexPath = timeTableTableView.indexPathForSelectedRow {
-                destinationVC.movie = daysWithMovies[indexPath.section].movies[indexPath.row]
+                destinationVC.movie = viewModel.movieDays[indexPath.section].movies[indexPath.row]
             }
         }
     }
@@ -55,15 +53,15 @@ class TimeTableViewController: UIViewController {
 extension TimeTableViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - TableView Implementation methods
       func numberOfSections(in tableView: UITableView) -> Int {
-          return daysWithMovies.count
+        return viewModel.movieDays.count
       }
       
       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-          return daysWithMovies[section].movies.count
+        return viewModel.movieDays[section].movies.count
       }
       
       func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-          return daysWithMovies[section].dateString
+        return viewModel.movieDays[section].date
       }
       
       func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -88,7 +86,7 @@ extension TimeTableViewController: UITableViewDelegate, UITableViewDataSource {
       // show data on table row
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
           let cell = timeTableTableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! TimeTableViewCell
-          let movie = daysWithMovies[indexPath.section].movies[indexPath.row]
+        let movie = viewModel.movieDays[indexPath.section].movies[indexPath.row]
           
           cell.setUp(viewModel: movie)
           return cell

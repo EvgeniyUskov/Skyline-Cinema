@@ -46,7 +46,7 @@ class CalendarEventManager: NSObject {
         eventModalVC.event = event
         eventModalVC.eventStore = eventStore
         eventModalVC.editViewDelegate = self
-        if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
+        if let rootVC = UIApplication.shared.windows.first!.rootViewController {
             if let topVC = rootVC.presentedViewController {
                 topVC.show(eventModalVC, sender: nil)
             }

@@ -87,6 +87,13 @@ class DateUtils {
 
         return dateFormatter.string(from: date)
     }
+    
+    static func dateForMovieViewModelFormattedString(date: Date) -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy HH:mm"
+        return formatter.string(from: date)
+    }
+    
 }
 
 // End of day = Start of tomorrow minus 1 second

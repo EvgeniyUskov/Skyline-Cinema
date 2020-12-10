@@ -1,6 +1,0 @@
-framework module When {
-  umbrella header "When-umbrella.h"
-
-  export *
-  module * { export * }
-}

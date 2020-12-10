@@ -13,7 +13,7 @@ import SVProgressHUD
 
 class MovieDetailsViewController: UIViewController {
     
-    var movie : TimeTableCellViewModel?
+    var movie : MovieViewModelProtocol?
     
     @IBOutlet weak var rateKpLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -25,7 +25,14 @@ class MovieDetailsViewController: UIViewController {
         super.viewDidLoad()
         SVProgressHUD.show()
         getRates()
-        getMovieDetailsFromWiki()
+        if var movieLocal = self.movie {
+            NetworkManager.shared.getMovieDetailsFromWiki(movie: movieLocal, completion: {
+                details in
+                movieLocal.description = details.description
+                movieLocal.imageURL = details.imageUrl
+                SVProgressHUD.dismiss()
+            })
+        }
         //        getMovieDetailsFromKinopoisk()
     }
     
@@ -38,8 +45,7 @@ class MovieDetailsViewController: UIViewController {
     
     func getRates(){
         if let movieLocal = self.movie {
-            var rates = [String: String]()
-            NetworkManager.shared.getRates(movie: movie, completion: {
+            NetworkManager.shared.getRates(movie: movieLocal, completion: {
                                             [unowned self]
                                             rates in
                 movieLocal.setRates(rates: rates)
@@ -48,70 +54,28 @@ class MovieDetailsViewController: UIViewController {
         }
     }
     
-    func getMovieDetailsFromKinopoisk() {
-        if let movieLocal = self.movie {
-            let kinopoiskParser = KinopoiskHTMLParser()
-            var details = [String: String]()
-            let headers: HTTPHeaders = [
-                "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36"
-            ]
-            Alamofire.request(NetworkManager.shared.getKinopoiskMovieDetailsURL(kinopoiskMovieId: movieLocal.kinopoiskId), method: .get, headers: headers).responseString { (response) in
-                if response.result.isSuccess {
-                    print("MOVIE DETAILS KINOPOISK SUCCESS: \(response)" )
-                    details[Constants.description] = kinopoiskParser.getDescription(response: response)
-                    details[Constants.imageURL] =  kinopoiskParser.getImageURL(response: response)
-                    DispatchQueue.main.async {
-                        movieLocal.setDetails(details: details)
-                        self.setUpDescriptionAndImageURL(movie: movieLocal)
-                    }
-                }
-            }
-            SVProgressHUD.dismiss()
-        }
-        
-    }
+//    func getMovieDetailsFromKinopoisk() {
+//        if let movieLocal = self.movie {
+//            NetworkManager.shared.getMovieDetailsFromKinopoisk(movie: movieLocal)
+//            SVProgressHUD.dismiss()
+//        }
+//    }
     
     
-    func getMovieDetailsFromWiki() {
-        if let movieLocal = self.movie {
-            let parameters : [String:String] = [
-                "format" : "json",
-                "action" : "query",
-                "prop" : "extracts|pageimages",
-                "exintro" : "",
-                "explaintext" : "",
-                "titles" : movieLocal.title,
-                "indexpageids" : "",
-                "redirects" : "1",
-                "pithumbsize" : "500",
-            ]
-            var details = [String: String]()
-            Alamofire.request(Routes.wikiURL, method: .get, parameters: parameters).responseJSON { (response) in
-                if response.result.isSuccess {
-                    print("MOVIE DETAILS SUCCESS: \(response)" )
-                    details = JSONManager.shared.parseMovieDetailsJSONFromWIki(response: response, movie: movieLocal)
-                    DispatchQueue.main.async {
-                        movieLocal.setDetails(details: details)
-                        self.setUpDescriptionAndImageURL(movie: movieLocal)
-                    }
-                }
-            }
-            SVProgressHUD.dismiss()
-        }
-    }
     
-    func setUpRates(movie: TimeTableCellViewModel) {
+    
+    func setUpRates(movie: MovieViewModelProtocol) {
         DispatchQueue.main.async { [weak self] in
-            self?.rateKpLabel.text = movie.rateKp
+            self?.rateKpLabel.text = movie.kpRate
             self?.titleLabel.text = movie.title
             self?.timeLabel.text = movie.date
         }
     }
     
     
-    func setUpDescriptionAndImageURL(movie: TimeTableCellViewModel) {
+    func setUpDescriptionAndImageURL(movie: MovieViewModelProtocol) {
         DispatchQueue.main.async { [weak self] in
-            self?.descriptionText.text = movie.descript
+            self?.descriptionText.text = movie.description
             self?.movieImageView.sd_setImage(with: URL(string: movie.imageURL ?? ""), completed: nil)
         }
     }

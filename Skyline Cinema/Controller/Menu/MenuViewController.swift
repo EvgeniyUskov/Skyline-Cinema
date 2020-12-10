@@ -14,8 +14,7 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var goToOrderButton: UIButton!
     @IBOutlet weak var popcornTableView: UITableView!
     
-//    private var menuList: [Item] = [Item]()
-    private var menuListCategories: [Category] = [Category]()
+    private var viewModel: MenuViewModelProtocol?
     private var order: Order?
     
     override func viewDidLoad() {
@@ -24,10 +23,9 @@ class MenuViewController: UIViewController {
         NetworkManager.shared.getItems(completion: {
             [unowned self]
             categories in
-            self.menuListCategories = categories
+            viewModel = MenuViewModel(categories: categories)
             SVProgressHUD.dismiss()
         })
-        sortCategories()
         disableGoToOrderButon()
         setUpTableView()
         createOrder()
@@ -47,20 +45,20 @@ class MenuViewController: UIViewController {
     }
     
     //MARK: -Data manipulation methods
-//    func loadData() {
-//        menuList = Array(realm.objects(Item.self))
-//        createOrder()
-//    }
-//
-//    func saveData() {
-//        do{
-//            try realm.write {
-//                realm.add(order!)
-//            }
-//        } catch {
-//            print("error saving realm order\(error)")
-//        }
-//    }
+    //    func loadData() {
+    //        menuList = Array(realm.objects(Item.self))
+    //        createOrder()
+    //    }
+    //
+    //    func saveData() {
+    //        do{
+    //            try realm.write {
+    //                realm.add(order!)
+    //            }
+    //        } catch {
+    //            print("error saving realm order\(error)")
+    //        }
+    //    }
     
     func createOrder() {
         order = Order()
@@ -102,26 +100,25 @@ class MenuViewController: UIViewController {
         goToOrderButton.backgroundColor = UIColor.systemPink
     }
     
-    func sortCategories() {
-        menuListCategories = menuListCategories.sorted(by: { (category1, category2) -> Bool in
-            return Constants.menuMap[category1.name]! < Constants.menuMap[category2.name]!
-        })
-    }
+    
 }
 
 // MARK: - TableView Implementation methods
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return menuListCategories.count
+        guard let viewModel = viewModel else {return 0}
+        return viewModel.categoriesViewModel.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuListCategories[section].items.count
+        guard let viewModel = viewModel else {return 0}
+        return viewModel.categoriesViewModel[section].items.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return menuListCategories[section].name
+        guard let viewModel = viewModel else {return ""}
+        return viewModel.categoriesViewModel[section].name
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -147,7 +144,8 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = popcornTableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
         
-        let item = menuListCategories[indexPath.section].items[indexPath.row]
+        guard let viewModel = viewModel else {return UITableViewCell()}
+        let item = viewModel.categoriesViewModel[indexPath.section].items[indexPath.row]
         cell.itemLabel.text = item.title
         cell.priceLabel.text = String("\(Int(item.price)) руб")
         cell.descriptionLabel.text = item.descript
@@ -159,16 +157,19 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     //UITableViewCell click
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewModel = viewModel else {return}
         // TODO: delete when deselect
-        let selectedItem = menuListCategories[indexPath.section].items[indexPath.row]
-            if(!selectedItem.checked) {
-                selectedItem.checked = true
-                order!.items.append(selectedItem)
-            } else {
-                selectedItem.checked = false
-                popcornTableView.deselectRow(at: indexPath, animated: true)
-                removeItemFromOrder(item: selectedItem)
-            }
+        var selectedItemViewModel = viewModel.categoriesViewModel[indexPath.section].items[indexPath.row]
+        let item = viewModel.getItem(forIndexPath: indexPath)
+        
+        if(!selectedItemViewModel.checked) {
+            selectedItemViewModel.checked = true
+            order!.items.append(item)
+        } else {
+            selectedItemViewModel.checked = false
+            popcornTableView.deselectRow(at: indexPath, animated: true)
+            removeItemFromOrder(item: item)
+        }
         
         if order!.items.count != 0 {
             enableGoToOrderButon()

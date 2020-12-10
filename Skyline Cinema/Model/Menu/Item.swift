@@ -14,5 +14,4 @@ struct Item: Decodable {
     var title: String = ""
     var descript: String = ""
     var price: Double = 0.00
-    var checked: Bool = false
 }

@@ -14,7 +14,5 @@ struct Movie: Decodable {
     var kinopoiskId: String = ""
     var title: String = ""
     var descript: String = ""
-    var rate: Double = 0.00
-    var checked: Bool = false
     var date: Date = Date()
 }

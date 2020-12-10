@@ -16,7 +16,7 @@ import Alamofire
 class BuyTicketCompleteViewController: UIViewController {
     
     let calendarEventManager = CalendarEventManager()
-    var movie: TimeTableCellViewModel?
+    var movie: MovieViewModelProtocol!
     
     @IBOutlet weak var purchaseSuccessfullLabel: UILabel!
     @IBOutlet weak var ticketsLabel: UILabel!

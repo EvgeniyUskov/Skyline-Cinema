@@ -23,7 +23,7 @@ class TimeTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
         
-    func setUp(viewModel: TimeTableCellViewModel) {
+    func setUp(viewModel: MovieViewModelProtocol) {
         self.titleLabel.text = viewModel.title
         self.dateLabel.text = viewModel.time
         self.movieImageView.image = UIImage(named: "movieBackground")

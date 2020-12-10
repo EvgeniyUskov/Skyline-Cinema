@@ -70,19 +70,16 @@ class JSONManager {
     }
     
     //TODO: delete this if not needed
-//    func parseMovieDetailsJSONFromWIki(response: DataResponse<Any>, movie: TimeTableCellViewModel) -> [String: String] {
-//        var details = [String: String]()
-//
-//        let jsonResponse: JSON = JSON(response.result.value!)
-//        debugPrint("JSON RESPONSE: \(jsonResponse)")
-//        let pageid = jsonResponse["query"]["pageids"][0].stringValue
-//        let imageURL = jsonResponse["query"]["pages"][pageid]["thumbnail"]["source"].stringValue
-//        let description = jsonResponse["query"]["pages"][pageid]["extract"].stringValue
-//
-//        details[Constants.description] = description
-//        details[Constants.imageURL] = imageURL
-//        return details
-//    }
+    func parseMovieDetailsJSONFromWIki(data: Data, movie: MovieViewModelProtocol) -> MovieDetails? {
+        let jsonResponse: JSON = JSON(data)
+        debugPrint("JSON RESPONSE: \(jsonResponse)")
+        let pageid = jsonResponse["query"]["pageids"][0].stringValue
+        let imageURL = jsonResponse["query"]["pages"][pageid]["thumbnail"]["source"].stringValue
+        let description = jsonResponse["query"]["pages"][pageid]["extract"].stringValue
+        
+        let movieDetails = MovieDetails(imageUrl: imageURL, description: description)
+        return movieDetails
+    }
     
    
     
@@ -185,7 +182,7 @@ extension JSONManager {
                 var newMovie = Movie()
                 newMovie.title = movie["title"].stringValue
                 newMovie.descript = movie["description"].stringValue
-                newMovie.rate = Double(movie["rate"].stringValue) ?? 0
+//                newMovie.kpRate = movie["rate"].stringValue ?? "-"
                 newMovie.id = movie["id"].intValue
                 newMovie.kinopoiskId = movie["kinopoiskId"].stringValue
                 let dateFormatter = DateFormatter()

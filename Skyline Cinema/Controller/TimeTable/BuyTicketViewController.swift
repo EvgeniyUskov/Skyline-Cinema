@@ -15,7 +15,7 @@ class BuyTicketViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     //    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    var movie: TimeTableCellViewModel?
+    var movie: MovieViewModelProtocol!
     
     var webView = WKWebView()
     
@@ -27,8 +27,8 @@ class BuyTicketViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
-        let myURL = URL(string: Routes.buyTicketURL)!
-        let myRequest = URLRequest(url: myURL)
+//        let myURL = URL(string: Routes.buyTicketURL)!
+//        let myRequest = URLRequest(url: myURL)
         // TODO: UNCOMMENT this
 //        webView.load(myRequest)
         webView.allowsBackForwardNavigationGestures = true

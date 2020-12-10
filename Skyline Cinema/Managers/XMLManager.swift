@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 import SwiftyXML
 
 class XMLManager {
@@ -17,17 +16,13 @@ class XMLManager {
     
     private init() {}
     
-    func parseRatesXML(data: Data) -> [String: String]{
-        var rates = [String: String]()
-        
-        do {
-            let xml = try XML(string: response.result.unwrap())
-            rates[Constants.kpRate] = xml.kp_rating.stringValue
-            rates[Constants.imdbRate] = xml.imdb_rating.stringValue
-        } catch{
-            print("ERROR: CANNOT PARSE RATE XML: \(error)")
+    func parseRatesXML(data: Data) -> Rates? {
+        if let xml = XML(data: data) {
+            let kpRate = xml.kp_rating.stringValue
+            let imdbRate = xml.imdb_rating.stringValue
+            let rates = Rates(kpRate: kpRate, imdbRate: imdbRate)
+            return rates
         }
-        
-        return rates
+        return nil
     }
 }
